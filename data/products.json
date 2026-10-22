@@ -1,4 +1,36 @@
 {
   "schemaVersion": 1,
-  "products": []
+  "updatedAt": "2026-10-22T10:57:03.688Z",
+  "products": [
+    {
+      "id": "ebook-mvjdl9ey-lh5kg",
+      "title": "AI Skills For Bigginner",
+      "subtitle": "Failed to fetch",
+      "description": "Naanaajaa",
+      "category": "AI & Technology",
+      "language": "Nepali + English",
+      "tags": [
+        "AI",
+        "Skills",
+        "Digital"
+      ],
+      "benefits": [
+        "Online Incomes under 30 days."
+      ],
+      "cover": "assets/covers/ebook-mvjdl9ey-lh5kg.jpg",
+      "coverAlt": "Ai",
+      "badge": "BESTSELLER",
+      "pages": 150,
+      "format": "PDF + Bonus",
+      "regularPrice": 999,
+      "offerPrice": 299,
+      "offerEndsAt": "2026-10-24T15:49",
+      "availability": "available",
+      "status": "published",
+      "featured": true,
+      "order": 100,
+      "createdAt": "2026-10-22T10:05:46.993Z",
+      "updatedAt": "2026-10-22T10:07:16.669Z"
+    }
+  ]
 }
