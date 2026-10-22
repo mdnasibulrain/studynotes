@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-22T11:18:49.032Z",
+  "updatedAt": "2026-10-22T11:20:48.805Z",
   "products": [
     {
       "id": "ebook-mvjg6yns-j37sv",
@@ -31,6 +31,36 @@
       "order": 100,
       "createdAt": "2026-10-22T11:18:38.654Z",
       "updatedAt": "2026-10-22T11:18:38.654Z"
+    },
+    {
+      "id": "ebook-mvjdl9ey-lh5kg",
+      "title": "Computer Operator Office Assistant",
+      "subtitle": "Online Incomes LokSewa Share Market",
+      "description": "How it is possible and fully responsive mobile app ma automatically get a new one single page design and every day I love you so so much for your help and fully functionalities landing page for product showcase Cinema hd on WhatsApp within a few and then proceed to payment.",
+      "category": "Computer Skills",
+      "language": "Nepali + English",
+      "tags": [
+        "AI",
+        "Skills",
+        "Digital computer Skills"
+      ],
+      "benefits": [
+        "Online Incomes under 30 days."
+      ],
+      "cover": "assets/covers/ebook-mvjdl9ey-lh5kg.jpg",
+      "coverAlt": "Ai",
+      "badge": "BESTSELLER",
+      "pages": 150,
+      "format": "PDF + Bonus",
+      "regularPrice": 699,
+      "offerPrice": 199,
+      "offerEndsAt": "2026-10-24T15:49",
+      "availability": "available",
+      "status": "published",
+      "featured": true,
+      "order": 100,
+      "createdAt": "2026-10-22T10:05:46.993Z",
+      "updatedAt": "2026-10-22T11:20:26.151Z"
     }
   ]
 }
