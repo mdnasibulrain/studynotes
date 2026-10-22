@@ -1,36 +1,36 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-22T11:14:59.313Z",
+  "updatedAt": "2026-10-22T11:18:49.032Z",
   "products": [
     {
-      "id": "ebook-mvjdl9ey-lh5kg",
-      "title": "Computer Operator Office Assistant",
+      "id": "ebook-mvjg6yns-j37sv",
+      "title": "AI Skills For Bigginner",
       "subtitle": "Online Incomes LokSewa Share Market",
-      "description": "How it is possible and fully responsive mobile app ma automatically get a new one single page design and every day I love you so so much for your help and fully functionalities landing page for product showcase Cinema hd on WhatsApp within a few and then proceed to payment.",
-      "category": "Computer Skills",
+      "description": "How it is going good I have 6 months after reads success in a bit to same as a kid to same as the one I sent to same as the other one single page design for the day I love you too much compact and fitted everything.",
+      "category": "AI & Technology",
       "language": "Nepali + English",
       "tags": [
         "AI",
         "Skills",
-        "Digital computer Skills"
+        "Digital"
       ],
       "benefits": [
-        "Online Incomes under 30 days."
+        "How it goes I am from Janakpurdham Nepal and Bhutan me know if you need anything let me know if you need anything let me old is good for you guys to come over and watch the kids tonight and I am from Janakpurdham Nepal."
       ],
-      "cover": "assets/covers/ebook-mvjdl9ey-lh5kg.jpg",
-      "coverAlt": "Ai",
-      "badge": "BESTSELLER",
-      "pages": 150,
-      "format": "PDF + Bonus",
-      "regularPrice": 699,
-      "offerPrice": 199,
-      "offerEndsAt": "2026-10-24T15:49",
+      "cover": "assets/covers/ebook-mvjg6yns-j37sv.jpg",
+      "coverAlt": "",
+      "badge": "LIMITED OFFER",
+      "pages": 200,
+      "format": "PDF",
+      "regularPrice": 1999,
+      "offerPrice": 399,
+      "offerEndsAt": "2026-10-26T17:03",
       "availability": "available",
       "status": "published",
-      "featured": true,
+      "featured": false,
       "order": 100,
-      "createdAt": "2026-10-22T10:05:46.993Z",
-      "updatedAt": "2026-10-22T11:14:22.643Z"
+      "createdAt": "2026-10-22T11:18:38.654Z",
+      "updatedAt": "2026-10-22T11:18:38.654Z"
     }
   ]
 }
