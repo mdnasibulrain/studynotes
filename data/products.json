@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-29T02:37:22.498Z",
+  "updatedAt": "2026-10-29T02:48:54.058Z",
   "products": [
     {
       "id": "ebook-mvjg6yns-j37sv",
@@ -156,7 +156,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-10-29T02:37:22.498Z",
+      "updatedAt": "2026-10-29T02:48:54.058Z",
       "site": {
         "v": 1,
         "store": {
@@ -779,7 +779,7 @@
           "cartTypeCombo": "CUSTOM COMBO",
           "cartTypeBundle": "BUNDLE",
           "cartIncludes": "समावेश: {ids}",
-          "cartNoQty": "ℹ️ डिजिटल Ebook एउटै मात्र किनिन्छ — Quantity थप्न मिल्दैन।",
+          "cartNoQty": "",
           "cartSaved": "🎉 तपाईंले {amount} बचत गर्दै हुनुहुन्छ",
           "cartWa": "WhatsApp मा Order गर्नुहोस्",
           "cartCopy": "Order विवरण Copy गर्नुहोस्",
