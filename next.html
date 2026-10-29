@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="ne" data-sn-storefront="2">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>StudyNotes — Your First Step to Success | Practical Ebooks</title>
+<meta name="theme-color" content="#F97316">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="description" content="StudyNotes — Computer Skills, Digital Income, LokSewa, Share Market, Personality & Career Ebooks for Nepali youth.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.2/babel.min.js"></script>
+<script src="assets/js/site-core.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Inter,"Noto Sans Devanagari",Arial,sans-serif;background:#fff;color:#0F172A;overflow-x:hidden;margin:0}
+section[id]{scroll-margin-top:116px}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:#FFF7ED}::-webkit-scrollbar-thumb{background:#FDBA74;border-radius:4px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.animate-marquee{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.animate-marquee:hover{animation-play-state:paused}
+@keyframes prog{from{width:0}to{width:100%}}
+.prog-bar{animation:prog 20s linear forwards}
+@keyframes ring{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.7);opacity:0}}
+.ring-pulse{animation:ring 1.8s ease-out infinite}
+@keyframes popIn{from{opacity:0;transform:translate(-50%,-10px) scale(.96)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+.toast-in{animation:popIn .25s ease-out}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.slide-in{animation:slideIn .28s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .4s ease-out both}
+@keyframes shine{0%{transform:translateX(-120%) skewX(-20deg)}60%,100%{transform:translateX(320%) skewX(-20deg)}}
+.shine::after{content:"";position:absolute;inset:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:shine 3s infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.floaty{animation:floaty 3.2s ease-in-out infinite}
+.wa-bg{background-color:#ECE5DD;background-image:radial-gradient(rgba(0,0,0,.045) 1px,transparent 1px);background-size:14px 14px}
+.tabular{font-variant-numeric:tabular-nums}
+button{-webkit-tap-highlight-color:transparent}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useMemo, useRef, useContext, createContext } = React;
+/* =====================================================================
+   DATA LAYER — सबै content Admin (Product Manager) बाट आउँछ:
+   data/products.json (products + bundles + site settings) · data/store-settings.json
+   यो फाइल हातले edit गर्नु पर्दैन।
+   ===================================================================== */
+const SN = window.SN;
+const PREVIEW = (() => { try { return /[?&]snpreview=1/.test(location.search) && window.parent !== window; } catch (e) { return false; } })();
+let RAW = { catalog: { products: [] }, settings: {} };
+let RT = null, SITE = null, VARS = {}, BRAND = {};
+let COMBO_ON = true, COMBO_MIN = 3, COMBO_PERCENT = 15, CART_ON = true;
+const CAROUSEL_MS = 20000;
+let CATEGORIES = [], CAT = {}, PRODUCTS = [], PBYID = {}, BUNDLES = [], BYID = {}, CAROUSEL_ITEMS = [], TICKER = [], REVIEWS = [], CHAT = [], FAQS = [], GOALS = [];
+let maxDiscount = 0, totalSold = 0, totalReviews = 0, avgRating = null;
+
+const fmt = n => SITE.store.currency + " " + Number(n).toLocaleString("en-IN");
+const pct = (r, s) => (r > 0 && s < r ? Math.round(((r - s) / r) * 100) : 0);
+const pad = (n, l = 2) => String(n).padStart(l, "0");
+const lsGet = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+const sum = (arr, f) => arr.reduce((a, x) => a + f(x), 0);
+/* L = Admin ले सम्पादन गर्न मिल्ने button/label text;  T = Admin ले लेखेको वाक्य ({placeholder} भर्दै) */
+const L = (k, extra) => SN.fill(SITE.labels[k] !== undefined ? SITE.labels[k] : "", Object.assign({}, VARS, extra), "keep");
+const T = (text, extra, mode) => SN.fill(text, Object.assign({}, VARS, extra), mode || "sentence");
+const SAFE_IMG = p => SN.safeImage(p, { preview: PREVIEW });
+
+function rebuild(now) {
+  RT = SN.runtime(RAW.catalog, RAW.settings, now, { preview: PREVIEW });
+  SITE = RT.site; VARS = RT.vars;
+  COMBO_ON = !!SITE.cart.comboEnabled; COMBO_MIN = SITE.cart.comboMin; COMBO_PERCENT = SITE.cart.comboPercent; CART_ON = SITE.cart.enabled !== false;
+  BRAND = { name: SITE.store.name, tagline: SITE.store.tagline, founder: SITE.store.founder, whatsappDisplay: SITE.contact.whatsappDisplay, whatsappRaw: SITE.contact.whatsapp, email: SITE.contact.supportEmail, nspayUrl: SITE.payment.nspayUrl, delivery: SITE.delivery.time };
+  PRODUCTS = RT.ebooks; BUNDLES = RT.bundles;
+  PBYID = RT.EBYID; BYID = Object.assign({}, PBYID, Object.fromEntries(BUNDLES.map(b => [b.id, b])));
+  CAT = Object.fromEntries(RT.categories.concat(RT.unknownCategories).map(c => [c.id, c]));
+  CATEGORIES = RT.categories.concat(RT.unknownCategories).filter(c => c.visible && PRODUCTS.some(p => p.category === c.id));
+  const feat = BUNDLES.filter(b => b.isFeatured).concat(PRODUCTS.filter(p => p.isFeatured));
+  CAROUSEL_ITEMS = (feat.length ? feat : BUNDLES.slice(0, 1).concat(PRODUCTS, BUNDLES.slice(1))).slice(0, 10);
+  TICKER = RT.ticker; REVIEWS = RT.reviews; CHAT = RT.chat; GOALS = RT.goals;
+  FAQS = SITE.faq.items.filter(f => f && f.visible !== false && f.q && f.a);
+  maxDiscount = RT.stats.maxDiscount; totalSold = RT.stats.totalSold; totalReviews = RT.stats.totalReviews; avgRating = RT.stats.avgRating;
+}
+const secOn = id => RT.sectionOn(id);
+
+/* Cart-item shape (Ebook / Bundle बाट) */
+const toCartItem = item => ({
+  id: item.id, kind: item.kind, title: item.title,
+  ebookIds: item.kind === "ebook" ? [item.id] : item.includes,
+  regularPrice: item.regularPrice, todayPrice: item.salePrice, comboOff: 0
+});
+/* पुरानो Cart लाई हालको catalog (नयाँ price) सँग मिलाउने; हराएको item हटाउने */
+function refreshItem(it) {
+  if (!it || !Array.isArray(it.ebookIds) || !it.ebookIds.length) return null;
+  if (it.kind === "ebook") { const p = PBYID[it.id]; return p ? toCartItem(p) : null; }
+  if (it.kind === "bundle") { const b = BYID[it.id]; return b && b.kind === "bundle" ? toCartItem(b) : null; }
+  if (it.kind === "combo") {
+    if (!COMBO_ON || !it.ebookIds.every(id => PBYID[id])) return null;
+    const ps = it.ebookIds.map(id => PBYID[id]);
+    const regular = sum(ps, p => p.regularPrice), today = sum(ps, p => p.salePrice);
+    if (ps.length < COMBO_MIN) return null;
+    return { ...it, regularPrice: regular, todayPrice: today, comboOff: Math.round(today * COMBO_PERCENT / 100) };
+  }
+  return null;
+}
+
+// Price हिसाब: Regular → Today Discount → Today Price → Combo Discount → Final Amount
+function calcTotals(list) {
+  const regular = sum(list, i => i.regularPrice);
+  const today = sum(list, i => i.todayPrice);
+  const singles = list.filter(i => i.kind === "ebook");
+  const singlesToday = sum(singles, i => i.todayPrice);
+  const singlesCombo = COMBO_ON && singles.length >= COMBO_MIN ? Math.round(singlesToday * COMBO_PERCENT / 100) : 0;
+  const comboDiscount = singlesCombo + sum(list, i => i.comboOff || 0);
+  return {
+    regular, today, todayDiscount: regular - today, comboDiscount,
+    final: today - comboDiscount, saved: regular - (today - comboDiscount),
+    count: list.length, ebookCount: sum(list, i => i.ebookIds.length), singlesCount: singles.length
+  };
+}
+function buildOrderText(list) {
+  const t = calcTotals(list);
+  return SN.renderMessage(SITE.messages.order || SN.DEFAULTS.messages.order, SN.msgVars(SITE, list, t, fmt));
+}
+
+/* Countdown: केवल वास्तविक Offer-end मितिसम्म (Admin ले राखेको)। मिति नभए/सकिएपछि null → timer लुकाइन्छ */
+function useCountdown(endMs) {
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => { if (!endMs) return; setNow(Date.now()); const i = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(i); }, [endMs]);
+  if (!endMs || endMs <= now) return null;
+  return SN.formatCountdown(endMs - now);
+}
+function parseHash() {
+  const m = (window.location.hash || "").match(/^#\/p\/([A-Za-z0-9_-]+)/);
+  return m && PBYID[m[1]] ? { page: "product", id: m[1] } : { page: "home" };
+}
+function Rich({ text, boldClass = "text-slate-900" }) {
+  const parts = String(text || "").split(/\*\*(.+?)\*\*/g);
+  return <>{parts.map((s, i) => (i % 2 ? <b key={i} className={boldClass}>{s}</b> : s))}</>;
+}
+function Lines({ text }) {
+  return <>{String(text || "").split("\n").map((l, i) => <React.Fragment key={i}>{i > 0 && <br />}{l}</React.Fragment>)}</>;
+}
+function NameMark({ name, accent = "text-orange-500" }) {
+  const m = String(name || "").match(/^(.*?)([A-Z][a-z0-9]*)$/);
+  return m && m[1] ? <>{m[1]}<span className={accent}>{m[2]}</span></> : <>{name}</>;
+}
+
+
+/* =====================================================================
+   ICONS & BRAND VISUALS
+   ===================================================================== */
+const P = {
+  search: <><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></>,
+  cart: <><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></>,
+  home: <><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></>,
+  book: <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></>,
+  menu: <><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></>,
+  tag: <><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></>,
+  x: <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>,
+  check: <polyline points="20 6 9 17 4 12"/>,
+  checkc: <><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></>,
+  star: <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>,
+  clock: <><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></>,
+  zap: <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>,
+  mail: <><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></>,
+  arrowR: <><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></>,
+  arrowL: <><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></>,
+  chevL: <polyline points="15 18 9 12 15 6"/>,
+  chevR: <polyline points="9 18 15 12 9 6"/>,
+  chevD: <polyline points="6 9 12 15 18 9"/>,
+  trash: <><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></>,
+  laptop: <><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/></>,
+  globe: <><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>,
+  trend: <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></>,
+  user: <><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></>,
+  compass: <><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></>,
+  layers: <><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></>,
+  file: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></>,
+  shield: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>,
+  help: <><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></>,
+  gift: <><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></>,
+  flame: <path d="M12 2s5 4.5 5 9.5a5 5 0 0 1-10 0c0-1.7.7-3 1.5-4C9 9 10 10 10.5 10.5 10 8 11 5 12 2z"/>,
+  lock: <><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></>,
+  phone: <><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></>,
+  download: <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></>,
+  copy: <><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></>,
+  award: <><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></>,
+  target: <><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></>,
+  eye: <><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></>,
+  wa: <><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/><g transform="translate(7 6.5) scale(0.42)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></g></>,
+  card: <><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></>
+};
+function Icon({ name, className = "w-5 h-5", fill = "none", sw = 2 }) {
+  return <svg viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">{P[name]}</svg>;
+}
+function LogoSvg({ size = 38 }) {
+  return (
+    <svg viewBox="0 0 64 56" width={size * 1.14} height={size} aria-label="StudyNotes logo">
+      <defs><linearGradient id="snlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#FDBA74"/><stop offset="1" stopColor="#EA580C"/></linearGradient></defs>
+      <path d="M32 9C25 4 14 3 2 5.5v42c12-2.5 23-1.5 30 4.5 7-6 18-7 30-4.5v-42C50 3 39 4 32 9z" fill="url(#snlg)"/>
+      <path d="M32 13.5C26 9.5 17 8.5 7.5 10v33c9.5-1.4 18.5-.4 24.5 4.5 6-4.9 15-5.9 24.5-4.5V10C47 8.5 38 9.5 32 13.5z" fill="#fff"/>
+      <path d="M12 18h14M12 24h12M38 18h14M40 24h12" stroke="#FED7AA" strokeWidth="1.6" strokeLinecap="round"/>
+      <text x="32" y="39" textAnchor="middle" fontSize="19" fontWeight="900" fill="#EA580C" fontFamily="Inter,Arial,sans-serif" letterSpacing="-0.5">SN</text>
+    </svg>
+  );
+}
+function Logo({ size = 38 }) {
+  const src = SITE && SITE.store.logo ? SAFE_IMG(SITE.store.logo) : "";
+  if (src) return <img src={src} alt={`${SITE.store.name} logo`} width={size} height={size} style={{ width: size, height: size, objectFit: "contain" }} className="rounded-md" />;
+  return <LogoSvg size={size} />;
+}
+function Stars({ value, size = "w-3.5 h-3.5" }) {
+  return <span className="inline-flex">{[1, 2, 3, 4, 5].map(i => <Icon key={i} name="star" sw={1.5} fill={i <= Math.round(value) ? "#F59E0B" : "none"} className={`${size} ${i <= Math.round(value) ? "text-amber-500" : "text-slate-300"}`} />)}</span>;
+}
+
+const FALLBACK_CAT = { from: "#F97316", to: "#C2410C", icon: "book", code: "SN", short: "Ebook" };
+// Designed cover — real cover URL नभएमा पनि professional देखिन्छ
+function Cover({ item, mini = false }) {
+  const [bad, setBad] = useState(false);
+  if (item.cover && !bad) return <img src={item.cover} alt={item.coverAlt || item.title} loading="lazy" onError={() => setBad(true)} className="w-full h-full object-cover" />;
+  const isB = item.kind === "bundle";
+  const cat = isB ? null : (CAT[item.category] || FALLBACK_CAT);
+  const from = isB ? "#F97316" : cat.from, to = isB ? "#7C2D12" : cat.to;
+  return (
+    <div className="relative w-full h-full overflow-hidden text-white select-none" style={{ background: `linear-gradient(155deg,${from},${to})`, containerType: "inline-size" }}>
+      <div className="absolute inset-y-0 left-0 bg-black/20" style={{ width: "7cqw" }} />
+      <div className="absolute rounded-full bg-white/10" style={{ width: "75cqw", height: "75cqw", right: "-25cqw", top: "-12cqw" }} />
+      <div className="absolute rounded-full bg-white/10" style={{ width: "55cqw", height: "55cqw", left: "-15cqw", bottom: "6cqw" }} />
+      {mini ? (
+        <div className="absolute inset-0 flex flex-col items-center justify-center pl-[7cqw]">
+          <Icon name={isB ? "gift" : cat.icon} className="" sw={2} />
+          <span className="font-black leading-none mt-[6cqw]" style={{ fontSize: "20cqw" }}>{isB ? "SN" : cat.code}</span>
+        </div>
+      ) : (
+        <div className="absolute inset-0 flex flex-col justify-between" style={{ padding: "9cqw 8cqw 9cqw 14cqw" }}>
+          <div className="flex items-center justify-between">
+            <span className="font-black tracking-widest opacity-90" style={{ fontSize: "5.4cqw" }}>STUDYNOTES</span>
+            <span className="rounded-full bg-white/25 flex items-center justify-center" style={{ width: "15cqw", height: "15cqw" }}>
+              <Icon name={isB ? "gift" : cat.icon} className="w-[60%] h-[60%]" />
+            </span>
+          </div>
+          {isB ? (
+            <div>
+              <div className="font-black leading-none" style={{ fontSize: "36cqw" }}>{item.includes.length}</div>
+              <div className="font-extrabold tracking-wide" style={{ fontSize: "9cqw" }}>EBOOKS BUNDLE</div>
+              <div className="font-semibold opacity-90 mt-[3cqw] leading-tight" style={{ fontSize: "6.6cqw" }}>{item.short}</div>
+            </div>
+          ) : (
+            <div>
+              <div className="font-extrabold uppercase opacity-80" style={{ fontSize: "5cqw", marginBottom: "3cqw" }}>{cat.short}</div>
+              <div className="font-black leading-[1.1]" style={{ fontSize: "10.5cqw" }}>{item.short}</div>
+            </div>
+          )}
+          <div className="flex items-center justify-between font-bold opacity-90" style={{ fontSize: "5cqw" }}>
+            <span>{isB ? "SUCCESS KIT" : item.pages > 0 ? `EBOOK • ${item.pages} PAGES` : "EBOOK"}</span>
+            <span className="bg-white/25 rounded px-[2cqw] py-[0.6cqw]">{item.id}</span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CoverFrame({ item, big = false, className = "" }) {
+  const d = pct(item.regularPrice, item.salePrice);
+  const t = big ? "text-[11px] px-2 py-1" : "text-[8px] sm:text-[9px] px-1.5 py-0.5";
+  const hasRating = item.rating != null && item.rating > 0;
+  const hasSold = item.soldCopies != null && item.soldCopies > 0;
+  const hasLeft = item.copiesLeft != null && item.copiesLeft > 0;
+  return (
+    <div className={`relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-orange-50 ${className}`}>
+      <Cover item={item} />
+      {item.offerLabel && <span className={`absolute top-1.5 left-1.5 rounded-md bg-orange-500 text-white font-extrabold uppercase shadow ${t}`}>{item.offerLabel}</span>}
+      {d > 0 && <span className={`absolute top-1.5 right-1.5 rounded-md bg-rose-600 text-white font-black shadow ${t}`}>-{d}%</span>}
+      {hasRating && (
+        <span className={`absolute bottom-1.5 left-1.5 rounded-md bg-white/95 text-slate-900 font-bold shadow flex items-center gap-0.5 ${t}`}>
+          <span className="text-amber-500">★</span>{item.rating}{item.reviewCount > 0 && <span className="text-slate-500 font-semibold">({item.reviewCount})</span>}
+        </span>
+      )}
+      {(hasSold || hasLeft) && (
+        <span className={`absolute bottom-1.5 right-1.5 rounded-md bg-slate-900/85 text-white font-bold shadow text-right leading-tight ${t}`}>
+          {hasSold && <span className="block">🔥 {item.soldCopies} sold</span>}
+          {hasLeft && <span className="block text-amber-300">⏳ {item.copiesLeft} left</span>}
+        </span>
+      )}
+    </div>
+  );
+}
+function PriceBlock({ regular, today, compact = false }) {
+  const d = pct(regular, today);
+  if (d <= 0) {
+    return (
+      <div className={`grid grid-cols-1 gap-1.5 ${compact ? "text-[10px]" : "text-[11px]"}`}>
+        <div className="rounded-lg bg-orange-500 p-2 text-center text-white shadow">
+          <div className="font-semibold opacity-90">{L("lblToday")}</div>
+          <div className={`font-black mt-0.5 ${compact ? "text-sm" : "text-base"}`}>{fmt(today)}</div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className={`grid grid-cols-3 gap-1.5 ${compact ? "text-[10px]" : "text-[11px]"}`}>
+      <div className="rounded-lg bg-slate-50 border border-slate-200 p-2 text-center">
+        <div className="text-slate-500 font-semibold">{L("lblRegular")}</div>
+        <div className="font-bold text-slate-400 line-through mt-0.5">{fmt(regular)}</div>
+      </div>
+      <div className="rounded-lg bg-emerald-50 border border-emerald-200 p-2 text-center">
+        <div className="text-emerald-700 font-semibold">{L("lblDiscount")}</div>
+        <div className="font-extrabold text-emerald-700 mt-0.5">-{d}% <span className="font-semibold">({fmt(regular - today)})</span></div>
+      </div>
+      <div className="rounded-lg bg-orange-500 p-2 text-center text-white shadow">
+        <div className="font-semibold opacity-90">{L("lblToday")}</div>
+        <div className={`font-black mt-0.5 ${compact ? "text-sm" : "text-base"}`}>{fmt(today)}</div>
+      </div>
+    </div>
+  );
+}
+function SectionHead({ eyebrow, title, sub }) {
+  return (
+    <div className="text-center max-w-2xl mx-auto mb-6 md:mb-8 px-1">
+      {eyebrow && <span className="inline-block text-orange-600 font-extrabold text-[11px] uppercase tracking-widest">{eyebrow}</span>}
+      {title && <h2 className="text-xl md:text-3xl font-black text-slate-900 mt-1 leading-tight">{title}</h2>}
+      {sub && <p className="text-slate-600 text-xs md:text-sm mt-2">{sub}</p>}
+    </div>
+  );
+}
+
+const Ctx = createContext(null);
+
+/* =====================================================================
+   STICKY TOP: stock + discount + timer + scrolling offers, header
+   ===================================================================== */
+function TopBars() {
+  const A = useContext(Ctx);
+  const t = useCountdown(RT.nearestEnd);
+  const low = RT.lowStock;
+  const tb = SITE.topbar;
+  const showLive = !!(t || low || maxDiscount > 0);
+  if (!showLive && !TICKER.length) return null;
+  return (
+    <div>
+      {showLive && (
+        <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white text-[10px] sm:text-xs font-bold">
+          <div className="max-w-7xl mx-auto px-3 h-7 flex items-center justify-between gap-2">
+            <span className="flex items-center gap-1.5 shrink-0">
+              <span className="relative flex w-2 h-2"><span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75 animate-ping"></span><span className="relative inline-flex rounded-full w-2 h-2 bg-white"></span></span>
+              <span className="hidden sm:inline">{tb.liveBadge}</span> {tb.liveLabel}
+            </span>
+            {t && <span className="flex items-center gap-1 shrink-0 bg-black/20 rounded px-1.5 py-0.5 tabular"><Icon name="clock" className="w-3 h-3" />{t.text}</span>}
+            {low && <button onClick={() => A.openProduct(low.id)} className="truncate hover:underline">{T(tb.stockText, { left: low.copiesLeft, short: low.short }, "keep")}</button>}
+            {maxDiscount > 0 && <span className="shrink-0 bg-white text-orange-600 rounded px-1.5 py-0.5 font-black">{T(tb.discountText, { discount: maxDiscount }, "keep")}</span>}
+          </div>
+        </div>
+      )}
+      {TICKER.length > 0 && (
+        <div className="bg-orange-50 border-b border-orange-200">
+          <div className="max-w-7xl mx-auto flex items-center h-7 overflow-hidden">
+            <span className="shrink-0 bg-orange-500 text-white text-[10px] font-black px-2.5 h-full flex items-center z-10 tracking-wider">{tb.tickerLabel}</span>
+            <div className="overflow-hidden flex-1">
+              <div className="animate-marquee items-center whitespace-nowrap">
+                {[...TICKER, ...TICKER].map((a, i) => (
+                  <button key={i} onClick={() => A.runAction(a.action)} className="pr-8 text-[11px] font-semibold text-orange-900 hover:text-orange-600 hover:underline inline-flex items-center gap-1">
+                    {a.text}{a.cta && <span className="underline">{a.cta}</span>}<span className="text-orange-600">➔</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+function Header() {
+  const A = useContext(Ctx);
+  return (
+    <header className="bg-white/95 backdrop-blur border-b border-orange-100">
+      <div className="max-w-7xl mx-auto px-3 h-14 flex items-center justify-between">
+        <button onClick={A.goHome} className="flex items-center gap-2 group" aria-label={`${BRAND.name} Home`}>
+          <Logo size={38} />
+          <div className="leading-none text-left">
+            <div className="font-black text-lg tracking-tight text-slate-900"><NameMark name={BRAND.name} /></div>
+            {BRAND.tagline && <div className="text-[9px] md:text-[10px] text-slate-500 font-semibold mt-0.5">{BRAND.tagline}</div>}
+          </div>
+        </button>
+        <div className="flex items-center gap-2">
+          <button onClick={() => A.setSearchOpen(true)} aria-label="Search"
+            className={`relative w-10 h-10 rounded-xl border flex items-center justify-center transition ${A.searchOpen ? "bg-orange-500 text-white border-orange-500" : "bg-white text-slate-700 border-slate-200 hover:bg-orange-50"}`}>
+            <Icon name="search" className="w-5 h-5" />
+          </button>
+          {CART_ON && (
+            <button onClick={A.openCart} aria-label="Cart"
+              className={`relative w-10 h-10 rounded-xl border flex items-center justify-center transition ${A.cartOpen ? "bg-orange-500 text-white border-orange-500" : "bg-orange-50 text-orange-600 border-orange-200 hover:bg-orange-100"}`}>
+              <Icon name="cart" className="w-5 h-5" />
+              {A.cart.length > 0 && <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 bg-rose-600 text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white">{A.cart.length}</span>}
+            </button>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+}
+function SearchOverlay() {
+  const A = useContext(Ctx);
+  const [q, setQ] = useState("");
+  const results = useMemo(() => {
+    const s = q.toLowerCase().trim();
+    if (!s) { const f = PRODUCTS.filter(p => p.isFeatured); return (f.length ? f : PRODUCTS).slice(0, 6); }
+    return PRODUCTS.filter(p => [p.title, p.subtitle, p.summary, p.id, ...p.tags].join(" ").toLowerCase().includes(s));
+  }, [q, A.tick]);
+  if (!A.searchOpen) return null;
+  const submit = () => { A.setQuery(q); A.setCategory("all"); A.setSearchOpen(false); A.goSection("explore"); };
+  return (
+    <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={() => A.setSearchOpen(false)}>
+      <div className="bg-white rounded-b-3xl shadow-2xl max-w-2xl mx-auto p-4 fade-up" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center gap-2 border-2 border-orange-400 rounded-2xl px-3 h-12 bg-orange-50/40">
+          <Icon name="search" className="w-5 h-5 text-orange-500" />
+          <input autoFocus value={q} onChange={e => setQ(e.target.value)} onKeyDown={e => e.key === "Enter" && submit()}
+            placeholder={L("searchPlaceholder")} className="flex-1 bg-transparent outline-none text-sm" />
+          <button onClick={() => A.setSearchOpen(false)} className="text-slate-400 hover:text-slate-700"><Icon name="x" className="w-5 h-5" /></button>
+        </div>
+        <p className="text-[11px] font-bold text-slate-500 mt-3 mb-2">{q ? L("searchCount", { n: results.length }) : L("searchPopular")}</p>
+        <div className="space-y-2 max-h-[55vh] overflow-y-auto">
+          {results.length === 0 && <p className="text-sm text-slate-500 py-6 text-center">{L("searchNone")}</p>}
+          {results.map(p => {
+            const meta = [p.rating > 0 ? `★ ${p.rating}${p.reviewCount > 0 ? ` (${p.reviewCount})` : ""}` : null, p.soldCopies > 0 ? `${p.soldCopies} sold` : null].filter(Boolean).join(" · ");
+            return (
+              <button key={p.id} onClick={() => { A.setSearchOpen(false); A.openProduct(p.id); }} className="w-full flex items-center gap-3 p-2 rounded-xl border border-orange-100 hover:bg-orange-50 text-left">
+                <div className="w-11 aspect-[3/4] rounded-md overflow-hidden shrink-0"><Cover item={p} mini /></div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[10px] font-bold text-orange-600">{p.id}</div>
+                  <div className="text-xs font-extrabold text-slate-900 line-clamp-1">{p.title}</div>
+                  {meta && <div className="text-[11px] text-slate-500">{meta}</div>}
+                </div>
+                <div className="text-right shrink-0"><div className="font-black text-orange-600 text-sm">{fmt(p.salePrice)}</div>{p.hasOffer && <div className="text-[10px] text-slate-400 line-through">{fmt(p.regularPrice)}</div>}</div>
+              </button>
+            );
+          })}
+        </div>
+        {q && <button onClick={submit} className="mt-3 w-full py-2.5 rounded-xl bg-orange-500 text-white font-extrabold text-xs">{L("searchAll")}</button>}
+      </div>
+    </div>
+  );
+}
+
+/* =====================================================================
+   BUTTONS
+   ===================================================================== */
+function AddBtn({ item, className = "", label = true }) {
+  const A = useContext(Ctx);
+  if (!CART_ON) return null;
+  const st = A.status(item);
+  const base = `rounded-xl font-extrabold text-[11px] md:text-xs flex items-center justify-center gap-1.5 transition py-2.5 px-3 ${className}`;
+  if (st === "in") return <button onClick={A.openCart} className={`${base} bg-orange-50 text-orange-600 border-2 border-orange-500`}><Icon name="check" className="w-4 h-4" sw={3} />{label && L("inCart")}</button>;
+  if (st === "covered") return <button disabled className={`${base} bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed`}>{label && L("covered")}</button>;
+  return <button onClick={() => A.add(item)} className={`${base} bg-orange-500 hover:bg-orange-600 text-white shadow-md shadow-orange-200`}><Icon name="cart" className="w-4 h-4" />{label && L("addToCart")}</button>;
+}
+function WaBtn({ list, children, className = "" }) {
+  const A = useContext(Ctx);
+  return <button onClick={() => A.whatsapp(list)} className={`rounded-xl font-extrabold text-[11px] md:text-xs flex items-center justify-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white shadow-md shadow-emerald-200 py-2.5 px-3 transition ${className}`}><Icon name="wa" className="w-4 h-4" />{children}</button>;
+}
+const CTA_ICON = a => { const x = SN.parseAction(a); return x.type === "whatsapp" ? "wa" : x.type === "cart" ? "cart" : x.type === "nspay" ? "card" : x.type === "section" && x.value === "bundles" ? "gift" : x.type === "section" && x.value === "explore" ? "book" : "arrowR"; };
+
+/* =====================================================================
+   HERO: Brand → Book carousel → Details & CTA
+   ===================================================================== */
+function HeroSection() {
+  const A = useContext(Ctx);
+  const h = SITE.hero;
+  const n = CAROUSEL_ITEMS.length, half = Math.floor(n / 2);
+  const [idx0, setIdx] = useState(0);
+  const idx = n ? idx0 % n : 0;
+  const touch = useRef(null);
+  useEffect(() => { if (n < 2) return; const t = setTimeout(() => setIdx(i => (i + 1) % n), CAROUSEL_MS); return () => clearTimeout(t); }, [idx, n]);
+  const go = d => setIdx(i => (i + d + n) % n);
+  const cur = n ? CAROUSEL_ITEMS[idx] : null;
+  const isB = cur && cur.kind === "bundle";
+  const sold = cur ? cur.soldCopies : null, left = cur ? cur.copiesLeft : null;
+  const hasLeft = left != null && left > 0;
+  const claimed = sold != null && sold > 0 && hasLeft ? Math.round((sold / (sold + left)) * 100) : null;
+  const list = cur ? [toCartItem(cur)] : [];
+  const stats = [];
+  if (totalSold > 0) stats.push([`${totalSold.toLocaleString("en-IN")}+`, L("statSold")]);
+  if (avgRating) stats.push([`${avgRating}★`, L("statReviews", { n: totalReviews })]);
+  if (SITE.delivery.short) stats.push([SITE.delivery.short, L("statDelivery")]);
+  const statCols = { 1: "grid-cols-1", 2: "grid-cols-2", 3: "grid-cols-3" }[stats.length];
+  const badge = T(h.badge, {}, "keep");
+  return (
+    <section id="hero" className="relative overflow-hidden bg-gradient-to-b from-orange-50 via-white to-white border-b border-orange-100">
+      <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-orange-200/40 blur-3xl"></div>
+      <div className="absolute top-40 -right-24 w-72 h-72 rounded-full bg-amber-200/40 blur-3xl"></div>
+      <div className="relative max-w-5xl mx-auto px-4 pt-7 pb-8">
+        {/* 1. BRAND + HOOK */}
+        <div className="text-center max-w-2xl mx-auto fade-up">
+          {badge && (
+            <span className="inline-flex items-center gap-1.5 bg-white border border-orange-200 text-orange-700 px-3 py-1 rounded-full text-[11px] font-extrabold shadow-sm">
+              <Icon name="target" className="w-3.5 h-3.5" /> {badge}
+            </span>
+          )}
+          <h1 className="mt-3 text-[26px] md:text-5xl font-black leading-[1.2] text-slate-900">
+            {h.headBefore} <span className="text-orange-500">{h.headHighlight}</span>{h.headAfter ? <>,<br className="hidden sm:block" /> {h.headAfter}</> : null}
+          </h1>
+          {h.description && <p className="mt-3 text-slate-600 text-sm md:text-base leading-relaxed"><Rich text={T(h.description, {}, "keep")} /></p>}
+          {stats.length > 0 && (
+            <div className={`mt-4 grid ${statCols} gap-2 max-w-md mx-auto`}>
+              {stats.map(([a, b], i) => (
+                <div key={i} className="bg-white border border-orange-100 rounded-xl py-2 shadow-sm"><div className="font-black text-orange-600 text-sm md:text-base">{a}</div><div className="text-[10px] text-slate-500 font-semibold">{b}</div></div>
+              ))}
+            </div>
+          )}
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+            {h.cta1.text && <button onClick={() => A.runAction(h.cta1.action)} className="relative overflow-hidden shine px-5 py-3 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-black text-xs md:text-sm shadow-lg shadow-orange-300 flex items-center gap-2">{h.cta1.text} <Icon name="arrowR" className="w-4 h-4" /></button>}
+            {h.cta2.text && <button onClick={() => A.runAction(h.cta2.action)} className="px-5 py-3 rounded-2xl bg-white border-2 border-orange-400 text-orange-600 font-black text-xs md:text-sm flex items-center gap-2"><Icon name={CTA_ICON(h.cta2.action)} className="w-4 h-4" />{h.cta2.text}</button>}
+          </div>
+        </div>
+
+        {cur && (<>
+        {/* 2. BOOK CAROUSEL — centre 100%, sides ~50%, auto-next 20s */}
+        <div className="mt-7 relative max-w-lg mx-auto">
+          <div className="relative w-full aspect-[100/72] overflow-hidden select-none"
+            onTouchStart={e => { touch.current = e.touches[0].clientX; }}
+            onTouchEnd={e => { if (touch.current == null) return; const dx = e.changedTouches[0].clientX - touch.current; if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1); touch.current = null; }}>
+            {CAROUSEL_ITEMS.map((it, i) => {
+              const off = ((i - idx + n + half) % n) - half;
+              const abs = Math.abs(off);
+              const c = Math.max(-2, Math.min(2, off));
+              return (
+                <button key={it.id} onClick={() => (off === 0 ? (it.kind === "ebook" ? A.openProduct(it.id) : A.goSection("bundles")) : setIdx(i))}
+                  aria-label={it.title} tabIndex={abs > 1 ? -1 : 0}
+                  className="absolute top-1/2 w-[46%] text-left"
+                  style={{ left: `calc(50% + ${c * 50}%)`, transform: `translate(-50%,-50%) scale(${off === 0 ? 1 : abs === 1 ? 0.78 : 0.55})`, opacity: off === 0 ? 1 : abs === 1 ? 0.78 : 0, zIndex: 10 - abs, pointerEvents: abs > 1 ? "none" : "auto", transition: "all .7s cubic-bezier(.4,0,.2,1)", filter: off === 0 ? "none" : "saturate(.85)" }}>
+                  <div className={`relative aspect-[3/4] rounded-xl overflow-hidden ${off === 0 ? "ring-4 ring-white shadow-2xl shadow-orange-300/60 floaty" : "shadow-lg"}`}>
+                    <Cover item={it} />
+                    {it.hasOffer && <span className="absolute top-1.5 right-1.5 bg-rose-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded">-{pct(it.regularPrice, it.salePrice)}%</span>}
+                    {it.kind === "bundle" && <span className="absolute top-1.5 left-1.5 bg-slate-900 text-amber-300 text-[9px] font-black px-1.5 py-0.5 rounded">{L("tagBundle")}</span>}
+                  </div>
+                </button>
+              );
+            })}
+            {n > 1 && <>
+              <button onClick={() => go(-1)} aria-label="Previous" className="absolute left-1 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/90 shadow border border-orange-100 flex items-center justify-center text-orange-600"><Icon name="chevL" className="w-4 h-4" /></button>
+              <button onClick={() => go(1)} aria-label="Next" className="absolute right-1 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/90 shadow border border-orange-100 flex items-center justify-center text-orange-600"><Icon name="chevR" className="w-4 h-4" /></button>
+            </>}
+          </div>
+          {n > 1 && <>
+            <div className="flex items-center justify-center gap-1.5 mt-1">
+              {CAROUSEL_ITEMS.map((it, i) => <button key={it.id} onClick={() => setIdx(i)} aria-label={`Slide ${i + 1}`} className={`h-2 rounded-full transition-all ${i === idx ? "w-6 bg-orange-500" : "w-2 bg-orange-200 hover:bg-orange-300"}`} />)}
+            </div>
+            <div className="mt-2 mx-auto w-40 h-1 bg-orange-100 rounded-full overflow-hidden"><div key={idx} className="prog-bar h-full bg-orange-500 rounded-full"></div></div>
+          </>}
+        </div>
+
+        {/* 3. BOOK DETAILS + URGENCY + CTA */}
+        <div key={cur.id} className="mt-5 max-w-xl mx-auto bg-white border-2 border-orange-200 rounded-3xl p-4 md:p-5 shadow-xl shadow-orange-100 fade-up">
+          <div className="flex flex-wrap items-center gap-1.5 text-[10px] font-extrabold">
+            <span className={`px-2 py-0.5 rounded ${isB ? "bg-slate-900 text-amber-300" : "bg-orange-100 text-orange-700"}`}>{isB ? L("tagBundleN", { n: cur.includes.length }) : L("tagEbook")}</span>
+            {!isB && CAT[cur.category] && <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-600">{CAT[cur.category].name}</span>}
+            <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-600">ID: {cur.id}</span>
+          </div>
+          <h2 className="mt-2 text-lg md:text-xl font-black text-slate-900 leading-snug">{cur.title}</h2>
+          {cur.summary && <p className="text-xs md:text-sm text-slate-600 mt-1">{cur.summary}</p>}
+          <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-bold text-slate-600">
+            {cur.rating > 0 && <span className="flex items-center gap-1"><Stars value={cur.rating} />{cur.rating}{cur.reviewCount > 0 && ` (${cur.reviewCount} reviews)`}</span>}
+            {!isB && cur.pages > 0 && <span>📄 {L("heroPages", { n: cur.pages })}</span>}
+            {!isB && cur.chapters > 0 && <span>📚 {L("heroChapters", { n: cur.chapters })}</span>}
+            {isB && <span>📦 {cur.includes.length} Ebooks</span>}
+            {sold > 0 && <span>🔥 {L("heroSold", { n: sold })}</span>}
+          </div>
+          {hasLeft && (
+            <div className="mt-3 rounded-xl bg-orange-50 border border-orange-200 p-2.5">
+              <div className="flex items-center justify-between text-[11px] font-extrabold text-orange-700">
+                <span>{L("leftCopies", { n: left })}</span>
+                {claimed != null && <span>{L("claimed", { n: claimed })}</span>}
+              </div>
+              {claimed != null && <div className="mt-1.5 h-1.5 bg-orange-100 rounded-full overflow-hidden"><div className="h-full bg-gradient-to-r from-orange-400 to-rose-500 rounded-full" style={{ width: `${claimed}%` }}></div></div>}
+            </div>
+          )}
+          <div className="mt-3"><PriceBlock regular={cur.regularPrice} today={cur.salePrice} /></div>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <AddBtn item={cur} className="col-span-1" />
+            <WaBtn list={list} className={CART_ON ? "" : "col-span-2"}>{L("waOrder")}</WaBtn>
+            <button onClick={() => (isB ? A.goSection("bundles") : A.openProduct(cur.id))} className="col-span-2 py-2.5 rounded-xl border-2 border-orange-300 text-orange-700 font-extrabold text-xs flex items-center justify-center gap-1.5 hover:bg-orange-50"><Icon name="eye" className="w-4 h-4" />{isB ? L("heroBundleDetails") : L("heroDetails")}</button>
+          </div>
+          {h.cardNote && <p className="mt-2.5 text-center text-[11px] text-slate-500 font-semibold">{h.cardNote}</p>}
+        </div>
+        </>)}
+      </div>
+    </section>
+  );
+}
+function TrustStrip() {
+  const items = SITE.trust.items.filter(i => i && i.visible !== false && (i.title || i.text));
+  if (!items.length) return null;
+  return (
+    <section className="bg-white border-b border-slate-100 py-5">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-3">
+        {items.map((it, i) => (
+          <div key={it.id || i} className="p-3 rounded-2xl bg-orange-50/60 border border-orange-100 flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center shrink-0"><Icon name={it.icon || "book"} className="w-[18px] h-[18px]" /></div>
+            <div className="min-w-0"><h4 className="font-extrabold text-[11px] md:text-sm text-slate-900 leading-tight">{T(it.title, {}, "keep")}</h4><p className="text-[10px] md:text-[11px] text-slate-500 truncate">{T(it.text, {}, "keep")}</p></div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+function GoalsSection() {
+  const A = useContext(Ctx);
+  if (!GOALS.length) return null;
+  const g0 = SITE.goals;
+  return (
+    <section className="py-10 bg-orange-50/50 border-b border-orange-100">
+      <div className="max-w-7xl mx-auto px-4">
+        <SectionHead eyebrow={T(g0.eyebrow)} title={T(g0.title)} sub={T(g0.sub)} />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {GOALS.map((g, i) => (
+            <button key={g.id || i} onClick={() => { const c = CATEGORIES.find(c => c.name.toLowerCase() === String(g.category || "").toLowerCase()); A.setCategory(c ? c.id : "all"); A.setQuery(""); A.goSection("explore"); }} className="p-3.5 rounded-2xl bg-white border border-orange-200 hover:border-orange-400 hover:shadow-md transition text-left group">
+              <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 group-hover:bg-orange-500 group-hover:text-white flex items-center justify-center transition"><Icon name={g.icon || "book"} className="w-5 h-5" /></div>
+              <h3 className="font-extrabold text-xs md:text-sm text-slate-900 mt-2 leading-tight">{g.title}</h3>
+              {g.text && <p className="text-[10px] md:text-xs text-slate-500 mt-0.5">{g.text}</p>}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   LIBRARY: icon filters + search icon (same row) + 2/3/4 col grid
+   ===================================================================== */
+function BookCard({ p }) {
+  const A = useContext(Ctx);
+  return (
+    <article className="bg-white rounded-2xl border border-orange-200 hover:border-orange-400 hover:shadow-lg transition flex flex-col overflow-hidden fade-up">
+      <button onClick={() => A.openProduct(p.id)} className="p-2 pb-0 text-left" aria-label={p.title}><CoverFrame item={p} /></button>
+      <div className="px-2.5 pt-2 flex flex-wrap gap-1">
+        <span className="text-[8px] font-extrabold bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">ID {p.id}</span>
+        {p.pages > 0 && <span className="text-[8px] font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">📄 {p.pages} Pg</span>}
+        <span className="text-[8px] font-bold bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded">⚡ {BRAND.delivery}</span>
+        {p.isNew && <span className="text-[8px] font-extrabold bg-sky-100 text-sky-700 px-1.5 py-0.5 rounded">{L("newTag")}</span>}
+      </div>
+      <div className="p-2.5 pt-1.5 flex flex-col flex-grow">
+        <h3 onClick={() => A.openProduct(p.id)} className="font-extrabold text-[12px] md:text-[13px] leading-snug text-slate-900 line-clamp-2 min-h-[2.5em] cursor-pointer hover:text-orange-600">{p.title}</h3>
+        <div className="mt-1.5 flex items-baseline gap-1.5 flex-wrap">
+          <span className="text-base md:text-lg font-black text-orange-600">{fmt(p.salePrice)}</span>
+          {p.hasOffer && <span className="text-[10px] text-slate-400 line-through">{fmt(p.regularPrice)}</span>}
+        </div>
+        {p.hasOffer && <div className="text-[10px] font-bold text-emerald-700">{L("lblDiscount")}: -{fmt(p.regularPrice - p.salePrice)}</div>}
+        <div className={`mt-2 grid ${CART_ON ? "grid-cols-[auto_1fr]" : "grid-cols-[auto_1fr]"} gap-1.5 mt-auto pt-2`}>
+          <button onClick={() => A.openProduct(p.id)} aria-label="Details" className="w-10 rounded-xl border-2 border-orange-300 text-orange-600 hover:bg-orange-50 flex items-center justify-center"><Icon name="eye" className="w-4 h-4" /></button>
+          {CART_ON ? <AddBtn item={p} className="!px-1.5 !text-[10.5px]" /> : <WaBtn list={[toCartItem(p)]} className="!px-1.5 !text-[10.5px]">{L("waOrder")}</WaBtn>}
+        </div>
+      </div>
+    </article>
+  );
+}
+function LibrarySection() {
+  const A = useContext(Ctx);
+  const { query, setQuery, sortBy, setSortBy } = A;
+  const category = A.category !== "all" && !CAT[A.category] ? "all" : A.category;
+  const setCategory = A.setCategory;
+  const [sOpen, setSOpen] = useState(false);
+  const lib = SITE.library;
+  const list = useMemo(() => {
+    const q = query.toLowerCase().trim();
+    return PRODUCTS.filter(p => (category === "all" || p.category === category) && (!q || [p.title, p.subtitle, p.summary, p.id, ...p.tags].join(" ").toLowerCase().includes(q)))
+      .sort((a, b) => {
+        if (sortBy === "price-low") return a.salePrice - b.salePrice;
+        if (sortBy === "price-high") return b.salePrice - a.salePrice;
+        if (sortBy === "discount") return pct(b.regularPrice, b.salePrice) - pct(a.regularPrice, a.salePrice);
+        if (sortBy === "popular") return (b.soldCopies || 0) - (a.soldCopies || 0);
+        if (sortBy === "newest") return (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0);
+        return (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0);
+      });
+  }, [category, query, sortBy, A.tick]);
+  const activeName = category === "all" ? L("libAll") : CAT[category].name;
+  const FBtn = ({ id, icon, label }) => {
+    const on = category === id;
+    return (
+      <button onClick={() => setCategory(id)} title={label} aria-label={label} aria-pressed={on}
+        className={`relative w-10 h-10 shrink-0 rounded-xl border flex items-center justify-center transition ${on ? "bg-orange-500 text-white border-orange-500 shadow-md shadow-orange-200 scale-105" : "bg-white text-slate-600 border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}>
+        <Icon name={icon} className="w-[18px] h-[18px]" />
+        {on && <span className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-orange-600 border border-white"></span>}
+      </button>
+    );
+  };
+  return (
+    <section id="explore" className="py-10 bg-white border-b border-orange-100">
+      <div className="max-w-7xl mx-auto px-3 md:px-4">
+        <div className="flex items-end justify-between gap-3 mb-4">
+          <div>
+            <span className="text-orange-600 font-extrabold text-[11px] uppercase tracking-widest">{T(lib.eyebrow)}</span>
+            <h2 className="text-xl md:text-3xl font-black text-slate-900 leading-tight">{T(lib.title)}</h2>
+          </div>
+          <select value={sortBy} onChange={e => setSortBy(e.target.value)} aria-label="Sort"
+            className="px-2.5 py-2 rounded-xl border border-orange-200 text-[11px] font-bold text-slate-800 bg-orange-50/40 focus:outline-none focus:border-orange-500">
+            <option value="featured">Featured</option><option value="popular">Most Popular</option><option value="newest">Newest</option>
+            <option value="price-low">Price ↑</option><option value="price-high">Price ↓</option><option value="discount">Top Discount</option>
+          </select>
+        </div>
+        <div className="relative flex items-center gap-2 mb-2">
+          <div className="flex-1 flex items-center gap-2 overflow-x-auto no-scrollbar py-1.5 px-0.5">
+            <FBtn id="all" icon="layers" label={L("libAll")} />
+            {CATEGORIES.map(c => <FBtn key={c.id} id={c.id} icon={c.icon} label={c.name} />)}
+          </div>
+          <button onClick={() => setSOpen(true)} aria-label="Search library"
+            className={`relative w-10 h-10 shrink-0 rounded-xl border flex items-center justify-center ${query ? "bg-orange-500 text-white border-orange-500" : "bg-white text-slate-700 border-slate-200 hover:bg-orange-50"}`}>
+            <Icon name="search" className="w-[18px] h-[18px]" />
+            {query && <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-rose-500 border-2 border-white"></span>}
+          </button>
+          {sOpen && (
+            <div className="absolute inset-0 z-10 bg-white flex items-center gap-2 rounded-xl border-2 border-orange-400 px-3 fade-up">
+              <Icon name="search" className="w-4 h-4 text-orange-500" />
+              <input autoFocus value={query} onChange={e => setQuery(e.target.value)} placeholder={L("libSearch")} className="flex-1 bg-transparent outline-none text-sm min-w-0" />
+              {query && <button onClick={() => setQuery("")} className="text-[11px] font-bold text-slate-400">Clear</button>}
+              <button onClick={() => setSOpen(false)} aria-label="Close search" className="text-slate-500"><Icon name="x" className="w-4 h-4" /></button>
+            </div>
+          )}
+        </div>
+        <p className="text-[11px] font-bold text-slate-600 mb-3 flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-orange-500"></span>{activeName} · {list.length} Ebook{list.length !== 1 ? "s" : ""}{query && <span className="text-orange-600"> · “{query}”</span>}
+        </p>
+        {list.length === 0 ? (
+          <div className="text-center py-12 bg-orange-50/50 rounded-2xl border border-dashed border-orange-300">
+            <p className="text-slate-600 font-bold text-sm">{L("libEmpty")}</p>
+            <button onClick={() => { setQuery(""); setCategory("all"); }} className="mt-3 px-4 py-2 bg-orange-500 text-white text-xs font-bold rounded-xl">{L("libReset")}</button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 md:gap-4">{list.map(p => <BookCard key={p.id} p={p} />)}</div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   CUSTOM COMBO BUILDER
+   ===================================================================== */
+function ComboSection() {
+  const A = useContext(Ctx);
+  const [sel, setSel] = useState([]);
+  if (!COMBO_ON || PRODUCTS.length < COMBO_MIN) return null;
+  const c0 = SITE.combo;
+  const chosen = PRODUCTS.filter(p => sel.includes(p.id));
+  const regular = sum(chosen, p => p.regularPrice);
+  const today = sum(chosen, p => p.salePrice);
+  const active = chosen.length >= COMBO_MIN;
+  const comboOff = active ? Math.round(today * COMBO_PERCENT / 100) : 0;
+  const final = today - comboOff;
+  const need = Math.max(0, COMBO_MIN - chosen.length);
+  const toggle = id => setSel(s => (s.includes(id) ? s.filter(x => x !== id) : [...s, id]));
+  const asItem = () => ({ id: "PENDING", kind: "combo", title: `Custom Combo (${chosen.length} Ebooks)`, ebookIds: chosen.map(p => p.id), regularPrice: regular, todayPrice: today, comboOff });
+  return (
+    <section id="combos" className="py-10 bg-orange-50/60 border-b border-orange-100">
+      <div className="max-w-7xl mx-auto px-3 md:px-4">
+        <SectionHead eyebrow={T(c0.eyebrow)} title={T(c0.title)} sub={T(c0.sub)} />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-2.5 content-start">
+            {PRODUCTS.map(p => {
+              const on = sel.includes(p.id);
+              return (
+                <button key={p.id} onClick={() => toggle(p.id)} aria-pressed={on}
+                  className={`relative p-2.5 rounded-2xl border-2 text-left flex items-center gap-2.5 transition ${on ? "bg-white border-orange-500 shadow-md" : "bg-white/80 border-orange-200 hover:border-orange-400"}`}>
+                  <div className="w-11 aspect-[3/4] rounded-md overflow-hidden shrink-0 shadow"><Cover item={p} mini /></div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[9px] font-extrabold text-orange-600">{p.id}</div>
+                    <div className="text-[11px] md:text-xs font-extrabold text-slate-900 leading-snug line-clamp-2">{p.title}</div>
+                    <div className="mt-0.5 flex items-baseline gap-1.5"><span className="font-black text-orange-600 text-sm">{fmt(p.salePrice)}</span>{p.hasOffer && <span className="text-[10px] text-slate-400 line-through">{fmt(p.regularPrice)}</span>}</div>
+                  </div>
+                  <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${on ? "bg-orange-500 border-orange-500 text-white" : "border-slate-300 text-transparent"}`}><Icon name="check" className="w-3.5 h-3.5" sw={3.5} /></span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-36 bg-white rounded-3xl border-2 border-orange-300 shadow-lg p-4">
+              <h3 className="font-black text-sm text-slate-900 flex items-center gap-2"><Icon name="layers" className="w-4 h-4 text-orange-500" />{L("comboYour")}</h3>
+              <div className="mt-3 flex items-center gap-1.5 min-h-[52px] overflow-x-auto no-scrollbar">
+                {chosen.length === 0 && <p className="text-xs text-slate-400">{L("comboPick")}</p>}
+                {chosen.map(p => <div key={p.id} className="w-10 aspect-[3/4] rounded-md overflow-hidden shrink-0 shadow border border-white"><Cover item={p} mini /></div>)}
+              </div>
+              <div className="mt-2">
+                <div className="flex justify-between text-[11px] font-bold"><span className="text-slate-600">{L("comboChosen", { n: chosen.length, min: COMBO_MIN })}</span><span className={active ? "text-emerald-600" : "text-orange-600"}>{active ? L("comboActive", { percent: COMBO_PERCENT }) : L("comboNeed", { n: need })}</span></div>
+                <div className="mt-1 h-1.5 bg-orange-100 rounded-full overflow-hidden"><div className={`h-full rounded-full transition-all ${active ? "bg-emerald-500" : "bg-orange-500"}`} style={{ width: `${Math.min(100, (chosen.length / COMBO_MIN) * 100)}%` }}></div></div>
+              </div>
+              <div className="mt-3 space-y-1.5 text-xs">
+                <div className="flex justify-between text-slate-600"><span>{L("lblRegular")}</span><span className="line-through text-slate-400">{fmt(regular)}</span></div>
+                <div className="flex justify-between text-emerald-700 font-bold"><span>{L("lblDiscount")}</span><span>-{fmt(regular - today)}</span></div>
+                <div className="flex justify-between text-slate-800 font-bold"><span>{L("lblToday")}</span><span>{fmt(today)}</span></div>
+                <div className={`flex justify-between font-bold ${active ? "text-emerald-700" : "text-slate-400"}`}><span>{L("lblCombo")} ({COMBO_PERCENT}%)</span><span>-{fmt(comboOff)}</span></div>
+                <div className="pt-2 border-t border-dashed border-orange-200 flex justify-between items-baseline"><span className="font-extrabold text-sm text-slate-900">{L("lblFinal")}</span><span className="text-2xl font-black text-orange-600">{fmt(chosen.length ? final : 0)}</span></div>
+                {chosen.length > 0 && <p className="text-right text-[11px] font-extrabold text-emerald-700">{L("comboSaved", { amount: fmt(regular - final) })}</p>}
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                {CART_ON ? (
+                  <button disabled={!active} onClick={() => { if (A.addCombo(asItem())) setSel([]); }}
+                    className={`py-2.5 rounded-xl font-extrabold text-[11px] flex items-center justify-center gap-1.5 ${active ? "bg-orange-500 hover:bg-orange-600 text-white shadow-md" : "bg-slate-100 text-slate-400 cursor-not-allowed"}`}><Icon name="cart" className="w-4 h-4" />{L("addToCart")}</button>
+                ) : null}
+                <button disabled={!active} onClick={() => A.whatsapp([{ ...asItem(), id: "SNC-NEW" }])}
+                  className={`${CART_ON ? "" : "col-span-2 "}py-2.5 rounded-xl font-extrabold text-[11px] flex items-center justify-center gap-1.5 ${active ? "bg-emerald-500 hover:bg-emerald-600 text-white shadow-md" : "bg-slate-100 text-slate-400 cursor-not-allowed"}`}><Icon name="wa" className="w-4 h-4" />{L("waOrder")}</button>
+              </div>
+              {!active && <p className="mt-2 text-[10px] text-slate-500 text-center">{L("comboOnly", { min: COMBO_MIN })}</p>}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   BUNDLES
+   ===================================================================== */
+function BundlesSection() {
+  const A = useContext(Ctx);
+  if (!BUNDLES.length) return null;
+  const b0 = SITE.bundles;
+  return (
+    <section id="bundles" className="py-10 bg-white border-b border-orange-100">
+      <div className="max-w-7xl mx-auto px-3 md:px-4">
+        <SectionHead eyebrow={T(b0.eyebrow)} title={T(b0.title)} sub={T(b0.sub)} />
+        <div className={`grid grid-cols-1 ${BUNDLES.length > 1 ? "md:grid-cols-2" : "max-w-2xl mx-auto w-full"} gap-4 md:gap-6`}>
+          {BUNDLES.map(b => {
+            const tag = b.offerLabel || b.badge;
+            const bd = pct(b.regularPrice, b.salePrice);
+            const t = b.showCountdown && b.endMs ? SN.formatCountdown(b.endMs - Date.now()).text : "";
+            return (
+              <div key={b.id} className="bg-gradient-to-br from-orange-50 to-white rounded-3xl border-2 border-orange-300 p-4 md:p-5 shadow-md flex flex-col">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="bg-orange-500 text-white font-black text-[10px] px-3 py-1 rounded-full tracking-wider">{[tag, bd > 0 ? `-${bd}%` : ""].filter(Boolean).join(" • ") || L("tagBundle")}</span>
+                  <span className="text-[10px] font-extrabold text-slate-500">ID {b.id}</span>
+                </div>
+                <h3 className="text-lg md:text-xl font-black text-slate-900 mt-3 leading-snug">{b.title}</h3>
+                {b.subtitle && <p className="text-xs font-semibold text-orange-700 mt-1">{b.subtitle}</p>}
+                {b.summary && <p className="text-xs text-slate-600 mt-1">{b.summary}</p>}
+                <div className="mt-3 rounded-2xl bg-white border border-orange-200 p-3">
+                  <p className="text-[11px] font-extrabold text-slate-700 mb-2">{L("bundleIncludes", { n: b.ebooks.length })}</p>
+                  <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-3 lg:grid-cols-6 gap-2">
+                    {b.ebooks.map(p => (
+                      <button key={p.id} onClick={() => A.openProduct(p.id)} className="text-left group">
+                        <div className="aspect-[3/4] rounded-lg overflow-hidden shadow group-hover:shadow-md ring-1 ring-orange-100"><Cover item={p} mini /></div>
+                        <div className="text-[8px] font-extrabold text-orange-600 mt-1">{p.id}</div>
+                        <div className="text-[9px] font-bold text-slate-700 leading-tight line-clamp-2">{p.short}</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-3"><PriceBlock regular={b.regularPrice} today={b.salePrice} compact /></div>
+                {(b.copiesLeft > 0 || bd > 0 || t) && (
+                  <div className="mt-2 text-[11px] font-extrabold text-orange-700 flex items-center justify-between gap-2">
+                    <span>{b.copiesLeft > 0 ? L("bundleLeft", { n: b.copiesLeft }) : t ? `⏳ ${t}` : ""}</span>
+                    {bd > 0 && <span className="text-emerald-700">{L("bundleSave", { amount: fmt(b.regularPrice - b.salePrice) })}</span>}
+                  </div>
+                )}
+                {b.offerDescription && <p className="mt-1.5 text-[11px] text-slate-600">{b.offerDescription}</p>}
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  <AddBtn item={b} />
+                  <WaBtn list={[toCartItem(b)]} className={CART_ON ? "" : "col-span-2"}>{L("waOrder")}</WaBtn>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+/* =====================================================================
+   RATINGS & REVIEWS  (केवल Admin ले राखेका वास्तविक Review / Rating देखिन्छन्)
+   ===================================================================== */
+function ReviewCard({ r }) {
+  const p = r.productId ? PBYID[r.productId] : null;
+  return (
+    <div className="bg-white rounded-2xl border border-orange-100 shadow-sm p-3.5 flex flex-col">
+      <div className="flex items-center gap-2.5">
+        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white font-black flex items-center justify-center text-sm">{r.name.trim().charAt(0)}</div>
+        <div className="flex-1 min-w-0"><div className="text-xs font-extrabold text-slate-900 truncate">{r.name}</div>{(r.place || r.date) && <div className="text-[10px] text-slate-500">{[r.place, r.date].filter(Boolean).join(" · ")}</div>}</div>
+        {r.verified && <span className="text-[9px] font-extrabold bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded flex items-center gap-0.5"><Icon name="checkc" className="w-3 h-3" />{L("revVerified")}</span>}
+      </div>
+      <div className="mt-2"><Stars value={r.rating} /></div>
+      <p className="text-xs text-slate-700 leading-relaxed mt-1.5 flex-1">“{r.text}”</p>
+      {p && <div className="mt-2 text-[10px] font-bold text-orange-700 bg-orange-50 rounded-md px-2 py-1 truncate">📘 {p.short}</div>}
+    </div>
+  );
+}
+function ReviewsSection() {
+  const A = useContext(Ctx);
+  const rated = PRODUCTS.filter(p => p.rating > 0);
+  const hasStats = !!avgRating;
+  if (!REVIEWS.length && !hasStats) return null;
+  const r0 = SITE.reviews;
+  const showLeft = hasStats || rated.length > 0;
+  return (
+    <section id="reviews" className="py-10 bg-orange-50/50 border-b border-orange-100">
+      <div className="max-w-7xl mx-auto px-3 md:px-4">
+        <SectionHead eyebrow={T(r0.eyebrow)} title={T(r0.title)} sub={T(r0.sub)} />
+        <div className={`grid grid-cols-1 ${showLeft && REVIEWS.length ? "lg:grid-cols-12" : "max-w-3xl mx-auto"} gap-4`}>
+          {showLeft && (
+            <div className={`${REVIEWS.length ? "lg:col-span-4" : ""} bg-white rounded-3xl border border-orange-200 shadow-sm p-4`}>
+              <div className="flex items-center gap-4">
+                {hasStats && <div className="text-center"><div className="text-5xl font-black text-slate-900 leading-none">{avgRating}</div><div className="mt-1"><Stars value={avgRating} size="w-4 h-4" /></div><div className="text-[10px] text-slate-500 font-semibold mt-1">{L("revCount", { n: totalReviews })}</div></div>}
+                <div className="flex-1 space-y-1.5 text-[11px] font-bold text-slate-600">
+                  {totalSold > 0 && <div className="flex items-center gap-1.5"><Icon name="download" className="w-4 h-4 text-orange-500" />{L("revSold", { n: totalSold.toLocaleString("en-IN") })}</div>}
+                  {SITE.delivery.time && <div className="flex items-center gap-1.5"><Icon name="zap" className="w-4 h-4 text-orange-500" />{L("revDelivery")}</div>}
+                  {SITE.contact.whatsapp && <div className="flex items-center gap-1.5"><Icon name="shield" className="w-4 h-4 text-orange-500" />{L("revSupport")}</div>}
+                </div>
+              </div>
+              {rated.length > 0 && (
+                <div className="mt-4 space-y-2 border-t border-orange-100 pt-3">
+                  {rated.map(p => (
+                    <button key={p.id} onClick={() => A.openProduct(p.id)} className="w-full flex items-center gap-2.5 text-left hover:bg-orange-50 rounded-lg p-1">
+                      <div className="w-7 aspect-[3/4] rounded overflow-hidden shrink-0"><Cover item={p} mini /></div>
+                      <div className="flex-1 min-w-0"><div className="text-[11px] font-extrabold text-slate-800 truncate">{p.short}</div><div className="h-1.5 bg-orange-100 rounded-full mt-1 overflow-hidden"><div className="h-full bg-amber-400 rounded-full" style={{ width: `${(p.rating / 5) * 100}%` }}></div></div></div>
+                      <div className="text-[11px] font-black text-slate-800 shrink-0">★ {p.rating}{p.reviewCount > 0 && <span className="text-slate-400 font-semibold"> ({p.reviewCount})</span>}</div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          {REVIEWS.length > 0 && (
+            <div className={showLeft ? "lg:col-span-8" : ""}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{REVIEWS.slice(0, 4).map((r, i) => <ReviewCard key={i} r={r} />)}</div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   PROCESS / CHAT / FAQ / ABOUT / FINAL CTA / FOOTER
+   ===================================================================== */
+function ProcessSection() {
+  const steps = SITE.steps.items.filter(s => s && s.visible !== false && (s.title || s.text));
+  if (!steps.length) return null;
+  const s0 = SITE.steps;
+  return (
+    <section id="how" className="py-10 bg-white border-b border-orange-100">
+      <div className="max-w-7xl mx-auto px-3 md:px-4">
+        <SectionHead eyebrow={T(s0.eyebrow)} title={T(s0.title)} sub={T(s0.sub)} />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {steps.map((s, i) => (
+            <div key={s.id || i} className="relative bg-orange-50/60 border border-orange-200 rounded-2xl p-3.5 text-center">
+              <span className="absolute -top-2.5 left-3 bg-slate-900 text-amber-300 text-[10px] font-black px-2 py-0.5 rounded-full">{L("stepWord")} {pad(i + 1)}</span>
+              <div className="w-11 h-11 mx-auto rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-md shadow-orange-200"><Icon name={s.icon || "book"} className="w-5 h-5" /></div>
+              <h4 className="font-extrabold text-xs md:text-sm text-slate-900 mt-2 leading-tight">{T(s.title, {}, "keep")}</h4>
+              {s.text && <p className="text-[10px] md:text-xs text-slate-500 mt-1 leading-snug">{T(s.text, {}, "keep")}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+function ChatSection() {
+  const A = useContext(Ctx);
+  if (!CHAT.length) return null;
+  const c0 = SITE.chat;
+  return (
+    <section id="chat" className="py-10 bg-orange-50/50 border-b border-orange-100">
+      <div className="max-w-7xl mx-auto px-3 md:px-4">
+        <SectionHead eyebrow={T(c0.eyebrow)} title={T(c0.title)} sub={T(c0.sub)} />
+        <div className="max-w-md mx-auto rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white">
+          <div className="bg-[#075E54] text-white px-3 py-2.5 flex items-center gap-2.5">
+            <Icon name="chevL" className="w-5 h-5 opacity-80" />
+            <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center"><Logo size={22} /></div>
+            <div className="flex-1 leading-tight"><div className="text-sm font-bold">{T(c0.headerName, {}, "keep")}</div>{c0.status && <div className="text-[10px] opacity-80">{c0.status}</div>}</div>
+            <Icon name="phone" className="w-4 h-4 opacity-80" />
+          </div>
+          <div className="wa-bg p-3 space-y-2 max-h-[420px] overflow-y-auto">
+            <div className="flex justify-center"><span className="text-[10px] bg-[#FFF3C4] text-slate-700 px-2.5 py-1 rounded-lg shadow-sm">{L("chatToday")}</span></div>
+            {CHAT.map((m, i) => (
+              <div key={i} className={`flex ${m.from === "out" ? "justify-end" : "justify-start"}`}>
+                <div className={`relative max-w-[82%] rounded-lg px-2.5 py-1.5 shadow-sm text-[12.5px] leading-snug ${m.from === "out" ? "bg-[#DCF8C6] rounded-tr-none" : "bg-white rounded-tl-none"}`}>
+                  {m.from === "in" && m.name && <div className="text-[10px] font-bold text-[#128C7E] mb-0.5">{m.name}</div>}
+                  <span className="text-slate-800">{m.text}</span>
+                  <span className="float-right ml-2 mt-1 text-[9px] text-slate-500 flex items-center gap-0.5">{m.time}{m.from === "out" && <span className="text-sky-500 font-bold">✓✓</span>}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button onClick={() => A.whatsapp(null)} className="w-full bg-[#F0F2F5] px-3 py-2.5 flex items-center gap-2 hover:bg-[#E6E8EB]">
+            <span className="flex-1 bg-white rounded-full px-3 py-2 text-xs text-slate-400 text-left">{c0.inputText}</span>
+            <span className="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center"><Icon name="wa" className="w-5 h-5" /></span>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+function Faq({ items }) {
+  const [open, setOpen] = useState(0);
+  return (
+    <div className="space-y-2.5">
+      {items.map((f, i) => (
+        <div key={f.id || i} className={`rounded-2xl border overflow-hidden transition ${open === i ? "border-orange-400 bg-orange-50/50" : "border-orange-200 bg-white"}`}>
+          <button onClick={() => setOpen(open === i ? -1 : i)} aria-expanded={open === i} className="w-full p-3.5 text-left font-extrabold text-xs md:text-sm text-slate-900 flex justify-between items-center gap-3">
+            <span>{T(f.q, {}, "keep")}</span><Icon name="chevD" className={`w-4 h-4 text-orange-500 shrink-0 transition-transform ${open === i ? "rotate-180" : ""}`} />
+          </button>
+          {open === i && <div className="px-3.5 pb-3.5 text-xs text-slate-600 leading-relaxed"><Lines text={T(f.a, {}, "keep")} /></div>}
+        </div>
+      ))}
+    </div>
+  );
+}
+function FaqSection() {
+  if (!FAQS.length) return null;
+  const f0 = SITE.faq;
+  return (
+    <section id="faqs" className="py-10 bg-white border-b border-orange-100">
+      <div className="max-w-3xl mx-auto px-3 md:px-4">
+        <SectionHead eyebrow={T(f0.eyebrow)} title={T(f0.title)} />
+        <Faq items={FAQS} />
+      </div>
+    </section>
+  );
+}
+function AuthorSection() {
+  const a = SITE.about, c = SITE.contact;
+  const hasWa = !!c.whatsapp, hasMail = !!c.supportEmail;
+  const line = [c.whatsappDisplay, c.supportEmail].filter(Boolean).join(" · ");
+  return (
+    <section id="author" className="py-10 bg-orange-50/60 border-b border-orange-100">
+      <div className="max-w-2xl mx-auto px-4 text-center">
+        <div className="w-24 h-24 mx-auto rounded-3xl bg-white border-4 border-orange-300 shadow-lg flex items-center justify-center"><Logo size={56} /></div>
+        {a.eyebrow && <span className="block mt-4 text-orange-600 font-extrabold text-[11px] uppercase tracking-widest">{T(a.eyebrow, {}, "keep")}</span>}
+        {a.heading && <h3 className="text-xl font-black text-slate-900 mt-1">{T(a.heading, {}, "keep")}</h3>}
+        {a.text && <p className="text-xs md:text-sm text-slate-600 mt-2 leading-relaxed"><Lines text={T(a.text, {}, "keep")} /></p>}
+        {(hasWa || hasMail) && (
+          <div className="mt-5 flex items-start justify-center gap-6">
+            {hasWa && <a href={`https://wa.me/${c.whatsapp}`} target="_blank" rel="noreferrer" className="flex flex-col items-center gap-1.5 group">
+              <span className="w-14 h-14 rounded-full bg-emerald-500 group-hover:bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-200 transition"><Icon name="wa" className="w-7 h-7" /></span>
+              <span className="text-[11px] font-extrabold text-slate-800">{c.whatsappCta}</span>
+            </a>}
+            {hasMail && <a href={`mailto:${c.supportEmail}`} className="flex flex-col items-center gap-1.5 group">
+              <span className="w-14 h-14 rounded-full bg-orange-500 group-hover:bg-orange-600 text-white flex items-center justify-center shadow-lg shadow-orange-200 transition"><Icon name="mail" className="w-7 h-7" /></span>
+              <span className="text-[11px] font-extrabold text-slate-800">{c.emailCta}</span>
+            </a>}
+          </div>
+        )}
+        {line && <p className="mt-3 text-[11px] text-slate-500">{line}</p>}
+        {(c.supportHours || c.supportText) && <p className="mt-1 text-[11px] text-slate-500">{[c.supportText, c.supportHours].filter(Boolean).join(" · ")}</p>}
+      </div>
+    </section>
+  );
+}
+function FinalCta() {
+  const A = useContext(Ctx);
+  const f = SITE.finalcta;
+  const t = useCountdown(RT.nearestEnd);
+  const btns = f.buttons.filter(b => b && b.visible !== false && b.text);
+  const heading = T(f.heading, {}, "keep");
+  const BTN = ["px-5 py-3 rounded-2xl bg-white text-orange-600 font-black text-xs md:text-sm shadow-lg flex items-center gap-2", "px-5 py-3 rounded-2xl bg-orange-800/60 border border-white/40 text-white font-black text-xs md:text-sm flex items-center gap-2", "px-5 py-3 rounded-2xl bg-emerald-500 text-white font-black text-xs md:text-sm shadow-lg flex items-center gap-2"];
+  return (
+    <section className="py-10 bg-white">
+      <div className="max-w-4xl mx-auto px-3 md:px-4">
+        <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-orange-500 via-orange-500 to-orange-700 text-white text-center p-6 md:p-10 shadow-2xl shadow-orange-300">
+          <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-white/10"></div>
+          <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-white/10"></div>
+          <div className="relative">
+            {f.pill && <span className="inline-block bg-white/20 px-3 py-1 rounded-full text-[11px] font-extrabold">{f.pill}</span>}
+            {heading && <h2 className="text-2xl md:text-4xl font-black mt-3 leading-tight"><Lines text={heading} /></h2>}
+            {T(f.text) && <p className="text-sm md:text-base opacity-95 mt-2 max-w-xl mx-auto">{T(f.text)}</p>}
+            {t && <div className="mt-4 inline-flex items-center gap-2 bg-black/25 rounded-xl px-3 py-2 text-sm font-black tabular"><Icon name="clock" className="w-4 h-4" />{f.countdownLabel} {t.text}</div>}
+            {btns.length > 0 && <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+              {btns.map((b, i) => <button key={i} onClick={() => A.runAction(b.action)} className={BTN[i % 3]}><Icon name={CTA_ICON(b.action)} className="w-4 h-4" />{b.text}</button>)}
+            </div>}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+function Footer() {
+  const A = useContext(Ctx);
+  const f = SITE.footer, c = SITE.contact, st = SITE.store;
+  const Li = ({ onClick, children }) => <li><button onClick={onClick} className="hover:text-orange-400 transition">{children}</button></li>;
+  const policies = f.policies.filter(p => p && p.visible !== false && p.title);
+  const links = f.links.filter(l => l && l.visible !== false && l.label && SN.safeUrl(l.url));
+  const social = SITE.social.filter(s => s && s.enabled && s.id !== "whatsapp" && SN.safeUrl(s.url));
+  const quick = [];
+  if (secOn("hero")) quick.push([L("footHome"), "hero"]);
+  if (secOn("library")) quick.push([L("footEbooks"), "explore"]);
+  if (secOn("combo") && COMBO_ON && PRODUCTS.length >= COMBO_MIN) quick.push([L("footCombo"), "combos"]);
+  if (secOn("bundles") && BUNDLES.length) quick.push([L("footBundles"), "bundles"]);
+  if (secOn("faq") && FAQS.length) quick.push([L("footFaq"), "faqs"]);
+  const blurb = [st.tagline, st.taglineNe].filter(Boolean).join(". ");
+  const copy = T(st.copyright, {}, "keep");
+  return (
+    <footer className="bg-slate-900 text-slate-300 pt-10 pb-28 text-xs">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="col-span-2 md:col-span-1">
+          <div className="flex items-center gap-2"><div className="bg-white rounded-xl p-1"><Logo size={30} /></div><span className="font-black text-white text-lg"><NameMark name={st.name} accent="text-orange-400" /></span></div>
+          {blurb && <p className="text-slate-400 mt-3 leading-relaxed">{blurb}{/[।.!?]$/.test(blurb) ? "" : "।"}</p>}
+          {social.length > 0 && <div className="mt-3 flex flex-wrap gap-2">{social.map(s => <a key={s.id} href={SN.safeUrl(s.url)} target="_blank" rel="noreferrer" className="px-2.5 py-1 rounded-full border border-slate-700 text-slate-300 hover:text-orange-400 hover:border-orange-400 text-[11px] font-bold">{s.name}</a>)}</div>}
+        </div>
+        {(quick.length > 0 || links.length > 0) && (
+          <div>
+            <h5 className="font-extrabold text-white text-sm mb-3">{f.quickTitle}</h5>
+            <ul className="space-y-2">
+              {quick.map(([label, id]) => <Li key={id} onClick={() => A.goSection(id)}>{label}</Li>)}
+              {links.map((l, i) => <li key={"l" + i}><a href={SN.safeUrl(l.url)} target="_blank" rel="noreferrer" className="hover:text-orange-400 transition">{l.label}</a></li>)}
+            </ul>
+          </div>
+        )}
+        <div>
+          <h5 className="font-extrabold text-white text-sm mb-3">{f.contactTitle}</h5>
+          <ul className="space-y-2 text-slate-400">
+            {c.whatsapp && <li><a href={`https://wa.me/${c.whatsapp}`} target="_blank" rel="noreferrer" className="hover:text-orange-400">{L("footWhatsapp", { n: c.whatsappDisplay })}</a></li>}
+            {c.supportEmail && <li><a href={`mailto:${c.supportEmail}`} className="hover:text-orange-400 break-all">{c.supportEmail}</a></li>}
+            {c.businessEmail && c.businessEmail !== c.supportEmail && <li><a href={`mailto:${c.businessEmail}`} className="hover:text-orange-400 break-all">{c.businessEmail}</a></li>}
+            {SN.safeUrl(BRAND.nspayUrl) && <li><a href={BRAND.nspayUrl} target="_blank" rel="noreferrer" className="hover:text-orange-400">{L("footNspay")}</a></li>}
+            {c.supportHours && <li>{c.supportHours}</li>}
+          </ul>
+        </div>
+        {policies.length > 0 && (
+          <div>
+            <h5 className="font-extrabold text-white text-sm mb-3">{f.policiesTitle}</h5>
+            <ul className="space-y-2">{policies.map((p, i) => <Li key={p.id || i} onClick={() => A.setPolicy({ title: p.title, content: p.content })}>{p.title}</Li>)}</ul>
+          </div>
+        )}
+      </div>
+      {copy && <div className="max-w-7xl mx-auto px-4 mt-8 pt-4 border-t border-slate-800 text-center text-[11px] text-slate-500">{copy}</div>}
+    </footer>
+  );
+}
+
+/* =====================================================================
+   CART DRAWER + MODALS
+   ===================================================================== */
+function CartThumb({ it }) {
+  if (it.kind === "combo") {
+    return <div className="flex -space-x-3 shrink-0">{it.ebookIds.slice(0, 3).map(id => <div key={id} className="w-9 aspect-[3/4] rounded overflow-hidden border-2 border-white shadow"><Cover item={PBYID[id]} mini /></div>)}</div>;
+  }
+  return <div className="w-11 aspect-[3/4] rounded-md overflow-hidden shadow shrink-0"><Cover item={BYID[it.id]} mini /></div>;
+}
+function CartDrawer() {
+  const A = useContext(Ctx);
+  if (!A.cartOpen || !CART_ON) return null;
+  const { cart, totals: t } = A;
+  const typeLabel = { ebook: L("cartTypeEbook"), combo: L("cartTypeCombo"), bundle: L("cartTypeBundle") };
+  const toGo = COMBO_ON && t.singlesCount > 0 && t.singlesCount < COMBO_MIN ? COMBO_MIN - t.singlesCount : 0;
+  const canPay = !!SN.safeUrl(BRAND.nspayUrl);
+  const note = T(SITE.payment.instructions, {}, "sentence");
+  return (
+    <div className="fixed inset-0 z-[60] flex justify-end bg-slate-900/50 backdrop-blur-sm" onClick={A.closeCart}>
+      <div className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col slide-in" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center justify-between px-4 py-3 border-b border-orange-100 bg-orange-50/60">
+          <div><h3 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="cart" className="w-5 h-5 text-orange-500" />{L("cartTitle")}</h3><p className="text-[11px] text-slate-500">{L("cartCount", { items: cart.length, ebooks: t.ebookCount, s: cart.length !== 1 ? "s" : "", es: t.ebookCount !== 1 ? "s" : "" })}</p></div>
+          <button onClick={A.closeCart} aria-label="Close cart" className="w-9 h-9 rounded-full hover:bg-orange-100 flex items-center justify-center text-slate-500"><Icon name="x" className="w-5 h-5" /></button>
+        </div>
+        <div className="flex-1 overflow-y-auto p-4">
+          {cart.length === 0 ? (
+            <div className="text-center py-16 space-y-3">
+              <div className="w-20 h-20 mx-auto rounded-full bg-orange-100 text-orange-500 flex items-center justify-center"><Icon name="cart" className="w-9 h-9" /></div>
+              <p className="font-extrabold text-slate-800 text-sm">{L("cartEmpty")}</p>
+              <p className="text-xs text-slate-500">{L("cartEmptyText")}</p>
+              <button onClick={() => { A.closeCart(); A.goSection("explore"); }} className="px-5 py-2.5 bg-orange-500 text-white font-extrabold text-xs rounded-xl">{L("cartBrowse")}</button>
+            </div>
+          ) : (
+            <div className="space-y-2.5">
+              {toGo > 0 && (
+                <div className="rounded-xl bg-emerald-50 border border-emerald-200 p-2.5 text-[11px] font-bold text-emerald-800">
+                  {L("cartTip", { n: toGo, percent: COMBO_PERCENT })}
+                  <button onClick={() => { A.closeCart(); A.goSection("explore"); }} className="ml-1 underline">{L("cartAddMore")}</button>
+                </div>
+              )}
+              {cart.map(it => (
+                <div key={it.id} className="flex items-center gap-3 p-2.5 rounded-2xl border border-orange-200 bg-orange-50/30">
+                  <CartThumb it={it} />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5"><span className="text-[9px] font-black text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded">{typeLabel[it.kind]}</span><span className="text-[9px] font-bold text-slate-500">ID {it.id}</span></div>
+                    <h4 className="font-extrabold text-xs text-slate-900 line-clamp-2 leading-snug mt-0.5">{it.title}</h4>
+                    {it.kind !== "ebook" && <p className="text-[9px] text-slate-500 truncate">{L("cartIncludes", { ids: it.ebookIds.join(", ") })}</p>}
+                    <div className="mt-0.5 flex items-baseline gap-1.5"><span className="font-black text-orange-600 text-sm">{fmt(it.todayPrice - (it.comboOff || 0))}</span>{it.regularPrice > it.todayPrice - (it.comboOff || 0) && <span className="text-[10px] text-slate-400 line-through">{fmt(it.regularPrice)}</span>}</div>
+                  </div>
+                  <button onClick={() => A.remove(it.id)} aria-label="Remove" className="w-8 h-8 rounded-full text-rose-500 hover:bg-rose-50 flex items-center justify-center shrink-0"><Icon name="trash" className="w-4 h-4" /></button>
+                </div>
+              ))}
+              <p className="text-[10px] text-slate-500 text-center">{L("cartNoQty")}</p>
+            </div>
+          )}
+        </div>
+        {cart.length > 0 && (
+          <div className="border-t border-orange-100 p-4 space-y-3 bg-white">
+            <div className="space-y-1.5 text-xs">
+              {t.todayDiscount > 0 && <div className="flex justify-between text-slate-600"><span>{L("lblRegular")}</span><span className="line-through text-slate-400">{fmt(t.regular)}</span></div>}
+              {t.todayDiscount > 0 && <div className="flex justify-between text-emerald-700 font-bold"><span>{L("lblDiscount")}</span><span>-{fmt(t.todayDiscount)}</span></div>}
+              <div className="flex justify-between text-slate-800 font-bold"><span>{L("lblToday")}</span><span>{fmt(t.today)}</span></div>
+              {t.comboDiscount > 0 && <div className="flex justify-between text-emerald-700 font-bold"><span>{L("lblCombo")}</span><span>-{fmt(t.comboDiscount)}</span></div>}
+              <div className="flex justify-between items-baseline pt-2 border-t border-dashed border-orange-200"><span className="font-extrabold text-sm text-slate-900">{L("lblFinal")}</span><span className="text-2xl font-black text-orange-600">{fmt(t.final)}</span></div>
+              {t.saved > 0 && <p className="text-[11px] font-extrabold text-emerald-700 text-right">{L("cartSaved", { amount: fmt(t.saved) })}</p>}
+            </div>
+            {canPay && <button onClick={() => A.pay(cart)} className="relative overflow-hidden shine w-full py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-black text-xs md:text-sm flex items-center justify-center gap-2 shadow-lg shadow-orange-200"><Icon name="card" className="w-4 h-4" />{SITE.payment.ctaText}</button>}
+            <button onClick={() => A.whatsapp(cart)} className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs md:text-sm flex items-center justify-center gap-2"><Icon name="wa" className="w-4 h-4" />{L("cartWa")}</button>
+            <button onClick={() => A.copyOrder(cart)} className="w-full py-2 rounded-xl border border-orange-200 text-orange-700 font-bold text-[11px] flex items-center justify-center gap-1.5 hover:bg-orange-50"><Icon name="copy" className="w-3.5 h-3.5" />{L("cartCopy")}</button>
+            {note && <p className="text-[10px] text-slate-500 leading-snug text-center">{note}</p>}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+function PreviewModal() {
+  const A = useContext(Ctx);
+  const p = A.preview;
+  if (!p) return null;
+  return (
+    <div className="fixed inset-0 z-[65] flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm" onClick={() => A.setPreview(null)}>
+      <div className="bg-white max-w-3xl w-full h-[80vh] rounded-3xl border-2 border-orange-300 shadow-2xl flex flex-col p-4" onClick={e => e.stopPropagation()}>
+        <div className="flex justify-between items-center pb-3 border-b border-slate-200"><h4 className="font-extrabold text-sm text-slate-900">{L("prevTitle", { name: p.short })}</h4><button onClick={() => A.setPreview(null)} aria-label="Close" className="text-slate-400 hover:text-slate-700"><Icon name="x" className="w-5 h-5" /></button></div>
+        <div className="flex-1 my-3 bg-orange-50/50 rounded-2xl overflow-hidden flex items-center justify-center">
+          {p.previewPdf ? <iframe src={p.previewPdf} title="Preview" className="w-full h-full"></iframe> : (
+            <div className="text-center p-6 space-y-3 max-w-sm">
+              <div className="w-20 aspect-[3/4] mx-auto rounded-md overflow-hidden shadow-lg"><Cover item={p} mini /></div>
+              <h5 className="font-extrabold text-slate-800 text-sm">{L("prevSoon")}</h5>
+              <p className="text-xs text-slate-500 leading-relaxed">{L("prevText")}</p>
+              <button onClick={() => A.whatsappText(L("prevMsg", { id: p.id, title: p.title }))} className="px-5 py-2.5 rounded-xl bg-emerald-500 text-white font-extrabold text-xs flex items-center gap-2 mx-auto"><Icon name="wa" className="w-4 h-4" />{L("prevAsk")}</button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+function PolicyModal() {
+  const A = useContext(Ctx);
+  if (!A.policy) return null;
+  return (
+    <div className="fixed inset-0 z-[65] flex items-center justify-center p-4 bg-slate-900/60" onClick={() => A.setPolicy(null)}>
+      <div className="bg-white max-w-md w-full p-5 rounded-3xl border-2 border-orange-300 shadow-2xl space-y-3" onClick={e => e.stopPropagation()}>
+        <h4 className="font-extrabold text-base text-slate-900">{A.policy.title}</h4>
+        <p className="text-xs text-slate-600 leading-relaxed"><Lines text={T(A.policy.content, {}, "keep")} /></p>
+        <button onClick={() => A.setPolicy(null)} className="w-full py-2.5 bg-orange-500 text-white font-extrabold text-xs rounded-xl">{L("policyClose")}</button>
+      </div>
+    </div>
+  );
+}
+
+/* =====================================================================
+   FLOATING CURVED BOTTOM NAV (home page only)
+   ===================================================================== */
+const FAN_ANGLES = { 1: [90], 2: [125, 55], 3: [140, 90, 40], 4: [150, 110, 70, 30], 5: [160, 125, 90, 55, 20] };
+function BottomNav() {
+  const A = useContext(Ctx);
+  const [open, setOpen] = useState(false);
+  const fan = [];
+  if (secOn("combo") && COMBO_ON && PRODUCTS.length >= COMBO_MIN) fan.push({ label: L("fanCombos"), icon: "layers", color: "#8B5CF6", go: () => A.goSection("combos") });
+  if (secOn("bundles") && BUNDLES.length) fan.push({ label: L("fanBundles"), icon: "gift", color: "#EC4899", go: () => A.goSection("bundles") });
+  if (secOn("reviews") && (REVIEWS.length || avgRating)) fan.push({ label: L("fanReviews"), icon: "star", color: "#F59E0B", go: () => A.goSection("reviews") });
+  if (secOn("faq") && FAQS.length) fan.push({ label: L("fanFaq"), icon: "help", color: "#0EA5E9", go: () => A.goSection("faqs") });
+  if (CART_ON) fan.push({ label: L("fanCart"), icon: "cart", color: "#F97316", go: () => A.openCart() });
+  const angles = FAN_ANGLES[fan.length] || [], R = 96;
+  const offersTarget = secOn("bundles") && BUNDLES.length ? "bundles" : "combos";
+  const Item = ({ k, icon, label, color, onClick }) => {
+    const on = A.activeNav === k;
+    return (
+      <button onClick={onClick} aria-label={label} aria-current={on} className="relative flex flex-col items-center gap-0.5 pt-2">
+        <span className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300"
+          style={{ background: on ? color : color + "22", color: on ? "#fff" : color, transform: on ? "translateY(-4px) scale(1.1)" : "none", boxShadow: on ? `0 6px 14px ${color}66` : "none" }}>
+          <Icon name={icon} className="w-[18px] h-[18px]" />
+        </span>
+        <span className={`text-[9px] font-extrabold ${on ? "text-slate-900" : "text-slate-500"}`}>{label}</span>
+        <span className={`absolute -bottom-0.5 h-1 rounded-full transition-all duration-300 ${on ? "w-4 opacity-100" : "w-0 opacity-0"}`} style={{ background: color }}></span>
+      </button>
+    );
+  };
+  return (
+    <>
+      {open && <div className="fixed inset-0 z-30 bg-slate-900/30 backdrop-blur-[2px]" onClick={() => setOpen(false)}></div>}
+      <nav className="fixed bottom-2 left-0 right-0 z-40 px-2" aria-label="Main navigation" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+        <div className="relative max-w-md mx-auto h-16">
+          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 64" preserveAspectRatio="none" style={{ filter: "drop-shadow(0 -3px 14px rgba(249,115,22,.22)) drop-shadow(0 6px 10px rgba(15,23,42,.10))" }}>
+            <path d="M24 0H150C166 0 168 8 173 17C181 32 190 40 200 40C210 40 219 32 227 17C232 8 234 0 250 0H376Q400 0 400 24V40Q400 64 376 64H24Q0 64 0 40V24Q0 0 24 0Z" fill="#fff" stroke="#FED7AA" strokeWidth="1" />
+          </svg>
+          <div className="relative z-10 grid grid-cols-5 h-full items-center px-1">
+            <Item k="home" icon="home" label={L("navHome")} color="#F97316" onClick={() => { setOpen(false); A.goSection("hero"); }} />
+            <Item k="ebooks" icon="book" label={L("navEbooks")} color="#3B82F6" onClick={() => { setOpen(false); A.goSection("explore"); }} />
+            <div className="flex flex-col items-center justify-end h-full pb-1.5"><span className={`text-[9px] font-extrabold ${open ? "text-orange-600" : "text-slate-500"}`}>{L("navMenu")}</span></div>
+            <Item k="offers" icon="tag" label={L("navOffers")} color="#EC4899" onClick={() => { setOpen(false); A.goSection(offersTarget); }} />
+            <Item k="help" icon="wa" label={L("navHelp")} color="#22C55E" onClick={() => { setOpen(false); A.whatsapp(null); }} />
+          </div>
+          <div className="absolute left-1/2 -top-6 w-14 h-14 -translate-x-1/2 z-20">
+            {fan.map((f, i) => {
+              const a = (angles[i] * Math.PI) / 180;
+              const x = Math.cos(a) * R, y = -Math.sin(a) * R;
+              return (
+                <button key={f.label} onClick={() => { setOpen(false); f.go(); }} aria-label={f.label} tabIndex={open ? 0 : -1}
+                  className="absolute left-1/2 top-1/2 -ml-[22px] -mt-[22px] w-11 h-11 rounded-full flex flex-col items-center justify-center text-white shadow-xl border-2 border-white"
+                  style={{ background: f.color, transform: open ? `translate(${x}px,${y}px) scale(1)` : "translate(0,0) scale(.2)", opacity: open ? 1 : 0, pointerEvents: open ? "auto" : "none", transition: `transform .38s cubic-bezier(.34,1.56,.64,1) ${open ? i * 45 : 0}ms, opacity .25s ${open ? i * 45 : 0}ms` }}>
+                  <Icon name={f.icon} className="w-5 h-5" />
+                  <span className="absolute top-full mt-1 text-[9px] font-extrabold text-slate-800 bg-white rounded-full px-1.5 py-0.5 shadow whitespace-nowrap">{f.label}</span>
+                </button>
+              );
+            })}
+            {!open && <span className="absolute inset-0 rounded-full bg-orange-400 ring-pulse"></span>}
+            <button onClick={() => setOpen(o => !o)} aria-label="Menu" aria-expanded={open}
+              className={`relative w-14 h-14 rounded-full border-4 border-white shadow-xl flex items-center justify-center text-white transition-all duration-300 ${open ? "bg-slate-900 rotate-90 scale-95" : "bg-gradient-to-br from-orange-400 to-orange-600"}`}>
+              <Icon name={open ? "x" : "menu"} className="w-6 h-6" sw={2.4} />
+            </button>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+}
+
+/* =====================================================================
+   PRODUCT DETAIL PAGE — हरेक block खाली भए आफैं लुकिन्छ
+   ===================================================================== */
+function TimeText({ tpl, time }) {
+  const s = String(tpl || "");
+  if (!s.includes("{time}")) return <><span className="tabular">{time}</span> {s}</>;
+  const [a, ...rest] = s.split("{time}");
+  return <>{a}<span className="tabular">{time}</span>{rest.join("{time}")}</>;
+}
+function ProductPage({ p }) {
+  const A = useContext(Ctx);
+  const t = useCountdown(p.showCountdown ? p.endMs : null);
+  const d = pct(p.regularPrice, p.salePrice);
+  const hasLeft = p.copiesLeft != null && p.copiesLeft > 0, hasSold = p.soldCopies != null && p.soldCopies > 0;
+  const claimed = hasLeft && hasSold ? Math.round((p.soldCopies / (p.soldCopies + p.copiesLeft)) * 100) : null;
+  const more = PRODUCTS.filter(x => x.id !== p.id).sort((a, b) => (a.category === p.category ? -1 : 0) - (b.category === p.category ? -1 : 0) || (b.soldCopies || 0) - (a.soldCopies || 0)).slice(0, 4);
+  const revs = [...REVIEWS.filter(r => r.productId === p.id), ...REVIEWS.filter(r => r.productId !== p.id)].slice(0, 3);
+  const list = [toCartItem(p)];
+  const cat = CAT[p.category] || { name: p.categoryName };
+  const bundleFor = BUNDLES.find(b => b.includes.includes(p.id));
+  const canPay = !!SN.safeUrl(BRAND.nspayUrl);
+  const faqs = FAQS.filter(f => f.onProduct);
+  const hasRating = p.rating > 0;
+  const tag = p.urgencyLabel || p.offerLabel;
+  const st = A.status(p);
+  const offerBox = !!(t || hasLeft || p.offerDescription);
+  const showReviewBox = hasRating || hasSold || revs.length > 0;
+  const nBtn = (CART_ON ? 1 : 0) + (canPay ? 1 : 0) + 1;
+  return (
+    <div className="pb-40">
+      <div className="max-w-5xl mx-auto px-3 pt-3">
+        <button onClick={A.goHome} className="inline-flex items-center gap-1.5 text-xs font-extrabold text-orange-700 bg-orange-50 border border-orange-200 rounded-full px-3 py-1.5 hover:bg-orange-100"><Icon name="arrowL" className="w-3.5 h-3.5" />{L("ppBack")}</button>
+        <span className="ml-2 text-[11px] text-slate-500">{cat.name}</span>
+      </div>
+
+      {/* HERO */}
+      <section className="max-w-5xl mx-auto px-3 pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start bg-gradient-to-br from-orange-50 to-white rounded-3xl border border-orange-200 p-4 md:p-6">
+          <div className="max-w-[260px] md:max-w-xs mx-auto w-full"><CoverFrame item={p} big className="shadow-2xl shadow-orange-200 ring-4 ring-white" /></div>
+          <div>
+            <div className="flex flex-wrap gap-1.5 text-[10px] font-extrabold">
+              {tag && <span className="bg-orange-500 text-white px-2 py-0.5 rounded">{tag}</span>}
+              <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">ID: {p.id}</span>
+              {p.isNew && <span className="bg-sky-100 text-sky-700 px-2 py-0.5 rounded">{L("newTag")}</span>}
+            </div>
+            <h1 className="text-xl md:text-3xl font-black text-slate-900 leading-snug mt-2">{p.title}</h1>
+            {p.subtitle && <p className="text-sm text-slate-600 mt-1.5">{p.subtitle}</p>}
+            {(hasRating || hasSold || p.pages > 0 || p.chapters > 0) && (
+              <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-bold text-slate-700">
+                {hasRating && <span className="flex items-center gap-1"><Stars value={p.rating} size="w-4 h-4" />{p.reviewCount > 0 ? L("ppReviewsN", { rating: p.rating, n: p.reviewCount }) : p.rating}</span>}
+                {hasSold && <span>🔥 {L("ppSold", { n: p.soldCopies })}</span>}
+                {p.pages > 0 && <span>📄 {L("heroPages", { n: p.pages })}</span>}
+                {p.chapters > 0 && <span>📚 {L("heroChapters", { n: p.chapters })}</span>}
+              </div>
+            )}
+            {offerBox && (
+              <div className="mt-3 rounded-2xl bg-white border-2 border-orange-300 p-3">
+                {(t || hasLeft) && (
+                  <div className="flex items-center justify-between text-[11px] font-extrabold text-orange-700">
+                    {t ? <span className="flex items-center gap-1"><Icon name="clock" className="w-3.5 h-3.5" /><span><TimeText tpl={p.countdownText || L("ppOfferEnds")} time={t.text} /></span></span> : <span></span>}
+                    {hasLeft && <span className="text-rose-600">{L("ppLeft", { n: p.copiesLeft })}</span>}
+                  </div>
+                )}
+                {claimed != null && <div className="mt-1.5 h-2 bg-orange-100 rounded-full overflow-hidden"><div className="h-full bg-gradient-to-r from-orange-400 to-rose-500" style={{ width: `${claimed}%` }}></div></div>}
+                {claimed != null && <div className="text-[10px] text-slate-500 mt-1 font-semibold">{L("ppClaimed", { n: claimed })} • {L("ppTaken", { n: p.soldCopies })}</div>}
+                {p.offerDescription && <div className={`text-[11px] text-slate-600 ${(t || hasLeft) ? "mt-1.5" : ""}`}>{p.offerDescription}</div>}
+              </div>
+            )}
+            <div className="mt-3"><PriceBlock regular={p.regularPrice} today={p.salePrice} /></div>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <AddBtn item={p} />
+              <WaBtn list={list} className={CART_ON ? "" : "col-span-2"}>{L("waOrder")}</WaBtn>
+              {canPay && <button onClick={() => A.payItem(p)} className="col-span-2 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-black text-xs flex items-center justify-center gap-2"><Icon name="card" className="w-4 h-4" />{SITE.payment.ctaNow}</button>}
+            </div>
+            <div className="mt-3 grid grid-cols-3 gap-1.5 text-center text-[10px] font-bold text-slate-600">
+              <div className="rounded-lg bg-white border border-orange-100 py-1.5"><Icon name="zap" className="w-4 h-4 text-orange-500 mx-auto" />{BRAND.delivery}</div>
+              <div className="rounded-lg bg-white border border-orange-100 py-1.5"><Icon name="phone" className="w-4 h-4 text-orange-500 mx-auto" />{p.format || L("ppTileFormat")}</div>
+              <div className="rounded-lg bg-white border border-orange-100 py-1.5"><Icon name="wa" className="w-4 h-4 text-orange-500 mx-auto" />{L("ppTileSupport")}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOOK */}
+      {(p.hook || p.description || p.forWho.length > 0) && (
+        <section className="max-w-5xl mx-auto px-3 mt-5">
+          <div className="rounded-3xl bg-gradient-to-br from-orange-500 to-orange-700 text-white p-5 md:p-7 shadow-lg shadow-orange-200">
+            <span className="text-[11px] font-extrabold bg-white/20 rounded-full px-3 py-1">{L("ppHookTag")}</span>
+            {p.hook && <h2 className="text-xl md:text-3xl font-black mt-3 leading-snug">{p.hook}</h2>}
+            {p.description && <p className="text-sm opacity-95 mt-2"><Lines text={p.description} /></p>}
+            {p.forWho.length > 0 && <>
+              <h3 className="font-extrabold text-sm mt-4 mb-2">{L("ppForWho")}</h3>
+              <ul className="space-y-1.5">{p.forWho.map((w, i) => <li key={i} className="flex items-start gap-2 text-xs md:text-sm font-semibold"><span className="mt-0.5 w-5 h-5 rounded-full bg-white text-orange-600 flex items-center justify-center shrink-0"><Icon name="check" className="w-3 h-3" sw={3.5} /></span>{w}</li>)}</ul>
+            </>}
+          </div>
+        </section>
+      )}
+
+      {/* OUTCOMES + CAREER */}
+      {(p.learningOutcomes.length > 0 || p.careerRelevance.length > 0) && (
+        <section className={`max-w-5xl mx-auto px-3 mt-5 grid grid-cols-1 ${p.learningOutcomes.length > 0 && p.careerRelevance.length > 0 ? "md:grid-cols-2" : ""} gap-4`}>
+          {p.learningOutcomes.length > 0 && (
+            <div className="bg-white rounded-3xl border border-orange-200 p-4 md:p-5">
+              <h3 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="award" className="w-5 h-5 text-orange-500" />{L("ppOutcomes")}</h3>
+              <ul className="mt-3 space-y-2.5">{p.learningOutcomes.map((o, i) => <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-slate-700"><span className="mt-0.5 w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0"><Icon name="check" className="w-3 h-3" sw={3.5} /></span>{o}</li>)}</ul>
+              {p.careerRelevance.length === 0 && p.tags.length > 0 && <div className="mt-3 flex flex-wrap gap-1.5">{p.tags.map(tg => <span key={tg} className="text-[10px] font-bold bg-orange-50 text-orange-700 border border-orange-200 rounded-full px-2 py-0.5">#{tg}</span>)}</div>}
+            </div>
+          )}
+          {p.careerRelevance.length > 0 && (
+            <div className="bg-white rounded-3xl border border-orange-200 p-4 md:p-5">
+              <h3 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="target" className="w-5 h-5 text-orange-500" />{L("ppCareer")}</h3>
+              <ul className="mt-3 space-y-2.5">{p.careerRelevance.map((o, i) => <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-slate-700"><span className="mt-0.5 w-5 h-5 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0"><Icon name="arrowR" className="w-3 h-3" sw={3} /></span>{o}</li>)}</ul>
+              {p.tags.length > 0 && <div className="mt-3 flex flex-wrap gap-1.5">{p.tags.map(tg => <span key={tg} className="text-[10px] font-bold bg-orange-50 text-orange-700 border border-orange-200 rounded-full px-2 py-0.5">#{tg}</span>)}</div>}
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* CHAPTERS + PREVIEW */}
+      <section className={`max-w-5xl mx-auto px-3 mt-5 grid grid-cols-1 ${p.chapterOutline.length > 0 ? "md:grid-cols-5" : ""} gap-4`}>
+        {p.chapterOutline.length > 0 && (
+          <div className="md:col-span-3 bg-white rounded-3xl border border-orange-200 p-4 md:p-5">
+            <h3 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="book" className="w-5 h-5 text-orange-500" />{L("ppInside")}</h3>
+            <div className="mt-3 space-y-2">{p.chapterOutline.map(ch => (
+              <div key={ch.number} className="flex gap-3 p-2.5 rounded-xl bg-orange-50/50 border border-orange-100">
+                <span className="w-7 h-7 rounded-lg bg-orange-500 text-white text-xs font-black flex items-center justify-center shrink-0">{ch.number}</span>
+                <div><div className="text-xs font-extrabold text-slate-900">{ch.title}</div>{ch.description && <div className="text-[11px] text-slate-500 mt-0.5">{ch.description}</div>}</div>
+              </div>
+            ))}</div>
+            {p.chapters > p.chapterOutline.length && <p className="text-[10px] text-slate-400 mt-2">{L("ppChaptersNote", { n: p.chapters })}</p>}
+          </div>
+        )}
+        <div className={`${p.chapterOutline.length > 0 ? "md:col-span-2" : "max-w-md mx-auto w-full"} bg-gradient-to-b from-orange-50 to-white rounded-3xl border border-orange-200 p-4 md:p-5 text-center flex flex-col items-center justify-center`}>
+          <div className="w-24 aspect-[3/4] rounded-lg overflow-hidden shadow-xl floaty"><Cover item={p} mini /></div>
+          <h3 className="font-black text-base text-slate-900 mt-3">{L("ppPreviewTitle")}</h3>
+          <p className="text-xs text-slate-500 mt-1">{L("ppPreviewText")}</p>
+          <button onClick={() => A.setPreview(p)} className="mt-3 px-5 py-2.5 rounded-xl bg-white border-2 border-orange-400 text-orange-700 font-extrabold text-xs flex items-center gap-2 hover:bg-orange-50"><Icon name="file" className="w-4 h-4" />{L("ppPreviewBtn")}</button>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      {showReviewBox && (
+        <section className="max-w-5xl mx-auto px-3 mt-5">
+          <div className="bg-white rounded-3xl border border-orange-200 p-4 md:p-5">
+            <div className="flex items-center gap-4">
+              {hasRating && <div className="text-center"><div className="text-4xl font-black text-slate-900 leading-none">{p.rating}</div><Stars value={p.rating} />{p.reviewCount > 0 && <div className="text-[10px] text-slate-500 mt-0.5">{L("revCount", { n: p.reviewCount })}</div>}</div>}
+              <div className="flex-1 text-[11px] font-bold text-slate-600 space-y-1">{hasSold && <div>{L("ppReviewsSold", { n: p.soldCopies })}</div>}<div>{L("ppDeliveryLine")}</div></div>
+            </div>
+            {revs.length > 0 && <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3">{revs.map((r, i) => <ReviewCard key={i} r={r} />)}</div>}
+          </div>
+        </section>
+      )}
+
+      {/* PRICE BREAKDOWN + BUNDLE UPSELL */}
+      <section className={`max-w-5xl mx-auto px-3 mt-5 grid grid-cols-1 ${bundleFor ? "md:grid-cols-2" : ""} gap-4`}>
+        <div className="bg-white rounded-3xl border-2 border-orange-300 p-4 md:p-5">
+          <h3 className="font-black text-base text-slate-900">{L("ppPriceTitle")}</h3>
+          <div className="mt-3 space-y-2 text-sm">
+            {d > 0 && <div className="flex justify-between text-slate-600"><span>{L("lblRegular")}</span><span className="line-through text-slate-400">{fmt(p.regularPrice)}</span></div>}
+            {d > 0 && <div className="flex justify-between text-emerald-700 font-bold"><span>{L("ppDiscountRow", { n: d })}</span><span>-{fmt(p.regularPrice - p.salePrice)}</span></div>}
+            <div className={`flex justify-between items-baseline ${d > 0 ? "pt-2 border-t border-dashed border-orange-200" : ""}`}><span className="font-extrabold">{L("lblToday")}</span><span className="text-2xl font-black text-orange-600">{fmt(p.salePrice)}</span></div>
+          </div>
+          {COMBO_ON && PRODUCTS.length >= COMBO_MIN && <p className="text-[11px] text-slate-500 mt-2">{L("ppComboNote", { min: COMBO_MIN, percent: COMBO_PERCENT })}</p>}
+        </div>
+        {bundleFor && (
+          <div className="rounded-3xl bg-slate-900 text-white p-4 md:p-5 flex flex-col justify-center">
+            <span className="text-amber-300 text-[11px] font-extrabold">{L("upKicker")}</span>
+            <h3 className="font-black text-lg mt-1 leading-snug">{L("upTitle", { title: bundleFor.title, n: bundleFor.includes.length, price: fmt(bundleFor.salePrice) })}</h3>
+            <p className="text-xs text-slate-300 mt-1">{pct(bundleFor.regularPrice, bundleFor.salePrice) > 0 ? L("upText", { regular: fmt(bundleFor.regularPrice), discount: pct(bundleFor.regularPrice, bundleFor.salePrice) }) : ""}</p>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              {CART_ON ? <AddBtn item={bundleFor} /> : <WaBtn list={[toCartItem(bundleFor)]}>{L("waOrder")}</WaBtn>}
+              {COMBO_ON && PRODUCTS.length >= COMBO_MIN ? <button onClick={() => A.goSection("combos")} className="py-2.5 rounded-xl bg-white/10 border border-white/30 font-extrabold text-xs">{L("upCombo")}</button> : <button onClick={() => A.goSection("bundles")} className="py-2.5 rounded-xl bg-white/10 border border-white/30 font-extrabold text-xs">{L("fanBundles")}</button>}
+            </div>
+          </div>
+        )}
+      </section>
+
+      {/* HOW DELIVERY */}
+      {SITE.payment.steps.length > 0 && (
+        <section className="max-w-5xl mx-auto px-3 mt-5">
+          <div className={`grid gap-2.5 ${{ 1: "grid-cols-1", 2: "grid-cols-2" }[SITE.payment.steps.length] || "grid-cols-3"}`}>
+            {SITE.payment.steps.map((s, i) => (
+              <div key={s.id || i} className="bg-orange-50 border border-orange-200 rounded-2xl p-3 text-center">
+                <div className="w-10 h-10 mx-auto rounded-xl bg-orange-500 text-white flex items-center justify-center"><Icon name={s.icon || "card"} className="w-5 h-5" /></div>
+                <div className="text-[11px] font-extrabold text-slate-900 mt-2 leading-tight">{T(s.title, { productId: p.id }, "keep")}</div>
+                {s.text && <div className="text-[10px] text-slate-500 mt-0.5">{T(s.text, { productId: p.id }, "keep")}</div>}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* SUGGESTED */}
+      {more.length > 0 && (
+        <section className="max-w-5xl mx-auto px-3 mt-7">
+          <h3 className="font-black text-lg text-slate-900 mb-3">{L("ppSuggested")}</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-4">{more.map(m => <BookCard key={m.id} p={m} />)}</div>
+        </section>
+      )}
+
+      {/* FAQ + DISCLAIMER */}
+      {(faqs.length > 0 || SITE.product.disclaimer) && (
+        <section className="max-w-3xl mx-auto px-3 mt-8">
+          {faqs.length > 0 && <>
+            <h3 className="font-black text-lg text-slate-900 mb-3 text-center">{T(SITE.faq.productTitle)}</h3>
+            <Faq items={faqs} />
+          </>}
+          {SITE.product.disclaimer && <p className="mt-4 text-[10px] text-slate-500 text-center leading-relaxed">{SITE.product.disclaimer}</p>}
+        </section>
+      )}
+
+      {/* STICKY CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t-2 border-orange-300 shadow-[0_-8px_24px_rgba(249,115,22,.18)]" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+        <div className="max-w-3xl mx-auto px-3 pt-2 pb-2.5">
+          <div className="flex items-center justify-between text-[11px] font-extrabold mb-1.5">
+            <span><span className="text-orange-600 text-base font-black">{fmt(p.salePrice)}</span>{d > 0 && <> <span className="text-slate-400 line-through font-semibold">{fmt(p.regularPrice)}</span> <span className="text-rose-600">-{d}%</span></>}</span>
+            {(t || hasLeft) && <span className="text-orange-700 flex items-center gap-1">{t && <><Icon name="clock" className="w-3 h-3" /><span className="tabular">{t.text}</span></>}{t && hasLeft && " • "}{hasLeft && L("ppLeftShort", { n: p.copiesLeft })}</span>}
+          </div>
+          <div className={`grid gap-2 ${{ 1: "grid-cols-1", 2: "grid-cols-2" }[nBtn] || "grid-cols-3"}`}>
+            {CART_ON && (st === "in"
+              ? <button onClick={A.openCart} className="py-2.5 rounded-xl bg-orange-50 border-2 border-orange-500 text-orange-600 font-extrabold text-[11px] flex items-center justify-center gap-1"><Icon name="check" className="w-4 h-4" sw={3} />{L("inCart")}</button>
+              : <button onClick={() => A.add(p)} disabled={st === "covered"} className={`py-2.5 rounded-xl font-extrabold text-[11px] flex items-center justify-center gap-1 ${st === "covered" ? "bg-slate-100 text-slate-400" : "bg-orange-500 text-white shadow-md shadow-orange-200"}`}><Icon name="cart" className="w-4 h-4" />{st === "covered" ? L("ppCovered") : L("ppCartShort")}</button>)}
+            {canPay && <button onClick={() => A.payItem(p)} className="py-2.5 rounded-xl bg-slate-900 text-amber-300 font-extrabold text-[11px] flex items-center justify-center gap-1"><Icon name="card" className="w-4 h-4" />{SITE.payment.ctaShort}</button>}
+            <button onClick={() => A.whatsapp(list)} className="py-2.5 rounded-xl bg-emerald-500 text-white font-extrabold text-[11px] flex items-center justify-center gap-1"><Icon name="wa" className="w-4 h-4" />WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* =====================================================================
+   APP
+   ===================================================================== */
+const SECTION_VIEW = { hero: HeroSection, trust: TrustStrip, goals: GoalsSection, library: LibrarySection, combo: ComboSection, bundles: BundlesSection, reviews: ReviewsSection, steps: ProcessSection, chat: ChatSection, faq: FaqSection, about: AuthorSection, finalcta: FinalCta };
+const NAV_MAP = { hero: "home", explore: "ebooks", combos: "offers", bundles: "offers" };
+
+function setMeta(attr, key, value) {
+  try {
+    let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+    if (!value) { if (el) el.setAttribute("content", ""); return; }
+    if (!el) { el = document.createElement("meta"); el.setAttribute(attr, key); document.head.appendChild(el); }
+    el.setAttribute("content", value);
+  } catch (e) {}
+}
+function applySeo() {
+  try {
+    const s = SITE.seo, v = VARS;
+    const title = SN.fill(s.title, v, "keep") || SITE.store.name;
+    const desc = SN.fill(s.description, v, "keep");
+    document.title = title;
+    setMeta("name", "description", desc);
+    setMeta("name", "keywords", s.keywords);
+    setMeta("property", "og:title", SN.fill(s.ogTitle, v, "keep") || title);
+    setMeta("property", "og:description", SN.fill(s.ogDescription, v, "keep") || desc);
+    setMeta("property", "og:type", "website");
+    setMeta("property", "og:site_name", SITE.store.name);
+    const abs = p => { const x = SAFE_IMG(p); if (!x) return ""; try { return new URL(x, location.href).href; } catch (e) { return x; } };
+    const og = abs(s.ogImage);
+    setMeta("property", "og:image", og); setMeta("name", "twitter:image", og);
+    setMeta("name", "twitter:card", og ? "summary_large_image" : "summary");
+    const fav = abs(s.favicon) || abs(SITE.store.logo);
+    if (fav) { let l = document.head.querySelector('link[rel="icon"]'); if (!l) { l = document.createElement("link"); l.rel = "icon"; document.head.appendChild(l); } l.href = fav; l.removeAttribute("type"); }
+  } catch (e) {}
+}
+function copyToClipboard(txt) {
+  try { if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(txt).catch(() => legacyCopy(txt)); return true; } } catch (e) {}
+  return legacyCopy(txt);
+}
+function legacyCopy(txt) {
+  try { const ta = document.createElement("textarea"); ta.value = txt; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;top:-1000px;opacity:0"; document.body.appendChild(ta); ta.select(); const ok = document.execCommand("copy"); document.body.removeChild(ta); return ok; } catch (e) { return false; }
+}
+
+function App({ rev }) {
+  const [tick, setTick] = useState(0);
+  // हरेक render मा नवीनतम data (वर्तमान समय अनुसार Offer सक्रिय/समाप्त) बनाउने
+  useMemo(() => { rebuild(Date.now()); return 0; }, [rev, tick]);
+  const [route, setRoute] = useState(parseHash);
+  const [cart, setCart] = useState(() => lsGet("sn_cart", []).map(refreshItem).filter(Boolean));
+  const [cartOpen, setCartOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [category, setCategory] = useState("all");
+  const [query, setQuery] = useState("");
+  const [sortBy, setSortBy] = useState("featured");
+  const [preview, setPreview] = useState(null);
+  const [policy, setPolicy] = useState(null);
+  const [toastMsg, setToastMsg] = useState(null);
+  const [activeSec, setActiveSec] = useState("hero");
+  const homeY = useRef(0);
+  const pending = useRef(null);
+  const toastT = useRef(null);
+
+  useEffect(() => { const i = setInterval(() => setTick(t => t + 1), 30000); return () => clearInterval(i); }, []);
+  useEffect(() => { // Offer समाप्त हुने क्षणमा Price फेरि हिसाब गर्ने
+    const end = RT && RT.nearestEnd; if (!end) return;
+    const ms = end - Date.now() + 700; if (ms <= 0 || ms > 2147000000) return;
+    const t = setTimeout(() => setTick(x => x + 1), ms); return () => clearTimeout(t);
+  }, [rev, tick]);
+  useEffect(() => { // Cart को Price/Item हालको catalog सँग मिलाउने
+    setCart(prev => { const next = prev.map(refreshItem).filter(Boolean); return JSON.stringify(next) === JSON.stringify(prev) ? prev : next; });
+  }, [rev, tick]);
+  useEffect(() => { applySeo(); }, [rev]);
+  useEffect(() => { if (!PREVIEW) lsSet("sn_cart", cart); }, [cart]);
+  useEffect(() => { const h = () => setRoute(parseHash()); window.addEventListener("hashchange", h); return () => window.removeEventListener("hashchange", h); }, []);
+  useEffect(() => { setRoute(parseHash()); }, [rev]);
+  useEffect(() => {
+    if (route.page === "product") { window.scrollTo(0, 0); return; }
+    const t = setTimeout(() => {
+      if (pending.current) { const el = document.getElementById(pending.current); pending.current = null; if (el) el.scrollIntoView({ behavior: "smooth" }); }
+      else window.scrollTo(0, homeY.current);
+    }, 60);
+    return () => clearTimeout(t);
+  }, [route.page, route.id]);
+  useEffect(() => {
+    if (route.page !== "home") return;
+    const ids = ["hero", "explore", "combos", "bundles", "reviews"];
+    const onScroll = () => {
+      const y = window.scrollY + 170; let cur = "hero";
+      ids.forEach(id => { const el = document.getElementById(id); if (el && el.offsetTop <= y) cur = id; });
+      setActiveSec(cur);
+    };
+    onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [route.page]);
+
+  const toast = msg => { setToastMsg(msg); clearTimeout(toastT.current); toastT.current = setTimeout(() => setToastMsg(null), 3200); };
+  const setHash = h => { try { window.location.hash = h; } catch (e) { setRoute(parseHash()); } };
+  const openProduct = id => { if (!PBYID[id]) return; homeY.current = route.page === "home" ? window.scrollY : homeY.current; setHash("#/p/" + id); };
+  const goHome = () => { if (route.page === "home") window.scrollTo({ top: 0, behavior: "smooth" }); else { homeY.current = 0; setHash("#/"); } };
+  const goSection = id => {
+    if (route.page === "home") { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: "smooth" }); else window.scrollTo({ top: 0, behavior: "smooth" }); }
+    else { pending.current = id; setHash("#/"); }
+  };
+
+  const covered = useMemo(() => new Set(cart.flatMap(i => i.ebookIds)), [cart]);
+  const status = item => {
+    if (cart.some(c => c.id === item.id)) return "in";
+    if (item.kind === "ebook" && covered.has(item.id)) return "covered";
+    return "none";
+  };
+  const totals = useMemo(() => calcTotals(cart), [cart, rev, tick]);
+
+  // duplicate/overlap रोक्ने र Combo/Bundle ले single ebook replace गर्ने
+  const commit = (newItem, silent) => {
+    if (!CART_ON) return false;
+    if (cart.some(c => c.id === newItem.id)) { setCartOpen(true); return false; }
+    const blockers = cart.filter(c => c.kind !== "ebook" && c.ebookIds.some(e => newItem.ebookIds.includes(e)));
+    if (blockers.length) { toast(L("toastBlocked", { title: blockers[0].title })); return false; }
+    const replaced = cart.filter(c => c.kind === "ebook" && newItem.ebookIds.includes(c.id));
+    setCart(prev => [...prev.filter(c => !(c.kind === "ebook" && newItem.ebookIds.includes(c.id))), newItem]);
+    if (!silent) toast(replaced.length && newItem.kind !== "ebook" ? L("toastReplaced", { id: newItem.id, n: replaced.length }) : L("toastAdded", { id: newItem.id }));
+    return true;
+  };
+  const add = item => commit(toCartItem(item));
+  const addCombo = c => {
+    const n = lsGet("sn_combo_seq", 0) + 1;
+    const ok = commit({ ...c, id: "SNC" + pad(n, 3) });
+    if (ok) lsSet("sn_combo_seq", n);
+    return ok;
+  };
+  const remove = id => { setCart(prev => prev.filter(i => i.id !== id)); toast(L("toastRemoved")); };
+
+  // बाहिरी link: user click को तुरुन्तै (synchronous) खोल्ने — Popup block नहोस् भनेर
+  const open = url => {
+    if (PREVIEW) { toast("Preview मा बाहिरी link खुल्दैन: " + url.slice(0, 60)); return; }
+    let w = null;
+    try { w = window.open(url, "_blank", "noopener"); } catch (e) {}
+    if (!w) { try { window.location.href = url; } catch (e) {} }
+  };
+  const whatsappText = txt => { if (!SITE.contact.whatsapp) { toast(L("toastNoWa")); return; } open(`https://wa.me/${SITE.contact.whatsapp}?text=${encodeURIComponent(txt)}`); };
+  const whatsapp = list => whatsappText(list && list.length ? buildOrderText(list) : T(SITE.contact.contactMessage, {}, "keep"));
+  const copyOrder = list => { copyToClipboard(buildOrderText(list)); toast(L("toastCopied")); };
+  const pay = list => {
+    if (!SN.safeUrl(BRAND.nspayUrl)) { toast(L("toastNoNspay")); return; }
+    copyToClipboard(buildOrderText(list));
+    toast(T(SITE.payment.copiedToast, {}, "keep") || L("toastCopied"));
+    open(BRAND.nspayUrl);
+  };
+  const payItem = item => { if (CART_ON && status(item) === "none") commit(toCartItem(item), true); pay([toCartItem(item)]); };
+  const runAction = a => {
+    const x = SN.parseAction(a);
+    if (x.type === "section") goSection(SN.SECTION_TARGETS[x.value] || x.value);
+    else if (x.type === "product") { if (PBYID[x.value]) openProduct(x.value); else goSection(BYID[x.value] ? "bundles" : "explore"); }
+    else if (x.type === "cart") { if (CART_ON) setCartOpen(true); else goSection("explore"); }
+    else if (x.type === "whatsapp") whatsapp(null);
+    else if (x.type === "nspay") { if (SN.safeUrl(BRAND.nspayUrl)) open(BRAND.nspayUrl); else toast(L("toastNoNspay")); }
+    else if (x.type === "url") { const u = SN.safeUrl(x.value); if (u) open(u); }
+  };
+
+  const activeNav = NAV_MAP[activeSec] || null;
+  const ctx = {
+    route, cart, cartOpen, openCart: () => setCartOpen(true), closeCart: () => setCartOpen(false), totals, tick, rev,
+    searchOpen, setSearchOpen, category, setCategory, query, setQuery, sortBy, setSortBy,
+    preview, setPreview, policy, setPolicy, status, add, addCombo, remove,
+    openProduct, goHome, goSection, runAction, whatsapp, whatsappText, pay, payItem, copyOrder, activeNav, toast
+  };
+  const order = SITE.sections.filter(s => s.enabled && SECTION_VIEW[s.id]).map(s => s.id);
+  const showTop = secOn("announcement");
+  const noProducts = PRODUCTS.length === 0;
+
+  return (
+    <Ctx.Provider value={ctx}>
+      <div className="min-h-screen flex flex-col">
+        <div className="sticky top-0 z-40 shadow-sm">{showTop && <TopBars />}<Header /></div>
+        {toastMsg && <div className="fixed top-[118px] left-1/2 z-[70] w-[92%] max-w-md toast-in" style={{ transform: "translateX(-50%)" }}><div className="bg-slate-900 text-white px-4 py-2.5 rounded-2xl shadow-2xl border border-orange-400/40 flex items-center gap-2 text-xs font-bold"><Icon name="checkc" className="w-4 h-4 text-emerald-400 shrink-0" /><span>{toastMsg}</span></div></div>}
+        <main className="flex-grow">
+          {route.page === "product" && PBYID[route.id] ? <ProductPage key={route.id + ":" + rev} p={PBYID[route.id]} /> : noProducts ? (
+            <section className="py-24 px-4 text-center"><div className="max-w-md mx-auto"><div className="w-16 h-16 mx-auto rounded-full bg-orange-100 text-orange-500 flex items-center justify-center"><Icon name="book" className="w-8 h-8" /></div><p className="mt-4 text-sm font-bold text-slate-700">{L("emptyStore")}</p>{SITE.contact.whatsapp && <button onClick={() => whatsapp(null)} className="mt-4 px-5 py-2.5 rounded-xl bg-emerald-500 text-white font-extrabold text-xs inline-flex items-center gap-2"><Icon name="wa" className="w-4 h-4" />WhatsApp</button>}</div></section>
+          ) : (
+            <>{order.map(id => { const V = SECTION_VIEW[id]; return <V key={id} />; })}</>
+          )}
+        </main>
+        {route.page === "home" && secOn("footer") && <Footer />}
+        {route.page === "home" && !noProducts && <BottomNav />}
+        <SearchOverlay />
+        <CartDrawer />
+        <PreviewModal />
+        <PolicyModal />
+      </div>
+    </Ctx.Provider>
+  );
+}
+
+/* =====================================================================
+   BOOT — data/products.json + data/store-settings.json (GitHub Pages) → render
+   ===================================================================== */
+function Boot() {
+  const [rev, setRev] = useState(0);
+  const [state, setState] = useState("loading");
+  const load = () => {
+    setState("loading");
+    const bust = "?v=" + Date.now();
+    const getJson = url => fetch(url + bust, { cache: "no-store" }).then(r => { if (!r.ok) throw new Error(url + " " + r.status); return r.json(); });
+    getJson("data/products.json")
+      .then(cat => getJson("data/store-settings.json").catch(() => ({})).then(set => {
+        RAW = { catalog: cat && typeof cat === "object" ? cat : { products: [] }, settings: set && typeof set === "object" ? set : {} };
+        rebuild(Date.now());
+        setRev(r => r + 1); setState("ready");
+      }))
+      .catch(() => setState("error"));
+  };
+  useEffect(() => {
+    if (!PREVIEW) { load(); return; }
+    // Admin Preview: Admin ले postMessage बाट draft data पठाउँछ (Publish नगरी हेर्न)
+    const onMsg = ev => {
+      if (ev.origin !== location.origin || !ev.data || ev.data.type !== "sn-preview-data") return;
+      RAW = { catalog: ev.data.catalog || { products: [] }, settings: ev.data.settings || {} };
+      rebuild(Date.now()); setRev(r => r + 1); setState("ready");
+    };
+    window.addEventListener("message", onMsg);
+    try { window.parent.postMessage({ type: "sn-preview-ready" }, location.origin); } catch (e) {}
+    return () => window.removeEventListener("message", onMsg);
+  }, []);
+  if (state === "ready") return <App rev={rev} />;
+  if (state === "error") {
+    const retry = (SITE && SITE.labels && SITE.labels.loadRetry) || SN.DEFAULTS.labels.loadRetry;
+    return <div className="min-h-screen flex items-center justify-center p-6 text-center"><div className="max-w-sm"><p className="text-sm font-bold text-slate-700">{SN.DEFAULTS.labels.loadFail}</p><button onClick={load} className="mt-4 px-5 py-2.5 bg-orange-500 text-white font-extrabold text-xs rounded-xl">{retry}</button></div></div>;
+  }
+  return <div className="min-h-screen flex items-center justify-center"><div className="w-10 h-10 rounded-full border-4 border-orange-200 border-t-orange-500 animate-spin"></div></div>;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Boot />);
+
+</script>
+</body>
+</html>
