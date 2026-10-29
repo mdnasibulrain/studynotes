@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-22T11:22:34.789Z",
+  "updatedAt": "2026-10-29T02:28:42.520Z",
   "products": [
     {
       "id": "ebook-mvjg6yns-j37sv",
@@ -14,23 +14,26 @@
         "Skills",
         "Digital"
       ],
-      "benefits": [
-        "How it goes I am from Janakpurdham Nepal and Bhutan me know if you need anything let me know if you need anything let me old is good for you guys to come over and watch the kids tonight and I am from Janakpurdham Nepal."
-      ],
       "cover": "assets/covers/ebook-mvjg6yns-j37sv.png",
-      "coverAlt": "",
       "badge": "LIMITED OFFER",
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": false,
+      "order": 100,
       "pages": 200,
       "format": "PDF",
+      "learningOutcomes": [
+        "How it goes I am from Janakpurdham Nepal and Bhutan me know if you need anything let me know if you need anything let me old is good for you guys to come over and watch the kids tonight and I am from Janakpurdham Nepal."
+      ],
       "regularPrice": 1999,
       "offerPrice": 399,
+      "offerActive": true,
       "offerEndsAt": "2026-10-26T17:03",
-      "availability": "available",
-      "status": "published",
-      "featured": false,
-      "order": 100,
+      "countdownVisible": true,
       "createdAt": "2026-10-22T11:18:38.654Z",
-      "updatedAt": "2026-10-22T11:22:13.730Z"
+      "updatedAt": "2026-10-22T11:22:13.730Z",
+      "isFeatured": false
     },
     {
       "id": "ebook-mvjdl9ey-lh5kg",
@@ -44,23 +47,801 @@
         "Skills",
         "Digital computer Skills"
       ],
-      "benefits": [
-        "Online Incomes under 30 days."
-      ],
       "cover": "assets/covers/ebook-mvjdl9ey-lh5kg.jpg",
       "coverAlt": "Ai",
       "badge": "BESTSELLER",
+      "status": "published",
+      "availability": "available",
+      "featured": true,
+      "isNew": false,
+      "order": 100,
       "pages": 150,
       "format": "PDF + Bonus",
+      "learningOutcomes": [
+        "Online Incomes under 30 days."
+      ],
       "regularPrice": 699,
       "offerPrice": 199,
+      "offerActive": true,
       "offerEndsAt": "2026-10-24T15:49",
-      "availability": "available",
-      "status": "published",
-      "featured": true,
-      "order": 100,
+      "countdownVisible": true,
       "createdAt": "2026-10-22T10:05:46.993Z",
-      "updatedAt": "2026-10-22T11:20:26.151Z"
+      "updatedAt": "2026-10-29T02:28:14.361Z",
+      "isFeatured": true
+    },
+    {
+      "id": "SN001CS",
+      "title": "LokSewa Master Knowledge",
+      "short": "LokSewa Notes",
+      "subtitle": "LokSewa Gyan",
+      "summary": "LokSewa Master Knowledge and professional trustworthy verified LokSewa Notes.",
+      "description": "LokSewa Share Market personality Development Nepali Youth Career Guides me know if you need anything let me know if you need anything let me know if you need anything let me know if you need ❤️😘.",
+      "hook": "LokSewa Master",
+      "category": "LokSewa Preparation",
+      "language": "Nepali, English",
+      "tags": [
+        "LokSewa"
+      ],
+      "cover": "assets/covers/SN001CS-ilnkz.jpg",
+      "coverAlt": "LokSewa",
+      "badge": "Exam Specialist",
+      "status": "published",
+      "availability": "available",
+      "featured": true,
+      "isNew": true,
+      "order": 110,
+      "pages": 180,
+      "chapters": 15,
+      "format": "PDF",
+      "previewPdf": "https://www.google.com",
+      "forWho": [
+        "Finding Government Job"
+      ],
+      "learningOutcomes": [
+        "DSP"
+      ],
+      "careerRelevance": [
+        "Accountant"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "1 Introduction",
+          "description": "LokSewa"
+        },
+        {
+          "number": 2,
+          "title": "1 Introduction",
+          "description": "LokSewa"
+        },
+        {
+          "number": 3,
+          "title": "1 Introduction",
+          "description": "LokSewa"
+        },
+        {
+          "number": 4,
+          "title": "1 Introduction",
+          "description": "LokSewa"
+        },
+        {
+          "number": 5,
+          "title": "1 Introduction",
+          "description": "LokSewa"
+        }
+      ],
+      "regularPrice": 899,
+      "offerPrice": 270,
+      "offerActive": true,
+      "offerStart": "2026-10-29T08:05+05:45",
+      "offerEndsAt": "2026-10-29T12:00+05:45",
+      "offerLabel": "Most Demanded",
+      "offerDescription": "LokSewa Exam Special Notes",
+      "urgencyLabel": "Limited Copies",
+      "countdownVisible": true,
+      "countdownText": "12 bje offers ends",
+      "rating": 4.9,
+      "reviewCount": 1278,
+      "soldCopies": 1350,
+      "copiesLeft": 50,
+      "createdAt": "2026-10-29T02:08:56.031Z",
+      "updatedAt": "2026-10-29T02:27:20.324Z",
+      "isFeatured": true
+    },
+    {
+      "id": "__site__",
+      "kind": "site",
+      "title": "StudyNotes site settings",
+      "category": "_site",
+      "status": "config",
+      "availability": "available",
+      "regularPrice": 0,
+      "updatedAt": "2026-10-29T02:28:42.520Z",
+      "site": {
+        "v": 1,
+        "store": {
+          "name": "StudyNotes",
+          "tagline": "Your First Step to Success",
+          "taglineNe": "नेपाली युवा, विद्यार्थी र प्रोफेसनलहरूका लागि Digital Learning Resources।",
+          "founder": "MD. NS (MD. NASA)",
+          "logo": null,
+          "currency": "रु.",
+          "copyright": "© {year} {storeName}. All rights reserved."
+        },
+        "topbar": {
+          "liveBadge": "LIVE •",
+          "liveLabel": "आजको Offer",
+          "stockText": "🔥 केवल {left} बाँकी · {short}",
+          "discountText": "{discount}% सम्म OFF",
+          "tickerLabel": "OFFERS"
+        },
+        "ticker": {
+          "autoOffers": true,
+          "autoCombo": true,
+          "comboText": "🧩 {comboMin} वा सोभन्दा बढी Ebook छान्दा थप {comboPercent}% Combo Discount!",
+          "items": []
+        },
+        "hero": {
+          "badge": "{storeName} • {tagline}",
+          "headBefore": "सफलताको",
+          "headHighlight": "पहिलो कदम",
+          "headAfter": "आजै यहीँबाट सुरु गर्नुहोस्",
+          "description": "Skill, Exam र Career तिर स्पष्ट बाटो देखाउने Practical Ebooks — सरल नेपाली भाषामा, मोबाइलमै पढ्न मिल्ने। यो खर्च होइन, तपाईंको **पहिलो उपलब्धि** हो।",
+          "cta1": {
+            "text": "Ebooks हेर्नुहोस्",
+            "action": "section:explore"
+          },
+          "cta2": {
+            "text": "Bundle Offers",
+            "action": "section:bundles"
+          },
+          "cardNote": "🏆 यो तपाईंको सफलतातर्फको पहिलो उपलब्धि — आजै सुरु गर्नुहोस्।"
+        },
+        "trust": {
+          "items": [
+            {
+              "id": "t1",
+              "icon": "book",
+              "title": "Practical Learning",
+              "text": "उपयोगी र व्यवस्थित Content",
+              "visible": true
+            },
+            {
+              "id": "t2",
+              "icon": "card",
+              "title": "NSPAY / WhatsApp",
+              "text": "सजिलो र सुरक्षित Order",
+              "visible": true
+            },
+            {
+              "id": "t3",
+              "icon": "zap",
+              "title": "{delivery} Delivery",
+              "text": "{deliveryMethod} मा PDF",
+              "visible": true
+            },
+            {
+              "id": "t4",
+              "icon": "wa",
+              "title": "Direct Support",
+              "text": "{whatsappDisplay}",
+              "visible": true
+            }
+          ]
+        },
+        "goals": {
+          "eyebrow": "YOUR GOAL",
+          "title": "तपाईंको Goal के हो?",
+          "sub": "लक्ष्य छान्नुहोस् — सही Ebook आफैं फिल्टर हुन्छ।",
+          "items": [
+            {
+              "id": "g1",
+              "title": "Computer Skills सिक्ने",
+              "icon": "laptop",
+              "category": "Computer Skills",
+              "text": "Word, Excel र Typing",
+              "visible": true
+            },
+            {
+              "id": "g2",
+              "title": "Digital Income सिक्ने",
+              "icon": "globe",
+              "category": "Digital Skills & Online Income",
+              "text": "Freelancing र Remote Work",
+              "visible": true
+            },
+            {
+              "id": "g3",
+              "title": "LokSewa तयारी गर्ने",
+              "icon": "book",
+              "category": "LokSewa Preparation",
+              "text": "GK & IQ र रणनीति",
+              "visible": true
+            },
+            {
+              "id": "g4",
+              "title": "Share Market बुझ्ने",
+              "icon": "trend",
+              "category": "Share Market Fundamentals",
+              "text": "IPO र NEPSE",
+              "visible": true
+            },
+            {
+              "id": "g5",
+              "title": "Interview मा सफल हुने",
+              "icon": "user",
+              "category": "Personality Development",
+              "text": "आत्मविश्वास र बोल्ने कला",
+              "visible": true
+            },
+            {
+              "id": "g6",
+              "title": "Job Ready हुने",
+              "icon": "target",
+              "category": "Nepali Youth Career Guides",
+              "text": "CV र Job Search",
+              "visible": true
+            },
+            {
+              "id": "g7",
+              "title": "Career Path स्पष्ट पार्ने",
+              "icon": "compass",
+              "category": "Nepali Youth Career Guides",
+              "text": "नेपालमै अवसर खोज्ने",
+              "visible": true
+            },
+            {
+              "id": "g8",
+              "title": "Personal Growth बढाउने",
+              "icon": "zap",
+              "category": "Personality Development",
+              "text": "निरन्तर सिकाइ",
+              "visible": true
+            }
+          ]
+        },
+        "library": {
+          "eyebrow": "STUDYNOTES LIBRARY",
+          "title": "Explore Ebook Library"
+        },
+        "combo": {
+          "eyebrow": "CUSTOM COMBO",
+          "title": "आफ्नो Custom Combo बनाउनुहोस्",
+          "sub": "कम्तीमा {comboMin} Ebook छान्नुहोस् र आजको Price मा थप {comboPercent}% Combo Discount पाउनुहोस्।"
+        },
+        "bundles": {
+          "eyebrow": "CURATED PACKAGES",
+          "title": "Best Bundle Offers",
+          "sub": "तयार गरिएका Ebook Bundles — सर्वाधिक बचत, एकै पटकमा पूरा Success Kit।"
+        },
+        "reviews": {
+          "eyebrow": "RATINGS & REVIEWS",
+          "title": "पाठकहरूको भरोसा",
+          "sub": "हरेक Ebook को Rating र Reviews एकै ठाउँमा।",
+          "items": []
+        },
+        "steps": {
+          "eyebrow": "EBOOK RECEIVING PROCESS",
+          "title": "Ebook कसरी प्राप्त गर्ने?",
+          "sub": "सरल {stepCount} चरण — Payment पुष्टि भएपछि {delivery}मै Delivery।",
+          "items": [
+            {
+              "id": "s1",
+              "icon": "book",
+              "title": "Ebook छान्नुहोस्",
+              "text": "Ebook, Custom Combo वा Bundle रोज्नुहोस्।",
+              "visible": true
+            },
+            {
+              "id": "s2",
+              "icon": "eye",
+              "title": "Preview हेर्नुहोस्",
+              "text": "नमुना अध्याय र Chapter Outline हेर्नुहोस्।",
+              "visible": true
+            },
+            {
+              "id": "s3",
+              "icon": "cart",
+              "title": "Cart मा थप्नुहोस्",
+              "text": "कुल रकम र बचत एकै ठाउँमा हेर्नुहोस्।",
+              "visible": true
+            },
+            {
+              "id": "s4",
+              "icon": "card",
+              "title": "NSPAY / WhatsApp",
+              "text": "NSPAY बाट Payment वा WhatsApp मा Order गर्नुहोस्।",
+              "visible": true
+            },
+            {
+              "id": "s5",
+              "icon": "file",
+              "title": "Screenshot + ID पठाउनुहोस्",
+              "text": "Payment Screenshot र Product ID WhatsApp मा पठाउनुहोस्।",
+              "visible": true
+            },
+            {
+              "id": "s6",
+              "icon": "zap",
+              "title": "{delivery} मा Delivery",
+              "text": "पुष्टि भएपछि PDF WhatsApp/Email मा प्राप्त गर्नुहोस्।",
+              "visible": true
+            }
+          ]
+        },
+        "chat": {
+          "eyebrow": "CUSTOMER TESTIMONIALS",
+          "title": "ग्राहकसँगको कुराकानी",
+          "sub": "Order देखि Delivery सम्म — WhatsApp मा यसरी हुन्छ।",
+          "headerName": "{storeName} Support",
+          "status": "online",
+          "inputText": "WhatsApp मा Message गर्नुहोस्...",
+          "items": []
+        },
+        "faq": {
+          "eyebrow": "FAQ",
+          "title": "अक्सर सोधिने प्रश्नहरू",
+          "productTitle": "सामान्य प्रश्नहरू",
+          "items": [
+            {
+              "id": "f1",
+              "q": "Ebook भनेको के हो र यो कसरी प्राप्त हुन्छ?",
+              "a": "Ebook (Electronic Book) डिजिटल पुस्तक हो जसलाई तपाईं आफ्नो मोबाइल, ट्याब्लेट वा कम्प्युटरमा सजिलै पढ्न सक्नुहुन्छ। Payment पुष्टि भएपछि PDF फाइल तपाईंको WhatsApp वा Email मा {delivery}भित्र पठाइन्छ।",
+              "visible": true,
+              "onProduct": false
+            },
+            {
+              "id": "f2",
+              "q": "कुन-कुन विषयका Ebook उपलब्ध छन्?",
+              "a": "हाल यी विधाका Ebook उपलब्ध छन्: {categories}।",
+              "visible": true,
+              "onProduct": false
+            },
+            {
+              "id": "f3",
+              "q": "Order कसरी गर्ने?",
+              "a": "दुई तरिका: (१) Cart मा Ebook थपेर 'NSPAY मा Payment' क्लिक गर्नुहोस्, वा (२) 'WhatsApp मा Order' क्लिक गर्नुहोस् — Product ID सहितको Order सन्देश आफैं तयार हुन्छ।",
+              "visible": true,
+              "onProduct": true
+            },
+            {
+              "id": "f4",
+              "q": "Payment गरेपछि के गर्नुपर्छ?",
+              "a": "Payment सफल भएपछि Screenshot तथा Product ID हाम्रो WhatsApp ({whatsappDisplay}) मा पठाउनुहोस्। पुष्टि भएपछि {delivery}मा Ebook प्राप्त हुन्छ।",
+              "visible": true,
+              "onProduct": true
+            },
+            {
+              "id": "f5",
+              "q": "Ebook किन्नुअघि Preview हेर्न मिल्छ?",
+              "a": "हरेक Ebook पेजमा 'Preview PDF' खण्ड छ। नमुना अध्याय चाहिएमा WhatsApp मा अनुरोध गर्न पनि सक्नुहुन्छ।",
+              "visible": true,
+              "onProduct": true
+            },
+            {
+              "id": "f6",
+              "q": "Combo Discount कसरी पाइन्छ?",
+              "a": "{comboMin} वा सोभन्दा बढी Ebook छान्दा Today Price मा थप {comboPercent}% Combo Discount स्वतः लाग्छ। 'Custom Combo' बनाउन सक्नुहुन्छ वा तयार Bundle छान्न सक्नुहुन्छ।",
+              "visible": true,
+              "onProduct": false
+            },
+            {
+              "id": "f7",
+              "q": "एउटै Ebook एकभन्दा बढी किन्न मिल्छ?",
+              "a": "डिजिटल Ebook एउटै खरिद गर्दा पुग्छ, त्यसैले एउटै Ebook को Quantity बढाउने सुविधा छैन। Bundle मा समावेश Ebook अलग्गै थप्न पनि पर्दैन।",
+              "visible": true,
+              "onProduct": false
+            },
+            {
+              "id": "f8",
+              "q": "के Ebook मोबाइलमा पढ्न सकिन्छ?",
+              "a": "सकिन्छ। Ebook साधारण PDF ढाँचामा हुन्छ — Android, iPhone वा Laptop जुनसुकैमा पढ्न मिल्छ।",
+              "visible": true,
+              "onProduct": false
+            },
+            {
+              "id": "f9",
+              "q": "के Ebook पढेपछि जागिर वा आम्दानीको १००% guarantee हुन्छ?",
+              "a": "हुँदैन। Ebook ले व्यवहारिक ज्ञान, सीप र तयारीको बाटो देखाउँछ। वास्तविक सफलता तपाईंको निरन्तर अभ्यास, मिहिनेत र बजारको अवस्थामा निर्भर हुन्छ। कुनै भ्रामक ग्यारेन्टी दिइँदैन।",
+              "visible": true,
+              "onProduct": true
+            },
+            {
+              "id": "f10",
+              "q": "Share Market Ebook ले निश्चित Profit guarantee गर्छ?",
+              "a": "गर्दैन। शेयर बजार जोखिमयुक्त हुन्छ। सामग्री केवल शैक्षिक प्रयोजनका लागि हो। लगानी सम्बन्धी निर्णय आफ्नै जोखिममा लिनुहोस्।",
+              "visible": true,
+              "onProduct": false
+            },
+            {
+              "id": "f11",
+              "q": "समस्या परे कसरी सम्पर्क गर्ने?",
+              "a": "WhatsApp {whatsappDisplay} वा Email: {email} मा जुनसुकै बेला सम्पर्क गर्नुहोस्।",
+              "visible": true,
+              "onProduct": false
+            }
+          ]
+        },
+        "about": {
+          "eyebrow": "ABOUT {storeNameUpper}",
+          "heading": "{storeName} — by {founder}",
+          "text": "StudyNotes को उद्देश्य नेपाली युवा, विद्यार्थी र रोजगारी खोजीमा रहेका व्यक्तिहरूलाई Computer Skills, Digital Skills, परीक्षा तयारी, Share Market र Personality Development सम्बन्धी व्यावहारिक र गुणस्तरीय Ebooks उपलब्ध गराउनु हो।"
+        },
+        "finalcta": {
+          "pill": "🏁 आजको निर्णय, भोलिको बाटो",
+          "heading": "तपाईंको सफलताको पहिलो उपलब्धि\nआजै हासिल गर्नुहोस्",
+          "text": "धेरैले “पछि गर्छु” भन्दै समय गुमाउँछन्। आज {maxDiscount}% सम्मको छुटमा सुरु गर्नुहोस् — सिक्ने बानीको पहिलो पाइला यहीँबाट।",
+          "countdownLabel": "Offer सकिन्छ:",
+          "buttons": [
+            {
+              "text": "Best Bundle हेर्नुहोस्",
+              "action": "section:bundles",
+              "visible": true
+            },
+            {
+              "text": "Ebooks Browse",
+              "action": "section:explore",
+              "visible": true
+            },
+            {
+              "text": "WhatsApp मा Order",
+              "action": "whatsapp",
+              "visible": true
+            }
+          ]
+        },
+        "footer": {
+          "quickTitle": "Quick Links",
+          "contactTitle": "Contact",
+          "policiesTitle": "Policies",
+          "links": [],
+          "policies": [
+            {
+              "id": "p1",
+              "title": "Privacy Policy",
+              "content": "हामी तपाईंको सम्पर्क विवरण र गोपनीयताको सम्मान गर्छौं। कुनै पनि व्यक्तिगत डेटा तेस्रो पक्षलाई बिक्री वा सेयर गरिँदैन।",
+              "visible": true
+            },
+            {
+              "id": "p2",
+              "title": "Terms & Conditions",
+              "content": "Ebooks केवल व्यक्तिगत अध्ययनका लागि हुन्। प्रतिलिपि अधिकार सुरक्षित छ। अनधिकृत पुनःबिक्री वा सेयर गर्न मनाही छ।",
+              "visible": true
+            },
+            {
+              "id": "p3",
+              "title": "Educational Disclaimer",
+              "content": "सामग्री अध्ययन र ज्ञान साक्षरताका लागि हो। यसले शतप्रतिशत रोजगारी, परीक्षा सफलता वा निश्चित आम्दानी/नाफाको ग्यारेन्टी गर्दैन।",
+              "visible": true
+            }
+          ]
+        },
+        "contact": {
+          "whatsapp": "9779702784684",
+          "whatsappDisplay": "+977 9702784684",
+          "supportEmail": "mdnasibulrain4@gmail.com",
+          "businessEmail": "",
+          "supportText": "",
+          "supportHours": "",
+          "whatsappCta": "WhatsApp",
+          "emailCta": "Email",
+          "contactMessage": "Hello {storeName}! मलाई Ebook बारे जानकारी चाहिएको थियो 🙏"
+        },
+        "payment": {
+          "nspayUrl": "https://www.nasibul.com.np/nspay",
+          "ctaText": "NSPAY मा Payment गर्नुहोस्",
+          "ctaShort": "NSPAY",
+          "ctaNow": "NSPAY मा अहिल्यै Payment",
+          "instructions": "Payment पछि Screenshot र माथिका Product ID हाम्रो WhatsApp ({whatsappDisplay}) मा पठाउनुहोस्।",
+          "copiedToast": "📋 Order विवरण Copy भयो — Payment पछि Screenshot र ID WhatsApp मा पठाउनुहोस्",
+          "steps": [
+            {
+              "id": "ps1",
+              "icon": "card",
+              "title": "Payment गर्नुहोस्",
+              "text": "NSPAY वा WhatsApp"
+            },
+            {
+              "id": "ps2",
+              "icon": "file",
+              "title": "Screenshot + ID पठाउनुहोस्",
+              "text": "{productId}"
+            },
+            {
+              "id": "ps3",
+              "icon": "zap",
+              "title": "Ebook पाउनुहोस्",
+              "text": "{delivery}"
+            }
+          ]
+        },
+        "delivery": {
+          "time": "3–5 मिनेट",
+          "short": "3–5 min",
+          "method": "WhatsApp / Email",
+          "text": "Payment verify भएपछि {delivery} भित्र WhatsApp वा Email बाट ebook प्राप्त गर्नुहोस्।"
+        },
+        "cart": {
+          "enabled": true,
+          "comboEnabled": true,
+          "comboMin": 3,
+          "comboPercent": 15
+        },
+        "messages": {
+          "order": "Hello {storeName}! मैले यी Ebook Order गर्न चाहन्छु 👇\n\n{items}\n\n{priceSummary}\n\nPayment: NSPAY / WhatsApp\nकृपया Payment विवरण पठाइदिनुहोस् 🙏",
+          "paymentInstruction": "नमस्कार {customerName}! 🙏\n\n{productName} (ID: {productId}) को लागि जम्मा रकम: {total}\n\nNSPAY बाट Payment गर्नुहोस्: {nspayUrl}\nPayment पछि Screenshot र Product ID यहीँ पठाउनुहोस्।",
+          "paymentVerified": "नमस्कार {customerName}! ✅\n\nतपाईंको Payment (Ref: {paymentReference}) पुष्टि भयो।\nProduct: {productName} (ID: {productId})\nरकम: {total}\n\nअब तपाईंको Ebook पठाउँदैछु। धन्यवाद!",
+          "delivery": "नमस्कार {customerName}! 📘\n\nतपाईंको Ebook यो रह्यो: {productName} (ID: {productId}).\nPDF यही सन्देशसँगै संलग्न छ। पढ्दै जानुहोस्, केही सोध्नु परे यहीँ लेख्नुहोस्।\n\nधन्यवाद, {storeName}!",
+          "support": "नमस्कार {customerName}! 🙏 {storeName} Support मा सम्पर्क गर्नुभएकोमा धन्यवाद। तपाईंको {productName} सम्बन्धी समस्या बताउनुहोस्, हामी छिट्टै सहयोग गर्छौं।",
+          "followUp": "नमस्कार {customerName}! 😊 तपाईंले {productName} पढ्न थाल्नुभयो होला। कस्तो लाग्यो? केही सोध्नु छ भने यहीँ लेख्नुहोस्।"
+        },
+        "social": [
+          {
+            "id": "whatsapp",
+            "name": "WhatsApp",
+            "enabled": true,
+            "url": ""
+          }
+        ],
+        "seo": {
+          "title": "StudyNotes — Your First Step to Success | Practical Ebooks",
+          "description": "StudyNotes — Computer Skills, Digital Income, LokSewa, Share Market, Personality & Career Ebooks for Nepali youth.",
+          "keywords": "",
+          "ogTitle": "",
+          "ogDescription": "",
+          "ogImage": null,
+          "favicon": null,
+          "siteUrl": ""
+        },
+        "product": {
+          "disclaimer": "⚠️ यो Ebook शैक्षिक प्रयोजनका लागि हो। जागिर, परीक्षा सफलता वा आम्दानी/नाफाको कुनै ग्यारेन्टी छैन; नतिजा तपाईंको अभ्यास र परिस्थितिमा निर्भर हुन्छ।"
+        },
+        "categories": [
+          {
+            "id": "computer-skills",
+            "name": "Computer Skills",
+            "short": "Computer",
+            "code": "CS",
+            "icon": "laptop",
+            "palette": "orange",
+            "visible": true
+          },
+          {
+            "id": "digital-skills-online-income",
+            "name": "Digital Skills & Online Income",
+            "short": "Digital Income",
+            "code": "DS",
+            "icon": "globe",
+            "palette": "sky",
+            "visible": true
+          },
+          {
+            "id": "loksewa",
+            "name": "LokSewa Preparation",
+            "short": "LokSewa",
+            "code": "LS",
+            "icon": "book",
+            "palette": "emerald",
+            "visible": true
+          },
+          {
+            "id": "share-market",
+            "name": "Share Market Fundamentals",
+            "short": "Share Market",
+            "code": "SM",
+            "icon": "trend",
+            "palette": "violet",
+            "visible": true
+          },
+          {
+            "id": "personality-development",
+            "name": "Personality Development",
+            "short": "Personality",
+            "code": "PD",
+            "icon": "user",
+            "palette": "rose",
+            "visible": true
+          },
+          {
+            "id": "nepali-youth-career-guides",
+            "name": "Nepali Youth Career Guides",
+            "short": "Career",
+            "code": "NY",
+            "icon": "compass",
+            "palette": "amber",
+            "visible": true
+          }
+        ],
+        "offers": [],
+        "sections": [
+          {
+            "id": "announcement",
+            "enabled": true
+          },
+          {
+            "id": "hero",
+            "enabled": true
+          },
+          {
+            "id": "trust",
+            "enabled": true
+          },
+          {
+            "id": "goals",
+            "enabled": true
+          },
+          {
+            "id": "library",
+            "enabled": true
+          },
+          {
+            "id": "combo",
+            "enabled": true
+          },
+          {
+            "id": "bundles",
+            "enabled": true
+          },
+          {
+            "id": "reviews",
+            "enabled": true
+          },
+          {
+            "id": "steps",
+            "enabled": true
+          },
+          {
+            "id": "chat",
+            "enabled": true
+          },
+          {
+            "id": "faq",
+            "enabled": true
+          },
+          {
+            "id": "about",
+            "enabled": true
+          },
+          {
+            "id": "finalcta",
+            "enabled": true
+          },
+          {
+            "id": "footer",
+            "enabled": true
+          }
+        ],
+        "labels": {
+          "searchPlaceholder": "Ebook, Skill, Tag वा ID खोज्नुहोस् (Computer, NEPSE, CV...)",
+          "searchCount": "{n} नतिजा",
+          "searchPopular": "🔥 लोकप्रिय Ebooks",
+          "searchNone": "कुनै Ebook भेटिएन।",
+          "searchAll": "Library मा सबै नतिजा हेर्नुहोस् ➔",
+          "libAll": "All Ebooks",
+          "libSearch": "Search title, skill, tag, ID...",
+          "libEmpty": "कुनै Ebook भेटिएन।",
+          "libReset": "Filter Reset गर्नुहोस्",
+          "addToCart": "Cart मा थप्नुहोस्",
+          "inCart": "Cart मा छ",
+          "covered": "Bundle मा समावेश",
+          "waOrder": "WhatsApp Order",
+          "lblRegular": "Regular Price",
+          "lblDiscount": "Today Discount",
+          "lblToday": "Today Price",
+          "lblCombo": "Combo Discount",
+          "lblFinal": "Final Amount",
+          "newTag": "NEW",
+          "tagEbook": "EBOOK",
+          "tagBundle": "BUNDLE",
+          "tagBundleN": "BUNDLE • {n} EBOOKS",
+          "heroPages": "{n} Pages",
+          "heroChapters": "{n} Chapters",
+          "heroSold": "{n} Sold",
+          "leftCopies": "⏳ केवल {n} Copies बाँकी",
+          "claimed": "{n}% Claimed",
+          "heroDetails": "पूरा विवरण र Preview हेर्नुहोस्",
+          "heroBundleDetails": "Bundle विवरण हेर्नुहोस्",
+          "statSold": "Copies Sold",
+          "statReviews": "{n} Reviews",
+          "statDelivery": "Delivery",
+          "comboYour": "Your Custom Combo",
+          "comboPick": "तलका Ebook छान्नुहोस्...",
+          "comboChosen": "{n}/{min} Ebooks छानिए",
+          "comboActive": "✓ {percent}% Combo Discount Active",
+          "comboNeed": "थप {n} छान्नुहोस्",
+          "comboSaved": "कुल बचत: {amount}",
+          "comboOnly": "{min}+ Ebook छान्दा मात्र Combo Discount सक्रिय हुन्छ।",
+          "bundleIncludes": "समावेश Ebooks ({n}):",
+          "bundleLeft": "⏳ केवल {n} Bundles बाँकी",
+          "bundleSave": "बचत {amount}",
+          "revVerified": "Verified",
+          "revCount": "{n} Reviews",
+          "revSold": "{n}+ Copies Sold",
+          "revDelivery": "{delivery} Delivery",
+          "revSupport": "Direct WhatsApp Support",
+          "chatToday": "TODAY",
+          "stepWord": "STEP",
+          "footHome": "Home",
+          "footEbooks": "Ebooks",
+          "footCombo": "Custom Combo",
+          "footBundles": "Bundles",
+          "footFaq": "FAQ",
+          "footNspay": "NSPAY Payment",
+          "footWhatsapp": "WhatsApp {n}",
+          "cartTitle": "Your Success Kit",
+          "cartCount": "{items} Item{s} • {ebooks} Ebook{es}",
+          "cartEmpty": "तपाईंको Success Kit खाली छ",
+          "cartEmptyText": "पहिलो Ebook थपेर आजै सफलताको पहिलो कदम चाल्नुहोस्।",
+          "cartBrowse": "Ebooks Browse गर्नुहोस्",
+          "cartTip": "🎁 थप {n} Ebook थप्नुहोस् र {percent}% Combo Discount पाउनुहोस्!",
+          "cartAddMore": "Ebook थप्नुहोस्",
+          "cartTypeEbook": "EBOOK",
+          "cartTypeCombo": "CUSTOM COMBO",
+          "cartTypeBundle": "BUNDLE",
+          "cartIncludes": "समावेश: {ids}",
+          "cartNoQty": "ℹ️ डिजिटल Ebook एउटै मात्र किनिन्छ — Quantity थप्न मिल्दैन।",
+          "cartSaved": "🎉 तपाईंले {amount} बचत गर्दै हुनुहुन्छ",
+          "cartWa": "WhatsApp मा Order गर्नुहोस्",
+          "cartCopy": "Order विवरण Copy गर्नुहोस्",
+          "toastCopied": "📋 Order विवरण Copy भयो",
+          "toastRemoved": "Cart बाट हटाइयो",
+          "toastAdded": "🎯 राम्रो निर्णय! {id} तपाईंको Success Kit मा थपियो",
+          "toastReplaced": "🎯 {id} थपियो — {n} अलग Ebook यसैमा समावेश भए (दोहोरो भुक्तानी छैन)",
+          "toastBlocked": "⚠️ यसमा भएका केही Ebook \"{title}\" मा पहिले नै छन्।",
+          "toastNoWa": "WhatsApp नम्बर सेट गरिएको छैन।",
+          "toastNoNspay": "NSPAY link सेट गरिएको छैन — WhatsApp मा Order गर्नुहोस्।",
+          "prevTitle": "📄 Sample Chapter Preview — {name}",
+          "prevSoon": "नमुना अध्याय तयार हुँदैछ",
+          "prevText": "यो Ebook को Sample Chapter WhatsApp मार्फत तुरुन्तै पठाइन्छ। तलको बटन थिचेर अनुरोध गर्नुहोस्।",
+          "prevAsk": "Sample माग्नुहोस्",
+          "prevMsg": "Hello {storeName}! कृपया [{id}] {title} को Sample Chapter पठाइदिनुहोस् 🙏",
+          "policyClose": "बुझें (Close)",
+          "navHome": "Home",
+          "navEbooks": "Ebooks",
+          "navMenu": "Menu",
+          "navOffers": "Offers",
+          "navHelp": "Help",
+          "fanCombos": "Combos",
+          "fanBundles": "Bundles",
+          "fanReviews": "Reviews",
+          "fanFaq": "FAQ",
+          "fanCart": "Cart",
+          "ppBack": "सबै Ebooks",
+          "ppSold": "{n} Sold",
+          "ppReviewsN": "{rating} ({n} reviews)",
+          "ppOfferEnds": "{time} मा Offer सकिन्छ",
+          "ppLeft": "केवल {n} बाँकी!",
+          "ppClaimed": "{n}% Copies Claimed",
+          "ppTaken": "{n} जनाले पहिले नै लिइसके",
+          "ppTileFormat": "Mobile PDF",
+          "ppTileSupport": "Direct Support",
+          "ppHookTag": "🏁 तपाईंको पहिलो उपलब्धि",
+          "ppForWho": "यो Ebook तपाईंका लागि हो यदि…",
+          "ppOutcomes": "Learning Outcomes",
+          "ppCareer": "Career Relevance",
+          "ppInside": "Inside the Ebook",
+          "ppChaptersNote": "कुल {n} अध्यायमध्ये मुख्य अध्यायहरू देखाइएको।",
+          "ppPreviewTitle": "Preview PDF",
+          "ppPreviewText": "किन्नुअघि नमुना अध्याय हेर्नुहोस् र निर्धक्क निर्णय लिनुहोस्।",
+          "ppPreviewBtn": "Preview PDF हेर्नुहोस्",
+          "ppReviewsSold": "🔥 {n} जनाले यो Ebook लिएका छन्",
+          "ppDeliveryLine": "⚡ {delivery} मा Delivery",
+          "ppPriceTitle": "आजको Price विवरण",
+          "ppDiscountRow": "Today Discount ({n}%)",
+          "ppComboNote": "{min}+ Ebook छान्दा थप {percent}% Combo Discount स्वतः लाग्छ।",
+          "upKicker": "🎁 अझ बढी बचत",
+          "upTitle": "{title} — {n} Ebooks मात्र {price}",
+          "upText": "सबै Ebook अलग्गै किन्दा {regular}, Bundle मा {discount}% सम्म बचत।",
+          "upCombo": "Custom Combo",
+          "ppSuggested": "यी Ebook पनि हेर्नुहोस्",
+          "ppCartShort": "Cart",
+          "ppCovered": "Bundle मा",
+          "ppLeftShort": "{n} left",
+          "loadFail": "Store लोड हुन सकेन। Internet check गरेर फेरि प्रयास गर्नुहोस्।",
+          "loadRetry": "फेरि प्रयास गर्नुहोस्",
+          "emptyStore": "हाम्रो Store अहिले अपडेट हुँदैछ। कृपया केही समयपछि फेरि हेर्नुहोस् वा WhatsApp मा सम्पर्क गर्नुहोस्।"
+        }
+      }
     }
   ]
 }
