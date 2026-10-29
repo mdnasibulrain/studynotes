@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-29T02:28:42.520Z",
+  "updatedAt": "2026-10-29T02:37:22.498Z",
   "products": [
     {
       "id": "ebook-mvjg6yns-j37sv",
@@ -18,8 +18,8 @@
       "badge": "LIMITED OFFER",
       "status": "published",
       "availability": "available",
-      "featured": false,
-      "isNew": false,
+      "featured": true,
+      "isNew": true,
       "order": 100,
       "pages": 200,
       "format": "PDF",
@@ -32,8 +32,8 @@
       "offerEndsAt": "2026-10-26T17:03",
       "countdownVisible": true,
       "createdAt": "2026-10-22T11:18:38.654Z",
-      "updatedAt": "2026-10-22T11:22:13.730Z",
-      "isFeatured": false
+      "updatedAt": "2026-10-29T02:36:50.298Z",
+      "isFeatured": true
     },
     {
       "id": "ebook-mvjdl9ey-lh5kg",
@@ -156,7 +156,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-10-29T02:28:42.520Z",
+      "updatedAt": "2026-10-29T02:37:22.498Z",
       "site": {
         "v": 1,
         "store": {
