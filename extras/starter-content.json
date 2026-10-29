@@ -1,0 +1,465 @@
+{
+ "format": "studynotes-backup",
+ "note": "Starter drafts. No ratings/sales/scarcity numbers are included. Add covers and real details in Admin.",
+ "products": [
+  {
+   "id": "SN001CS",
+   "category": "Computer Skills",
+   "title": "Complete Computer Operator & Office Skills Guide",
+   "short": "Computer Operator & Office Skills",
+   "subtitle": "MS Office, Typing, Shortcut Keys र Practical Office Work मा पोख्त हुनुहोस्",
+   "summary": "नेपाली कार्यालय, डाटा इन्ट्री र कम्प्युटर अपरेटर तयारीका लागि सम्पूर्ण व्यवहारिक गाइड।",
+   "description": "यो Ebook ले तपाईंलाई MS Word, MS Excel, PowerPoint, नेपाली/अंग्रेजी टाइपिंग, र कम्प्युटर ट्रबलशूटिंगको व्यवहारिक ज्ञान दिन्छ। Computer Operator परीक्षा वा Office Job को लागि उपयुक्त।",
+   "hook": "आजै सिक्नुहोस् — भोलिदेखि Office मा आत्मविश्वासका साथ काम गर्नुहोस्।",
+   "forWho": [
+    "Office Job वा Data Entry खोज्दै हुनुहुन्छ",
+    "Computer Operator परीक्षाको तयारी गर्दै हुनुहुन्छ",
+    "टाइपिङ र Excel मा आत्मविश्वास बढाउन चाहनुहुन्छ"
+   ],
+   "cover": "",
+   "previewPdf": null,
+   "pages": 180,
+   "chapters": 12,
+   "regularPrice": 999,
+   "tags": [
+    "Computer Skills",
+    "MS Office",
+    "Office Operator",
+    "Typing"
+   ],
+   "learningOutcomes": [
+    "MS Word र Excel मा Professional Document तथा Sheet तयार गर्ने",
+    "द्रुत नेपाली (Preeti / Unicode) र अंग्रेजी टाइपिंग कमान्ड गर्ने",
+    "कार्यालयमा दैनिक प्रयोग हुने Important Computer Shortcuts प्रयोग गर्ने",
+    "File Management र Email Communication व्यवस्थित गर्ने"
+   ],
+   "careerRelevance": [
+    "Office Assistant र Data Entry Operator पदका लागि सहयोगी",
+    "LokSewa Computer Operator प्रयोगात्मक परीक्षा तयारी",
+    "निजी कार्यालय तथा संस्थामा रोजगार तयारी"
+   ],
+   "chapterOutline": [
+    {
+     "number": 1,
+     "title": "Computer Basics & Operating System",
+     "description": "कम्प्युटरका आधारभूत सिद्धान्त र Windows setup"
+    },
+    {
+     "number": 2,
+     "title": "Nepali & English Typing Mastery",
+     "description": "टाइपिंग स्पीड र एक्युरेसी बढाउने उपाय"
+    },
+    {
+     "number": 3,
+     "title": "MS Word Professional Formatting",
+     "description": "अफिसियल पत्र, प्रतिवेदन र फारम डिजाइन"
+    },
+    {
+     "number": 4,
+     "title": "MS Excel Formulas & Data Handling",
+     "description": "Sum, VLOOKUP, Pivot Table र Accounting Sheet"
+    },
+    {
+     "number": 5,
+     "title": "Internet, Email & Office Utilities",
+     "description": "सुरक्षित ब्राउजिङ, इमेल शिष्टाचार र प्रिन्टर सेटिङ"
+    }
+   ],
+   "offerLabel": "BESTSELLER",
+   "isNew": false,
+   "kind": "ebook",
+   "offerPrice": 499,
+   "status": "draft",
+   "availability": "available",
+   "featured": true,
+   "order": 10,
+   "format": "PDF"
+  },
+  {
+   "id": "SN001DS",
+   "category": "Digital Skills & Online Income",
+   "title": "Freelancing & Digital Skills Blueprint for Nepali Youth",
+   "short": "Freelancing & Digital Skills",
+   "subtitle": "घरमै बसेर Digital Skills सिक्ने र International Client सँग काम गर्ने गाइड",
+   "summary": "Upwork, Fiverr र Remote Work मा सफलता प्राप्त गर्ने व्यवहारिक रणनीति।",
+   "description": "नेपालमा बसेर डिजिटल सीप जस्तै Graphic Design, Content Writing, Virtual Assistance र Social Media Management मार्फत अनलाइन आम्दानीका अवसर बुझ्ने र सुरु गर्ने तरिका।",
+   "hook": "घरमै बसेर सीप सिक्नुहोस्, विश्वबजारसँग जोडिनुहोस्।",
+   "forWho": [
+    "पढाइसँगै पार्ट-टाइम आम्दानीको बाटो खोज्दै हुनुहुन्छ",
+    "Freelancing सुरु गर्न चाहनुहुन्छ तर कहाँबाट थाल्ने थाहा छैन",
+    "Remote Work मा आफ्नो करियर बनाउन चाहनुहुन्छ"
+   ],
+   "cover": "",
+   "previewPdf": null,
+   "pages": 210,
+   "chapters": 14,
+   "regularPrice": 1299,
+   "tags": [
+    "Digital Skills",
+    "Freelancing",
+    "Online Income",
+    "Remote Work"
+   ],
+   "learningOutcomes": [
+    "हाई-डिमान्ड Digital Skills चयन र सिकाइ रोडम्याप",
+    "Fiverr र Upwork मा आकर्षित Profile तयार गर्ने",
+    "विदेशी ग्राहकसँग व्यवहारिक Communication र Proposal लेखन",
+    "नेपालमा Payment प्राप्त गर्ने वैधानिक तरिकाहरू बुझ्ने"
+   ],
+   "careerRelevance": [
+    "Global Remote Job र Freelance Contract प्राप्त गर्न",
+    "Self-employment र Digital Agency सुरु गर्न",
+    "पढाइसँगै पार्ट-टाइम आम्दानी अवसर"
+   ],
+   "chapterOutline": [
+    {
+     "number": 1,
+     "title": "Understanding Digital Economy",
+     "description": "डिजिटल स्किल र ग्लोबल मार्केटको सम्भावना"
+    },
+    {
+     "number": 2,
+     "title": "Choosing Your Skill Track",
+     "description": "राइटिङ, डिजाइन वा टेक स्किल छनोट"
+    },
+    {
+     "number": 3,
+     "title": "Profile Creation & Branding",
+     "description": "पोर्टफोलियो र प्रोफाईल सेटअप"
+    },
+    {
+     "number": 4,
+     "title": "Winning Proposal Writing",
+     "description": "क्लाइन्ट आकर्षित गर्ने प्रस्तावना कसरी लेख्ने"
+    }
+   ],
+   "offerLabel": "HOT DEAL",
+   "isNew": false,
+   "kind": "ebook",
+   "offerPrice": 599,
+   "status": "draft",
+   "availability": "available",
+   "featured": true,
+   "order": 20,
+   "format": "PDF"
+  },
+  {
+   "id": "SN001LS",
+   "category": "LokSewa Preparation",
+   "title": "Smart LokSewa General Knowledge & Exam Strategy",
+   "short": "LokSewa GK & Exam Strategy",
+   "subtitle": "लोकसेवा प्रथम पत्र (GK & IQ) मा उच्च अंक ल्याउने तयारी गाइड",
+   "summary": "स्मार्ट अध्ययन विधि, नेपाल र विश्व भूगोल, इतिहास र समसामयिक विषय।",
+   "description": "खरिदार, नायब सुब्बा र शाखा अधिकृत परीक्षाका लागि विषयवस्तुलाई सम्झन सजिलो ट्रिक्स र माइन्डम्याप सहितको व्यवस्थित तयारी पुस्तक।",
+   "hook": "अब GK सम्झनु बोझ होइन — ट्रिक्सले पढाइ सजिलो बनाउँछ।",
+   "forWho": [
+    "खरिदार, नासु वा शाखा अधिकृत परीक्षाको तयारी गर्दै हुनुहुन्छ",
+    "धेरै पढेर पनि सम्झन गाह्रो भइरहेको छ",
+    "परीक्षाको समय व्यवस्थापन सिक्न चाहनुहुन्छ"
+   ],
+   "cover": "",
+   "previewPdf": null,
+   "pages": 250,
+   "chapters": 16,
+   "regularPrice": 1100,
+   "tags": [
+    "LokSewa",
+    "GK & IQ",
+    "Kharidar",
+    "Nasu",
+    "Section Officer"
+   ],
+   "learningOutcomes": [
+    "GK सम्झने सम्झना ट्रिक्स (Memory Tricks)",
+    "IQ Questions छिटो र सही हल गर्ने विधि",
+    "वस्तुगत (MCQ) प्रश्न हल गर्दा ध्यान दिनुपर्ने कुराहरू",
+    "परीक्षा अघिको समय व्यवस्थापन (Time Management)"
+   ],
+   "careerRelevance": [
+    "निजामती सेवाका विभिन्न तहको प्रथम पत्र परीक्षा",
+    "नेपाल राष्ट्र बैंक, संस्थान तथा सुरक्षा निकाय परीक्षा",
+    "शिक्षक सेवा आयोग सामान्य परीक्षा"
+   ],
+   "chapterOutline": [
+    {
+     "number": 1,
+     "title": "Nepal Geography & Environment",
+     "description": "नेपालको भूगोल, नदीनाला र हावापानी ट्रिक्स"
+    },
+    {
+     "number": 2,
+     "title": "History & Socio-Cultural Facts",
+     "description": "नेपालको इतिहास र सांस्कृतिक पक्ष"
+    },
+    {
+     "number": 3,
+     "title": "International Affairs & Organizations",
+     "description": "संयुक्त राष्ट्रसंघ, SAARC र विश्व घटनाक्रम"
+    },
+    {
+     "number": 4,
+     "title": "IQ Shortcut Methods",
+     "description": "शाब्दिक र अशाब्दिक तर्कशक्ति प्रश्न"
+    }
+   ],
+   "offerLabel": "EXAM SPECIAL",
+   "isNew": false,
+   "kind": "ebook",
+   "offerPrice": 499,
+   "status": "draft",
+   "availability": "available",
+   "featured": true,
+   "order": 30,
+   "format": "PDF"
+  },
+  {
+   "id": "SN001SM",
+   "category": "Share Market Fundamentals",
+   "title": "Nepali Share Market Fundamentals: NEPSE Beginner Guide",
+   "short": "NEPSE Beginner Guide",
+   "subtitle": "Primary (IPO) र Secondary Market मा सही र सुरक्षित लगानी कसरी गर्ने?",
+   "summary": "IPO भर्ने तरिकादेखि Fundamental र Technical Analysis को आधारभूत ज्ञान।",
+   "description": "नेपाली शेयर बजारमा नयाँ हुनुहुन्छ? यो पुस्तकले Demat, MeroShare, IPO, Dividend, Microfinance, Hydro, Commercial Banks को Financial Report विश्लेषण गर्न सिकाउँछ।",
+   "hook": "अनुमानले होइन, बुझेर लगानी गर्न सुरु गर्नुहोस्।",
+   "forWho": [
+    "शेयर बजारमा नयाँ हुनुहुन्छ",
+    "IPO भर्न चाहनुहुन्छ तर प्रक्रिया बुझ्नुभएको छैन",
+    "Financial Report पढ्न सिक्न चाहनुहुन्छ"
+   ],
+   "cover": "",
+   "previewPdf": null,
+   "pages": 160,
+   "chapters": 10,
+   "regularPrice": 899,
+   "tags": [
+    "Share Market",
+    "NEPSE",
+    "IPO",
+    "Investment",
+    "Finance"
+   ],
+   "learningOutcomes": [
+    "Demat र MeroShare खाता सञ्चालन र IPO भर्ने सही तरिका",
+    "कम्पनीको EPS, P/E Ratio र Net Worth विश्लेषण गर्ने विधि",
+    "Secondary Market मा Broker System र TMS प्रयोग गर्ने तरिका",
+    "दीर्घकालीन लगानी (Value Investing) र जोखिम व्यवस्थापन"
+   ],
+   "careerRelevance": [
+    "व्यक्तिगत वित्तीय साक्षरता र सम्पत्ति वृद्धि",
+    "शेयर बजार विश्लेषक वा लगानीकर्ता बन्ने आधार",
+    "वित्तीय बजारसम्बन्धी ज्ञान अभिवृद्धि"
+   ],
+   "chapterOutline": [
+    {
+     "number": 1,
+     "title": "Introduction to NEPSE & SEBON",
+     "description": "शेयर बजारको संरचना र नियमक निकाय"
+    },
+    {
+     "number": 2,
+     "title": "Primary Market & IPO Application",
+     "description": "IPO, FPO र Right Share को आधार"
+    },
+    {
+     "number": 3,
+     "title": "Fundamental Analysis Basics",
+     "description": "वित्तीय विवरण कसरी पढ्ने"
+    },
+    {
+     "number": 4,
+     "title": "Risk Management & Portfolio Design",
+     "description": "घाटाबाट जोगिने र विविधीकरण गर्ने रणनीति"
+    }
+   ],
+   "offerLabel": "FINANCE PICK",
+   "isNew": false,
+   "kind": "ebook",
+   "offerPrice": 399,
+   "status": "draft",
+   "availability": "available",
+   "featured": false,
+   "order": 40,
+   "format": "PDF"
+  },
+  {
+   "id": "SN001PD",
+   "category": "Personality Development",
+   "title": "Confidence, Communication & Interview Success Guide",
+   "short": "Confidence & Interview Success",
+   "subtitle": "बोल्ने कला, व्यक्तित्व विकास र Job Interview मा सफलता",
+   "summary": "आत्मविश्वास बढाउन, धक फुकाउन र अन्तरवार्तामा सफल हुने व्यावहारिक उपाय।",
+   "description": "इन्टरभ्यु दिँदा डर लाग्छ? सार्वजनिक ठाउँमा बोल्न अप्ठ्यारो हुन्छ? यो Ebook ले तपाईंको Personality, Body Language, Communication र Interview Skills सुधार्छ।",
+   "hook": "डर होइन, आत्मविश्वासका साथ अन्तरवार्ता दिनुहोस्।",
+   "forWho": [
+    "Interview अघि नर्भस महसुस गर्नुहुन्छ",
+    "सार्वजनिक रूपमा बोल्न हिच्किचाउनुहुन्छ",
+    "Office मा आफ्नो छाप छाड्न चाहनुहुन्छ"
+   ],
+   "cover": "",
+   "previewPdf": null,
+   "pages": 140,
+   "chapters": 9,
+   "regularPrice": 799,
+   "tags": [
+    "Personality Development",
+    "Communication",
+    "Interview Prep",
+    "Confidence"
+   ],
+   "learningOutcomes": [
+    "सार्वजनिक बोल्दा (Public Speaking) डर हटाउने प्रविधि",
+    "प्रभावशाली Body Language र Visual Impression",
+    "Interview मा सोधिने कडा प्रश्नहरूको उत्कृष्ट उत्तर कसरी दिने",
+    "कार्यस्थलमा मिलाएर बोल्ने र नेटवर्किङ गर्ने कला"
+   ],
+   "careerRelevance": [
+    "कुनै पनि Job Interview मा निर्धक्क प्रस्तुत हुन",
+    "कार्यालयमा प्रस्तुतिकरण (Presentation) र नेतृत्व",
+    "व्यक्तिगत जीवनमा उच्च आत्मविश्वास"
+   ],
+   "chapterOutline": [
+    {
+     "number": 1,
+     "title": "Building Inner Confidence",
+     "description": "हिचकिचाहट र डर हटाउने अभ्यास"
+    },
+    {
+     "number": 2,
+     "title": "Body Language & Eye Contact",
+     "description": "सकारात्मक शारीरिक भाषा"
+    },
+    {
+     "number": 3,
+     "title": "Top 20 Interview Questions",
+     "description": "उत्कृष्ट नमुना उत्तरहरू र तयारी"
+    },
+    {
+     "number": 4,
+     "title": "Professional Workplace Ethics",
+     "description": "व्यावसायिक व्यवहार र पोशाक"
+    }
+   ],
+   "offerLabel": "CAREER BOOST",
+   "isNew": false,
+   "kind": "ebook",
+   "offerPrice": 349,
+   "status": "draft",
+   "availability": "available",
+   "featured": false,
+   "order": 50,
+   "format": "PDF"
+  },
+  {
+   "id": "SN001NY",
+   "category": "Nepali Youth Career Guides",
+   "title": "Nepali Youth Career Roadmap & Job Search Masterclass",
+   "short": "Career Roadmap & Job Search",
+   "subtitle": "CV / Resume लेखन, Job Search रणनीति र career direction छनोट",
+   "summary": "प्लस टु वा ब्याचलर्स पछि सही बाटो रोज्न र छिटो जागिर पाउन मार्गदर्शन।",
+   "description": "नेपाली युवाहरूका लागि आफ्नो करियरको लक्ष्य तय गर्ने, आकर्षक CV/Resume बनाउने, merojob, jobsnepal, LinkedIn प्रयोग गरी जागिर खोज्ने व्यावहारिक Ebook।",
+   "hook": "आफ्नो करियरको बाटो अरूले होइन, तपाईं आफैंले तय गर्नुहोस्।",
+   "forWho": [
+    "प्लस टु वा ब्याचलर्स सकेर अब के गर्ने भन्ने द्विविधामा हुनुहुन्छ",
+    "पहिलो जागिरका लागि CV बनाउँदै हुनुहुन्छ",
+    "Career Switch गर्ने सोचमा हुनुहुन्छ"
+   ],
+   "cover": "",
+   "previewPdf": null,
+   "pages": 175,
+   "chapters": 11,
+   "regularPrice": 899,
+   "tags": [
+    "Career Guide",
+    "CV Writing",
+    "Job Search",
+    "Nepali Youth"
+   ],
+   "learningOutcomes": [
+    "HR ले रुचाउने ATS-Friendly Professional CV/Resume निर्माण",
+    "LinkedIn Profile Optimal बनाउने र Networking गर्ने",
+    "नेपालका प्रमुख Job Portals प्रयोग गरी अवसर खोज्ने",
+    "Career Direction र Short/Long term लक्ष्य निर्धारण"
+   ],
+   "careerRelevance": [
+    "नयाँ स्नातक (Fresh Graduates) का लागि पहिलो जागिर",
+    "करियर परिवर्तन (Career Switch) गर्न चाहनेका लागि",
+    "रोजगारी खोज्ने रणनीति व्यवस्थित बनाउन"
+   ],
+   "chapterOutline": [
+    {
+     "number": 1,
+     "title": "Understanding Job Market in Nepal",
+     "description": "नेपालमा बजारको माग र सीप"
+    },
+    {
+     "number": 2,
+     "title": "Crafting High-Impact Resume",
+     "description": "रिज्युमे नमुना र गल्तीहरू"
+    },
+    {
+     "number": 3,
+     "title": "Digital Job Search Strategies",
+     "description": "मेरोजब र लिङ्क्डइनको प्रयोग"
+    },
+    {
+     "number": 4,
+     "title": "First 90 Days in a Job",
+     "description": "कार्यस्थलमा छाप छाड्ने कला"
+    }
+   ],
+   "offerLabel": "RECOMMENDED",
+   "isNew": false,
+   "kind": "ebook",
+   "offerPrice": 399,
+   "status": "draft",
+   "availability": "available",
+   "featured": false,
+   "order": 60,
+   "format": "PDF"
+  },
+  {
+   "id": "SNB001",
+   "title": "Ultimate Success Career Bundle",
+   "short": "Ultimate Success Bundle",
+   "subtitle": "६ वटै Ebooks को पूर्ण प्याकेज — सर्वाधिक बचत र सम्पूर्ण करियर रूपान्तरण!",
+   "summary": "कम्प्युटर, डिजिटल सीप, लोकसेवा, शेयर बजार, व्यक्तित्व र करियर गाइड सबै एकै ठाउँमा।",
+   "includes": [
+    "SN001CS",
+    "SN001DS",
+    "SN001LS",
+    "SN001SM",
+    "SN001PD",
+    "SN001NY"
+   ],
+   "offerLabel": "BEST VALUE",
+   "badge": "ULTIMATE VALUE",
+   "kind": "bundle",
+   "category": "",
+   "offerPrice": 1499,
+   "status": "draft",
+   "availability": "available",
+   "order": 200,
+   "cover": ""
+  },
+  {
+   "id": "SNB002",
+   "title": "Office & Digital Income Master Bundle",
+   "short": "Office & Digital Income",
+   "subtitle": "Computer Skills + Freelancing Blueprint",
+   "summary": "कार्यालय काम र अनलाइन आम्दानी दुवैमा पोख्त हुन २ प्रमुख Ebook प्याकेज।",
+   "includes": [
+    "SN001CS",
+    "SN001DS"
+   ],
+   "offerLabel": "SAVER PACK",
+   "badge": "SAVINGS BUNDLE",
+   "kind": "bundle",
+   "category": "",
+   "offerPrice": 899,
+   "status": "draft",
+   "availability": "available",
+   "order": 210,
+   "cover": ""
+  }
+ ]
+}
