@@ -7,11 +7,6 @@
 <meta name="theme-color" content="#F97316">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="description" content="StudyNotes — Computer Skills, Digital Income, LokSewa, Share Market, Personality & Career Ebooks for Nepali youth.">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone@7.26.2/babel.min.js"></script>
-<script src="assets/js/site-core.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -42,6 +37,123 @@ button{-webkit-tap-highlight-color:transparent}
 </style>
 </head>
 <body>
+<!-- ===== StudyNotes Preloader: pure HTML/CSS/SVG (no React/Tailwind needed, paints before the heavy scripts load). Admin: Store → Preloader ===== -->
+<style id="snp-css">
+html.snp-on,html.snp-on body{overflow:hidden}
+#snp{--k:1;position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;background-color:#fff;
+ background-image:radial-gradient(ellipse 62% 46% at 50% 40%,rgba(253,186,116,.30),transparent 72%),linear-gradient(rgba(249,115,22,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(249,115,22,.055) 1px,transparent 1px);background-size:auto,30px 30px,30px 30px;background-position:center;
+ transition:opacity .55s ease,transform .55s ease,visibility .55s}
+#snp.out{opacity:0;visibility:hidden;transform:scale(1.035)}
+#snp svg{width:min(88vw,400px);height:auto;overflow:visible;display:block}
+#snp .d{stroke-dasharray:1;stroke-dashoffset:1;animation:snpDraw calc(var(--t,1.2s)*var(--k)) cubic-bezier(.65,0,.35,1) calc(var(--d,0s)*var(--k)) forwards}
+#snp .f{opacity:0;animation:snpFade calc(.6s*var(--k)) ease calc(var(--d,0s)*var(--k)) forwards}
+#snp .p{opacity:0;transform-box:fill-box;transform-origin:center;animation:snpPop calc(.55s*var(--k)) cubic-bezier(.2,.9,.3,1.4) calc(var(--d,0s)*var(--k)) forwards}
+#snp .gd{opacity:0;animation:snpGuide calc(2.4s*var(--k)) ease calc(var(--d,0s)*var(--k)) forwards}
+#snp .fl{animation:snpFloat 3.6s ease-in-out calc(3.2s*var(--k)) infinite}
+#snp .tw{transform-box:fill-box;transform-origin:center;animation:snpTwinkle 2.2s ease-in-out infinite}
+#snp .snp-sn{transform-box:fill-box;transform-origin:center;animation:snpPulse 1.8s ease-in-out calc(3s*var(--k)) infinite}
+#snp .snp-hl{animation:snpPop calc(.55s*var(--k)) cubic-bezier(.2,.9,.3,1.4) calc(var(--d,0s)*var(--k)) forwards,snpHalo 1.8s ease-in-out calc(3s*var(--k)) infinite}
+@keyframes snpPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes snpHalo{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes snpDraw{to{stroke-dashoffset:0}}
+@keyframes snpFade{to{opacity:1}}
+@keyframes snpPop{from{opacity:0;transform:scale(.3) rotate(-20deg)}to{opacity:1;transform:none}}
+@keyframes snpGuide{0%{opacity:0}25%{opacity:.7}70%{opacity:.7}100%{opacity:0}}
+@keyframes snpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes snpTwinkle{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+.snp-brand{position:relative;display:inline-block;margin-top:-4px;font:900 clamp(30px,10.5vw,46px)/1.15 ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;color:#0F172A;letter-spacing:.04em;-webkit-text-stroke:2.6px currentColor;stroke-linejoin:round;paint-order:stroke fill;white-space:nowrap}
+.snp-brand .tx{display:inline-block;clip-path:inset(0 100% 0 0);animation:snpType calc(var(--n)*85ms*var(--k)) steps(var(--n)) calc(2.7s*var(--k)) forwards}
+.snp-brand .o{color:#EA580C}
+.snp-brand .cr{position:absolute;top:8%;bottom:8%;left:0;width:.11em;background:#EA580C;opacity:0;animation:snpCaret calc(var(--n)*85ms*var(--k)) steps(var(--n)) calc(2.7s*var(--k)) forwards,snpBlink .9s step-end calc((2.7s + var(--n)*85ms)*var(--k)) infinite}
+@keyframes snpCaret{0%{left:0;opacity:1}99%{left:calc(100% - .11em);opacity:1}100%{left:calc(100% - .11em);opacity:1}}
+@keyframes snpBlink{0%,100%{opacity:1}50%{opacity:0}}
+#snp svg.snp-ul{width:min(70vw,260px);height:6px;margin:6px auto 0;display:block;overflow:visible}
+.snp-tag{margin-top:14px;position:relative;font:800 11.5px/1.5 ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono","Courier New",monospace;letter-spacing:.3em;text-transform:uppercase;color:#334155;-webkit-text-stroke:.5px currentColor;display:inline-block;max-width:94vw;white-space:nowrap}
+.snp-tag i{display:inline-block;font-style:normal;clip-path:inset(0 100% 0 0);animation:snpType calc(var(--n)*55ms*var(--k)) steps(var(--n)) calc(3.7s*var(--k)) forwards}
+@keyframes snpType{to{clip-path:inset(0 0 0 0)}}
+.snp-sub{margin-top:8px;font:600 15px/1.5 "Noto Sans Devanagari",Inter,Arial,sans-serif;color:#EA580C;opacity:0;transform:translateY(8px);animation:snpUp calc(.6s*var(--k)) ease calc(5.1s*var(--k)) forwards}
+@keyframes snpUp{to{opacity:1;transform:none}}
+.snp-bar{width:min(52vw,170px);height:3px;margin-top:22px;border-radius:3px;background:#FFEDD5;overflow:hidden;opacity:0;animation:snpFade .4s ease calc(2.6s*var(--k)) forwards}
+.snp-bar b{display:block;height:100%;width:100%;border-radius:3px;background:linear-gradient(90deg,#FB923C,#EA580C);transform:scaleX(0);transform-origin:left;animation:snpBar calc(var(--dur,5s) - 2.6s*var(--k)) linear calc(2.6s*var(--k)) forwards}
+@keyframes snpBar{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){#snp *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important;clip-path:none!important;transform:none!important}#snp .gd,#snp .cr{opacity:0!important}}
+</style>
+<div id="snp" role="status" aria-label="Loading">
+<svg viewBox="0 0 400 330" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
+ <defs><linearGradient id="snpg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FDBA74"/><stop offset="1" stop-color="#EA580C"/></linearGradient></defs>
+ <!-- construction guides (pencil layout lines, fade away) -->
+ <g class="gd" style="--d:0s" stroke="#FDBA74" stroke-width="1.2" stroke-dasharray="3 6">
+  <ellipse cx="200" cy="165" rx="178" ry="150"/><line x1="200" y1="6" x2="200" y2="324"/><line x1="14" y1="165" x2="386" y2="165"/><circle cx="200" cy="165" r="104"/>
+ </g>
+ <g stroke="#FDBA74" stroke-width="1.3" class="f" style="--d:.1s"><path d="M18 30v-14h14M382 30v-14h-14M18 300v14h14M382 300v14h-14"/></g>
+ <!-- LOGO: open book, drawn like a pencil sketch -->
+ <g class="fl"><g transform="translate(84 62) scale(3.62)">
+  <path class="f" style="--d:1.45s" d="M32 9C25 4 14 3 2 5.5v42c12-2.5 23-1.5 30 4.5 7-6 18-7 30-4.5v-42C50 3 39 4 32 9z" fill="url(#snpg)" stroke="none"/>
+  <path class="f" style="--d:1.55s" d="M32 13.5C26 9.5 17 8.5 7.5 10v33c9.5-1.4 18.5-.4 24.5 4.5 6-4.9 15-5.9 24.5-4.5V10C47 8.5 38 9.5 32 13.5z" fill="#fff" stroke="none"/>
+  <path class="d" pathLength="1" style="--d:.55s;--t:1.2s" d="M32.6 9.6C25.4 4.2 13.6 3.3 1.6 6v41.4c12.2-2.6 23.4-1.4 30.4 4.2 7.2-5.8 18.4-6.8 30.6-4.2V6C50.4 3 39.2 4.4 32.6 9.6z" stroke="#EA580C" stroke-width=".5" opacity=".55"/>
+  <path class="d" pathLength="1" style="--d:.2s;--t:1.25s" d="M32 9C25 4 14 3 2 5.5v42c12-2.5 23-1.5 30 4.5 7-6 18-7 30-4.5v-42C50 3 39 4 32 9z" stroke="#1E293B" stroke-width=".85"/>
+  <path class="d" pathLength="1" style="--d:.7s;--t:1s" d="M32 13.5C26 9.5 17 8.5 7.5 10v33c9.5-1.4 18.5-.4 24.5 4.5 6-4.9 15-5.9 24.5-4.5V10C47 8.5 38 9.5 32 13.5z" stroke="#1E293B" stroke-width=".6"/>
+  <path class="d" pathLength="1" style="--d:1s;--t:.6s" d="M32 13.5V52" stroke="#1E293B" stroke-width=".45"/>
+  <circle class="p snp-hl" style="--d:1.25s" cx="33" cy="32.2" r="13.2" fill="#FFEDD5" stroke="#FDBA74" stroke-width=".5" stroke-dasharray="1.4 1.6"/>
+  <g class="snp-sn"><path class="d" pathLength="1" style="--d:1.35s;--t:.7s" d="M29.6 28.4C28.2 26 24.2 25.4 22.4 27.2c-1.8 1.9.5 3.9 3.1 4.9 2.8 1.1 5 2.9 3.4 5.1-1.8 2.2-5.9 1.6-7.8-1" stroke="#EA580C" stroke-width="4"/>
+  <path class="d" pathLength="1" style="--d:1.75s;--t:.7s" d="M35 38.6V25.8l9.6 12.8V25.8" stroke="#EA580C" stroke-width="4"/></g>
+  <path class="f" style="--d:2.3s" d="M12 17c4-1 8-.8 12 .4M12 22c4-1 8-.8 12 .4M12 27c4-1 8-.8 12 .4M52 17c-4-1-8-.8-12 .4M52 22c-4-1-8-.8-12 .4" stroke="#FDBA74" stroke-width=".5"/>
+ </g></g>
+ <!-- sketch illustrations around the logo -->
+ <g stroke="#1E293B" stroke-width="2.2"> <!-- graduation cap -->
+  <path class="d" pathLength="1" style="--d:1.2s;--t:.9s" d="M26 60L62 42l36 18-36 18z"/><path class="d" pathLength="1" style="--d:1.7s;--t:.6s" d="M44 69v15c11 9 27 9 36 0V69"/><path class="d" pathLength="1" style="--d:2s;--t:.4s" d="M98 60v22" stroke="#EA580C"/></g>
+ <g stroke="#1E293B" stroke-width="2.2"> <!-- light bulb -->
+  <path class="d" pathLength="1" style="--d:1.4s;--t:1s" d="M338 34a21 21 0 0 1 12 38v9h-24v-9a21 21 0 0 1 12-38z"/><path class="d" pathLength="1" style="--d:2s;--t:.4s" d="M328 90h20M331 97h14" stroke="#EA580C"/>
+  <path class="d" pathLength="1" style="--d:2.2s;--t:.4s" d="M338 12v8M311 24l6 6M365 24l-6 6" stroke="#FB923C"/></g>
+ <g transform="translate(340 262) rotate(38)" stroke="#1E293B" stroke-width="2.2"> <!-- pencil -->
+  <path class="d" pathLength="1" style="--d:1.6s;--t:1s" d="M-9-36h18v54l-9 15-9-15z"/><path class="d" pathLength="1" style="--d:2.2s;--t:.4s" d="M-9-22h18M-9 12h18" stroke="#EA580C"/><path class="d" pathLength="1" style="--d:2.1s;--t:.4s" d="M-9-36q9-12 18 0"/></g>
+ <g> <!-- sparkles -->
+  <path class="p" style="--d:2.1s" d="M60 240q2 18 20 22-18 4-20 22-2-18-20-22 18-4 20-22z" fill="#FDBA74" stroke="#EA580C" stroke-width="1.6"/>
+  <path class="p tw" style="--d:2.5s" d="M120 300q1 8 9 10-8 2-9 10-1-8-9-10 8-2 9-10z" fill="#FB923C"/>
+  <path class="p tw" style="--d:2.7s;animation-delay:.6s" d="M296 30q1 8 9 10-8 2-9 10-1-8-9-10 8-2 9-10z" fill="#FDBA74"/>
+  <circle class="p" style="--d:2.4s" cx="378" cy="150" r="4" fill="#FB923C"/><circle class="p" style="--d:2.6s" cx="22" cy="150" r="3.5" fill="#FDBA74"/>
+ </g>
+</svg>
+<div class="snp-brand" id="snpName"></div>
+<svg class="snp-ul" viewBox="0 0 240 6" preserveAspectRatio="none" aria-hidden="true"><path class="d" pathLength="1" style="--d:3.6s;--t:.6s" d="M2 3H238" stroke="#F97316" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+<div class="snp-tag" id="snpTag"></div>
+<div class="snp-sub" id="snpSub"></div>
+<div class="snp-bar" aria-hidden="true"><b></b></div>
+</div>
+<script>
+(function(){
+ var d=document,h=d.documentElement,el=d.getElementById("snp");if(!el)return;
+ if(/[?&]snpreview=1/.test(location.search)){el.parentNode.removeChild(el);return;}
+ var B={n:"StudyNotes",t:"Your First Step to Success",s:"सफलताको पहिलो कदम",on:true};
+ try{var c=JSON.parse(localStorage.getItem("sn_brand")||"null");if(c&&typeof c==="object"){if(c.n)B.n=String(c.n).slice(0,30);if(typeof c.t==="string")B.t=c.t.slice(0,60);if(typeof c.s==="string")B.s=c.s.slice(0,80);if(c.on===false)B.on=false;}}catch(e){}
+ if(!B.on){el.parentNode.removeChild(el);return;}
+ var seen=false;try{seen=sessionStorage.getItem("sn_pre")==="1";sessionStorage.setItem("sn_pre","1");}catch(e){}
+ var k=seen?0.4:0.78;el.style.setProperty("--k",k);el.style.setProperty("--dur",(6*k)+"s");
+ var nm=d.getElementById("snpName"),chars=Array.from(B.n),sec=-1,i;
+ for(i=1;i<chars.length;i++){if(/[A-Z]/.test(chars[i])){sec=i;break;}}
+ nm.setAttribute("aria-label",B.n);nm.style.setProperty("--n",Math.max(2,chars.length));
+ var tx=d.createElement("span");tx.className="tx";tx.setAttribute("aria-hidden","true");
+ var p1=d.createElement("span");p1.textContent=(sec>-1?chars.slice(0,sec):chars).join("");tx.appendChild(p1);
+ if(sec>-1){var p2=d.createElement("span");p2.className="o";p2.textContent=chars.slice(sec).join("");tx.appendChild(p2);}
+ nm.appendChild(tx);var cr=d.createElement("span");cr.className="cr";nm.appendChild(cr);
+ var tg=d.getElementById("snpTag");if(B.t){var it=d.createElement("i");it.textContent=B.t;it.style.setProperty("--n",Math.max(4,Array.from(B.t).length));tg.appendChild(it);}
+ var tgn=Math.max(4,Array.from(B.t||"").length);tg.style.setProperty("--n",tgn);
+ var sb=d.getElementById("snpSub");sb.textContent=B.s;
+ h.classList.add("snp-on");
+ var t0=Date.now(),min=(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)?600:6000*k,done=false,ready=false;
+ function hide(){if(done)return;done=true;el.classList.add("out");h.classList.remove("snp-on");setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},700);}
+ function go(){if(!ready)return;var w=min-(Date.now()-t0);if(w>0)setTimeout(hide,w);else hide();}
+ window.__snReady=function(){ready=true;go();};
+ setTimeout(hide,20000);
+})();
+</script>
+<!-- ===== /Preloader ===== -->
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.2/babel.min.js"></script>
+<script src="assets/js/site-core.js"></script>
 <div id="root"></div>
 
 <script type="text/babel">
@@ -1769,6 +1881,11 @@ function Boot() {
     try { window.parent.postMessage({ type: "sn-preview-ready" }, location.origin); } catch (e) {}
     return () => window.removeEventListener("message", onMsg);
   }, []);
+  useEffect(() => {
+    if (state !== "ready" && state !== "error") return;
+    try { if (SITE && !PREVIEW) localStorage.setItem("sn_brand", JSON.stringify({ n: SITE.store.name, t: SITE.store.tagline, s: SITE.preloader ? SITE.preloader.subline : "", on: !SITE.preloader || SITE.preloader.enabled !== false })); } catch (e) {}
+    if (window.__snReady) window.__snReady();
+  }, [state]);
   if (state === "ready") return <App rev={rev} />;
   if (state === "error") {
     const retry = (SITE && SITE.labels && SITE.labels.loadRetry) || SN.DEFAULTS.labels.loadRetry;
