@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-30T21:34:23.908Z",
+  "updatedAt": "2026-10-30T22:29:07.756Z",
   "products": [
     {
       "id": "SN001CS",
@@ -451,6 +451,7 @@
       "reviewCount": 94,
       "soldCopies": 490,
       "copiesLeft": 25,
+      "updatedAt": "2026-10-30T22:24:09.203Z",
       "isFeatured": false
     },
     {
@@ -521,7 +522,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-10-30T21:34:23.908Z",
+      "updatedAt": "2026-10-30T22:29:07.756Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -557,8 +558,8 @@
           "tickerLabel": "OFFERS"
         },
         "ticker": {
-          "autoOffers": false,
-          "autoCombo": false,
+          "autoOffers": true,
+          "autoCombo": true,
           "comboText": "🧩 {comboMin} वा सोभन्दा बढी Ebook छान्दा थप {comboPercent}% Combo Discount!",
           "items": [
             {
@@ -1212,7 +1213,24 @@
             "visible": true
           }
         ],
-        "offers": [],
+        "offers": [
+          {
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "description": "",
+            "active": true,
+            "showInTicker": true,
+            "start": null,
+            "end": null,
+            "discountPercent": null,
+            "productIds": [],
+            "bundleIds": [],
+            "ctaText": "",
+            "ctaAction": "section:bundles",
+            "id": "off_mvvjg6cr9wd3"
+          }
+        ],
         "sections": [
           {
             "id": "announcement",
