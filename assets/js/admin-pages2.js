@@ -5,6 +5,32 @@ const A = window.ADM, SN = window.SN, esc = A.esc, P = A.pages;
 const ebooks = () => A.state.products.filter(p => p.kind !== "bundle");
 const PH = (list) => `<div class="phs">${list.map(x => `<code>${x}</code>`).join(" ")}</div>`;
 
+
+/* ------------------------------------------------------------ PRELOADER */
+P.preloader = {
+  title: "Preloader", sub: "Site खुल्दा Logo आफैं चित्रिन्छ, अनि Brand नाम र Identity Typewriter शैलीमा टाइप हुन्छ",
+  render() {
+    const s = A.site(), p = s.preloader;
+    const accents = [["orange", "🟠 Orange (Default)"], ["sky", "🔵 Sky Blue"], ["emerald", "🟢 Emerald"], ["violet", "🟣 Violet"], ["rose", "🌸 Rose"], ["amber", "🟡 Amber"], ["teal", "🩵 Teal"], ["indigo", "🔷 Indigo"]];
+    return A.note("⏳ Visitor ले Site खोल्ने बित्तिकै: <b>१)</b> बीचमा खुला किताब (Cap, Bulb, Pencil सहित) रेखाले चित्रिन्छ → <b>२)</b> किताबमाथि <b>बोल्ड SN</b> Typewriter शैलीमा टाइप भई Highlight हुन्छ → <b>३)</b> तल Brand नाम, Brand Identity र नेपाली वाक्य टाइप हुन्छ → <b>४)</b> तल Progress रेखा भरिन्छ र Site तयार भएपछि आफैं हट्छ। Cursive/हस्तलेखन छैन — सबै Typewriter हो।") +
+      A.card("चालु / बन्द", A.f(p, { k: "enabled", l: "Preloader देखाउने", t: "bool" }) +
+        A.f(p, { k: "frequency", l: "कहिले देखाउने?", t: "select", o: [["session", "एउटा Browser Tab मा पहिलो पटक मात्र (सिफारिस)"], ["always", "Site खोल्दा हरेक पटक"]], h: "“एक पटक” रोज्दा त्यही Tab मा Page बदल्दा फेरि आउँदैन। Test गर्न Site Link को अन्त्यमा <code>?preloader=1</code> थप्नुहोस्।" }) +
+        A.row(A.f(p, { k: "minSeconds", l: "कम्तीमा कति सेकेन्ड देखिने?", t: "num", min: 1, max: 8, step: 0.1, h: "Typing पूरा नभएसम्म यो भन्दा चाँडो हट्दैन। (१–८)" }) + A.f(p, { k: "speed", l: "Animation को गति", t: "select", o: [["fast", "छिटो"], ["normal", "सामान्य"], ["slow", "ढिलो"]] })) +
+        A.f(p, { k: "skipText", l: "“Skip” बटनको शब्द (वैकल्पिक)", ph: "Skip", h: "खाली = बटन नदेखिने। Site तयार भएपछि मात्र Skip गर्दा हट्छ।" })) +
+      A.card("Logo (बीचमा)", A.f(p, { k: "mark", l: "किताबमाथि टाइप हुने अक्षर (१–३ अक्षर)", ph: "SN", h: "Default SN। खाली राखे SN नै देखिन्छ। Drawing Logo रोजेको बेला मात्र।" }) + A.f(p, { k: "logoMode", l: "Logo कस्तो?", t: "select", o: [["draw", "SN Logo रेखाले चित्रिने (Drawing) — Default"], ["image", "मेरो Upload गरेको Logo (Fade-in)"], ["off", "Logo नदेखाउने (Text मात्र)"]], h: "“मेरो Logo” का लागि Store / Footer पेजमा Logo Upload गर्नुहोस्।" })) +
+      A.card("Typewriter लेखाइ", PH(["{storeName}", "{tagline}"]) +
+        A.f(p, { k: "name", l: "पहिलो लाइन — Brand नाम (ठूलो, Bold)", ph: "{storeName}", h: "खाली = लुक्छ। Default <code>{storeName}</code> = Store को नाम। दोस्रो Capital अक्षरदेखि अर्को रङ (जस्तै Study|Notes)।" }) +
+        A.f(p, { k: "tagline", l: "दोस्रो लाइन — Brand Identity", ph: "{tagline}", h: "खाली = लुक्छ। Default <code>{tagline}</code> = Store को Tagline।" }) +
+        A.f(p, { k: "note", l: "तेस्रो लाइन — नेपाली वाक्य (वैकल्पिक)", ph: "जस्तै: सफलताको पहिलो कदम", h: "खाली = लुक्छ।" }) +
+        A.f(p, { k: "cursor", l: "टाइप गर्दा Cursor (|) देखाउने", t: "bool" })) +
+      A.card("रङ र Style", A.row(A.f(p, { k: "accent", l: "Highlight रङ", t: "select", o: accents }) + A.f(p, { k: "theme", l: "पृष्ठभूमि", t: "select", o: [["light", "सेतो (White) — Default"], ["soft", "हल्का Orange-सेतो"], ["dark", "गाढा (Dark)"]] })) +
+        A.f(p, { k: "progress", l: "तल सानो Progress रेखा देखाउने", t: "bool" })) +
+      A.card("Preview", `<div class="button-row"><button class="btn btn-primary" data-do="prePreview">▶ Preloader Preview हेर्नुहोस्</button><button class="btn btn-ghost" data-do="preReset">↺ Default फर्काउनुहोस्</button></div><p class="muted">Preview मा Publish नगरेको परिवर्तन पनि देखिन्छ। Public Site मा देखिन <b>Publish</b> गर्नुपर्छ।</p>`);
+  }
+};
+A.actions.prePreview = () => { A.pv.drafts = A.$("#pvDrafts").checked; A.openPreview("", "preloader=1"); };
+A.actions.preReset = () => { if (!confirm("Preloader का सबै Setting Default मा फर्काउने?")) return; A.site().preloader = SN.clone(SN.DEFAULTS.preloader); A.save(); A.rerenderKeep(); A.toast("✓ Default फर्कियो"); };
+
 /* ------------------------------------------------------------ MARKETING */
 P.marketing = {
   title: "Marketing", sub: "Ticker, Hooks, Mission/Career, Final CTA, माथिको Offer पट्टी",

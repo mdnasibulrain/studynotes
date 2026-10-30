@@ -5,7 +5,7 @@ const A = window.ADM, SN = window.SN, esc = A.esc;
 
 const NAV = [
   ["मुख्य", [["overview", "🏠", "Overview"], ["products", "📘", "Ebooks"], ["bundles", "🎁", "Bundles"], ["offers", "🔥", "Offers"]]],
-  ["Homepage", [["homepage", "🖼", "Hero / शीर्षक"], ["sections", "↕️", "Sections क्रम"], ["categories", "🗂", "Categories"], ["marketing", "📣", "Marketing / Ticker"], ["steps", "🪜", "Steps"], ["reviews", "⭐", "Reviews"], ["faq", "❓", "FAQ"]]],
+  ["Homepage", [["homepage", "🖼", "Hero / शीर्षक"], ["preloader", "⏳", "Preloader"], ["sections", "↕️", "Sections क्रम"], ["categories", "🗂", "Categories"], ["marketing", "📣", "Marketing / Ticker"], ["steps", "🪜", "Steps"], ["reviews", "⭐", "Reviews"], ["faq", "❓", "FAQ"]]],
   ["व्यवसाय", [["payment", "💳", "Payment / Cart"], ["delivery", "📨", "Delivery"], ["whatsapp", "💬", "WhatsApp"], ["email", "✉️", "Email"], ["messages", "📝", "Messages"]]],
   ["Store", [["store", "🏪", "Store / Footer"], ["social", "🔗", "Social Links"], ["seo", "🔎", "SEO / Share"], ["labels", "🔤", "Button / Text"]]],
   ["Website मा पठाउने", [["publishing", "🚀", "Publish"], ["backup", "💾", "Backup / Import"]]]
@@ -56,11 +56,11 @@ A.livePreview = () => {
   clearTimeout(A._lpT);
   A._lpT = setTimeout(() => { const f = A.$("#pvFrame"); if (f && A.pv.ready && f.contentWindow) f.contentWindow.postMessage(A.previewPayload(), location.origin); }, 350);
 };
-A.openPreview = (hash) => {
+A.openPreview = (hash, query) => {
   A.pv.open = true; A.pv.ready = false; A.pv.hash = hash || "";
   const box = A.$("#pv"); box.hidden = false; document.body.classList.add("pv-open");
   const f = A.$("#pvFrame");
-  f.src = A.base + "index.html?snpreview=1" + (A.pv.hash ? "#" + A.pv.hash : "");
+  f.src = A.base + "index.html?snpreview=1" + (query ? "&" + query : "") + (A.pv.hash ? "#" + A.pv.hash : "");
 };
 A.closePreview = () => { A.pv.open = false; A.$("#pv").hidden = true; document.body.classList.remove("pv-open"); A.$("#pvFrame").src = "about:blank"; };
 window.addEventListener("message", ev => {

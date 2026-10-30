@@ -166,6 +166,7 @@ SN.SECTION_IDS = SN.SECTIONS.map(s => s[0]);
 /* ------------------------------------------------------------------ DEFAULT content = exactly the approved design's text */
 const D = {
   v: 1,
+  preloader: { enabled: true, frequency: "session", name: "{storeName}", tagline: "{tagline}", note: "सफलताको पहिलो कदम", mark: "SN", speed: "normal", logoMode: "draw", accent: "orange", theme: "light", cursor: true, progress: true, minSeconds: 2.5, skipText: "" },
   store: { name: "StudyNotes", tagline: "Your First Step to Success", taglineNe: "नेपाली युवा, विद्यार्थी र प्रोफेसनलहरूका लागि Digital Learning Resources।", founder: "MD. NS (MD. NASA)", logo: null, currency: "रु.", copyright: "© {year} {storeName}. All rights reserved." },
   topbar: { liveBadge: "LIVE •", liveLabel: "आजको Offer", stockText: "🔥 केवल {left} बाँकी · {short}", discountText: "{discount}% सम्म OFF", tickerLabel: "OFFERS" },
   ticker: { autoOffers: true, autoCombo: true, comboText: "🧩 {comboMin} वा सोभन्दा बढी Ebook छान्दा थप {comboPercent}% Combo Discount!", items: [] },
