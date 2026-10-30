@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-30T22:29:07.756Z",
+  "updatedAt": "2026-10-30T22:35:05.766Z",
   "products": [
     {
       "id": "SN001CS",
@@ -71,7 +71,7 @@
       "regularPrice": 999,
       "offerPrice": 499,
       "offerActive": true,
-      "offerEndsAt": "2026-12-31T23:59:00+05:45",
+      "offerEndsAt": "2026-10-31T23:59+05:45",
       "offerLabel": "BESTSELLER",
       "urgencyLabel": "Limited Copies Offer",
       "countdownVisible": true,
@@ -79,6 +79,7 @@
       "reviewCount": 142,
       "soldCopies": 850,
       "copiesLeft": 14,
+      "updatedAt": "2026-10-30T22:34:36.187Z",
       "isFeatured": true
     },
     {
@@ -145,7 +146,7 @@
       "regularPrice": 1299,
       "offerPrice": 599,
       "offerActive": true,
-      "offerEndsAt": "2026-12-31T23:59:00+05:45",
+      "offerEndsAt": "2026-10-31T23:59+05:45",
       "offerLabel": "HOT DEAL",
       "urgencyLabel": "Popular Choice",
       "countdownVisible": true,
@@ -153,6 +154,7 @@
       "reviewCount": 98,
       "soldCopies": 620,
       "copiesLeft": 9,
+      "updatedAt": "2026-10-30T22:34:26.682Z",
       "isFeatured": true
     },
     {
@@ -220,7 +222,7 @@
       "regularPrice": 1100,
       "offerPrice": 499,
       "offerActive": true,
-      "offerEndsAt": "2026-12-31T23:59:00+05:45",
+      "offerEndsAt": "2026-10-31T23:59+05:45",
       "offerLabel": "EXAM SPECIAL",
       "urgencyLabel": "High Demand",
       "countdownVisible": true,
@@ -228,6 +230,7 @@
       "reviewCount": 210,
       "soldCopies": 1200,
       "copiesLeft": 17,
+      "updatedAt": "2026-10-30T22:33:55.955Z",
       "isFeatured": true
     },
     {
@@ -295,7 +298,7 @@
       "regularPrice": 899,
       "offerPrice": 399,
       "offerActive": true,
-      "offerEndsAt": "2026-12-31T23:59:00+05:45",
+      "offerEndsAt": "2026-10-31T23:59+05:45",
       "offerLabel": "FINANCE PICK",
       "urgencyLabel": "Beginner Friendly",
       "countdownVisible": true,
@@ -303,6 +306,7 @@
       "reviewCount": 85,
       "soldCopies": 510,
       "copiesLeft": 22,
+      "updatedAt": "2026-10-30T22:33:26.261Z",
       "isFeatured": false
     },
     {
@@ -369,7 +373,7 @@
       "regularPrice": 799,
       "offerPrice": 349,
       "offerActive": true,
-      "offerEndsAt": "2026-12-31T23:59:00+05:45",
+      "offerEndsAt": "2026-10-31T23:59+05:45",
       "offerLabel": "CAREER BOOST",
       "urgencyLabel": "Essential Guide",
       "countdownVisible": true,
@@ -377,6 +381,7 @@
       "reviewCount": 115,
       "soldCopies": 730,
       "copiesLeft": 18,
+      "updatedAt": "2026-10-30T22:33:05.119Z",
       "isFeatured": false
     },
     {
@@ -443,7 +448,7 @@
       "regularPrice": 899,
       "offerPrice": 399,
       "offerActive": true,
-      "offerEndsAt": "2026-12-31T23:59:00+05:45",
+      "offerEndsAt": "2026-10-31T23:59+05:45",
       "offerLabel": "RECOMMENDED",
       "urgencyLabel": "High Value",
       "countdownVisible": true,
@@ -451,7 +456,7 @@
       "reviewCount": 94,
       "soldCopies": 490,
       "copiesLeft": 25,
-      "updatedAt": "2026-10-30T22:24:09.203Z",
+      "updatedAt": "2026-10-30T22:32:42.988Z",
       "isFeatured": false
     },
     {
@@ -522,7 +527,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-10-30T22:29:07.756Z",
+      "updatedAt": "2026-10-30T22:35:05.766Z",
       "site": {
         "v": 1,
         "preloader": {
