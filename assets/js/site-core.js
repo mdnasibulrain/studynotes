@@ -171,6 +171,7 @@ const D = {
   topbar: { liveBadge: "LIVE •", liveLabel: "आजको Offer", stockText: "🔥 केवल {left} बाँकी · {short}", discountText: "{discount}% सम्म OFF", tickerLabel: "OFFERS" },
   ticker: { autoOffers: true, autoCombo: true, comboText: "🧩 {comboMin} वा सोभन्दा बढी Ebook छान्दा थप {comboPercent}% Combo Discount!", items: [] },
   hero: {
+    carouselMode: "all",
     badge: "{storeName} • {tagline}", headBefore: "सफलताको", headHighlight: "पहिलो कदम", headAfter: "आजै यहीँबाट सुरु गर्नुहोस्",
     description: "Skill, Exam र Career तिर स्पष्ट बाटो देखाउने Practical Ebooks — सरल नेपाली भाषामा, मोबाइलमै पढ्न मिल्ने। यो खर्च होइन, तपाईंको **पहिलो उपलब्धि** हो।",
     cta1: { text: "Ebooks हेर्नुहोस्", action: "section:explore" }, cta2: { text: "Bundle Offers", action: "section:bundles" },
@@ -191,19 +192,19 @@ const D = {
     { id: "g7", title: "Career Path स्पष्ट पार्ने", icon: "compass", category: "Nepali Youth Career Guides", text: "नेपालमै अवसर खोज्ने", visible: true },
     { id: "g8", title: "Personal Growth बढाउने", icon: "zap", category: "Personality Development", text: "निरन्तर सिकाइ", visible: true }] },
   library: { eyebrow: "STUDYNOTES LIBRARY", title: "Explore Ebook Library" },
-  combo: { eyebrow: "CUSTOM COMBO", title: "आफ्नो Custom Combo बनाउनुहोस्", sub: "कम्तीमा {comboMin} Ebook छान्नुहोस् र आजको Price मा थप {comboPercent}% Combo Discount पाउनुहोस्।" },
+  combo: { eyebrow: "CUSTOM COMBO", title: "आफ्नो Custom Combo बनाउनुहोस्", sub: "कम्तीमा {comboMinN} Ebook छान्नुहोस् र आजको Price मा थप {comboPercent}% Combo Discount पाउनुहोस्।" },
   bundles: { eyebrow: "CURATED PACKAGES", title: "Best Bundle Offers", sub: "तयार गरिएका Ebook Bundles — सर्वाधिक बचत, एकै पटकमा पूरा Success Kit।" },
-  reviews: { eyebrow: "RATINGS & REVIEWS", title: "पाठकहरूको भरोसा", sub: "हरेक Ebook को Rating र Reviews एकै ठाउँमा।", items: [] },
-  steps: { eyebrow: "EBOOK RECEIVING PROCESS", title: "Ebook कसरी प्राप्त गर्ने?", sub: "सरल {stepCount} चरण — Payment पुष्टि भएपछि {delivery}मै Delivery।", items: [
+  reviews: { eyebrow: "RATINGS & REVIEWS", title: "पाठकहरूको भरोसा", sub: "हरेक Ebook को Rating र Reviews एकै ठाउँमा।", sampleNote: "ℹ️ देखाइएका समीक्षा नमुना (Sample) हुन् — वास्तविक ग्राहक feedback थपेपछि “Verified” देखिन्छ।", productSampleNote: "ℹ️ नमुना (Sample) समीक्षा — वास्तविक ग्राहक feedback थपेपछि “Verified” देखिन्छ।", sampleBadge: "Sample", items: [] },
+  steps: { eyebrow: "EBOOK RECEIVING PROCESS", title: "Ebook कसरी प्राप्त गर्ने?", sub: "सरल {stepCount} चरण — Payment पुष्टि भएपछि {deliveryNe}मै Delivery।", items: [
     { id: "s1", icon: "book", title: "Ebook छान्नुहोस्", text: "Ebook, Custom Combo वा Bundle रोज्नुहोस्।", visible: true },
     { id: "s2", icon: "eye", title: "Preview हेर्नुहोस्", text: "नमुना अध्याय र Chapter Outline हेर्नुहोस्।", visible: true },
     { id: "s3", icon: "cart", title: "Cart मा थप्नुहोस्", text: "कुल रकम र बचत एकै ठाउँमा हेर्नुहोस्।", visible: true },
     { id: "s4", icon: "card", title: "NSPAY / WhatsApp", text: "NSPAY बाट Payment वा WhatsApp मा Order गर्नुहोस्।", visible: true },
     { id: "s5", icon: "file", title: "Screenshot + ID पठाउनुहोस्", text: "Payment Screenshot र Product ID WhatsApp मा पठाउनुहोस्।", visible: true },
     { id: "s6", icon: "zap", title: "{delivery} मा Delivery", text: "पुष्टि भएपछि PDF WhatsApp/Email मा प्राप्त गर्नुहोस्।", visible: true }] },
-  chat: { eyebrow: "CUSTOMER TESTIMONIALS", title: "ग्राहकसँगको कुराकानी", sub: "Order देखि Delivery सम्म — WhatsApp मा यसरी हुन्छ।", headerName: "{storeName} Support", status: "online", inputText: "WhatsApp मा Message गर्नुहोस्...", items: [] },
+  chat: { eyebrow: "CUSTOMER TESTIMONIALS", title: "ग्राहकसँगको कुराकानी", sub: "Order देखि Delivery सम्म — WhatsApp मा यसरी हुन्छ।", headerName: "{storeName} Support", status: "online", inputText: "WhatsApp मा Message गर्नुहोस्...", sampleNote: "ℹ️ नमुना (Sample) कुराकानी — वास्तविक ग्राहक सन्देश (अनुमति सहित) थपेर यो खण्ड अपडेट गर्नुहोस्।", items: [] },
   faq: { eyebrow: "FAQ", title: "अक्सर सोधिने प्रश्नहरू", productTitle: "सामान्य प्रश्नहरू", items: [
-    { id: "f1", q: "Ebook भनेको के हो र यो कसरी प्राप्त हुन्छ?", a: "Ebook (Electronic Book) डिजिटल पुस्तक हो जसलाई तपाईं आफ्नो मोबाइल, ट्याब्लेट वा कम्प्युटरमा सजिलै पढ्न सक्नुहुन्छ। Payment पुष्टि भएपछि PDF फाइल तपाईंको WhatsApp वा Email मा {delivery}भित्र पठाइन्छ।", visible: true, onProduct: false },
+    { id: "f1", q: "Ebook भनेको के हो र यो कसरी प्राप्त हुन्छ?", a: "Ebook (Electronic Book) डिजिटल पुस्तक हो जसलाई तपाईं आफ्नो मोबाइल, ट्याब्लेट वा कम्प्युटरमा सजिलै पढ्न सक्नुहुन्छ। Payment पुष्टि भएपछि PDF फाइल तपाईंको WhatsApp वा Email मा {deliveryNe}भित्र पठाइन्छ।", visible: true, onProduct: false },
     { id: "f2", q: "कुन-कुन विषयका Ebook उपलब्ध छन्?", a: "हाल यी विधाका Ebook उपलब्ध छन्: {categories}।", visible: true, onProduct: false },
     { id: "f3", q: "Order कसरी गर्ने?", a: "दुई तरिका: (१) Cart मा Ebook थपेर 'NSPAY मा Payment' क्लिक गर्नुहोस्, वा (२) 'WhatsApp मा Order' क्लिक गर्नुहोस् — Product ID सहितको Order सन्देश आफैं तयार हुन्छ।", visible: true, onProduct: true },
     { id: "f4", q: "Payment गरेपछि के गर्नुपर्छ?", a: "Payment सफल भएपछि Screenshot तथा Product ID हाम्रो WhatsApp ({whatsappDisplay}) मा पठाउनुहोस्। पुष्टि भएपछि {delivery}मा Ebook प्राप्त हुन्छ।", visible: true, onProduct: true },
@@ -375,7 +376,7 @@ SN.LABEL_META = [
   ["ppDiscountRow","Product page","Discount row ({n})","Today Discount ({n}%)"],
   ["ppComboNote","Product page","Combo टिप्पणी ({min},{percent})","{min}+ Ebook छान्दा थप {percent}% Combo Discount स्वतः लाग्छ।"],
   ["upKicker","Product page","Bundle सुझाव: सानो शीर्षक","🎁 अझ बढी बचत"],
-  ["upTitle","Product page","Bundle सुझाव शीर्षक ({title},{n},{price})","{title} — {n} Ebooks मात्र {price}"],
+  ["upTitle","Product page","Bundle सुझाव शीर्षक ({short},{title},{nNe},{n},{price})","{short} — {nNe} Ebooks मात्र {price}"],
   ["upText","Product page","Bundle सुझाव वर्णन ({regular},{discount})","सबै Ebook अलग्गै किन्दा {regular}, Bundle मा {discount}% सम्म बचत।"],
   ["upCombo","Product page","Custom Combo button","Custom Combo"],
   ["ppSuggested","Product page","अन्य Ebook शीर्षक","यी Ebook पनि हेर्नुहोस्"],
@@ -542,15 +543,15 @@ SN.runtime = (catalog, settings, now, opts) => {
   arr(site.offers).forEach(o => { if (o && o.active !== false && SN.inWindow(o.start, o.end, now)) { const e = SN.parseTime(o.end); if (e && e > now) ends.push(e); } });
   const nearestEnd = ends.length ? Math.min(...ends) : null;
   // reviews / chat
-  const reviews = sortByOrder(arr(site.reviews.items).filter(r => r && r.visible !== false && str(r.text) && str(r.name))).map(r => ({ name: str(r.name), place: str(r.place), rating: Math.min(5, Math.max(1, num(r.rating) || 5)), productId: EBYID[r.productId] ? r.productId : null, date: str(r.date), text: str(r.text), verified: !!r.verified }));
-  const chat = sortByOrder(arr(site.chat.items).filter(m => m && m.visible !== false && str(m.text))).map(m => ({ from: m.from === "out" ? "out" : "in", name: str(m.name), time: str(m.time), text: str(m.text) }));
+  const reviews = sortByOrder(arr(site.reviews.items).filter(r => r && r.visible !== false && str(r.text) && str(r.name))).map(r => ({ name: str(r.name), place: str(r.place), rating: Math.min(5, Math.max(1, num(r.rating) || 5)), productId: EBYID[r.productId] ? r.productId : null, date: str(r.date), text: str(r.text), verified: !!r.verified, sample: !!r.sample }));
+  const chat = sortByOrder(arr(site.chat.items).filter(m => m && m.visible !== false && str(m.text))).map(m => ({ from: m.from === "out" ? "out" : "in", name: str(m.name), time: str(m.time), text: str(m.text), sample: !!m.sample }));
   const goals = sortByOrder(arr(site.goals.items).filter(g => g && g.visible !== false && str(g.title)));
   // variables usable inside texts
   const catNames = catList.filter(c => c.visible && ebooks.some(e => e.category === c.id)).map(c => c.name);
   const vars = {
     storeName: site.store.name, storeNameUpper: String(site.store.name).toUpperCase(), tagline: site.store.tagline, founder: site.store.founder,
-    delivery: site.delivery.time, deliveryMethod: site.delivery.method, deliveryText: SN.fill(site.delivery.text, { delivery: site.delivery.time }, "keep"), whatsappDisplay: site.contact.whatsappDisplay, whatsapp: site.contact.whatsappDisplay, email: site.contact.supportEmail,
-    comboMin: SN.ne(site.cart.comboMin), comboPercent: site.cart.comboPercent, maxDiscount: stats.maxDiscount || null, categories: catNames.join(", "),
+    delivery: site.delivery.time, deliveryNe: SN.ne(site.delivery.time), deliveryMethod: site.delivery.method, deliveryText: SN.fill(site.delivery.text, { delivery: site.delivery.time }, "keep"), whatsappDisplay: site.contact.whatsappDisplay, whatsapp: site.contact.whatsappDisplay, email: site.contact.supportEmail,
+    comboMin: SN.ne(site.cart.comboMin), comboMinN: site.cart.comboMin, comboPercent: site.cart.comboPercent, maxDiscount: stats.maxDiscount || null, categories: catNames.join(", "),
     year: new Date(now).getFullYear(), nspayUrl: site.payment.nspayUrl, supportHours: site.contact.supportHours, stepCount: SN.ne(arr(site.steps.items).filter(s => s.visible !== false).length)
   };
   // ticker lines
@@ -685,7 +686,7 @@ SN.validate = (state, now) => {
     else if (!catNames.has(p.category.toLowerCase())) W(`${nm}: "${p.category}" category सूचीमा छैन — Categories पेजमा थप्नुहोस्।`, "categories");
     if (!(p.regularPrice >= 0) || p.regularPrice === null) E(`${nm}: Regular price राख्नुहोस्।`, "products");
     if (p.offerPrice !== null && p.offerPrice > p.regularPrice) E(`${nm}: Offer price Regular price भन्दा बढी हुनु हुँदैन।`, "products");
-    if (!p.cover) E(`${nm}: Cover image चाहिन्छ।`, "products");
+    if (!p.cover) W(`${nm}: Cover image छैन — Website मा Designed (अक्षर/रङ) Cover देखिन्छ। असली Cover राख्न Edit गर्नुहोस्।`, "products");
     if (p.offerEndsAt && SN.parseTime(p.offerEndsAt) !== null && SN.parseTime(p.offerEndsAt) <= now && p.offerPrice !== null && p.offerActive) W(`${nm}: Offer को समय सकिसकेको छ — Public site मा अब Regular price देखिन्छ।`, "products");
     if (p.offerStart && p.offerEndsAt && SN.parseTime(p.offerStart) >= SN.parseTime(p.offerEndsAt)) E(`${nm}: Offer सुरु हुने समय अन्त्यभन्दा अघि हुनुपर्छ।`, "products");
     if (p.rating !== null && (p.rating < 0 || p.rating > 5)) E(`${nm}: Rating 0 देखि 5 बीच हुनुपर्छ।`, "products");
