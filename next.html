@@ -37,114 +37,192 @@ button{-webkit-tap-highlight-color:transparent}
 </style>
 </head>
 <body>
-<!-- ===== StudyNotes Preloader: pure HTML/CSS/SVG (no React/Tailwind needed, paints before the heavy scripts load). Admin: Store → Preloader ===== -->
+<!-- ===== StudyNotes Preloader v3: plain HTML/CSS/SVG/JS (no React, no Tailwind) so it paints before the heavy scripts load.
+     Open book + decorations are drawn, "SN" is TYPED on the book, then brand name / identity / Nepali line are typed (typewriter) with a progress bar.
+     Everything is controlled from Admin → Preloader. ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&family=Nunito:wght@900&display=swap" rel="stylesheet">
 <style id="snp-css">
 html.snp-on,html.snp-on body{overflow:hidden}
-#snp{--k:1;position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;background-color:#fff;
- background-image:radial-gradient(ellipse 62% 46% at 50% 40%,rgba(253,186,116,.30),transparent 72%),linear-gradient(rgba(249,115,22,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(249,115,22,.055) 1px,transparent 1px);background-size:auto,30px 30px,30px 30px;background-position:center;
+#snp{--a:#F97316;--ad:#EA580C;--bg:#FFFDFB;--bg2:#FFE8D1;--ink:#14213A;--mut:#64748B;--card:#fff;--grid:rgba(249,115,22,.09);--k:1;--lw:min(80vw,340px);
+ position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;color:var(--ink);
+ background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/36px 36px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/36px 36px,var(--bg);
  transition:opacity .55s ease,transform .55s ease,visibility .55s}
-#snp.out{opacity:0;visibility:hidden;transform:scale(1.035)}
-#snp svg{width:min(88vw,400px);height:auto;overflow:visible;display:block}
-#snp .d{stroke-dasharray:1;stroke-dashoffset:1;animation:snpDraw calc(var(--t,1.2s)*var(--k)) cubic-bezier(.65,0,.35,1) calc(var(--d,0s)*var(--k)) forwards}
-#snp .f{opacity:0;animation:snpFade calc(.6s*var(--k)) ease calc(var(--d,0s)*var(--k)) forwards}
-#snp .p{opacity:0;transform-box:fill-box;transform-origin:center;animation:snpPop calc(.55s*var(--k)) cubic-bezier(.2,.9,.3,1.4) calc(var(--d,0s)*var(--k)) forwards}
-#snp .gd{opacity:0;animation:snpGuide calc(2.4s*var(--k)) ease calc(var(--d,0s)*var(--k)) forwards}
-#snp .fl{animation:snpFloat 3.6s ease-in-out calc(3.2s*var(--k)) infinite}
-#snp .tw{transform-box:fill-box;transform-origin:center;animation:snpTwinkle 2.2s ease-in-out infinite}
-#snp .snp-sn{transform-box:fill-box;transform-origin:center;animation:snpPulse 1.8s ease-in-out calc(3s*var(--k)) infinite}
-#snp .snp-hl{animation:snpPop calc(.55s*var(--k)) cubic-bezier(.2,.9,.3,1.4) calc(var(--d,0s)*var(--k)) forwards,snpHalo 1.8s ease-in-out calc(3s*var(--k)) infinite}
-@keyframes snpPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
-@keyframes snpHalo{0%,100%{opacity:1}50%{opacity:.55}}
+#snp[data-th=soft]{--bg:#FFF4E6;--card:#fff}
+#snp[data-th=dark]{--bg:#0B1220;--ink:#F8FAFC;--mut:#94A3B8;--card:#16233D;--bg2:#1E293B;--grid:rgba(255,255,255,.05)}
+#snp:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 62% 40% at 50% 40%,color-mix(in srgb,var(--a) 16%,transparent),transparent 72%)}
+#snp.out{opacity:0;visibility:hidden;transform:scale(1.03)}
+.snp-c{position:relative;display:flex;flex-direction:column;align-items:center;max-width:100%;font-family:"Courier Prime","Courier New",Courier,"Noto Sans Devanagari",ui-monospace,monospace}
+/* ---- logo (book) ---- */
+.snp-logo{position:relative;width:var(--lw);aspect-ratio:360/300;margin-bottom:14px}
+.snp-logo.off{display:none}
+.snp-mark,.snp-img{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.snp-img{object-fit:contain;border-radius:22px;opacity:0;transform:scale(.7);animation:snpImg calc(.8s*var(--k)) cubic-bezier(.2,.9,.3,1.2) forwards;display:none;inset:12% 22%;width:56%;height:76%}
+.snp-logo.img .snp-img{display:block}.snp-logo.img .snp-mark,.snp-logo.img .snp-sn{display:none}
+@keyframes snpImg{to{opacity:1;transform:none}}
+.snp-mark{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.snp-mark .d{stroke-dasharray:1;stroke-dashoffset:1;animation:snpDraw var(--t) cubic-bezier(.6,0,.3,1) calc(var(--d)*var(--k)) forwards}
+.snp-mark .br{stroke:var(--a);stroke-width:2.5;opacity:.75;--t:calc(.5s*var(--k));--d:.05s}
+.snp-mark .ol{stroke:var(--ink);stroke-width:5;--t:calc(.95s*var(--k));--d:.2s}
+.snp-mark .pg{stroke:var(--ink);stroke-width:2.6;--t:calc(.6s*var(--k));--d:.75s}
+.snp-mark .dc{stroke:var(--ink);stroke-width:3;--t:calc(.7s*var(--k));--d:.9s}
+.snp-mark .ac{stroke:var(--a);stroke-width:3;--t:calc(.5s*var(--k));--d:1.2s}
+.snp-mark .fade{opacity:0;animation:snpFade calc(.5s*var(--k)) ease calc(var(--d)*var(--k)) forwards}
+.snp-mark .cv{fill:url(#snpg);stroke:none;--d:.55s}
+.snp-mark .pgf{fill:var(--card);stroke:none;--d:.85s}
+.snp-mark .ln{stroke:color-mix(in srgb,var(--a) 45%,#fff);stroke-width:2.6;--d:1.05s}
+.snp-mark .sp{fill:color-mix(in srgb,var(--a) 28%,#fff);stroke:var(--a);stroke-width:2.2;--d:1.35s}
+.snp-mark .dot{fill:var(--a);stroke:none;--d:1.4s}
+.snp-mark .circ{fill:color-mix(in srgb,var(--a) 14%,var(--card));stroke:var(--a);stroke-width:2.4;stroke-dasharray:5 6;opacity:0;transform-box:fill-box;transform-origin:center;animation:snpCirc calc(.55s*var(--k)) cubic-bezier(.3,.8,.3,1.3) calc(1.35s*var(--k)) forwards,snpSpin 14s linear calc(1.9s*var(--k)) infinite}
 @keyframes snpDraw{to{stroke-dashoffset:0}}
 @keyframes snpFade{to{opacity:1}}
-@keyframes snpPop{from{opacity:0;transform:scale(.3) rotate(-20deg)}to{opacity:1;transform:none}}
-@keyframes snpGuide{0%{opacity:0}25%{opacity:.7}70%{opacity:.7}100%{opacity:0}}
-@keyframes snpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes snpTwinkle{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
-.snp-brand{position:relative;display:inline-block;margin-top:-4px;font:900 clamp(30px,10.5vw,46px)/1.15 ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;color:#0F172A;letter-spacing:.04em;-webkit-text-stroke:2.6px currentColor;stroke-linejoin:round;paint-order:stroke fill;white-space:nowrap}
-.snp-brand .tx{display:inline-block;clip-path:inset(0 100% 0 0);animation:snpType calc(var(--n)*85ms*var(--k)) steps(var(--n)) calc(2.7s*var(--k)) forwards}
-.snp-brand .o{color:#EA580C}
-.snp-brand .cr{position:absolute;top:8%;bottom:8%;left:0;width:.11em;background:#EA580C;opacity:0;animation:snpCaret calc(var(--n)*85ms*var(--k)) steps(var(--n)) calc(2.7s*var(--k)) forwards,snpBlink .9s step-end calc((2.7s + var(--n)*85ms)*var(--k)) infinite}
-@keyframes snpCaret{0%{left:0;opacity:1}99%{left:calc(100% - .11em);opacity:1}100%{left:calc(100% - .11em);opacity:1}}
+@keyframes snpCirc{0%{opacity:0;transform:scale(.4)}100%{opacity:1;transform:scale(1)}}
+@keyframes snpSpin{to{stroke-dashoffset:-110}}
+.snp-ring{position:absolute;left:50%;top:58%;width:calc(var(--lw)*.3);height:calc(var(--lw)*.3);margin:calc(var(--lw)*-.15) 0 0 calc(var(--lw)*-.15);border-radius:50%;border:3px solid var(--a);opacity:0;pointer-events:none}
+.snp-logo.pop .snp-ring{animation:snpRing .8s ease-out 1 forwards}
+@keyframes snpRing{0%{opacity:.8;transform:scale(.9)}100%{opacity:0;transform:scale(2.1)}}
+/* ---- SN typed on the book ---- */
+.snp-sn{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);z-index:2;font-family:"Nunito","Arial Rounded MT Bold","Trebuchet MS",system-ui,sans-serif;font-weight:900;font-size:calc(var(--lw)*.185);line-height:1;color:var(--ad);-webkit-text-stroke:calc(var(--lw)*.011) var(--ad);letter-spacing:.01em;text-shadow:0 6px 18px color-mix(in srgb,var(--a) 35%,transparent)}
+.snp-logo.pop .snp-sn{animation:snpPop .5s cubic-bezier(.2,.9,.3,1.5) 1}
+@keyframes snpPop{0%{transform:translate(-50%,-50%) scale(1)}45%{transform:translate(-50%,-50%) scale(1.14)}100%{transform:translate(-50%,-50%) scale(1)}}
+.snp-sn .snp-cr{background:var(--a);width:.075em;min-width:3px;height:.82em;vertical-align:-.08em;margin-left:.04em}
+/* ---- typewriter lines ---- */
+.snp-l{position:relative;display:inline-block;white-space:nowrap;visibility:hidden;line-height:1.25}
+.snp-l.on{visibility:visible}
+.snp-l .gh{visibility:hidden;display:inline-block}
+.snp-l .lv{position:absolute;left:0;top:0;white-space:nowrap}
+.snp-l .b{color:var(--ad)}
+.snp-sn.snp-l{position:absolute}
+.snp-sn .gh{visibility:hidden}
+.snp-nw{display:inline-flex;flex-direction:column;align-items:stretch;max-width:100%}
+.snp-name{font-weight:700;font-size:clamp(32px,11vw,50px);letter-spacing:-.005em;text-align:center}
+.snp-rule{display:block;height:4px;margin-top:6px;border-radius:4px;background:linear-gradient(90deg,var(--a),var(--ad));transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.3,.8,.3,1)}
+.snp-rule.on{transform:scaleX(1)}
+.snp-tag{margin-top:16px;font-weight:700;font-size:clamp(10px,3.1vw,13.5px);letter-spacing:.3em;text-transform:uppercase;color:var(--ink)}
+.snp-note{margin-top:12px;font-family:"Noto Sans Devanagari","Mukta",system-ui,sans-serif;font-weight:700;font-size:clamp(17px,5vw,21px);color:var(--ad)}
+.snp-cr{display:inline-block;width:.1em;min-width:3px;height:1.05em;margin-left:2px;vertical-align:-.14em;background:var(--a);animation:snpBlink .8s step-end infinite}
+#snp.nocur .snp-cr{display:none}
 @keyframes snpBlink{0%,100%{opacity:1}50%{opacity:0}}
-#snp svg.snp-ul{width:min(70vw,260px);height:6px;margin:6px auto 0;display:block;overflow:visible}
-.snp-tag{margin-top:14px;position:relative;font:800 11.5px/1.5 ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono","Courier New",monospace;letter-spacing:.3em;text-transform:uppercase;color:#334155;-webkit-text-stroke:.5px currentColor;display:inline-block;max-width:94vw;white-space:nowrap}
-.snp-tag i{display:inline-block;font-style:normal;clip-path:inset(0 100% 0 0);animation:snpType calc(var(--n)*55ms*var(--k)) steps(var(--n)) calc(3.7s*var(--k)) forwards}
-@keyframes snpType{to{clip-path:inset(0 0 0 0)}}
-.snp-sub{margin-top:8px;font:600 15px/1.5 "Noto Sans Devanagari",Inter,Arial,sans-serif;color:#EA580C;opacity:0;transform:translateY(8px);animation:snpUp calc(.6s*var(--k)) ease calc(5.1s*var(--k)) forwards}
-@keyframes snpUp{to{opacity:1;transform:none}}
-.snp-bar{width:min(52vw,170px);height:3px;margin-top:22px;border-radius:3px;background:#FFEDD5;overflow:hidden;opacity:0;animation:snpFade .4s ease calc(2.6s*var(--k)) forwards}
-.snp-bar b{display:block;height:100%;width:100%;border-radius:3px;background:linear-gradient(90deg,#FB923C,#EA580C);transform:scaleX(0);transform-origin:left;animation:snpBar calc(var(--dur,5s) - 2.6s*var(--k)) linear calc(2.6s*var(--k)) forwards}
+.snp-bar{width:min(46vw,170px);height:4px;margin-top:26px;border-radius:4px;background:var(--bg2);overflow:hidden;opacity:0}
+.snp-bar.on{opacity:1}
+.snp-bar b{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--a),var(--ad));transform:scaleX(0);transform-origin:left}
+.snp-bar.run b{animation:snpBar var(--bd,3s) linear forwards}
+#snp.nobar .snp-bar{display:none}
 @keyframes snpBar{to{transform:scaleX(1)}}
-@media (prefers-reduced-motion:reduce){#snp *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important;clip-path:none!important;transform:none!important}#snp .gd,#snp .cr{opacity:0!important}}
+.snp-skip{position:absolute;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));min-height:44px;padding:0 16px;border:1.5px solid color-mix(in srgb,var(--ink) 18%,transparent);border-radius:999px;background:transparent;color:var(--mut);font:700 13px/1 "Courier Prime","Courier New",monospace;cursor:pointer}
+@media (prefers-reduced-motion:reduce){#snp *{animation:none!important}#snp .snp-mark .d{stroke-dashoffset:0}#snp .snp-mark .fade,#snp .snp-mark .circ{opacity:1}#snp .snp-img{opacity:1;transform:none}#snp .snp-ring{display:none}#snp .snp-rule{transition:none}}
 </style>
-<div id="snp" role="status" aria-label="Loading">
-<svg viewBox="0 0 400 330" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
- <defs><linearGradient id="snpg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FDBA74"/><stop offset="1" stop-color="#EA580C"/></linearGradient></defs>
- <!-- construction guides (pencil layout lines, fade away) -->
- <g class="gd" style="--d:0s" stroke="#FDBA74" stroke-width="1.2" stroke-dasharray="3 6">
-  <ellipse cx="200" cy="165" rx="178" ry="150"/><line x1="200" y1="6" x2="200" y2="324"/><line x1="14" y1="165" x2="386" y2="165"/><circle cx="200" cy="165" r="104"/>
- </g>
- <g stroke="#FDBA74" stroke-width="1.3" class="f" style="--d:.1s"><path d="M18 30v-14h14M382 30v-14h-14M18 300v14h14M382 300v14h-14"/></g>
- <!-- LOGO: open book, drawn like a pencil sketch -->
- <g class="fl"><g transform="translate(84 62) scale(3.62)">
-  <path class="f" style="--d:1.45s" d="M32 9C25 4 14 3 2 5.5v42c12-2.5 23-1.5 30 4.5 7-6 18-7 30-4.5v-42C50 3 39 4 32 9z" fill="url(#snpg)" stroke="none"/>
-  <path class="f" style="--d:1.55s" d="M32 13.5C26 9.5 17 8.5 7.5 10v33c9.5-1.4 18.5-.4 24.5 4.5 6-4.9 15-5.9 24.5-4.5V10C47 8.5 38 9.5 32 13.5z" fill="#fff" stroke="none"/>
-  <path class="d" pathLength="1" style="--d:.55s;--t:1.2s" d="M32.6 9.6C25.4 4.2 13.6 3.3 1.6 6v41.4c12.2-2.6 23.4-1.4 30.4 4.2 7.2-5.8 18.4-6.8 30.6-4.2V6C50.4 3 39.2 4.4 32.6 9.6z" stroke="#EA580C" stroke-width=".5" opacity=".55"/>
-  <path class="d" pathLength="1" style="--d:.2s;--t:1.25s" d="M32 9C25 4 14 3 2 5.5v42c12-2.5 23-1.5 30 4.5 7-6 18-7 30-4.5v-42C50 3 39 4 32 9z" stroke="#1E293B" stroke-width=".85"/>
-  <path class="d" pathLength="1" style="--d:.7s;--t:1s" d="M32 13.5C26 9.5 17 8.5 7.5 10v33c9.5-1.4 18.5-.4 24.5 4.5 6-4.9 15-5.9 24.5-4.5V10C47 8.5 38 9.5 32 13.5z" stroke="#1E293B" stroke-width=".6"/>
-  <path class="d" pathLength="1" style="--d:1s;--t:.6s" d="M32 13.5V52" stroke="#1E293B" stroke-width=".45"/>
-  <circle class="p snp-hl" style="--d:1.25s" cx="33" cy="32.2" r="13.2" fill="#FFEDD5" stroke="#FDBA74" stroke-width=".5" stroke-dasharray="1.4 1.6"/>
-  <g class="snp-sn"><path class="d" pathLength="1" style="--d:1.35s;--t:.7s" d="M29.6 28.4C28.2 26 24.2 25.4 22.4 27.2c-1.8 1.9.5 3.9 3.1 4.9 2.8 1.1 5 2.9 3.4 5.1-1.8 2.2-5.9 1.6-7.8-1" stroke="#EA580C" stroke-width="4"/>
-  <path class="d" pathLength="1" style="--d:1.75s;--t:.7s" d="M35 38.6V25.8l9.6 12.8V25.8" stroke="#EA580C" stroke-width="4"/></g>
-  <path class="f" style="--d:2.3s" d="M12 17c4-1 8-.8 12 .4M12 22c4-1 8-.8 12 .4M12 27c4-1 8-.8 12 .4M52 17c-4-1-8-.8-12 .4M52 22c-4-1-8-.8-12 .4" stroke="#FDBA74" stroke-width=".5"/>
- </g></g>
- <!-- sketch illustrations around the logo -->
- <g stroke="#1E293B" stroke-width="2.2"> <!-- graduation cap -->
-  <path class="d" pathLength="1" style="--d:1.2s;--t:.9s" d="M26 60L62 42l36 18-36 18z"/><path class="d" pathLength="1" style="--d:1.7s;--t:.6s" d="M44 69v15c11 9 27 9 36 0V69"/><path class="d" pathLength="1" style="--d:2s;--t:.4s" d="M98 60v22" stroke="#EA580C"/></g>
- <g stroke="#1E293B" stroke-width="2.2"> <!-- light bulb -->
-  <path class="d" pathLength="1" style="--d:1.4s;--t:1s" d="M338 34a21 21 0 0 1 12 38v9h-24v-9a21 21 0 0 1 12-38z"/><path class="d" pathLength="1" style="--d:2s;--t:.4s" d="M328 90h20M331 97h14" stroke="#EA580C"/>
-  <path class="d" pathLength="1" style="--d:2.2s;--t:.4s" d="M338 12v8M311 24l6 6M365 24l-6 6" stroke="#FB923C"/></g>
- <g transform="translate(340 262) rotate(38)" stroke="#1E293B" stroke-width="2.2"> <!-- pencil -->
-  <path class="d" pathLength="1" style="--d:1.6s;--t:1s" d="M-9-36h18v54l-9 15-9-15z"/><path class="d" pathLength="1" style="--d:2.2s;--t:.4s" d="M-9-22h18M-9 12h18" stroke="#EA580C"/><path class="d" pathLength="1" style="--d:2.1s;--t:.4s" d="M-9-36q9-12 18 0"/></g>
- <g> <!-- sparkles -->
-  <path class="p" style="--d:2.1s" d="M60 240q2 18 20 22-18 4-20 22-2-18-20-22 18-4 20-22z" fill="#FDBA74" stroke="#EA580C" stroke-width="1.6"/>
-  <path class="p tw" style="--d:2.5s" d="M120 300q1 8 9 10-8 2-9 10-1-8-9-10 8-2 9-10z" fill="#FB923C"/>
-  <path class="p tw" style="--d:2.7s;animation-delay:.6s" d="M296 30q1 8 9 10-8 2-9 10-1-8-9-10 8-2 9-10z" fill="#FDBA74"/>
-  <circle class="p" style="--d:2.4s" cx="378" cy="150" r="4" fill="#FB923C"/><circle class="p" style="--d:2.6s" cx="22" cy="150" r="3.5" fill="#FDBA74"/>
- </g>
-</svg>
-<div class="snp-brand" id="snpName"></div>
-<svg class="snp-ul" viewBox="0 0 240 6" preserveAspectRatio="none" aria-hidden="true"><path class="d" pathLength="1" style="--d:3.6s;--t:.6s" d="M2 3H238" stroke="#F97316" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
-<div class="snp-tag" id="snpTag"></div>
-<div class="snp-sub" id="snpSub"></div>
-<div class="snp-bar" aria-hidden="true"><b></b></div>
+<div id="snp" role="status" aria-live="polite" aria-label="Loading" data-th="light">
+ <div class="snp-c">
+  <div class="snp-logo" id="snpLogo">
+   <svg class="snp-mark" viewBox="0 0 360 300" aria-hidden="true">
+    <defs><linearGradient id="snpg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a)"/><stop offset="1" style="stop-color:var(--ad)"/></linearGradient></defs>
+    <path class="d br" pathLength="1" d="M8 40V8H40M320 8H352V40M8 260V292H40M320 292H352V260"/>
+    <g transform="translate(0 22)">
+     <path class="fade cv" d="M180 100C150 82 100 80 70 90V200C100 196 150 200 180 218C210 200 260 196 290 200V90C260 80 210 82 180 100Z"/>
+     <path class="fade pgf" d="M180 110C152 94 112 92 86 98V188C112 186 152 190 180 206ZM180 110C208 94 248 92 274 98V188C248 186 208 190 180 206Z"/>
+     <path class="d ol" pathLength="1" d="M180 100C150 82 100 80 70 90V200C100 196 150 200 180 218C210 200 260 196 290 200V90C260 80 210 82 180 100Z"/>
+     <path class="d pg" pathLength="1" d="M180 110C152 94 112 92 86 98V188C112 186 152 190 180 206M180 110C208 94 248 92 274 98V188C248 186 208 190 180 206M180 110V206"/>
+     <path class="fade ln" d="M100 114q30-8 62 2M100 130q30-8 62 2M100 146q22-6 42 0M198 116q30-8 62-2M198 132q30-8 62-2M218 148q22-6 42 0"/>
+    </g>
+    <circle class="circ" cx="180" cy="174" r="50"/>
+    <path class="d dc" pathLength="1" d="M40 62L92 38L144 62L92 86ZM64 74V98C64 108 120 108 120 98V74"/>
+    <path class="d ac" pathLength="1" d="M138 66V98"/>
+    <path class="d dc" pathLength="1" d="M284 80C268 70 266 48 280 36C294 24 318 30 322 48C325 62 318 72 308 80V90H284Z"/>
+    <path class="d ac" pathLength="1" d="M286 98H308M290 106H304M296 10V18M268 20L274 26M324 20L318 26"/>
+    <g transform="rotate(-48 316 256)">
+     <path class="fade sp" style="--d:1.25s" d="M276 247H336V265H276ZM276 247L256 256L276 265Z"/>
+     <path class="d dc" pathLength="1" d="M276 247H346Q354 256 346 265H276ZM276 247L256 256L276 265ZM326 247V265M316 247V265"/>
+    </g>
+    <path class="fade sp" d="M36 222L42 238L58 244L42 250L36 266L30 250L14 244L30 238Z"/>
+    <path class="fade sp" style="--d:1.5s" d="M96 262L99 270L107 273L99 276L96 284L93 276L85 273L93 270Z"/>
+    <path class="fade sp" style="--d:1.45s" d="M252 62L254 68L260 70L254 72L252 78L250 72L244 70L250 68Z"/>
+    <circle class="fade dot" cx="20" cy="170" r="5"/><circle class="fade dot" cx="340" cy="170" r="5"/>
+   </svg>
+   <span class="snp-ring"></span>
+   <div class="snp-l snp-sn" id="snpSn"><span class="gh"></span><span class="lv"><span class="a"></span></span></div>
+   <img class="snp-img" id="snpImg" alt="">
+  </div>
+  <div class="snp-nw"><div class="snp-l snp-name" id="snpName"><span class="gh"></span><span class="lv"><span class="a"></span><span class="b"></span></span></div><i class="snp-rule" id="snpRule"></i></div>
+  <div class="snp-l snp-tag" id="snpTag"><span class="gh"></span><span class="lv"><span class="a"></span></span></div>
+  <div class="snp-l snp-note" id="snpNote"><span class="gh"></span><span class="lv"><span class="a"></span></span></div>
+  <div class="snp-bar" id="snpBar"><b></b></div>
+ </div>
+ <button class="snp-skip" id="snpSkip" type="button" hidden></button>
 </div>
 <script>
 (function(){
  var d=document,h=d.documentElement,el=d.getElementById("snp");if(!el)return;
- if(/[?&]snpreview=1/.test(location.search)){el.parentNode.removeChild(el);return;}
- var B={n:"StudyNotes",t:"Your First Step to Success",s:"सफलताको पहिलो कदम",on:true};
- try{var c=JSON.parse(localStorage.getItem("sn_brand")||"null");if(c&&typeof c==="object"){if(c.n)B.n=String(c.n).slice(0,30);if(typeof c.t==="string")B.t=c.t.slice(0,60);if(typeof c.s==="string")B.s=c.s.slice(0,80);if(c.on===false)B.on=false;}}catch(e){}
- if(!B.on){el.parentNode.removeChild(el);return;}
- var seen=false;try{seen=sessionStorage.getItem("sn_pre")==="1";sessionStorage.setItem("sn_pre","1");}catch(e){}
- var k=seen?0.4:0.78;el.style.setProperty("--k",k);el.style.setProperty("--dur",(6*k)+"s");
- var nm=d.getElementById("snpName"),chars=Array.from(B.n),sec=-1,i;
- for(i=1;i<chars.length;i++){if(/[A-Z]/.test(chars[i])){sec=i;break;}}
- nm.setAttribute("aria-label",B.n);nm.style.setProperty("--n",Math.max(2,chars.length));
- var tx=d.createElement("span");tx.className="tx";tx.setAttribute("aria-hidden","true");
- var p1=d.createElement("span");p1.textContent=(sec>-1?chars.slice(0,sec):chars).join("");tx.appendChild(p1);
- if(sec>-1){var p2=d.createElement("span");p2.className="o";p2.textContent=chars.slice(sec).join("");tx.appendChild(p2);}
- nm.appendChild(tx);var cr=d.createElement("span");cr.className="cr";nm.appendChild(cr);
- var tg=d.getElementById("snpTag");if(B.t){var it=d.createElement("i");it.textContent=B.t;it.style.setProperty("--n",Math.max(4,Array.from(B.t).length));tg.appendChild(it);}
- var tgn=Math.max(4,Array.from(B.t||"").length);tg.style.setProperty("--n",tgn);
- var sb=d.getElementById("snpSub");sb.textContent=B.s;
+ var Q=location.search,PREV=/[?&]snpreview=1/.test(Q),FORCE=/[?&]preloader=1/.test(Q);
+ function kill(){if(el&&el.parentNode)el.parentNode.removeChild(el);h.classList.remove("snp-on");}
+ if(PREV&&!FORCE){kill();return;}
+ var PAL={orange:["#F97316","#EA580C"],sky:["#0EA5E9","#0369A1"],emerald:["#10B981","#047857"],violet:["#8B5CF6","#5B21B6"],rose:["#F43F5E","#BE123C"],amber:["#F59E0B","#B45309"],teal:["#14B8A6","#0F766E"],indigo:["#6366F1","#4338CA"]};
+ var DEF={enabled:true,frequency:"session",name:"{storeName}",tagline:"{tagline}",note:"सफलताको पहिलो कदम",mark:"SN",speed:"normal",logoMode:"draw",accent:"orange",theme:"light",cursor:true,progress:true,minSeconds:2.5,skipText:""};
+ var SPEED={fast:.6,normal:1,slow:1.5};
+ function str(v,n){return typeof v==="string"?v.replace(/[\u0000-\u001f]/g," ").trim().slice(0,n):"";}
+ function safeLogo(u){u=typeof u==="string"?u.trim():"";if(/^assets\/covers\/[A-Za-z0-9_.-]+$/.test(u)||/^https:\/\/[^\s"'<>]+$/.test(u))return u;if(PREV&&/^blob:/.test(u))return u;return "";}
+ function san(c){c=c||{};var m=Number(c.minSeconds);
+  return{enabled:c.enabled!==false,frequency:c.frequency==="always"?"always":"session",name:str(c.name,40),tagline:str(c.tagline,80),note:str(c.note,80),
+   speed:SPEED[c.speed]?c.speed:"normal",logoMode:c.logoMode==="image"||c.logoMode==="off"?c.logoMode:"draw",mark:str(c.mark,3)||"SN",accent:PAL[c.accent]?c.accent:"orange",theme:c.theme==="dark"||c.theme==="soft"?c.theme:"light",
+   cursor:c.cursor!==false,progress:c.progress!==false,minSeconds:isFinite(m)&&m>=1?Math.min(8,m):2.5,skipText:str(c.skipText,20),logo:safeLogo(c.logo)};}
+ function resolve(site){site=site||{};var st=site.store||{},p=site.preloader||{},v={storeName:str(st.name,40)||"StudyNotes",tagline:typeof st.tagline==="string"?str(st.tagline,80):"Your First Step to Success"};
+  function pick(k){var x=p[k];if(typeof x!=="string")x=DEF[k];return x.replace(/\{storeName\}/g,v.storeName).replace(/\{tagline\}/g,v.tagline);}
+  var o=Object.assign({},p,{name:pick("name"),tagline:pick("tagline"),note:pick("note"),logo:st.logo});return san(o);}
+ var cached=null;try{var raw=localStorage.getItem("sn_pre");if(raw)cached=san(JSON.parse(raw));}catch(e){}
+ var seen=false;try{seen=sessionStorage.getItem("sn_pre_seen")==="1";}catch(e){}
+ if(!FORCE){
+  if(cached&&!cached.enabled){kill();return;}
+  if(seen&&(!cached||cached.frequency!=="always")){kill();return;}
+ }
+ try{sessionStorage.setItem("sn_pre_seen","1");}catch(e){}
  h.classList.add("snp-on");
- var t0=Date.now(),min=(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)?600:6000*k,done=false,ready=false;
- function hide(){if(done)return;done=true;el.classList.add("out");h.classList.remove("snp-on");setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},700);}
- function go(){if(!ready)return;var w=min-(Date.now()-t0);if(w>0)setTimeout(hide,w);else hide();}
- window.__snReady=function(){ready=true;go();};
- setTimeout(hide,20000);
+ var cfg=cached||san(resolve({})),started=false,typing=false,typed=false,ready=false,gone=false,skip=false,t0=Date.now(),minMs=2800,timers=[];
+ var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+ var $=function(i){return d.getElementById(i);},logo=$("snpLogo"),img=$("snpImg"),L={sn:$("snpSn"),name:$("snpName"),tag:$("snpTag"),note:$("snpNote")},rule=$("snpRule"),bar=$("snpBar"),skipB=$("snpSkip");
+ function T(f,ms){var id=setTimeout(f,ms);timers.push(id);return id;}
+ function segs(s){try{if(window.Intl&&Intl.Segmenter){return Array.from(new Intl.Segmenter(undefined,{granularity:"grapheme"}).segment(s),function(x){return x.segment;});}}catch(e){}return Array.from(s);}
+ function splitAt(s){var a=Array.from(s);for(var i=1;i<a.length;i++){if(/[A-Z]/.test(a[i]))return i;}return a.length;}
+ function setLine(line,text,twoTone){var gh=line.querySelector(".gh"),a=line.querySelector(".a"),b=line.querySelector(".b");line._segs=segs(text);line._split=twoTone?Math.min(splitAt(text),line._segs.length):line._segs.length;
+  gh.textContent=text;if(a)a.textContent="";if(b)b.textContent="";line.style.fontSize="";line.classList.remove("on");
+  if(text){var fs=parseFloat(getComputedStyle(line).fontSize),avail=Math.min(window.innerWidth*.9,560);while(gh.offsetWidth>avail&&fs>9){fs-=.5;line.style.fontSize=fs+"px";}}
+  line._has=!!text;}
+ var caret=d.createElement("i");caret.className="snp-cr";
+ function paint(line,n){var a=line.querySelector(".a"),b=line.querySelector(".b"),s=line._segs,sp=line._split;a.textContent=s.slice(0,Math.min(n,sp)).join("");if(b)b.textContent=n>sp?s.slice(sp,n).join(""):"";line.querySelector(".lv").appendChild(caret);}
+ function typeLine(line,ms,next,hold){if(!line._has){next();return;}line.classList.add("on");var n=0,N=line._segs.length;paint(line,0);
+  (function step(){n++;paint(line,n);if(n>=N){T(next,reduce?0:(hold===undefined?ms*3:hold));return;}T(step,ms*(.75+Math.random()*.5));})();}
+ function apply(c){cfg=c;var p=PAL[c.accent]||PAL.orange;el.style.setProperty("--a",p[0]);el.style.setProperty("--ad",p[1]);el.setAttribute("data-th",c.theme);
+  el.classList.toggle("nocur",!c.cursor);el.classList.toggle("nobar",!c.progress);
+  var k=SPEED[c.speed]||1;el.style.setProperty("--k",reduce?0:k);minMs=(reduce?500:c.minSeconds*1000);
+  if(!started){var im=c.logoMode==="image"&&c.logo;logo.classList.toggle("off",c.logoMode==="off");logo.classList.toggle("img",!!im);if(im){img.src=c.logo;img.alt="";}}
+  if(!typing){setLine(L.sn,c.logoMode==="draw"?c.mark:"",false);setLine(L.name,c.name,true);setLine(L.tag,c.tagline,false);setLine(L.note,c.note,false);}
+  if(c.skipText){skipB.textContent=c.skipText;}else{skipB.hidden=true;}}
+ function hide(){if(gone)return;gone=true;timers.forEach(clearTimeout);el.classList.add("out");h.classList.remove("snp-on");setTimeout(kill,700);}
+ function check(){if(gone)return;if(!ready)return;if(!(typed||skip))return;var w=skip?0:minMs-(Date.now()-t0);if(w>0)T(check,Math.min(w,200));else hide();}
+ function start(){if(started)return;started=true;t0=Date.now();var k=reduce?0:(SPEED[cfg.speed]||1),lg=cfg.logoMode==="off"?0:(cfg.logoMode==="image"?900:1500)*k;
+  if(cfg.skipText){T(function(){skipB.hidden=false;},reduce?0:900);}
+  var chars=function(l){return l._has?l._segs.length:0;},total=lg+chars(L.sn)*170*k+(chars(L.sn)?340*k:0)+chars(L.name)*55*k+chars(L.tag)*26*k+chars(L.note)*24*k+500*k;
+  bar.classList.add("on");bar.style.setProperty("--bd",Math.max(1,total/1000)+"s");bar.classList.add("run");
+  T(function(){typing=true;
+   var go=function(){typeLine(L.name,55*k,function(){rule.classList.add("on");typeLine(L.tag,26*k,function(){typeLine(L.note,24*k,function(){typed=true;check();});});});};
+   if(L.sn._has){typeLine(L.sn,170*k,function(){logo.classList.add("pop");T(go,140*k);},170*k);}else go();},lg);
+  T(check,300);}
+ function onFresh(c){var first=!cached;try{localStorage.setItem("sn_pre",JSON.stringify(c));}catch(e){}
+  if(!c.enabled&&!FORCE){if(started||first){hide();}return;}
+  if(!typing)apply(c);else{var p=PAL[c.accent]||PAL.orange;el.style.setProperty("--a",p[0]);el.style.setProperty("--ad",p[1]);el.setAttribute("data-th",c.theme);}
+  start();}
+ apply(cfg);
+ window.__snReady=function(){ready=true;check();};
+ skipB.onclick=function(){skip=true;check();};
+ T(hide,16000); // absolute failsafe
+ if(PREV){ // Admin preview: config arrives by postMessage
+  window.addEventListener("message",function(ev){if(ev.origin!==location.origin||!ev.data||ev.data.type!=="sn-preview-data"||started)return;
+   try{var rec=(ev.data.catalog.products||[]).filter(function(p){return p&&p.id==="__site__";})[0];onFresh(resolve(rec&&rec.site));}catch(e){start();}});
+  try{window.parent.postMessage({type:"sn-preview-ready"},location.origin);}catch(e){}
+  T(start,1800);return;
+ }
+ if(cached){start();}else{T(start,450);}
+ try{fetch("data/products.json?v="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(j){
+   var rec=j&&(j.products||[]).filter(function(p){return p&&p.id==="__site__";})[0];onFresh(resolve(rec&&rec.site));}).catch(function(){start();});}catch(e){start();}
 })();
 </script>
 <!-- ===== /Preloader ===== -->
@@ -1883,7 +1961,6 @@ function Boot() {
   }, []);
   useEffect(() => {
     if (state !== "ready" && state !== "error") return;
-    try { if (SITE && !PREVIEW) localStorage.setItem("sn_brand", JSON.stringify({ n: SITE.store.name, t: SITE.store.tagline, s: SITE.preloader ? SITE.preloader.subline : "", on: !SITE.preloader || SITE.preloader.enabled !== false })); } catch (e) {}
     if (window.__snReady) window.__snReady();
   }, [state]);
   if (state === "ready") return <App rev={rev} />;
