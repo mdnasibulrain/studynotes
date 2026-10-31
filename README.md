@@ -40,3 +40,15 @@ Original ebook PDFs must never be uploaded; the only optional PDF is a sample li
 * Draft/Hidden/Archived products are never published (they stay in the browser + backups). Use Backup → Export regularly.
 * The locked design has no slot for a hero image, subcategory, or a separate Offers section; offers drive ticker, badges, countdown and price.
 * Browser-local state: use Backup export / "Live Store data" to move between devices.
+
+## Dummy catalog (reference)
+`data/products.json` now holds the 6 dummy ebooks + 2 bundles of the approved reference design (names, prices, descriptions, ratings, sold/copies-left, sample reviews and sample chat — Reviews/Chat carry a visible "Sample" label). They are PLACEHOLDERS: replace them in Admin before advertising. Covers are the designed (generated) covers; upload real covers in Admin whenever you like.
+Offers end on 31 Dec 2026 (Nepal time) — extend in Admin → Ebooks → Price/Offer. `extras/reference-dummy-backup.json` restores the same dummy catalog into Admin (Backup / Import → Replace).
+
+---
+## 🎁 Bonus Resources (नयाँ)
+- Admin → **Bonus Resources** (वा Ebook खोल्दा "६. Bonus Resources") बाट प्रत्येक Ebook को आफ्नै Bonus (Workbook / Templates / Action Plan / Custom) थप्ने, सम्पादन, क्रम, लुकाउने, मेट्ने।
+- Offer सुरु/अन्त्य मिति राख्दा समय सकिएपछि Bonus Offer Public site बाट आफैं हट्छ (Countdown वास्तविक अन्त्य-मितिमा आधारित)।
+- 🔒 "PDF फाइलको नाम / Private Reference" Admin मै रहन्छ — Publish मा जाँदैन। मूल PDF GitHub मा Upload हुँदैन।
+- Bonus नराखेको Ebook/Site जस्ताको तस्तै देखिन्छ। Worker परिवर्तन छैन।
+- Rollback: `assets/js/site-core.js`, `admin-*.js`, `index.html`, `next.html`, `mnrsnadmin*.html` को अघिल्लो संस्करण फर्काउनुहोस् (`admin-bonus.js` मेटे हुन्छ)।
