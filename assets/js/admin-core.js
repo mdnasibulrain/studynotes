@@ -214,7 +214,7 @@ A.exportData = (withImages) => (async () => {
   if (withImages) {
     out.images = {};
     const used = new Set(A.publicBuild({ forceInclude: A.state.products.map(p => p.id) }).imagePaths);
-    A.state.products.forEach(p => { if (p.cover) used.add(p.cover); });
+    A.state.products.forEach(p => { if (p.cover) used.add(p.cover); if (p.bonus) (p.bonus.items || []).forEach(x => { if (x && x.cover) used.add(x.cover); }); });
     for (const p of used) if (A.blobData[p]) out.images[p] = await A.toDataUrl(A.blobData[p]);
   }
   return out;
@@ -249,7 +249,7 @@ A.applyImport = async (r, mode, opts) => {
   if (r.images) for (const p of Object.keys(r.images)) { const b = A.dataUrlToBlob(r.images[p]); if (b && /^assets\/covers\/[a-zA-Z0-9_-]+\.(jpg|png|webp)$/.test(p)) { await A.imgPut(p.replace("assets/covers/", ""), b); A.blobData[p] = b; A.blobs[p] = URL.createObjectURL(b); } }
   if (opts.live) {
     // everything the live catalog points at is already on the website
-    const paths = new Set(); r.products.forEach(p => { if (p.cover) paths.add(p.cover); });
+    const paths = new Set(); r.products.forEach(p => { if (p.cover) paths.add(p.cover); if (p.bonus) (p.bonus.items || []).forEach(x => { if (x && x.cover) paths.add(x.cover); }); });
     SN.IMAGE_FIELDS(SN.mergeSite(r.site || {})).forEach(f => paths.add(f.obj[f.key]));
     paths.forEach(p => { if (p && !A.state.liveAssets.includes(p)) A.state.liveAssets.push(p); });
   }

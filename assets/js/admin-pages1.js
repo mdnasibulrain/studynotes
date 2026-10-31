@@ -177,7 +177,7 @@ A.productEditor = p => {
       `<div class="field"><label>Chapters सूची (नमुना)</label>${A.coll({ id: "chapters", list: p.chapterOutline = p.chapterOutline || [], label: c => c.title, addText: "Chapter थप्नुहोस्", useId: false, make: () => ({ title: "", description: "" }), item: c => A.f(c, { k: "title", l: "Chapter को नाम", after: touch }) + A.f(c, { k: "description", l: "छोटो वर्णन", after: touch }) })}</div>`);
   }
   const actions = `<div class="editor-footer"><button class="btn btn-ghost" data-do="pclose">✓ बचत गरी फर्कनुहोस्</button>${p.status !== "published" ? `<button class="btn btn-primary" data-do="ppub" data-id="${esc(p.id)}">✅ Published बनाउनुहोस्</button>` : `<button class="btn btn-primary" data-go="publishing">🚀 Website मा Publish</button>`}</div>`;
-  return head + basic + cover + price + proof + value + actions;
+  return head + basic + cover + price + proof + value + (isB || !A.bonusCard ? "" : A.bonusCard(p)) + actions;
 };
 
 /* product list/editor actions */

@@ -57,6 +57,11 @@ SN.inWindow = (start, end, now) => {
   if (b !== null && now >= b) return false;
   return true;
 };
+SN.formatDateTime = ms => { // Nepal time (UTC+5:45), e.g. "31 Dec 2026, 11:59 PM"
+  const d = new Date(ms + 345 * 60000), M = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  let h = d.getUTCHours(); const ap = h >= 12 ? "PM" : "AM"; h = h % 12 || 12;
+  return `${d.getUTCDate()} ${M[d.getUTCMonth()]} ${d.getUTCFullYear()}, ${h}:${String(d.getUTCMinutes()).padStart(2, "0")} ${ap}`;
+};
 SN.formatCountdown = ms => {
   const s = Math.max(0, Math.floor(ms / 1000)), d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60), x = s % 60;
   const p = n => String(n).padStart(2, "0");
@@ -153,6 +158,7 @@ SN.SECTIONS = [
   ["library", "Featured Ebooks / Library (सबै Ebook)", false],
   ["combo", "Custom Combo", true],
   ["bundles", "Bundles / Offers", true],
+  ["bonus", "Bonus Resources (Ebook सँगको Bonus Package)", true],
   ["reviews", "Reviews (पाठकहरूको भरोसा)", true],
   ["steps", "Steps (कसरी किन्ने)", true],
   ["chat", "Testimonials (WhatsApp कुराकानी)", true],
@@ -231,6 +237,25 @@ const D = {
     { id: "ps3", icon: "zap", title: "Ebook पाउनुहोस्", text: "{delivery}" }] },
   delivery: { time: "3–5 मिनेट", short: "3–5 min", method: "WhatsApp / Email", text: "Payment verify भएपछि {delivery} भित्र WhatsApp वा Email बाट ebook प्राप्त गर्नुहोस्।" },
   cart: { enabled: true, comboEnabled: true, comboMin: 3, comboPercent: 15 },
+  bonus: {
+    valueLabel: "Value {value}", totalLabel: "🎁 कुल Bonus Value: {value} — Ebook सँगै", countdownText: "Bonus Offer सकिन बाँकी: {time}", limitedText: "सीमित समयको Bonus Offer", untilText: "यो Bonus Offer {date} सम्म मात्र।",
+    home: {
+      enabled: true,
+      eyebrow: "🎁 EXCLUSIVE BONUS RESOURCES", title: "एउटा Ebook मात्र होइन, Complete Learning & Practice Package!", sub: "Read It. Practice It. Apply It. Get Skilled.",
+      tagline: "One Book. Multiple Resources. Real Results.", mainTitle: "MAIN EBOOK", mainDesc: "PDF: Complete Guide, Theory, Practical Steps",
+      hooks: ["Buy Before the Offer Ends & Unlock Your Exclusive Bonuses!"], cta: "Bonus सहित Order गर्नुहोस्", viewCta: "Bonus हेर्नुहोस्",
+      eligibility: "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
+      showValue: true, maxProducts: 6
+    },
+    product: {
+      enabled: true,
+      eyebrow: "🎁 EXCLUSIVE BONUSES", title: "यो Ebook सँग तपाईंले पाउने Bonus Resources", sub: "Read It. Practice It. Apply It. Get Skilled.",
+      tagline: "One Book. Multiple Resources. Real Results.", mainTitle: "MAIN EBOOK", mainDesc: "PDF: Complete Guide, Theory, Practical Steps",
+      hooks: ["Buy Before the Offer Ends & Unlock Your Exclusive Bonuses!"], cta: "Bonus सहित Order गर्नुहोस्",
+      eligibility: "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
+      showValue: true
+    }
+  },
   messages: {
     order: "Hello {storeName}! मैले यी Ebook Order गर्न चाहन्छु 👇\n\n{items}\n\n{priceSummary}\n\nPayment: NSPAY / WhatsApp\nकृपया Payment विवरण पठाइदिनुहोस् 🙏",
     paymentInstruction: "नमस्कार {customerName}! 🙏\n\n{productName} (ID: {productId}) को लागि जम्मा रकम: {total}\n\nNSPAY बाट Payment गर्नुहोस्: {nspayUrl}\nPayment पछि Screenshot र Product ID यहीँ पठाउनुहोस्।",
@@ -402,7 +427,9 @@ SN.mergeSite = pub => {
   // sections: keep admin order, add any missing, drop unknown
   const seen = new Set(), list = [];
   for (const it of arr(pub && pub.sections)) if (it && SN.SECTION_IDS.includes(it.id) && !seen.has(it.id)) { seen.add(it.id); list.push({ id: it.id, enabled: it.enabled !== false }); }
-  for (const id of SN.SECTION_IDS) if (!seen.has(id)) list.push({ id, enabled: true });
+  for (const id of SN.SECTION_IDS) if (!seen.has(id)) {
+    if (id === "bonus") { const bi = list.findIndex(x => x.id === "bundles"); list.splice(bi >= 0 ? bi + 1 : list.length, 0, { id, enabled: true }); } else list.push({ id, enabled: true });
+  }
   s.sections = list.map(x => (x.id === "library" ? { id: "library", enabled: true } : x));
   s.cart.comboMin = Math.max(2, Math.round(num(s.cart.comboMin) || 3));
   s.cart.comboPercent = Math.min(90, Math.max(0, num(s.cart.comboPercent) ?? 15));
@@ -429,7 +456,46 @@ SN.normalizeProduct = (p) => {
   o.offerActive = o.offerActive !== false;
   o.countdownVisible = o.countdownVisible !== false;
   o.offerStart = o.offerStart || null; o.offerEndsAt = o.offerEndsAt || null;
+  if (o.kind === "ebook") o.bonus = SN.normBonus(o.bonus); else delete o.bonus;
   return o;
+};
+/* ------------------------------------------------------------------ BONUS RESOURCES (per Ebook; additive, off by default) */
+SN.BONUS_TYPES = [["workbook", "BONUS: Workbook", "book"], ["templates", "BONUS: Templates", "file"], ["action", "BONUS: Action Plan & Roadmap", "target"], ["custom", "BONUS: Custom", "gift"]];
+SN.BONUS_TYPE_IDS = SN.BONUS_TYPES.map(x => x[0]);
+SN.normBonus = b => {
+  b = isObj(b) ? b : {};
+  const items = arr(b.items).filter(isObj).map((x, i) => ({
+    id: str(x.id) || "bn" + (i + 1), type: SN.BONUS_TYPE_IDS.includes(x.type) ? x.type : "custom", title: str(x.title), description: str(x.description),
+    icon: str(x.icon), cover: str(x.cover), file: str(x.file), value: num(x.value), order: num(x.order), visible: x.visible !== false, tag: str(x.tag)
+  }));
+  return {
+    enabled: !!b.enabled, showOnHome: b.showOnHome !== false, showOnProduct: b.showOnProduct !== false, start: str(b.start) || null, end: str(b.end) || null,
+    showCountdown: b.showCountdown !== false, headline: str(b.headline), hook: str(b.hook), cta: str(b.cta), eligibility: str(b.eligibility), items
+  };
+};
+/* public (publishable) form — the private "file" reference never leaves Admin */
+SN.publicBonus = b => {
+  b = SN.normBonus(b);
+  const items = sortByOrder(b.items.filter(x => x.visible && x.title)).map(x => { const o = { id: x.id, type: x.type, title: x.title }; for (const k of ["description", "icon", "cover", "tag"]) if (x[k]) o[k] = x[k]; if (x.value !== null && x.value > 0) o.value = x.value; return o; });
+  if (!b.enabled || !items.length) return null;
+  const o = { enabled: true, items };
+  if (b.start) o.start = b.start;
+  if (b.end) o.end = b.end;
+  if (!b.showOnHome) o.showOnHome = false;
+  if (!b.showOnProduct) o.showOnProduct = false;
+  if (!b.showCountdown) o.showCountdown = false;
+  for (const k of ["headline", "hook", "cta", "eligibility"]) if (b[k]) o[k] = b[k];
+  return o;
+};
+/* runtime: active bonus at time `now` (or null). Expired / not-yet-started / disabled => null (the limited offer disappears automatically) */
+SN.bonusRuntime = (raw, now, img) => {
+  const b = SN.normBonus(raw);
+  if (!b.enabled) return null;
+  const items = sortByOrder(b.items.filter(x => x.visible && x.title)).map((x, i) => { const o = { ...x, cover: (img ? img(x.cover) : x.cover) || null, n: i + 1 }; delete o.file; return o; });
+  if (!items.length || !SN.inWindow(b.start, b.end, now)) return null;
+  const endMs = SN.parseTime(b.end);
+  const total = items.reduce((a, x) => a + (x.value > 0 ? x.value : 0), 0);
+  return { items, endMs: endMs || null, limited: !!endMs, showCountdown: !!endMs && b.showCountdown, totalValue: total > 0 ? total : null, headline: b.headline, hook: b.hook, cta: b.cta, eligibility: b.eligibility, showOnHome: b.showOnHome, showOnProduct: b.showOnProduct };
 };
 SN.isLive = p => p && p.status === "published" && p.availability !== "unavailable" && p.availability !== "sold_out";
 
@@ -495,7 +561,7 @@ SN.runtime = (catalog, settings, now, opts) => {
     ebooks.push({
       ...p, kind: "ebook", category: c.id, categoryName: c.name, code: c.code,
       short: p.short || p.title, subtitle: p.subtitle, summary: p.summary || p.subtitle || p.description.slice(0, 140),
-      cover: img(p.cover) || null, previewPdf: SN.safeDoc(p.previewPdf) || null, pages: p.pages, chapters: p.chapters || (p.chapterOutline.length || null),
+      bonus: SN.bonusRuntime(p.bonus, now, img), cover: img(p.cover) || null, previewPdf: SN.safeDoc(p.previewPdf) || null, pages: p.pages, chapters: p.chapters || (p.chapterOutline.length || null),
       regularPrice: pi.regular, salePrice: pi.price, hasOffer: pi.has, discount: pi.discount, offerLabel: pi.label, urgencyLabel: p.urgencyLabel,
       endMs: pi.endMs, showCountdown: pi.showCountdown, countdownText: pi.countdownText, offerDescription: pi.offerDescription,
       rating: p.rating, reviewCount: p.reviewCount, soldCopies: p.soldCopies, copiesLeft: p.copiesLeft, isFeatured: p.featured, isNew: p.isNew, _order: p.order
@@ -542,6 +608,9 @@ SN.runtime = (catalog, settings, now, opts) => {
   all.forEach(p => { if (p.showCountdown && p.endMs) ends.push(p.endMs); });
   arr(site.offers).forEach(o => { if (o && o.active !== false && SN.inWindow(o.start, o.end, now)) { const e = SN.parseTime(o.end); if (e && e > now) ends.push(e); } });
   const nearestEnd = ends.length ? Math.min(...ends) : null;
+  const chg = [];
+  rawList.forEach(r => { if (r && r.bonus && r.bonus.enabled) { const bb = SN.normBonus(r.bonus); [SN.parseTime(bb.start), SN.parseTime(bb.end)].forEach(t => { if (t && t > now) chg.push(t); }); } });
+  const changeAt = chg.length ? Math.min(...chg) : null;
   // reviews / chat
   const reviews = sortByOrder(arr(site.reviews.items).filter(r => r && r.visible !== false && str(r.text) && str(r.name))).map(r => ({ name: str(r.name), place: str(r.place), rating: Math.min(5, Math.max(1, num(r.rating) || 5)), productId: EBYID[r.productId] ? r.productId : null, date: str(r.date), text: str(r.text), verified: !!r.verified, sample: !!r.sample }));
   const chat = sortByOrder(arr(site.chat.items).filter(m => m && m.visible !== false && str(m.text))).map(m => ({ from: m.from === "out" ? "out" : "in", name: str(m.name), time: str(m.time), text: str(m.text), sample: !!m.sample }));
@@ -561,7 +630,7 @@ SN.runtime = (catalog, settings, now, opts) => {
   if (site.ticker.autoCombo && site.cart.comboEnabled && ebooks.length >= site.cart.comboMin) lines.push({ order: 99999, text: SN.fill(site.ticker.comboText, vars), cta: "", action: "section:combos" });
   const ticker = sortByOrder(lines);
   const sectionOn = id => !!(site.sections.find(s => s.id === id) || { enabled: true }).enabled;
-  return { site, vars, categories: catList, ebooks, bundles, EBYID, stats, lowStock, nearestEnd, reviews, chat, goals, ticker, unknownCategories: unknown, sectionOn, now };
+  return { site, vars, categories: catList, ebooks, bundles, EBYID, stats, lowStock, nearestEnd, changeAt, reviews, chat, goals, ticker, unknownCategories: unknown, sectionOn, now };
 };
 
 /* ------------------------------------------------------------------ ORDER MESSAGE (cart -> WhatsApp) */
@@ -569,12 +638,12 @@ SN.msgVars = (site, list, totals, fmtFn, extra) => {
   const f = fmtFn || (n => SN.fmt(n, site.store.currency));
   const items = list.map((it, i) => {
     const price = it.todayPrice - (it.comboOff || 0);
-    return `${i + 1}. [${it.id}] ${it.title} — ${f(price)}` + (it.kind !== "ebook" && it.ebookIds ? `\n    समावेश: ${it.ebookIds.join(", ")}` : "");
+    return `${i + 1}. [${it.id}] ${it.title} — ${f(price)}` + (it.kind !== "ebook" && it.ebookIds ? `\n    समावेश: ${it.ebookIds.join(", ")}` : "") + (arr(it.bonus).length ? `\n    🎁 Bonus: ${it.bonus.join(", ")}` : "");
   }).join("\n");
   const t = totals;
   const summary = [`Regular Price: ${f(t.regular)}`, `Today Discount: -${f(t.todayDiscount)}`, `Today Price: ${f(t.today)}`, t.comboDiscount > 0 ? `Combo Discount: -${f(t.comboDiscount)}` : null, `Final Amount: ${f(t.final)}`].filter(Boolean).join("\n");
   return Object.assign({
-    storeName: site.store.name, items, priceSummary: summary, regularPrice: f(t.regular), todayDiscount: t.todayDiscount > 0 ? "-" + f(t.todayDiscount) : "", todayPrice: f(t.today),
+    storeName: site.store.name, items, bonusList: list.filter(it => arr(it.bonus).length).map(it => `🎁 ${it.title}: ${it.bonus.join(", ")}`).join("\n"), priceSummary: summary, regularPrice: f(t.regular), todayDiscount: t.todayDiscount > 0 ? "-" + f(t.todayDiscount) : "", todayPrice: f(t.today),
     comboDiscount: t.comboDiscount > 0 ? "-" + f(t.comboDiscount) : "", total: f(t.final), quantity: t.ebookCount,
     productName: list.map(i => i.title).join(", "), productId: list.map(i => i.id).join(", "), customerName: "", paymentReference: "",
     nspayUrl: site.payment.nspayUrl, delivery: site.delivery.time, deliveryMethod: site.delivery.method, deliveryText: SN.fill(site.delivery.text, { delivery: site.delivery.time }, "keep"), whatsappDisplay: site.contact.whatsappDisplay
@@ -582,7 +651,7 @@ SN.msgVars = (site, list, totals, fmtFn, extra) => {
 };
 SN.renderMessage = (template, vars) => SN.fill(template, vars, "line");
 SN.MESSAGE_KEYS = [["order", "WhatsApp Order message (Customer ले पठाउने)"], ["paymentInstruction", "Payment instruction message"], ["paymentVerified", "Payment verification message"], ["delivery", "Ebook delivery message"], ["support", "Support message"], ["followUp", "Follow-up message"]];
-SN.PLACEHOLDERS = [["{customerName}", "ग्राहकको नाम"], ["{productName}", "Ebook / Bundle को नाम"], ["{productId}", "Product ID (जस्तै SN001CS)"], ["{quantity}", "कति वटा Ebook"], ["{total}", "कुल रकम"], ["{paymentReference}", "Payment Reference / Transaction ID"], ["{storeName}", "Store को नाम"], ["{items}", "Order का सबै items (ID सहित)"], ["{priceSummary}", "Regular / Discount / Final रकम"], ["{nspayUrl}", "NSPAY link"], ["{delivery}", "Delivery समय"], ["{whatsappDisplay}", "WhatsApp नम्बर"]];
+SN.PLACEHOLDERS = [["{bonusList}", "Order मा समावेश Bonus Resources (भए मात्र)"], ["{customerName}", "ग्राहकको नाम"], ["{productName}", "Ebook / Bundle को नाम"], ["{productId}", "Product ID (जस्तै SN001CS)"], ["{quantity}", "कति वटा Ebook"], ["{total}", "कुल रकम"], ["{paymentReference}", "Payment Reference / Transaction ID"], ["{storeName}", "Store को नाम"], ["{items}", "Order का सबै items (ID सहित)"], ["{priceSummary}", "Regular / Discount / Final रकम"], ["{nspayUrl}", "NSPAY link"], ["{delivery}", "Delivery समय"], ["{whatsappDisplay}", "WhatsApp नम्बर"]];
 
 /* ------------------------------------------------------------------ IDs */
 SN.categoryCode = (name, used) => {
@@ -604,7 +673,7 @@ SN.nextBundleId = products => { let max = 0; for (const p of products) { const m
 SN.slug = s => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || SN.uid("c");
 
 /* ------------------------------------------------------------------ PUBLIC DATA BUILD (admin -> Worker payload) */
-const PRODUCT_FIELDS = ["id", "kind", "title", "short", "subtitle", "summary", "description", "hook", "category", "language", "tags", "cover", "coverAlt", "badge", "status", "availability", "featured", "isNew", "order", "pages", "chapters", "format", "previewPdf", "forWho", "learningOutcomes", "careerRelevance", "chapterOutline", "regularPrice", "offerPrice", "offerActive", "offerStart", "offerEndsAt", "offerLabel", "offerDescription", "urgencyLabel", "countdownVisible", "countdownText", "rating", "reviewCount", "soldCopies", "copiesLeft", "includes", "createdAt", "updatedAt"];
+const PRODUCT_FIELDS = ["id", "kind", "title", "short", "subtitle", "summary", "description", "hook", "category", "language", "tags", "cover", "coverAlt", "badge", "status", "availability", "featured", "isNew", "order", "pages", "chapters", "format", "previewPdf", "forWho", "learningOutcomes", "careerRelevance", "chapterOutline", "regularPrice", "offerPrice", "offerActive", "offerStart", "offerEndsAt", "offerLabel", "offerDescription", "urgencyLabel", "countdownVisible", "countdownText", "rating", "reviewCount", "soldCopies", "copiesLeft", "includes", "bonus", "createdAt", "updatedAt"];
 SN.IMAGE_FIELDS = (site) => {
   const out = [];
   const add = (obj, key, where) => { if (obj && obj[key]) out.push({ obj, key, where }); };
@@ -617,6 +686,7 @@ SN.cleanProduct = p => {
   for (const k of PRODUCT_FIELDS) {
     let v = n[k];
     if (k === "featured") v = !!n.featured;
+    if (k === "bonus") { const pb = SN.publicBonus(n.bonus); if (pb) o.bonus = pb; continue; }
     if (v === "" || v === undefined || (Array.isArray(v) && !v.length && k !== "tags")) continue;
     if (v === null && !["offerPrice", "pages"].includes(k)) continue;
     o[k] = v;
@@ -661,7 +731,7 @@ SN.buildPublic = (state, opts) => {
   const settings = { whatsappNumber: site.contact.whatsapp, supportEmail: site.contact.supportEmail, paymentInstructions: String(site.payment.instructions || "").slice(0, 2000) };
   // every image path that the public data points at
   const paths = new Set();
-  recs.forEach(r => { if (r.cover) paths.add(r.cover); });
+  recs.forEach(r => { if (r.cover) paths.add(r.cover); if (r.bonus) r.bonus.items.forEach(x => { if (x.cover) paths.add(x.cover); }); });
   SN.IMAGE_FIELDS(pub).forEach(f => paths.add(f.obj[f.key]));
   return { catalog, settings, imagePaths: [...paths].filter(p => /^assets\/covers\//.test(p)), counts: { ebooks: live.filter(p => p.kind !== "bundle").length, bundles: live.filter(p => p.kind === "bundle").length } };
 };
@@ -691,6 +761,15 @@ SN.validate = (state, now) => {
     if (p.offerStart && p.offerEndsAt && SN.parseTime(p.offerStart) >= SN.parseTime(p.offerEndsAt)) E(`${nm}: Offer सुरु हुने समय अन्त्यभन्दा अघि हुनुपर्छ।`, "products");
     if (p.rating !== null && (p.rating < 0 || p.rating > 5)) E(`${nm}: Rating 0 देखि 5 बीच हुनुपर्छ।`, "products");
     if (p.previewPdf && !SN.safeDoc(p.previewPdf)) E(`${nm}: Preview link https:// बाट सुरु हुनुपर्छ।`, "products");
+  }
+  for (const p of live) {
+    if (p.kind !== "ebook" || !p.bonus || !p.bonus.enabled) continue;
+    const nm = p.title || p.id, bn = p.bonus, vis = bn.items.filter(x => x.visible);
+    if (!vis.length) W(`${nm}: Bonus चालु छ तर देखिने Bonus Item छैन — Public site मा Bonus देखिँदैन।`, "bonus");
+    vis.forEach(x => { if (!x.title) E(`${nm}: Bonus Item को Title चाहिन्छ।`, "bonus"); if (x.cover && !/^assets\/covers\/[a-zA-Z0-9_-]+\.(jpg|png|webp)$/.test(x.cover)) E(`${nm}: Bonus "${x.title}" को Image सही देखिएन (फेरि Upload गर्नुहोस्)।`, "bonus"); });
+    if (bn.start && bn.end && SN.parseTime(bn.start) >= SN.parseTime(bn.end)) E(`${nm}: Bonus Offer सुरु हुने समय अन्त्यभन्दा अघि हुनुपर्छ।`, "bonus");
+    else if (bn.end && SN.parseTime(bn.end) <= now) W(`${nm}: Bonus Offer को समय सकिसकेको — Public site मा Bonus देखिँदैन।`, "bonus");
+    if (!bn.end) W(`${nm}: Bonus Offer सकिने मिति राखिएको छैन — "सीमित समय" वाक्य र Countdown देखिँदैन (Bonus सधैं देखिन्छ)।`, "bonus");
   }
   for (const b of liveB) {
     const nm = b.title || b.id;
