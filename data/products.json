@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T15:52:18.496Z",
+  "updatedAt": "2026-10-31T15:59:15.157Z",
   "products": [
     {
       "id": "SN001CS",
@@ -543,7 +543,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-10-31T15:52:18.496Z",
+      "updatedAt": "2026-10-31T15:59:15.157Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1110,10 +1110,10 @@
           "contactMessage": "Hello {storeName}! मलाई Ebook बारे जानकारी चाहिएको थियो 🙏"
         },
         "payment": {
-          "nspayUrl": "https://www.nasibul.com.np/nspay",
-          "ctaText": "NSPAY मा Payment गर्नुहोस्",
-          "ctaShort": "NSPAY",
-          "ctaNow": "NSPAY मा अहिल्यै Payment",
+          "nspayUrl": "https://srain.com.np/paysn/",
+          "ctaText": "PaySN मा Payment गर्नुहोस्",
+          "ctaShort": "PaySN",
+          "ctaNow": "PaySN मा अहिल्यै Payment",
           "instructions": "Payment पछि Screenshot र माथिका Product ID हाम्रो WhatsApp ({whatsappDisplay}) मा पठाउनुहोस्।",
           "copiedToast": "📋 Order विवरण Copy भयो — Payment पछि Screenshot र ID WhatsApp मा पठाउनुहोस्",
           "steps": [
