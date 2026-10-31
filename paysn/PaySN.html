@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="ne" class="h-full antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PaySN — Secure & Simple Payments</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fff8eb',
+                            100: '#fff1d4',
+                            200: '#ffe6b8',
+                            300: '#fbd38d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#a76500',
+                            800: '#8a4c00',
+                            900: '#12213a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Mukta', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- QRCode.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- html2pdf for receipt generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 6px;
+        }
+        .qr-glow {
+            box-shadow: 0 0 20px -3px rgba(2, 132, 199, 0.15);
+        }
+        .success-glow {
+            box-shadow: 0 0 30px -5px rgba(22, 163, 74, 0.2);
+        }
+        .active-tab {
+            background-color: #0284c7 !important;
+            color: #ffffff !important;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98) translateY(4px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes pulseSlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .animate-pulse-slow {
+            animation: pulseSlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        #qrcode-canvas-container canvas, #qrcode-canvas-container img {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            max-width: 100%;
+            height: auto !important;
+        }
+    </style>
+
+    <style id="paysn-studynotes-theme">
+      :root{--ps-ink:#12213a;--ps-muted:#637087;--ps-line:#e7ebf2;--ps-paper:#fff;--ps-wash:#f7f9fc;--ps-cream:#fff8eb;--ps-orange:#f59e0b;--ps-orange-dark:#d97706;--ps-radius:18px;--ps-shadow:0 12px 35px rgba(18,33,58,.07)}
+      html,body{background:#fff!important;color:var(--ps-ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Noto Sans Devanagari",sans-serif}
+      body{padding:14px!important;align-items:center!important}
+      body>div:first-child{max-width:460px!important;border:1px solid var(--ps-line)!important;border-radius:22px!important;box-shadow:var(--ps-shadow)!important;max-height:96vh!important;background:#fff!important}
+      header,footer{background:#fff!important;border-color:var(--ps-line)!important}
+      main{background:#fff!important}
+      main section>div,.bg-slate-50\/70{background:#fffdfb!important;border-color:var(--ps-line)!important;border-radius:17px!important}
+      .bg-slate-900{background:var(--ps-ink)!important}
+      .text-primary-700,.text-primary-800,.text-primary-900{color:#8a4c00!important}
+      .bg-primary-50{background:#fff8eb!important}.bg-primary-100{background:#fff1d4!important}.bg-primary-500,.bg-primary-600{background:#f59e0b!important}
+      .border-primary-200,.border-primary-100{border-color:#ffe6b8!important}.border-primary-500{border-color:#f59e0b!important}
+      .focus\:border-primary-500:focus{border-color:#f59e0b!important}.focus\:ring-primary-500\/20:focus{--tw-ring-color:rgba(245,158,11,.2)!important}
+      .active-tab{background:#12213a!important;color:#fff!important}
+      button,a{transition:all .18s ease}
+      button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(245,158,11,.28);outline-offset:2px}
+      #brand-logo-text{letter-spacing:-.5px;color:#12213a!important}
+      header .bg-gradient-to-tr{background:linear-gradient(135deg,#f59e0b,#d97706)!important}
+      #checkout-step-choose .bg-slate-50\/70,#checkout-step-qr .bg-slate-50\/70,#checkout-step-2 .bg-slate-50\/70{background:#fffdfb!important}
+      #checkout-step-qr button[onclick="goToConfirmationForm()"],#submit-btn{background:linear-gradient(110deg,#f59e0b,#d97706)!important;color:#211600!important;box-shadow:0 8px 18px rgba(245,158,11,.2)!important}
+      #downloadQRCodeImage,.bg-slate-900{background:#12213a!important}
+      #payment-methods-grid>div{border-radius:12px!important;min-height:82px}
+      #payment-methods-grid>div:hover{box-shadow:0 8px 20px rgba(18,33,58,.07)}
+      #drop-zone{border-radius:15px!important}
+      #receipt-pdf-template{font-family:Inter,"Noto Sans Devanagari",sans-serif!important}
+      @media(max-width:520px){body{padding:8px!important}body>div:first-child{max-height:98vh!important;border-radius:18px!important}main{padding:12px!important}}
+    </style>
+
+</head>
+<body class="h-full font-sans antialiased text-slate-800 min-h-screen flex items-center justify-center p-3 sm:p-5">
+
+    <!-- PORTRAIT CONTAINER -->
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[96vh] my-auto animate-fade-in">
+        
+        <!-- HEADER -->
+        <header class="shrink-0 bg-white text-slate-900 border-b border-slate-200 px-4 py-3 flex items-center justify-between shadow-2xs">
+            <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 bg-gradient-to-tr from-primary-500 to-emerald-400 rounded-lg flex items-center justify-center text-white font-bold text-base shadow-sm">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                </div>
+                <div>
+                    <span id="brand-logo-text" class="text-base font-bold text-slate-900 tracking-tight block leading-none">PaySN</span>
+                    <span class="inline-flex items-center text-[10px] font-semibold text-emerald-700 mt-0.5">
+                        <i data-lucide="shield-check" class="w-3 h-3 mr-1 text-emerald-600"></i>
+                        <span>Verified</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2">
+                <a id="whatsapp-header-link" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 px-2 py-1 rounded-full transition-all">
+                    <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span data-i18n="headerSupport">Support</span>
+                </a>
+
+                <!-- Language Toggle -->
+                <div class="flex items-center bg-slate-100 p-0.5 rounded-lg border border-slate-200 text-[11px] font-medium">
+                    <button id="lang-btn-ne" onclick="setLanguage('ne')" class="px-2 py-0.5 rounded-md transition-all bg-white text-slate-900 shadow-xs font-bold">NP</button>
+                    <button id="lang-btn-en" onclick="setLanguage('en')" class="px-2 py-0.5 rounded-md transition-all text-slate-600 hover:text-slate-900">EN</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN SCROLLABLE BODY -->
+        <main class="flex-grow overflow-y-auto custom-scrollbar p-3.5 sm:p-4 bg-white space-y-3">
+
+            <!-- STEP 1: CHOOSE PAYMENT METHOD -->
+            <section id="checkout-step-choose" class="space-y-3 animate-fade-in">
+                <div class="bg-slate-50/70 rounded-xl shadow-2xs border border-slate-200 p-3.5 space-y-3">
+                    
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2.5">
+                        <div>
+                            <h2 class="text-sm font-bold text-slate-900 leading-tight" data-i18n="choosePaymentMethod">Choose Payment Method</h2>
+                            <p class="text-[11px] text-slate-600" data-i18n="choosePaymentSubtitle">Select your preferred payment option.</p>
+                        </div>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary-50 text-primary-700 border border-primary-200" data-i18n="step1of3">
+                            Step 1 / 3
+                        </span>
+                    </div>
+
+                    <!-- SEARCH INPUT -->
+                    <div class="relative">
+                        <i data-lucide="search" class="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="method-search-input" onkeyup="filterPaymentMethods()" 
+                               placeholder="Search eSewa, nBank..." 
+                               class="w-full pl-8 pr-2.5 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-slate-800">
+                    </div>
+
+                    <!-- CATEGORY TABS -->
+                    <div class="grid grid-cols-3 gap-1 bg-slate-200/70 p-1 rounded-lg text-xs font-semibold">
+                        <button onclick="switchCategory('wallets')" id="tab-wallets" class="active-tab py-1.5 px-2 rounded-md text-center transition-all truncate cursor-pointer">Digital Wallet</button>
+                        <button onclick="switchCategory('banks')" id="tab-banks" class="py-1.5 px-2 rounded-md text-center text-slate-700 bg-white hover:bg-slate-50 transition-all truncate cursor-pointer">Mobile Banking</button>
+                        <button onclick="switchCategory('qrNetworks')" id="tab-qrNetworks" class="py-1.5 px-2 rounded-md text-center text-slate-700 bg-white hover:bg-slate-50 transition-all truncate cursor-pointer">QR Payment</button>
+                    </div>
+
+                    <!-- PAYMENT METHODS GRID -->
+                    <div id="payment-methods-grid" class="grid grid-cols-3 gap-2 max-h-[260px] overflow-y-auto custom-scrollbar p-0.5">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 2: QR SCAN -->
+            <section id="checkout-step-qr" class="hidden space-y-2.5 animate-fade-in">
+                <div class="flex items-center justify-between text-xs">
+                    <button onclick="goToChooseMethod()" class="flex items-center text-primary-700 hover:text-primary-800 font-bold space-x-1 cursor-pointer bg-primary-50 border border-primary-200 px-2 py-1 rounded-lg transition-all text-xs">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="backToMethods">Change Method</span>
+                    </button>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary-50 text-primary-700 border border-primary-200" data-i18n="step2of3">
+                        Step 2 / 3
+                    </span>
+                </div>
+
+                <div class="bg-slate-50/70 rounded-xl shadow-2xs border border-slate-200 p-3.5 space-y-3">
+                    <div class="bg-gradient-to-br from-primary-50/40 via-white to-emerald-50/20 rounded-xl border border-slate-200 p-3.5 flex flex-col items-center text-center gap-3">
+                        
+                        <div class="flex-shrink-0 flex flex-col items-center">
+                            <!-- High End Quality Full HD QR Container -->
+                            <div class="relative bg-white p-4 rounded-2xl border-2 border-primary-500/20 shadow-md qr-glow">
+                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full shadow-xs tracking-wider flex items-center space-x-1 whitespace-nowrap">
+                                    <i data-lucide="shield-check" class="w-3 h-3 text-white"></i>
+                                    <span>Full HD Secure QR 🔐</span>
+                                </div>
+
+                                <div id="qrcode-canvas-container" class="w-44 h-44 flex items-center justify-center bg-white rounded-xl overflow-hidden p-2 mt-1">
+                                    <div class="text-xs text-slate-400 animate-pulse text-center" data-i18n="generatingQr">Generating QR Code...</div>
+                                </div>
+                                <div id="qrcode-canvas-target" class="hidden"></div>
+                                
+                                <div class="mt-2 text-center">
+                                    <span class="inline-flex items-center space-x-1 text-[9px] font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200">
+                                        <i data-lucide="lock" class="w-3 h-3 text-primary-600"></i>
+                                        <span>Full HD • Exact JSON Payload</span>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <button onclick="downloadQRCodeImage()" class="mt-2.5 w-full py-2 px-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition-all shadow-xs flex items-center justify-center space-x-1.5 cursor-pointer">
+                                <i data-lucide="download" class="w-3.5 h-3.5 text-primary-400"></i>
+                                <span data-i18n="downloadQrBtn">Download Full HD QR Code</span>
+                            </button>
+                        </div>
+
+                        <div class="space-y-2 w-full text-center">
+                            <div>
+                                <div class="inline-flex items-center space-x-1 text-[11px] font-semibold text-primary-700 bg-primary-100 px-2 py-0.5 rounded mb-1">
+                                    <span data-i18n="selectedMethod">Selected Method:</span>
+                                    <strong id="selected-method-name-display" class="font-bold text-primary-900">eSewa</strong>
+                                </div>
+                                <h3 class="text-sm font-extrabold text-slate-900 leading-tight" data-i18n="qrScanInstruction">Scan QR Code using your Payment App</h3>
+                                <p id="qr-sub-instruction" class="text-[11px] text-slate-600 mt-1 leading-relaxed"></p>
+                            </div>
+
+                            <div class="pt-1">
+                                <button onclick="goToConfirmationForm()" class="w-full py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold rounded-xl shadow-xs transition-all flex items-center justify-center space-x-2 text-xs cursor-pointer">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                                    <span data-i18n="ivePaidBtn">Submit Payment Details</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 3: CONFIRMATION FORM -->
+            <section id="checkout-step-2" class="hidden space-y-2.5 animate-fade-in">
+                <div class="flex items-center justify-between text-xs">
+                    <button onclick="goToStep1()" class="flex items-center text-primary-700 hover:text-primary-800 font-bold space-x-1 cursor-pointer bg-primary-50 border border-primary-200 px-2 py-1 rounded-lg transition-all text-xs">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="backToQr">Back to QR</span>
+                    </button>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary-50 text-primary-700 border border-primary-200" data-i18n="step3of3">
+                        Step 3 / 3
+                    </span>
+                </div>
+
+                <div class="bg-slate-50/70 rounded-xl shadow-2xs border border-slate-200 p-3.5 space-y-3">
+                    <div class="bg-gradient-to-br from-primary-50/40 via-white to-emerald-50/20 rounded-xl border border-slate-200 p-3.5">
+                        
+                        <div class="border-b border-slate-200 pb-2.5 mb-3 flex items-center justify-between">
+                            <div>
+                                <h3 class="text-sm font-extrabold text-slate-900 leading-tight" data-i18n="confirmPaymentTitle">Confirm Your Payment</h3>
+                                <p class="text-[11px] text-slate-600 mt-0.5" data-i18n="confirmPaymentSubtitle">Provide details for fast verification.</p>
+                            </div>
+                        </div>
+
+                        <form id="payment-confirmation-form" onsubmit="handleFormSubmit(event)" class="space-y-3 text-xs">
+                            <div class="bg-white p-2 rounded-lg border border-slate-200 flex items-center justify-between">
+                                <span class="text-slate-600 text-[11px]" data-i18n="selectedPaymentMethod">Payment Method:</span>
+                                <strong id="form-method-display" class="text-primary-700 font-bold text-xs">eSewa</strong>
+                            </div>
+
+                            <div>
+                                <label for="input-fullname" class="block font-bold text-slate-700 mb-1" data-i18n="labelFullName">Full Name *</label>
+                                <input type="text" id="input-fullname" required
+                                       placeholder="e.g. Ram Bahadur Shrestha" 
+                                       class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-slate-800">
+                                <p id="err-fullname" class="hidden text-[10px] text-rose-600 mt-0.5"></p>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2.5">
+                                <div>
+                                    <label for="input-amount" class="block font-bold text-slate-700 mb-1" data-i18n="labelAmount">Paid Amount (NPR) *</label>
+                                    <input type="number" id="input-amount" required placeholder="Amount paid"
+                                           class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all">
+                                    <p id="err-amount" class="hidden text-[10px] text-rose-600 mt-0.5"></p>
+                                </div>
+
+                                <div>
+                                    <label for="input-ebook-id" class="block font-bold text-slate-700 mb-1" data-i18n="labelEbookId">Ebook ID *</label>
+                                    <input type="text" id="input-ebook-id" required
+                                           placeholder="e.g. EB-101" 
+                                           class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all">
+                                    <p id="help-ebook-id" class="text-[10px] text-emerald-700 mt-0.5 font-medium hidden" data-i18n="autoFilledEbook">✨ Auto-filled</p>
+                                    <p id="err-ebook-id" class="hidden text-[10px] text-rose-600 mt-0.5"></p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-bold text-slate-700 mb-1" data-i18n="labelScreenshot">Payment Screenshot / Receipt *</label>
+                                
+                                <div id="drop-zone" class="border-2 border-dashed border-slate-300 hover:border-primary-500 bg-white hover:bg-primary-50/30 rounded-xl p-3 text-center cursor-pointer transition-all">
+                                    <input type="file" id="input-screenshot" accept="image/png, image/jpeg, image/jpg, image/webp, application/pdf" class="hidden" onchange="handleFileSelect(this.files)">
+                                    
+                                    <div id="upload-prompt" class="space-y-1">
+                                        <div class="w-7 h-7 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto">
+                                            <i data-lucide="upload-cloud" class="w-3.5 h-3.5"></i>
+                                        </div>
+                                        <div class="font-semibold text-slate-700 text-[11px]" data-i18n="uploadText">Click or Drag Payment Receipt Here</div>
+                                        <p class="text-[10px] text-slate-500" data-i18n="uploadSubText">JPG, PNG, WEBP, PDF (Max 5MB)</p>
+                                    </div>
+
+                                    <div id="upload-preview" class="hidden flex flex-col items-center space-y-1.5">
+                                        <img id="preview-img" src="" alt="Preview" class="max-h-16 rounded-md shadow-2xs border border-slate-200">
+                                        <div id="preview-pdf-icon" class="hidden w-10 h-10 bg-rose-50 text-rose-600 rounded-lg flex items-center justify-center font-bold text-xs border border-rose-200">PDF</div>
+                                        <div class="flex items-center space-x-2">
+                                            <span id="file-name" class="text-xs font-medium text-slate-600 truncate max-w-xs">filename.pdf</span>
+                                            <button type="button" onclick="removeScreenshot(event)" class="text-rose-600 font-semibold hover:underline text-[11px]" data-i18n="btnRemove">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p id="err-screenshot" class="hidden text-[10px] text-rose-600 mt-0.5"></p>
+                            </div>
+
+                            <div class="pt-1">
+                                <button type="submit" id="submit-btn" class="w-full py-2.5 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold rounded-xl shadow-md shadow-emerald-600/20 transition-all flex items-center justify-center space-x-2 text-xs cursor-pointer">
+                                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                    <span data-i18n="submitWhatsappBtn">Submit Payment Details</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 4: SUCCESS / CONGRATULATIONS & RECEIPT -->
+            <section id="checkout-step-3" class="hidden space-y-3 animate-fade-in">
+                <div class="bg-slate-50/70 rounded-xl shadow-md border border-slate-200 p-3.5 space-y-3 text-center relative overflow-hidden">
+                    
+                    <!-- SUCCESS HEADER -->
+                    <div class="space-y-1 relative z-10">
+                        <div class="w-11 h-11 bg-gradient-to-tr from-emerald-600 to-emerald-400 text-white rounded-xl flex items-center justify-center mx-auto shadow-md success-glow">
+                            <i data-lucide="award" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="inline-flex items-center space-x-1 text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-emerald-200">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 text-emerald-600"></i>
+                                <span data-i18n="congatsTag">Submission Received</span>
+                            </span>
+                            <h2 class="text-base font-black text-slate-900 tracking-tight mt-1" data-i18n="thankYouTitle">Thank You for Your Order!</h2>
+                            <p class="text-[11px] text-slate-600 max-w-xs mx-auto mt-0.5 leading-relaxed font-medium" data-i18n="congratsParagraph">
+                                We have received your payment details. Our team will review the payment and send your ebook after confirmation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ITEMIZED ORDER RECEIPT -->
+                    <div class="bg-white border border-slate-200 rounded-xl p-3.5 text-left shadow-sm relative overflow-hidden space-y-2.5">
+                        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-primary-500"></div>
+
+                        <div class="flex items-center justify-between border-b border-dashed border-slate-200 pb-2 pt-0.5">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-7 h-7 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-lg flex items-center justify-center font-bold text-xs">
+                                    <i data-lucide="receipt" class="w-3.5 h-3.5"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-black text-slate-900 block leading-tight">PaySN Payment Submission Receipt</span>
+                                    <span class="text-[9px] text-slate-500 font-mono" id="rec-id">PAY-000000</span>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                <span data-i18n="statusVerified">Verification Pending</span>
+                            </span>
+                        </div>
+
+                        <!-- Itemized Box -->
+                        <div class="bg-slate-50/80 rounded-lg p-2.5 border border-slate-200/80 space-y-1.5 text-xs">
+                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-1">
+                                <span class="text-slate-500 text-[11px]" data-i18n="recName">Customer Name</span>
+                                <strong id="rec-name" class="font-bold text-slate-900">User Name</strong>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-1">
+                                <span class="text-slate-500 text-[11px]" data-i18n="recEbookId">Ebook ID</span>
+                                <strong id="rec-ebook" class="font-mono font-black text-primary-700 bg-primary-50 px-1.5 py-0.5 rounded border border-primary-100">EBOOK-001</strong>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-1">
+                                <span class="text-slate-500 text-[11px]" data-i18n="recMethod">Payment Method</span>
+                                <strong id="rec-method" class="font-bold text-slate-800">eSewa</strong>
+                            </div>
+                            <div class="flex justify-between items-center pt-0.5">
+                                <span class="text-slate-700 font-bold text-xs" data-i18n="recAmount">Amount Paid</span>
+                                <strong id="rec-amount" class="font-mono font-black text-emerald-700 text-sm">NPR 299</strong>
+                            </div>
+                        </div>
+
+                        <!-- INSTANT WHATSAPP CTA -->
+                        <div class="bg-gradient-to-r from-emerald-50 via-teal-50/50 to-emerald-50 border border-emerald-200 rounded-xl px-3 py-2 flex items-center justify-between gap-2 shadow-2xs">
+                            <div class="min-w-0">
+                                <span class="text-xs font-black text-emerald-950 block leading-tight truncate" data-i18n="instantWhatsappTitle">WhatsApp Payment Follow-up</span>
+                                <span class="text-[9px] text-emerald-800 font-medium block truncate" data-i18n="instantWhatsappSub">Tap to send your payment details for review</span>
+                            </div>
+                            
+                            <a id="instant-whatsapp-cta" href="#" target="_blank" rel="noopener noreferrer" class="shrink-0 w-8 h-8 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg shadow-sm transition-all active:scale-95 flex items-center justify-center cursor-pointer">
+                                <i data-lucide="arrow-right" class="w-4 h-4 text-white"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="pt-0.5 flex flex-col gap-1.5 text-xs">
+                        <button onclick="downloadPDFReceipt()" class="w-full py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-lg shadow-xs transition-all flex items-center justify-center space-x-1.5 cursor-pointer">
+                            <i data-lucide="download" class="w-3.5 h-3.5 text-emerald-400"></i>
+                            <span data-i18n="btnDownloadReceipt">Download Official PDF Receipt</span>
+                        </button>
+                        <button onclick="goToChooseMethod()" class="w-full py-1.5 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-lg transition-all cursor-pointer border border-slate-300 shadow-2xs">
+                            <span data-i18n="btnMakeAnother">Go to StudyNotes</span>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FIXED FOOTER WITH TRUST BADGES & CREDIT -->
+        <footer class="shrink-0 bg-white border-t border-slate-200 px-3 py-2 text-center text-[10px] text-slate-600 font-medium z-10 space-y-1.5">
+            <!-- Trust indicators (Compact & Cardless) -->
+            <div class="grid grid-cols-3 gap-1 text-center divide-x divide-slate-200 py-0.5">
+                <div class="flex flex-col items-center px-1">
+                    <div class="flex items-center space-x-1">
+                        <i data-lucide="lock" class="w-3 h-3 text-primary-600"></i>
+                        <span class="font-bold text-slate-800 text-[10px] leading-none" data-i18n="trustSecure">Secure Pay</span>
+                    </div>
+                    <span class="text-[9px] text-slate-500 mt-0.5 leading-none" data-i18n="trustSecureSub">Direct transfer</span>
+                </div>
+                <div class="flex flex-col items-center px-1">
+                    <div class="flex items-center space-x-1">
+                        <i data-lucide="zap" class="w-3 h-3 text-emerald-600"></i>
+                        <span class="font-bold text-slate-800 text-[10px] leading-none" data-i18n="trustFast">Instant Delivery</span>
+                    </div>
+                    <span class="text-[9px] text-slate-500 mt-0.5 leading-none" data-i18n="trustFastSub">Quick access</span>
+                </div>
+                <div class="flex flex-col items-center px-1">
+                    <div class="flex items-center space-x-1">
+                        <i data-lucide="headphones" class="w-3 h-3 text-teal-600"></i>
+                        <span class="font-bold text-slate-800 text-[10px] leading-none" data-i18n="trustSupport">Support</span>
+                    </div>
+                    <span class="text-[9px] text-slate-500 mt-0.5 leading-none" data-i18n="trustSupportSub">Assistance 24/7</span>
+                </div>
+            </div>
+            
+            <!-- Footer copyright credit line -->
+            <p class="pt-1 border-t border-slate-100 text-[9px] text-slate-400">© 2026 PaySN. All rights reserved. Secure & Simple Payments.</p>
+        </footer>
+
+    </div>
+
+    <div id="receipt-pdf-template" class="hidden bg-white p-8 max-w-lg mx-auto font-sans text-slate-800 border border-slate-300">
+        <div class="border-b border-slate-200 pb-4 mb-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-slate-900" id="pdf-brand-title">PaySN</h1>
+                <p class="text-xs text-slate-500">Official PaySN Payment Submission Receipt</p>
+            </div>
+            <div class="text-right">
+                <span class="text-xs font-mono text-slate-500" id="pdf-date">2026-09-07</span>
+            </div>
+        </div>
+        <div class="space-y-3 text-xs">
+            <div class="flex justify-between"><span class="text-slate-500">Receipt ID:</span> <strong id="pdf-rec-id" class="font-mono">PAY-000000</strong></div>
+            <div class="flex justify-between"><span class="text-slate-500">Customer Name:</span> <strong id="pdf-name">Name</strong></div>
+            <div class="flex justify-between"><span class="text-slate-500">Ebook ID:</span> <strong id="pdf-ebook">EBOOK-001</strong></div>
+            <div class="flex justify-between"><span class="text-slate-500">Payment Method:</span> <strong id="pdf-method">eSewa</strong></div>
+            <div class="flex justify-between"><span class="text-slate-500">Amount Paid:</span> <strong id="pdf-amount">NPR 299</strong></div>
+            <div class="flex justify-between"><span class="text-slate-500">Status:</span> <strong class="text-amber-700">Verification Pending</strong></div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-200 text-center text-[10px] text-slate-500">
+            Thank you for your order! Support: WhatsApp — PaySN
+        </div>
+    </div>
+
+    <script>
+        const CONFIG = {
+            brandName: "PaySN",
+            whatsappNumber: "9779702784684",
+            currency: "NPR",
+            defaultLanguage: "ne",
+            defaultEbookId: "",
+            bankAccount: {
+                accountNumber: "0315759479191001",
+                accountName: "ISHUL KAWARI",
+                bankCode: "BOALNPKA",
+                accountType: "Sarbashrestha Sahaj Bachat Khata Online",
+                bankCodeCIPS: "2301"
+            }
+        };
+
+        const PAYMENT_DATA = {
+            // 21 DIGITAL WALLETS
+            wallets: [
+                { id: "esewa", name: "eSewa", logoText: "eSewa", color: "bg-emerald-600" },
+                { id: "khalti", name: "Khalti", logoText: "Khalti", color: "bg-purple-600" },
+                { id: "cellpay", name: "CellPay", logoText: "CellPay", color: "bg-blue-600" },
+                { id: "cgpay", name: "CG Pay", logoText: "CG Pay", color: "bg-orange-600" },
+                { id: "moru", name: "Moru", logoText: "Moru", color: "bg-teal-600" },
+                { id: "qpay", name: "QPay", logoText: "QPay", color: "bg-sky-600" },
+                { id: "mypay", name: "MyPay", logoText: "MyPay", color: "bg-blue-600" },
+                { id: "moco", name: "MOCO", logoText: "MOCO", color: "bg-indigo-600" },
+                { id: "nimbuzz_pay", name: "Nimbuzz Pay", logoText: "Nimbuzz", color: "bg-amber-600" },
+                { id: "dpaisa", name: "D-Paisa", logoText: "D-Paisa", color: "bg-emerald-700" },
+                { id: "yo_pay", name: "YO", logoText: "YO", color: "bg-rose-600" },
+                { id: "yatra_card", name: "Yatra Card", logoText: "Yatra", color: "bg-violet-600" },
+                { id: "hamro_pay", name: "Hamro Pay", logoText: "Hamro", color: "bg-red-600" },
+                { id: "digipay", name: "DigiPay", logoText: "DigiPay", color: "bg-violet-600" },
+                { id: "mobalet", name: "Mobalet", logoText: "Mobalet", color: "bg-indigo-700" },
+                { id: "ipay", name: "iPay", logoText: "iPay", color: "bg-blue-700" },
+                { id: "icash", name: "iCash", logoText: "iCash", color: "bg-emerald-800" },
+                { id: "namaste_pay", name: "Namaste Pay", logoText: "Namaste", color: "bg-sky-700" },
+                { id: "ncash", name: "N-Cash", logoText: "N-Cash", color: "bg-cyan-700" },
+                { id: "chhito_paisa", name: "Chhito Paisa", logoText: "Chhito", color: "bg-amber-700" },
+                { id: "city_pay", name: "City Pay", logoText: "CityPay", color: "bg-blue-800" }
+            ],
+
+            // MOBILE BANKING: ALL INSTITUTIONS IN ONE UNIFIED LIST (109 ENTITIES)
+            banks: [
+                // --- COMMERCIAL BANKS (20) ---
+                { id: "nepal_bank", name: "Nepal Bank Ltd.", short_name: "Nepal Bank", app_name: "NBL Smart", logoText: "NBL", color: "bg-blue-900" },
+                { id: "adbl", name: "Agricultural Development Bank Ltd.", short_name: "ADBL", app_name: "ADBL Smart", logoText: "ADBL", color: "bg-green-700" },
+                { id: "nabil", name: "Nabil Bank Ltd.", short_name: "Nabil Bank", app_name: "nBank", logoText: "Nabil", color: "bg-emerald-800" },
+                { id: "nimb", name: "Nepal Investment Mega Bank Ltd.", short_name: "NIMB", app_name: "NIMB Smart", logoText: "NIMB", color: "bg-slate-800" },
+                { id: "scb", name: "Standard Chartered Bank Nepal Ltd.", short_name: "Standard Chartered", app_name: "SC Mobile", logoText: "SCB", color: "bg-cyan-700" },
+                { id: "hbl", name: "Himalayan Bank Ltd.", short_name: "HBL", app_name: "HI-MB", logoText: "HBL", color: "bg-indigo-800" },
+                { id: "nsbl", name: "Nepal SBI Bank Ltd.", short_name: "Nepal SBI", app_name: "NSBL Mobile", logoText: "NSBL", color: "bg-blue-700" },
+                { id: "ebl", name: "Everest Bank Ltd.", short_name: "Everest Bank", app_name: "EBL Touch24", logoText: "EBL", color: "bg-blue-600" },
+                { id: "kumari", name: "Kumari Bank Ltd.", short_name: "Kumari Bank", app_name: "Kumari Smart", logoText: "Kumari", color: "bg-rose-800" },
+                { id: "laxmi_sunrise", name: "Laxmi Sunrise Bank Ltd.", short_name: "Laxmi Sunrise", app_name: "Mobile Money", logoText: "Laxmi", color: "bg-amber-700" },
+                { id: "citizens", name: "Citizens Bank International Ltd.", short_name: "Citizens Bank", app_name: "Citizens Smart", logoText: "Citizens", color: "bg-red-800" },
+                { id: "prime", name: "Prime Commercial Bank Ltd.", short_name: "Prime Bank", app_name: "Prime Smart", logoText: "Prime", color: "bg-indigo-700" },
+                { id: "sanima", name: "Sanima Bank Ltd.", short_name: "Sanima Bank", app_name: "Sanima Sajilo", logoText: "Sanima", color: "bg-sky-700" },
+                { id: "mbl", name: "Machhapuchchhre Bank Ltd.", short_name: "MBL", app_name: "MBL M-Smart", logoText: "MBL", color: "bg-blue-600" },
+                { id: "nic_asia", name: "NIC Asia Bank Ltd.", short_name: "NIC Asia", app_name: "NIC Asia MoBank", logoText: "NIC", color: "bg-red-700" },
+                { id: "global_ime", name: "Global IME Bank Ltd.", short_name: "Global IME", app_name: "Global Smart Plus", logoText: "Global", color: "bg-rose-700" },
+                { id: "nmb", name: "NMB Bank Ltd.", short_name: "NMB Bank", app_name: "NMB eMB", logoText: "NMB", color: "bg-purple-800" },
+                { id: "prabhu", name: "Prabhu Bank Ltd.", short_name: "Prabhu Bank", app_name: "Prabhu Mobile", logoText: "Prabhu", color: "bg-red-600" },
+                { id: "siddhartha", name: "Siddhartha Bank Ltd.", short_name: "Siddhartha Bank", app_name: "BankSmart XP", logoText: "SBL", color: "bg-teal-700" },
+                { id: "rbb", name: "Rastriya Banijya Bank Ltd.", short_name: "RBB", app_name: "RBB Digital Sansar", logoText: "RBB", color: "bg-blue-800" },
+
+                // --- DEVELOPMENT BANKS (17) ---
+                { id: "narayani_dev", name: "Narayani Development Bank Ltd.", short_name: "Narayani Dev", app_name: "Mobile Banking", logoText: "Narayani", color: "bg-teal-700" },
+                { id: "karnali_dev", name: "Karnali Development Bank Ltd.", short_name: "Karnali Dev", app_name: "Karnali Smart", logoText: "Karnali", color: "bg-emerald-700" },
+                { id: "excel_dev", name: "Excel Development Bank Ltd.", short_name: "Excel Dev", app_name: "Excel Smart", logoText: "Excel", color: "bg-sky-800" },
+                { id: "miteri_dev", name: "Miteri Development Bank Ltd.", short_name: "Miteri Dev", app_name: "Miteri Smart", logoText: "Miteri", color: "bg-indigo-700" },
+                { id: "muktinath", name: "Muktinath Bikas Bank Ltd.", short_name: "Muktinath Bikas", app_name: "Muktinath Smart", logoText: "Muktinath", color: "bg-orange-700" },
+                { id: "corporate_dev", name: "Corporate Development Bank Ltd.", short_name: "Corporate Dev", app_name: "Corporate Smart", logoText: "Corporate", color: "bg-slate-700" },
+                { id: "sindhu_bikas", name: "Sindhu Bikas Bank Ltd.", short_name: "Sindhu Bikas", app_name: "Sindhu Smart", logoText: "Sindhu", color: "bg-blue-700" },
+                { id: "salapa_bikas", name: "Salapa Bikash Bank Ltd.", short_name: "Salapa Bikash", app_name: "Salapa Smart", logoText: "Salapa", color: "bg-green-800" },
+                { id: "green_dev", name: "Green Development Bank Ltd.", short_name: "Green Dev", app_name: "Green Smart", logoText: "Green", color: "bg-emerald-600" },
+                { id: "shangrila_dev", name: "Sangrila Development Bank Ltd.", short_name: "Sangrila Dev", app_name: "Sangrila Smart", logoText: "Sangrila", color: "bg-indigo-700" },
+                { id: "shine_resunga", name: "Shine Resunga Development Bank Ltd.", short_name: "Shine Resunga", app_name: "Shine Smart", logoText: "Shine", color: "bg-yellow-700" },
+                { id: "jyoti_bikas", name: "Jyoti Bikas Bank Ltd.", short_name: "Jyoti Bikas", app_name: "Jyoti Smart", logoText: "Jyoti", color: "bg-red-700" },
+                { id: "garima_bikas", name: "Garima Bikas Bank Ltd.", short_name: "Garima Bikas", app_name: "Garima Smart", logoText: "Garima", color: "bg-green-700" },
+                { id: "mahalaxmi_bikas", name: "Mahalaxmi Bikas Bank Ltd.", short_name: "Mahalaxmi Bikas", app_name: "Mahalaxmi Smart", logoText: "Mahalaxmi", color: "bg-blue-700" },
+                { id: "lumbini_bikas", name: "Lumbini Bikas Bank Ltd.", short_name: "Lumbini Bikas", app_name: "Lumbini Smart", logoText: "Lumbini", color: "bg-cyan-700" },
+                { id: "kamana_sewa", name: "Kamana Sewa Bikas Bank Ltd.", short_name: "Kamana Sewa", app_name: "KSBBL Smart", logoText: "Kamana", color: "bg-purple-700" },
+                { id: "saptakoshi_dev", name: "Saptakoshi Development Bank Ltd.", short_name: "Saptakoshi Dev", app_name: "Saptakoshi Smart", logoText: "Saptakoshi", color: "bg-teal-800" },
+
+                // --- FINANCE COMPANIES (16) ---
+                { id: "nepal_finance", name: "Nepal Finance Ltd.", short_name: "Nepal Finance", app_name: "Nepal Finance Smart", logoText: "NFL", color: "bg-blue-800" },
+                { id: "nepal_share_markets", name: "Nepal Share Markets and Finance Ltd.", short_name: "Nepal Share", app_name: "NSMF Mobile", logoText: "NSMF", color: "bg-rose-700" },
+                { id: "goodwill_finance", name: "Goodwill Finance Ltd.", short_name: "Goodwill Finance", app_name: "Goodwill Smart", logoText: "Goodwill", color: "bg-indigo-800" },
+                { id: "progressive_finance", name: "Progressive Finance Ltd.", short_name: "Progressive Fin", app_name: "Progressive Smart", logoText: "Progressive", color: "bg-sky-700" },
+                { id: "janaki_finance", name: "Janaki Finance Co. Ltd.", short_name: "Janaki Finance", app_name: "Janaki Smart", logoText: "Janaki", color: "bg-orange-800" },
+                { id: "pokhara_finance", name: "Pokhara Finance Ltd.", short_name: "Pokhara Finance", app_name: "Pokhara Smart", logoText: "Pokhara", color: "bg-teal-800" },
+                { id: "multipurpose_finance", name: "Multipurpose Finance Ltd.", short_name: "Multipurpose", app_name: "Multipurpose Smart", logoText: "Multi", color: "bg-amber-800" },
+                { id: "capital_merchant", name: "Capital Merchant Banking & Finance Ltd.", short_name: "Capital Merchant", app_name: "Capital Smart", logoText: "Capital", color: "bg-slate-800" },
+                { id: "guheshwori_finance", name: "Guheshwori Merchant Banking & Finance Ltd.", short_name: "Guheshwori Fin", app_name: "Guheshwori Smart", logoText: "Guheshwori", color: "bg-purple-800" },
+                { id: "icfc_finance", name: "ICFC Finance Ltd.", short_name: "ICFC Finance", app_name: "ICFC Smart", logoText: "ICFC", color: "bg-blue-800" },
+                { id: "manjushree_finance", name: "Manjushree Finance Ltd.", short_name: "Manjushree Fin", app_name: "Manjushree Smart", logoText: "Manjushree", color: "bg-amber-800" },
+                { id: "reliance_finance", name: "Reliance Finance Ltd.", short_name: "Reliance Finance", app_name: "Reliance Smart", logoText: "Reliance", color: "bg-red-800" },
+                { id: "gurkhas_finance", name: "Gurkhas Finance Ltd.", short_name: "Gurkhas Finance", app_name: "Gurkhas Smart", logoText: "Gurkhas", color: "bg-green-800" },
+                { id: "shree_investment", name: "Shree Investment & Finance Co. Ltd.", short_name: "Shree Investment", app_name: "Shree Smart", logoText: "Shree", color: "bg-blue-700" },
+                { id: "central_finance", name: "Central Finance Ltd.", short_name: "Central Finance", app_name: "Central Smart", logoText: "Central", color: "bg-cyan-800" },
+                { id: "best_finance", name: "Best Finance Ltd.", short_name: "Best Finance", app_name: "Best Smart", logoText: "Best", color: "bg-emerald-800" },
+
+                // --- MICROFINANCE INSTITUTIONS (51) ---
+                { id: "nirdhan_utthan", name: "Nirdhan Utthan Laghubitta Bittiya Sanstha Ltd.", short_name: "Nirdhan Utthan", app_name: "Mobile App", logoText: "Nirdhan", color: "bg-indigo-900" },
+                { id: "deprosc", name: "Deprosc Laghubitta Bittiya Sanstha Ltd.", short_name: "Deprosc", app_name: "Mobile App", logoText: "Deprosc", color: "bg-green-800" },
+                { id: "chhimek", name: "Chhimek Laghubitta Bittiya Sanstha Ltd.", short_name: "Chhimek", app_name: "Chhimek Smart", logoText: "Chhimek", color: "bg-blue-800" },
+                { id: "swabalamban", name: "Swabalamban Laghubitta Bittiya Sanstha Ltd.", short_name: "Swabalamban", app_name: "Mobile App", logoText: "Swabalamban", color: "bg-amber-800" },
+                { id: "sana_kisan", name: "Sana Kisan Bikas Laghubitta Bittiya Sanstha Ltd.", short_name: "Sana Kisan", app_name: "Mobile App", logoText: "SanaKisan", color: "bg-emerald-800" },
+                { id: "nerude_mirmire", name: "Nerude Mirmire Laghubitta Bittiya Sanstha Ltd.", short_name: "Nerude Mirmire", app_name: "Mobile App", logoText: "Nerude", color: "bg-teal-800" },
+                { id: "mithila", name: "Mithila Laghubitta Bittiya Sanstha Ltd.", short_name: "Mithila", app_name: "Mobile App", logoText: "Mithila", color: "bg-red-800" },
+                { id: "sworojagar", name: "Sworojagar Laghubitta Bittiya Sanstha Ltd.", short_name: "Sworojagar", app_name: "Mobile App", logoText: "Sworojagar", color: "bg-cyan-800" },
+                { id: "first_microfinance", name: "First Microfinance Laghubitta Bittiya Sanstha Ltd.", short_name: "First Micro", app_name: "Mobile App", logoText: "First", color: "bg-slate-800" },
+                { id: "kalika", name: "Kalika Laghubitta Bittiya Sanstha Ltd.", short_name: "Kalika", app_name: "Mobile App", logoText: "Kalika", color: "bg-purple-800" },
+                { id: "janautthan", name: "Janautthan Samudayik Laghubitta Bittiya Sanstha Ltd.", short_name: "Janautthan", app_name: "Mobile App", logoText: "Janautthan", color: "bg-rose-800" },
+                { id: "suryodaya_womi", name: "Suryodaya Womi Laghubitta Bittiya Sanstha Ltd.", short_name: "Suryodaya Womi", app_name: "Mobile App", logoText: "Suryodaya", color: "bg-orange-800" },
+                { id: "laxmi_laghubitta", name: "Laxmi Laghubitta Bittiya Sanstha Ltd.", short_name: "Laxmi Micro", app_name: "Mobile App", logoText: "LaxmiL", color: "bg-yellow-800" },
+                { id: "himalayan_laghubitta", name: "Himalayan Laghubitta Bittiya Sanstha Ltd.", short_name: "Himalayan Micro", app_name: "Mobile App", logoText: "HimL", color: "bg-sky-800" },
+                { id: "vijaya_laghubitta", name: "Vijaya Laghubitta Bittiya Sanstha Ltd.", short_name: "Vijaya Micro", app_name: "Mobile App", logoText: "Vijaya", color: "bg-emerald-800" },
+                { id: "nmb_laghubitta", name: "NMB Laghubitta Bittiya Sanstha Ltd.", short_name: "NMB Micro", app_name: "Mobile App", logoText: "NMBL", color: "bg-purple-900" },
+                { id: "forward_microfinance", name: "Forward Microfinance Laghubitta Bittiya Sanstha Ltd.", short_name: "Forward Micro", app_name: "Mobile App", logoText: "Forward", color: "bg-blue-800" },
+                { id: "global_ime_laghubitta", name: "Global IME Laghubitta Bittiya Sanstha Ltd.", short_name: "Global IME Micro", app_name: "Mobile App", logoText: "GILB", color: "bg-red-800" },
+                { id: "mahuli_laghubitta", name: "Mahuli Laghubitta Bittiya Sanstha Ltd.", short_name: "Mahuli Micro", app_name: "Mobile App", logoText: "Mahuli", color: "bg-teal-800" },
+                { id: "meromicrofinance", name: "Meromicrofinance Laghubitta Bittiya Sanstha Ltd.", short_name: "Mero Micro", app_name: "Mobile App", logoText: "MeroM", color: "bg-indigo-800" },
+                { id: "samata_gharelu", name: "Samata Gharelu Laghubitta Bittiya Sanstha Ltd.", short_name: "Samata Gharelu", app_name: "Mobile App", logoText: "Samata", color: "bg-amber-800" },
+                { id: "rsdc_laghubitta", name: "RSDC Laghubitta Bittiya Sanstha Ltd.", short_name: "RSDC Micro", app_name: "Mobile App", logoText: "RSDC", color: "bg-slate-700" },
+                { id: "samudayik_laghubitta", name: "Samudayik Laghubitta Bittiya Sanstha Ltd.", short_name: "Samudayik Micro", app_name: "Mobile App", logoText: "Samudayik", color: "bg-emerald-700" },
+                { id: "national_microfinance", name: "National Microfinance Laghubitta Bittiya Sanstha Ltd.", short_name: "National Micro", app_name: "Mobile App", logoText: "National", color: "bg-blue-900" },
+                { id: "grameen_bikas", name: "Grameen Bikas Laghubitta Bittiya Sanstha Ltd.", short_name: "Grameen Bikas", app_name: "Mobile App", logoText: "Grameen", color: "bg-green-700" },
+                { id: "wean_nepal", name: "Wean Nepal Laghubitta Bittiya Sanstha Ltd.", short_name: "Wean Nepal", app_name: "Mobile App", logoText: "Wean", color: "bg-pink-800" },
+                { id: "unnati_sahakarya", name: "Unnati Sahakarya Laghubitta Bittiya Sanstha Ltd.", short_name: "Unnati Sahakarya", app_name: "Mobile App", logoText: "Unnati", color: "bg-red-700" },
+                { id: "nadep_laghubitta", name: "NADEP Laghubitta Bittiya Sanstha Ltd.", short_name: "NADEP Micro", app_name: "Mobile App", logoText: "NADEP", color: "bg-indigo-800" },
+                { id: "support_laghubitta", name: "Support Laghubitta Bittiya Sanstha Ltd.", short_name: "Support Micro", app_name: "Mobile App", logoText: "Support", color: "bg-cyan-800" },
+                { id: "aarambha_chautari", name: "Aarambha Chautari Laghubitta Bittiya Sanstha Ltd.", short_name: "Aarambha Chautari", app_name: "Mobile App", logoText: "Aarambha", color: "bg-orange-700" },
+                { id: "asha_laghubitta", name: "Asha Laghubitta Bittiya Sanstha Ltd.", short_name: "Asha Micro", app_name: "Mobile App", logoText: "Asha", color: "bg-rose-700" },
+                { id: "gurans_laghubitta", name: "Gurans Laghubitta Bittiya Sanstha Ltd.", short_name: "Gurans Micro", app_name: "Mobile App", logoText: "Gurans", color: "bg-green-800" },
+                { id: "ganapati_laghubitta", name: "Ganapati Laghubitta Bittiya Sanstha Ltd.", short_name: "Ganapati Micro", app_name: "Mobile App", logoText: "Ganapati", color: "bg-purple-800" },
+                { id: "infinity_laghubitta", name: "Infinity Laghubitta Bittiya Sanstha Ltd.", short_name: "Infinity Micro", app_name: "Mobile App", logoText: "Infinity", color: "bg-blue-800" },
+                { id: "swabhiman_laghubitta", name: "Swabhiman Laghubitta Bittiya Sanstha Ltd.", short_name: "Swabhiman Micro", app_name: "Mobile App", logoText: "Swabhiman", color: "bg-indigo-700" },
+                { id: "sampada_laghubitta", name: "Sampada Laghubitta Bittiya Sanstha Ltd.", short_name: "Sampada Micro", app_name: "Mobile App", logoText: "Sampada", color: "bg-teal-700" },
+                { id: "nic_asia_laghubitta", name: "NIC Asia Laghubitta Bittiya Sanstha Ltd.", short_name: "NIC Asia Micro", app_name: "Mobile App", logoText: "NICAL", color: "bg-red-800" },
+                { id: "mahila_laghubitta", name: "Mahila Laghubitta Bittiya Sanstha Ltd.", short_name: "Mahila Micro", app_name: "Mobile App", logoText: "Mahila", color: "bg-fuchsia-800" },
+                { id: "manushi_laghubitta", name: "Manushi Laghubitta Bittiya Sanstha Ltd.", short_name: "Manushi Micro", app_name: "Mobile App", logoText: "Manushi", color: "bg-amber-800" },
+                { id: "unique_nepal", name: "Unique Nepal Laghubitta Bittiya Sanstha Ltd.", short_name: "Unique Nepal", app_name: "Mobile App", logoText: "Unique", color: "bg-sky-800" },
+                { id: "upakar_laghubitta", name: "Upakar Laghubitta Bittiya Sanstha Ltd.", short_name: "Upakar Micro", app_name: "Mobile App", logoText: "Upakar", color: "bg-emerald-800" },
+                { id: "dhaulagiri_laghubitta", name: "Dhaulagiri Laghubitta Bittiya Sanstha Ltd.", short_name: "Dhaulagiri Micro", app_name: "Mobile App", logoText: "Dhaulagiri", color: "bg-blue-800" },
+                { id: "cyc_nepal", name: "CYC Nepal Laghubitta Bittiya Sanstha Ltd.", short_name: "CYC Nepal Micro", app_name: "Mobile App", logoText: "CYC", color: "bg-purple-800" },
+                { id: "nesdo_samriddha", name: "NESDO Samriddha Laghubitta Bittiya Sanstha Ltd.", short_name: "NESDO Samriddha", app_name: "Mobile App", logoText: "NESDO", color: "bg-teal-800" },
+                { id: "swastik_laghubitta", name: "Swastik Laghubitta Bittiya Sanstha Ltd.", short_name: "Swastik Micro", app_name: "Mobile App", logoText: "Swastik", color: "bg-red-700" },
+                { id: "shrijanshil_laghubitta", name: "Shrijanshil Laghubitta Bittiya Sanstha Ltd.", short_name: "Shrijanshil Micro", app_name: "Mobile App", logoText: "Shrijan", color: "bg-indigo-800" },
+                { id: "matribhumi_laghubitta", name: "Matribhumi Laghubitta Bittiya Sanstha Ltd.", short_name: "Matribhumi Micro", app_name: "Mobile App", logoText: "Matri", color: "bg-green-800" },
+                { id: "jeevan_bikash", name: "Jeevan Bikash Laghubitta Bittiya Sanstha Ltd.", short_name: "Jeevan Bikash", app_name: "Mobile App", logoText: "Jeevan", color: "bg-blue-800" },
+                { id: "aatmanirbhar_laghubitta", name: "Aatmanirbhar Laghubitta Bittiya Sanstha Ltd.", short_name: "Aatmanirbhar Micro", app_name: "Mobile App", logoText: "Aatmani", color: "bg-amber-800" },
+                { id: "sanjeevani_laghubitta", name: "Sanjeevani Laghubitta Bittiya Sanstha Ltd.", short_name: "Sanjeevani Micro", app_name: "Mobile App", logoText: "Sanjeevani", color: "bg-emerald-800" },
+                { id: "aviyan_laghubitta", name: "Aviyan Laghubitta Bittiya Sanstha Ltd.", short_name: "Aviyan Micro", app_name: "Mobile App", logoText: "Aviyan", color: "bg-cyan-800" },
+
+                // --- OTHER / SPECIAL INSTITUTIONS (5) ---
+                { id: "nifra", name: "Nepal Infrastructure Bank Ltd. (NIFRA)", short_name: "NIFRA", app_name: "Mobile Banking", logoText: "NIFRA", color: "bg-slate-900" },
+                { id: "rastriya_sahakari", name: "Rastriya Sahakari Bank Ltd.", short_name: "Sahakari Bank", app_name: "Mobile Banking", logoText: "Sahakari", color: "bg-green-900" },
+                { id: "mashreq_bank", name: "Mashreq Bank PSC — Representative Office", short_name: "Mashreq Bank", app_name: "Representative Office", logoText: "Mashreq", color: "bg-amber-900" },
+                { id: "doha_bank", name: "Doha Bank — Representative Office", short_name: "Doha Bank", app_name: "Representative Office", logoText: "Doha", color: "bg-rose-900" },
+                { id: "icici_bank", name: "ICICI Bank Ltd. — Representative Office", short_name: "ICICI Bank", app_name: "Representative Office", logoText: "ICICI", color: "bg-orange-900" }
+            ],
+
+            // FULL COMPREHENSIVE QR NETWORKS (DOMESTIC & INTERNATIONAL)
+            qrNetworks: [
+                { id: "fonepay_qr", name: "Fonepay QR", network: "Fonepay System", logoText: "Fonepay", color: "bg-sky-600" },
+                { id: "nepalpay_qr", name: "NEPALPAY QR", network: "NCHL", logoText: "N-QR", color: "bg-emerald-700" },
+                { id: "smart_qr", name: "Smart QR", network: "SCT Network", logoText: "SmartQR", color: "bg-indigo-700" },
+                { id: "connectips_qr", name: "connectIPS", network: "NCHL", logoText: "cIPS", color: "bg-blue-700" },
+                { id: "upi_qr", name: "UPI QR", network: "India UPI", logoText: "UPI", color: "bg-orange-600" },
+                { id: "alipay_qr", name: "Alipay+", network: "Alipay Global", logoText: "Alipay", color: "bg-blue-600" }
+            ]
+        };
+
+        const translations = {
+            ne: {
+                headerSupport: "सहायता",
+                step1of3: "चरण १ / ३",
+                step2of3: "चरण २ / ३",
+                step3of3: "चरण ३ / ३",
+                choosePaymentMethod: "भुक्तानी माध्यम छान्नुहोस्",
+                choosePaymentSubtitle: "तपाईंलाई सजिलो हुने भुक्तानी विकल्प छान्नुहोस्।",
+                backToMethods: "माध्यम परिवर्तन",
+                generatingQr: "QR Code तयार हुँदैछ...",
+                downloadQrBtn: "QR Code डाउनलोड गर्नुहोस्",
+                selectedMethod: "छानिएको माध्यम:",
+                qrScanInstruction: "तपाईंको भुक्तानी एपबाट QR Scan गर्नुहोस्",
+                ivePaidBtn: "भुक्तानी विवरण पठाउनुहोस्",
+                confirmPaymentTitle: "तपाईंको भुक्तानी पुष्टि गर्नुहोस्",
+                confirmPaymentSubtitle: "सटीक विवरण भरी तुरुन्त Ebook प्राप्त गर्नुहोस्।",
+                backToQr: "QR मा फर्कनुहोस्",
+                selectedPaymentMethod: "भुक्तानी माध्यम:",
+                labelFullName: "पूरा नाम *",
+                phFullName: "उदा. रामबहादुर श्रेष्ठ",
+                labelAmount: "भुक्तानी रकम (NPR) *",
+                phAmount: "तिरेको रकम",
+                labelEbookId: "Ebook ID *",
+                phEbookId: "उदा. EB-101",
+                autoFilledEbook: "✨ लिङ्कबाट स्वतः भरियो",
+                phSearch: "eSewa, nBank खोज्नुहोस्...",
+                labelScreenshot: "भुक्तानीको Screenshot / PDF रसिद *",
+                uploadText: "यहाँ क्लिक गर्नुहोस् वा रसिद तानेर राख्नुहोस्",
+                uploadSubText: "JPG, PNG, WEBP, PDF (अधिकतम ५ MB)",
+                btnRemove: "हटाउनुहोस्",
+                submitWhatsappBtn: "भुक्तानी विवरण पठाउनुहोस्",
+                congatsTag: "भुक्तानी विवरण पठाइयो",
+                thankYouTitle: "अर्डर गर्नुभएकोमा हार्दिक धन्यवाद!",
+                congratsParagraph: "तपाईंको भुक्तानी विवरण प्राप्त भयो। अब हाम्रो टोलीले रकम जाँच गर्नेछ। पुष्टि भएपछि तपाईंलाई WhatsApp मार्फत Ebook पठाइनेछ।",
+                statusVerified: "प्रमाणीकरण बाँकी",
+                recName: "ग्राहकको नाम",
+                recEbookId: "Ebook ID",
+                recAmount: "भुक्तानी रकम",
+                recMethod: "भुक्तानी माध्यम",
+                instantWhatsappTitle: "WhatsApp मार्फत भुक्तानी विवरण पठाउनुहोस्",
+                instantWhatsappSub: "भुक्तानी जाँचका लागि विवरण पठाउन यहाँ क्लिक गर्नुहोस्",
+                btnDownloadReceipt: "आधिकारिक PDF रसिद डाउनलोड गर्नुहोस्",
+                btnMakeAnother: "अर्को भुक्तानी गर्नुहोस्",
+                trustEncrypted: "२५६-बिट SSL",
+                trustGuaranteed: "१००% सुरक्षित",
+                trustSecure: "सुरक्षित भुक्तानी",
+                trustSecureSub: "सिधा ट्रान्सफर",
+                trustFast: "द्रुत डेलिभरी",
+                trustFastSub: "सजिलो पहुँच",
+                trustSupport: "सहायता",
+                trustSupportSub: "२४/७ उपलब्ध"
+            },
+            en: {
+                headerSupport: "Support",
+                step1of3: "Step 1 / 3",
+                step2of3: "Step 2 / 3",
+                step3of3: "Step 3 / 3",
+                choosePaymentMethod: "Choose Payment Method",
+                choosePaymentSubtitle: "Select your preferred payment option.",
+                backToMethods: "Change Method",
+                generatingQr: "Generating QR Code...",
+                downloadQrBtn: "Download QR Code",
+                selectedMethod: "Selected Method:",
+                qrScanInstruction: "Scan QR Code using your Payment App",
+                ivePaidBtn: "Submit Payment Details",
+                confirmPaymentTitle: "Confirm Your Payment",
+                confirmPaymentSubtitle: "Provide details for fast verification.",
+                backToQr: "Back to QR",
+                selectedPaymentMethod: "Payment Method:",
+                labelFullName: "Full Name *",
+                phFullName: "e.g. Ram Bahadur Shrestha",
+                labelAmount: "Paid Amount (NPR) *",
+                phAmount: "Amount paid",
+                labelEbookId: "Ebook ID *",
+                phEbookId: "e.g. EB-101",
+                autoFilledEbook: "✨ Auto-filled",
+                phSearch: "Search eSewa, nBank...",
+                labelScreenshot: "Payment Screenshot / Receipt *",
+                uploadText: "Click or Drag Payment Receipt Here",
+                uploadSubText: "JPG, PNG, WEBP, PDF (Max 5MB)",
+                btnRemove: "Remove",
+                submitWhatsappBtn: "Submit Payment Details",
+                congatsTag: "विवरण पठाइयो",
+                thankYouTitle: "Thank You for Your Order!",
+                congratsParagraph: "We have received your payment details. Our team will review the payment and send your ebook after confirmation.",
+                statusVerified: "प्रमाणीकरण बाँकी",
+                recName: "Customer Name",
+                recEbookId: "Ebook ID",
+                recAmount: "Amount Paid",
+                recMethod: "Payment Method",
+                instantWhatsappTitle: "WhatsApp Payment Follow-up",
+                instantWhatsappSub: "Tap to send your payment details for review",
+                btnDownloadReceipt: "Download Official PDF Receipt",
+                btnMakeAnother: "Make Another Payment",
+                trustEncrypted: "256-Bit SSL",
+                trustGuaranteed: "100% Guaranteed",
+                trustSecure: "Secure Pay",
+                trustSecureSub: "Direct transfer",
+                trustFast: "Instant Delivery",
+                trustFastSub: "Quick access",
+                trustSupport: "Support",
+                trustSupportSub: "Assistance 24/7"
+            }
+        };
+
+        let currentLang = "ne";
+        let currentCategory = "wallets";
+        let currentState = {
+            selectedMethod: null,
+            ebookId: CONFIG.defaultEbookId,
+            paidAmount: "",
+            uploadedFile: null,
+            submissionId: null
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            parseUrlParameters();
+            initHeaderAndConfig();
+            renderPaymentMethods();
+            setLanguage(CONFIG.defaultLanguage);
+            setupDropZone();
+            if (window.lucide) lucide.createIcons();
+        });
+
+        function parseUrlParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const ebookParam = urlParams.get('ebook') || urlParams.get('id') || urlParams.get('book');
+            const amountParam = urlParams.get('amount') || urlParams.get('price');
+
+            if (ebookParam) {
+                currentState.ebookId = ebookParam;
+                document.getElementById('input-ebook-id').value = ebookParam;
+                const autoFillMsg = document.getElementById('help-ebook-id');
+                if (autoFillMsg) autoFillMsg.classList.remove('hidden');
+            }
+
+            if (amountParam && !isNaN(amountParam)) {
+                currentState.paidAmount = amountParam;
+                document.getElementById('input-amount').value = amountParam;
+            }
+        }
+
+        function initHeaderAndConfig() {
+            document.getElementById('brand-logo-text').innerText = CONFIG.brandName;
+            document.getElementById('pdf-brand-title').innerText = CONFIG.brandName;
+            const waUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=Hi%2C%20I%20need%20support%20with%20my%20ebook%20payment.`;
+            document.getElementById('whatsapp-header-link').href = waUrl;
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            const dict = translations[lang];
+
+            if (lang === 'ne') {
+                document.getElementById('lang-btn-ne').className = "px-2 py-0.5 rounded-md transition-all bg-white text-slate-900 shadow-xs font-bold";
+                document.getElementById('lang-btn-en').className = "px-2 py-0.5 rounded-md transition-all text-slate-600 hover:text-slate-900 font-normal";
+            } else {
+                document.getElementById('lang-btn-en').className = "px-2 py-0.5 rounded-md transition-all bg-white text-slate-900 shadow-xs font-bold";
+                document.getElementById('lang-btn-ne').className = "px-2 py-0.5 rounded-md transition-all text-slate-600 hover:text-slate-900 font-normal";
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.innerText = dict[key];
+                }
+            });
+
+            const inputSearch = document.getElementById('method-search-input');
+            if (inputSearch) inputSearch.placeholder = dict.phSearch;
+
+            const inputName = document.getElementById('input-fullname');
+            if (inputName) inputName.placeholder = dict.phFullName;
+
+            const inputAmount = document.getElementById('input-amount');
+            if (inputAmount) inputAmount.placeholder = dict.phAmount;
+
+            const inputEbook = document.getElementById('input-ebook-id');
+            if (inputEbook) inputEbook.placeholder = dict.phEbookId;
+
+            updateInstructionText();
+        }
+
+        function switchCategory(category) {
+            currentCategory = category;
+            ['wallets', 'banks', 'qrNetworks'].forEach(cat => {
+                const btn = document.getElementById(`tab-${cat}`);
+                if (cat === category) {
+                    btn.className = "active-tab py-1.5 px-2 rounded-md text-center transition-all truncate cursor-pointer";
+                } else {
+                    btn.className = "py-1.5 px-2 rounded-md text-center text-slate-700 bg-white hover:bg-slate-50 transition-all truncate cursor-pointer";
+                }
+            });
+            renderPaymentMethods(document.getElementById('method-search-input').value);
+        }
+
+        function filterPaymentMethods() {
+            const query = document.getElementById('method-search-input').value.trim();
+            renderPaymentMethods(query);
+        }
+
+        function renderPaymentMethods(searchQuery = '') {
+            const grid = document.getElementById('payment-methods-grid');
+            grid.innerHTML = '';
+
+            let list = [];
+            const q = searchQuery.trim().toLowerCase();
+
+            if (q.length > 0) {
+                const allItems = [
+                    ...PAYMENT_DATA.wallets.map(i => ({ ...i, categoryType: 'wallets' })),
+                    ...PAYMENT_DATA.banks.map(i => ({ ...i, categoryType: 'banks' })),
+                    ...PAYMENT_DATA.qrNetworks.map(i => ({ ...i, categoryType: 'qrNetworks' }))
+                ];
+                list = allItems.filter(item => 
+                    item.name.toLowerCase().includes(q) || 
+                    (item.short_name && item.short_name.toLowerCase().includes(q)) ||
+                    (item.app_name && item.app_name.toLowerCase().includes(q)) ||
+                    (item.logoText && item.logoText.toLowerCase().includes(q))
+                );
+            } else {
+                list = (PAYMENT_DATA[currentCategory] || []).map(i => ({ ...i, categoryType: currentCategory }));
+            }
+
+            if (list.length === 0) {
+                grid.innerHTML = `<div class="col-span-3 py-6 text-center text-xs text-slate-500">No payment method found</div>`;
+                return;
+            }
+
+            list.forEach(item => {
+                const isSelected = currentState.selectedMethod && currentState.selectedMethod.id === item.id;
+                const card = document.createElement('div');
+                card.onclick = () => selectPaymentMethod(item);
+                
+                let cardStyles = "relative p-2 rounded-lg border transition-all cursor-pointer flex flex-col items-center justify-center text-center space-y-1 h-20 select-none ";
+                if (isSelected) {
+                    cardStyles += "bg-primary-50 border-primary-500 ring-2 ring-primary-500/30 shadow-2xs";
+                } else {
+                    cardStyles += "bg-white border-slate-200 hover:border-primary-300 hover:bg-slate-50";
+                }
+                card.className = cardStyles;
+
+                const bgBadgeColor = item.color || "bg-primary-600";
+                const badgeText = item.logoText || item.name.substring(0, 4);
+
+                card.innerHTML = `
+                    ${isSelected ? '<span class="absolute top-1 right-1 w-3.5 h-3.5 bg-primary-600 text-white rounded-full flex items-center justify-center text-[9px] font-bold"><i data-lucide="check" class="w-2.5 h-2.5"></i></span>' : ''}
+                    <div class="w-7 h-7 rounded-lg ${bgBadgeColor} text-white font-extrabold text-[9px] flex items-center justify-center shadow-xs tracking-tighter truncate px-0.5">${badgeText}</div>
+                    <span class="text-[11px] font-bold text-slate-800 line-clamp-1 w-full px-0.5 leading-tight">${item.name}</span>
+                    <span class="text-[9px] text-slate-500 truncate w-full leading-none">${item.app_name || item.network || 'Official'}</span>
+                `;
+                grid.appendChild(card);
+            });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function showScreen(targetScreenId) {
+            ['checkout-step-choose', 'checkout-step-qr', 'checkout-step-2', 'checkout-step-3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    if (id === targetScreenId) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        function selectPaymentMethod(item) {
+            currentState.selectedMethod = item;
+            document.getElementById('selected-method-name-display').innerText = item.name;
+            document.getElementById('form-method-display').innerText = item.name;
+            updateInstructionText();
+            generateDynamicQR();
+            showScreen('checkout-step-qr');
+        }
+
+        function goToChooseMethod() {
+            // Return to the StudyNotes storefront route.
+            window.location.href = new URL('/paysn', window.location.origin).href;
+        }
+
+        function updateInstructionText() {
+            const item = currentState.selectedMethod;
+            const instructionEl = document.getElementById('qr-sub-instruction');
+            if (item && item.name) {
+                const appDisplayName = item.app_name || item.name;
+                instructionEl.innerHTML = currentLang === 'ne'
+                    ? `${appDisplayName} खोल्नुहोस्, QR Scan गर्नुहोस् र विज्ञापनमा तोकिएको रकम भुक्तानी गर्नुहोस्।`
+                    : `Open ${appDisplayName} and scan the QR code to pay securely.`;
+            } else {
+                instructionEl.innerHTML = currentLang === 'ne'
+                    ? `एप खोल्नुहोस्, QR Scan गर्नुहोस् र भुक्तानी गर्नुहोस्।`
+                    : `Open app, scan QR code and pay.`;
+            }
+        }
+
+        function generateDynamicQR() {
+            const container = document.getElementById('qrcode-canvas-container');
+            const targetContainer = document.getElementById('qrcode-canvas-target');
+            container.innerHTML = '';
+            targetContainer.innerHTML = '';
+
+            const exactJsonPayload = JSON.stringify({
+                accountNumber: CONFIG.bankAccount.accountNumber,
+                accountName: CONFIG.bankAccount.accountName,
+                bankCode: CONFIG.bankAccount.bankCode,
+                accountType: CONFIG.bankAccount.accountType,
+                bankCodeCIPS: CONFIG.bankAccount.bankCodeCIPS
+            });
+
+            try {
+                new QRCode(container, {
+                    text: exactJsonPayload,
+                    width: 170,
+                    height: 170,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+
+                new QRCode(targetContainer, {
+                    text: exactJsonPayload,
+                    width: 800,
+                    height: 800,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch (err) {
+                container.innerHTML = `<div class="text-xs text-rose-500">QR Ready</div>`;
+            }
+        }
+
+        function downloadQRCodeImage() {
+            const targetContainer = document.getElementById('qrcode-canvas-target');
+            const qrCanvas = targetContainer.querySelector('canvas');
+            let downloadUrl = "";
+
+            if (qrCanvas) {
+                const paddedCanvas = document.createElement('canvas');
+                const padding = 80;
+                paddedCanvas.width = qrCanvas.width + (padding * 2);
+                paddedCanvas.height = qrCanvas.height + (padding * 2);
+                const ctx = paddedCanvas.getContext('2d');
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(0, 0, paddedCanvas.width, paddedCanvas.height);
+                ctx.drawImage(qrCanvas, padding, padding);
+                downloadUrl = paddedCanvas.toDataURL("image/png");
+            }
+
+            if (!downloadUrl) return;
+
+            const downloadLink = document.createElement('a');
+            const methodName = currentState.selectedMethod ? currentState.selectedMethod.name : 'Payment';
+            downloadLink.href = downloadUrl;
+            downloadLink.download = `FullHD_QR_${methodName.replace(/\s+/g, '_')}.png`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+
+        function goToConfirmationForm() {
+            showScreen('checkout-step-2');
+        }
+
+        function goToStep1() {
+            showScreen('checkout-step-qr');
+        }
+
+        function setupDropZone() {
+            const dropZone = document.getElementById('drop-zone');
+            dropZone.addEventListener('click', () => document.getElementById('input-screenshot').click());
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    dropZone.classList.add('border-primary-500', 'bg-primary-50/50');
+                });
+            });
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    dropZone.classList.remove('border-primary-500', 'bg-primary-50/50');
+                });
+            });
+            dropZone.addEventListener('drop', (e) => {
+                handleFileSelect(e.dataTransfer.files);
+            });
+        }
+
+        function handleFileSelect(files) {
+            const errEl = document.getElementById('err-screenshot');
+            errEl.classList.add('hidden');
+            if (!files || files.length === 0) return;
+            const file = files[0];
+            const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf'];
+            if (!validTypes.includes(file.type)) {
+                errEl.innerText = "Please upload JPG, PNG, WEBP, or PDF file.";
+                errEl.classList.remove('hidden');
+                return;
+            }
+            if (file.size > 5 * 1024 * 1024) {
+                errEl.innerText = "File size must be under 5 MB.";
+                errEl.classList.remove('hidden');
+                return;
+            }
+            currentState.uploadedFile = file;
+            const previewImg = document.getElementById('preview-img');
+            const previewPdfIcon = document.getElementById('preview-pdf-icon');
+
+            if (file.type === 'application/pdf') {
+                previewImg.classList.add('hidden');
+                previewPdfIcon.classList.remove('hidden');
+                document.getElementById('file-name').innerText = file.name;
+                document.getElementById('upload-prompt').classList.add('hidden');
+                document.getElementById('upload-preview').classList.remove('hidden');
+            } else {
+                previewPdfIcon.classList.add('hidden');
+                previewImg.classList.remove('hidden');
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImg.src = e.target.result;
+                    document.getElementById('file-name').innerText = file.name;
+                    document.getElementById('upload-prompt').classList.add('hidden');
+                    document.getElementById('upload-preview').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeScreenshot(event) {
+            event.stopPropagation();
+            currentState.uploadedFile = null;
+            document.getElementById('input-screenshot').value = '';
+            document.getElementById('upload-preview').classList.add('hidden');
+            document.getElementById('upload-prompt').classList.remove('hidden');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('input-fullname').value.trim();
+            const amountVal = document.getElementById('input-amount').value.trim();
+            const ebookIdVal = document.getElementById('input-ebook-id').value.trim();
+
+            if (!fullName || !amountVal || !ebookIdVal || !currentState.uploadedFile) {
+                return;
+            }
+
+            currentState.paidAmount = amountVal;
+            currentState.ebookId = ebookIdVal;
+
+            const dateStr = new Date().toISOString().slice(0,10).replace(/-/g,"");
+            const randomHex = Math.floor(100000 + Math.random() * 900000);
+            currentState.submissionId = `PAYSN-${dateStr}-${randomHex}`;
+
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const dateDisplay = now.toLocaleDateString();
+
+            const waText = 
+`*PaySN PAYMENT DETAILS SUBMITTED — VERIFICATION PENDING*
+━━━━━━━━━━━━━━━━━━
+📌 *Submission ID:* ${currentState.submissionId}
+👤 *Name:* ${fullName}
+📚 *Ebook ID:* ${currentState.ebookId}
+💰 *Amount Paid:* NPR ${currentState.paidAmount}
+💳 *Method:* ${currentState.selectedMethod ? currentState.selectedMethod.name : 'Direct Transfer'}
+📅 *Date:* ${dateDisplay} ${timeStr}
+━━━━━━━━━━━━━━━━━━
+_Please send my Ebook access link._`;
+
+            const encodedMsg = encodeURIComponent(waText);
+            const waUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodedMsg}`;
+
+            document.getElementById('instant-whatsapp-cta').href = waUrl;
+
+            // Open WhatsApp directly from the user's submit gesture.
+            // Keep PaySN open in this tab so the Thank You / Order Summary
+            // remains available when the customer returns from WhatsApp.
+            const whatsappWindow = window.open(waUrl, '_blank');
+            if (!whatsappWindow) {
+                // Popup-blocked fallback: keep the order summary visible and
+                // let the customer open WhatsApp using the visible CTA.
+                document.getElementById('instant-whatsapp-cta').setAttribute('aria-label', 'Open WhatsApp to send payment details');
+            }
+
+            renderSuccessScreen(fullName);
+
+            document.getElementById('payment-confirmation-form').reset();
+            currentState.uploadedFile = null;
+            document.getElementById('upload-preview').classList.add('hidden');
+            document.getElementById('upload-prompt').classList.remove('hidden');
+        }
+
+        function renderSuccessScreen(fullName) {
+            document.getElementById('rec-id').innerText = currentState.submissionId;
+            document.getElementById('rec-name').innerText = fullName;
+            document.getElementById('rec-ebook').innerText = currentState.ebookId;
+            document.getElementById('rec-amount').innerText = `NPR ${currentState.paidAmount}`;
+            document.getElementById('rec-method').innerText = currentState.selectedMethod ? currentState.selectedMethod.name : 'Direct Transfer';
+
+            document.getElementById('pdf-rec-id').innerText = currentState.submissionId;
+            document.getElementById('pdf-name').innerText = fullName;
+            document.getElementById('pdf-ebook').innerText = currentState.ebookId;
+            document.getElementById('pdf-amount').innerText = `NPR ${currentState.paidAmount}`;
+            document.getElementById('pdf-method').innerText = currentState.selectedMethod ? currentState.selectedMethod.name : 'Direct Transfer';
+            document.getElementById('pdf-date').innerText = new Date().toLocaleDateString();
+
+            showScreen('checkout-step-3');
+        }
+
+        function downloadPDFReceipt() {
+            const element = document.getElementById('receipt-pdf-template');
+            element.classList.remove('hidden');
+            const opt = {
+                margin: 0.5,
+                filename: `Receipt_${currentState.submissionId}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.classList.add('hidden');
+            }).catch(() => {
+                element.classList.add('hidden');
+                window.print();
+            });
+        }
+    </script>
+</body>
+</html>
