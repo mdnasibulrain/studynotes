@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-30T22:35:05.766Z",
+  "updatedAt": "2026-10-31T08:57:29.463Z",
   "products": [
     {
       "id": "SN001CS",
@@ -79,7 +79,20 @@
       "reviewCount": 142,
       "soldCopies": 850,
       "copiesLeft": 14,
-      "updatedAt": "2026-10-30T22:34:36.187Z",
+      "bonus": {
+        "enabled": true,
+        "items": [
+          {
+            "id": "bon_mvw5y9ey6a2n",
+            "type": "workbook",
+            "title": "Resume Mastery Practice",
+            "description": "Practical Resume Writing",
+            "value": 599
+          }
+        ],
+        "end": "2026-11-01T14:36+05:45"
+      },
+      "updatedAt": "2026-10-31T08:57:20.519Z",
       "isFeatured": true
     },
     {
@@ -154,7 +167,7 @@
       "reviewCount": 98,
       "soldCopies": 620,
       "copiesLeft": 9,
-      "updatedAt": "2026-10-30T22:34:26.682Z",
+      "updatedAt": "2026-10-31T08:54:48.468Z",
       "isFeatured": true
     },
     {
@@ -468,6 +481,7 @@
       "summary": "कम्प्युटर, डिजिटल सीप, लोकसेवा, शेयर बजार, व्यक्तित्व र करियर गाइड सबै एकै ठाउँमा।",
       "category": "Bundles",
       "tags": [],
+      "badge": "POPULAR",
       "status": "published",
       "availability": "available",
       "featured": false,
@@ -477,7 +491,7 @@
       "regularPrice": 5995,
       "offerPrice": 1499,
       "offerActive": true,
-      "offerEndsAt": "2026-12-31T23:59:00+05:45",
+      "offerEndsAt": "2026-10-31T23:59+05:45",
       "offerLabel": "ULTIMATE VALUE",
       "countdownVisible": true,
       "copiesLeft": 40,
@@ -489,6 +503,7 @@
         "SN001PD",
         "SN001NY"
       ],
+      "updatedAt": "2026-10-30T22:37:23.723Z",
       "isFeatured": false
     },
     {
@@ -527,7 +542,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-10-30T22:35:05.766Z",
+      "updatedAt": "2026-10-31T08:57:29.463Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1133,6 +1148,45 @@
           "comboMin": 3,
           "comboPercent": 15
         },
+        "bonus": {
+          "valueLabel": "Value {value}",
+          "totalLabel": "🎁 कुल Bonus Value: {value} — Ebook सँगै",
+          "countdownText": "Bonus Offer सकिन बाँकी: {time}",
+          "limitedText": "सीमित समयको Bonus Offer",
+          "untilText": "यो Bonus Offer {date} सम्म मात्र।",
+          "home": {
+            "enabled": true,
+            "eyebrow": "🎁 EXCLUSIVE BONUS RESOURCES",
+            "title": "एउटा Ebook मात्र होइन, Complete Learning & Practice Package!",
+            "sub": "Read It. Practice It. Apply It. Get Skilled.",
+            "tagline": "One Book. Multiple Resources. Real Results.",
+            "mainTitle": "MAIN EBOOK",
+            "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
+            "hooks": [
+              "Buy Before the Offer Ends & Unlock Your Exclusive Bonuses!"
+            ],
+            "cta": "Bonus सहित Order गर्नुहोस्",
+            "viewCta": "Bonus हेर्नुहोस्",
+            "eligibility": "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
+            "showValue": true,
+            "maxProducts": 6
+          },
+          "product": {
+            "enabled": true,
+            "eyebrow": "🎁 EXCLUSIVE BONUSES",
+            "title": "यो Ebook सँग तपाईंले पाउने Bonus Resources",
+            "sub": "Read It. Practice It. Apply It. Get Skilled.",
+            "tagline": "One Book. Multiple Resources. Real Results.",
+            "mainTitle": "MAIN EBOOK",
+            "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
+            "hooks": [
+              "Buy Before the Offer Ends & Unlock Your Exclusive Bonuses!"
+            ],
+            "cta": "Bonus सहित Order गर्नुहोस्",
+            "eligibility": "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
+            "showValue": true
+          }
+        },
         "messages": {
           "order": "Hello {storeName}! मैले यी Ebook Order गर्न चाहन्छु 👇\n\n{items}\n\n{priceSummary}\n\nPayment: NSPAY / WhatsApp\nकृपया Payment विवरण पठाइदिनुहोस् 🙏",
           "paymentInstruction": "नमस्कार {customerName}! 🙏\n\n{productName} (ID: {productId}) को लागि जम्मा रकम: {total}\n\nNSPAY बाट Payment गर्नुहोस्: {nspayUrl}\nPayment पछि Screenshot र Product ID यहीँ पठाउनुहोस्।",
@@ -1263,6 +1317,10 @@
           },
           {
             "id": "bundles",
+            "enabled": true
+          },
+          {
+            "id": "bonus",
             "enabled": true
           },
           {
