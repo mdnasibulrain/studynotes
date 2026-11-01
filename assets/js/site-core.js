@@ -238,6 +238,8 @@ const D = {
   delivery: { time: "3–5 मिनेट", short: "3–5 min", method: "WhatsApp / Email", text: "Payment verify भएपछि {delivery} भित्र WhatsApp वा Email बाट ebook प्राप्त गर्नुहोस्।" },
   cart: { enabled: true, comboEnabled: true, comboMin: 3, comboPercent: 15 },
   bonus: {
+    strip: { title: "यस Ebook सँग तपाईंले पाउनुहुन्छ", sub: "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।", badge: "INCLUDED", mainTitle: "Ebook PDF", mainDesc: "Complete Guide & Practical Lessons", mainBadge: "INCLUDED", trust: "📦 Your Complete Learning & Success Package", freeLabel: "NOW FREE 🎁", originalValueLabel: "Original Value: {value}", offerLabel: "BONUS OFFER", limitedLabel: "Limited-Time Bonus" },
+    cart: { enabled: true, title: "🎁 Included Bonus" },
     valueLabel: "Value {value}", totalLabel: "🎁 कुल Bonus Value: {value} — Ebook सँगै", countdownText: "Bonus Offer सकिन बाँकी: {time}", limitedText: "सीमित समयको Bonus Offer", untilText: "यो Bonus Offer {date} सम्म मात्र।",
     home: {
       enabled: true,
@@ -466,23 +468,24 @@ SN.normBonus = b => {
   b = isObj(b) ? b : {};
   const items = arr(b.items).filter(isObj).map((x, i) => ({
     id: str(x.id) || "bn" + (i + 1), type: SN.BONUS_TYPE_IDS.includes(x.type) ? x.type : "custom", title: str(x.title), description: str(x.description),
-    icon: str(x.icon), cover: str(x.cover), file: str(x.file), value: num(x.value), order: num(x.order), visible: x.visible !== false, tag: str(x.tag)
+    icon: str(x.icon), cover: str(x.cover), file: str(x.file), value: num(x.value), order: num(x.order), visible: x.visible !== false, tag: str(x.tag), badge: str(x.badge)
   }));
   return {
-    enabled: !!b.enabled, showOnHome: b.showOnHome !== false, showOnProduct: b.showOnProduct !== false, start: str(b.start) || null, end: str(b.end) || null,
+    enabled: !!b.enabled, showOnHome: b.showOnHome !== false, showOnProduct: b.showOnProduct !== false, showInCart: b.showInCart !== false, start: str(b.start) || null, end: str(b.end) || null,
     showCountdown: b.showCountdown !== false, headline: str(b.headline), hook: str(b.hook), cta: str(b.cta), eligibility: str(b.eligibility), items
   };
 };
 /* public (publishable) form — the private "file" reference never leaves Admin */
 SN.publicBonus = b => {
   b = SN.normBonus(b);
-  const items = sortByOrder(b.items.filter(x => x.visible && x.title)).map(x => { const o = { id: x.id, type: x.type, title: x.title }; for (const k of ["description", "icon", "cover", "tag"]) if (x[k]) o[k] = x[k]; if (x.value !== null && x.value > 0) o.value = x.value; return o; });
+  const items = sortByOrder(b.items.filter(x => x.visible && x.title)).map(x => { const o = { id: x.id, type: x.type, title: x.title }; for (const k of ["description", "icon", "cover", "tag", "badge"]) if (x[k]) o[k] = x[k]; if (x.value !== null && x.value > 0) o.value = x.value; return o; });
   if (!b.enabled || !items.length) return null;
   const o = { enabled: true, items };
   if (b.start) o.start = b.start;
   if (b.end) o.end = b.end;
   if (!b.showOnHome) o.showOnHome = false;
   if (!b.showOnProduct) o.showOnProduct = false;
+  if (!b.showInCart) o.showInCart = false;
   if (!b.showCountdown) o.showCountdown = false;
   for (const k of ["headline", "hook", "cta", "eligibility"]) if (b[k]) o[k] = b[k];
   return o;
@@ -495,7 +498,7 @@ SN.bonusRuntime = (raw, now, img) => {
   if (!items.length || !SN.inWindow(b.start, b.end, now)) return null;
   const endMs = SN.parseTime(b.end);
   const total = items.reduce((a, x) => a + (x.value > 0 ? x.value : 0), 0);
-  return { items, endMs: endMs || null, limited: !!endMs, showCountdown: !!endMs && b.showCountdown, totalValue: total > 0 ? total : null, headline: b.headline, hook: b.hook, cta: b.cta, eligibility: b.eligibility, showOnHome: b.showOnHome, showOnProduct: b.showOnProduct };
+  return { items, endMs: endMs || null, limited: !!endMs, showCountdown: !!endMs && b.showCountdown, totalValue: total > 0 ? total : null, headline: b.headline, hook: b.hook, cta: b.cta, eligibility: b.eligibility, showOnHome: b.showOnHome, showOnProduct: b.showOnProduct, showInCart: b.showInCart };
 };
 SN.isLive = p => p && p.status === "published" && p.availability !== "unavailable" && p.availability !== "sold_out";
 
