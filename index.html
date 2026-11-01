@@ -1066,79 +1066,95 @@ function BundlesSection() {
 
 
 /* =====================================================================
-   BONUS RESOURCES — Ebook सँगको Exclusive Bonus Package (Admin → Bonus Resources)
-   कुनै Ebook मा Bonus सक्रिय र समय बाँकी भए मात्र देखिन्छ; नभए केही पनि देखिँदैन।
+   BONUS RESOURCES — compact horizontal strip (Product page · Homepage · Cart)
+   Admin → Bonus Resources बाट नियन्त्रित। Bonus सक्रिय र समय बाँकी भए मात्र देखिन्छ।
    ===================================================================== */
-const BONUS_ICONS = Object.fromEntries(SN.ICON_LIST.map(x => [x[0], 1]));
-const bonusIcon = it => (it.icon && BONUS_ICONS[it.icon]) ? it.icon : (SN.BONUS_TYPES.find(t => t[0] === it.type) || SN.BONUS_TYPES[3])[2];
-const BONUS_TONES = [["from-amber-400 to-orange-500", "bg-amber-50 border-amber-200"], ["from-violet-500 to-indigo-600", "bg-violet-50 border-violet-200"], ["from-emerald-500 to-teal-600", "bg-emerald-50 border-emerald-200"], ["from-rose-500 to-pink-600", "bg-rose-50 border-rose-200"]];
+const BONUS_TONES = [["#F59E0B", "#B45309"], ["#8B5CF6", "#5B21B6"], ["#10B981", "#047857"], ["#F43F5E", "#BE123C"]];
+const BONUS_SHORT = { workbook: "WORK\nBOOK", templates: "TEMPLATE", action: "ACTION\nPLAN", custom: "BONUS" };
 const bonusCartTitles = p => (p && p.bonus ? p.bonus.items.map(x => x.title) : []);
+function BonusStyle() {
+  return <style>{`@keyframes snBnIn{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+.sn-bn-card{animation:snBnIn .55s cubic-bezier(.2,.8,.2,1) both;transition:transform .2s,box-shadow .2s;scroll-snap-align:start}
+.sn-bn-card:hover,.sn-bn-card:active{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 18px -10px rgba(0,0,0,.35)}
+.sn-bn-strip,.sn-bn-grid{overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}.sn-bn-strip::-webkit-scrollbar,.sn-bn-grid::-webkit-scrollbar{display:none}
+.sn-bn-grid{display:grid;gap:8px;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-auto-columns:calc(50% - 4px);padding:2px 1px 6px}
+.sn-bn-grid.r1{grid-template-rows:auto}.sn-bn-grid.c1{grid-auto-columns:100%}
+@media (min-width:768px){.sn-bn-grid{grid-template-rows:auto;grid-auto-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.sn-bn-card{animation:none;transition:none}}`}</style>;
+}
 
-function BonusItemCard({ it, i, showValue }) {
-  const tone = BONUS_TONES[i % BONUS_TONES.length];
+/* Cover thumbnail — real image if Admin uploaded one, else a tiny designed mini-cover (never an icon) */
+function BonusThumb({ it, i, w = 40 }) {
   const [bad, setBad] = useState(false);
+  const h = Math.round(w * 4 / 3), tone = BONUS_TONES[i % BONUS_TONES.length];
+  if (it.cover && !bad) return <img src={it.cover} alt={it.title} loading="lazy" onError={() => setBad(true)} style={{ width: w, height: h }} className="rounded-md object-cover shadow shrink-0 bg-slate-100" />;
   return (
-    <div className={`rounded-2xl border ${tone[1]} p-3 flex gap-3 items-start bonus-item`} data-bonus-item={it.id}>
-      <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br ${tone[0]} text-white flex items-center justify-center shrink-0 overflow-hidden shadow-md`}>
-        {it.cover && !bad ? <img src={it.cover} alt={it.title} loading="lazy" onError={() => setBad(true)} className="w-full h-full object-cover" /> : <Icon name={bonusIcon(it)} className="w-6 h-6" />}
-      </div>
+    <div style={{ width: w, height: h, background: `linear-gradient(135deg,${tone[0]},${tone[1]})` }} className="rounded-md shadow shrink-0 relative overflow-hidden flex items-center justify-center text-white text-center">
+      <span className="absolute left-0 top-0 bottom-0 w-1 bg-black/20"></span>
+      <span className="font-black leading-[1.1] whitespace-pre-line tracking-tight" style={{ fontSize: Math.max(5.5, w / 6.4) }}>{BONUS_SHORT[it.type] || "BONUS"}</span>
+    </div>
+  );
+}
+function MainThumb({ p, w = 40 }) {
+  return <div style={{ width: w, height: Math.round(w * 4 / 3) }} className="rounded-md overflow-hidden shadow shrink-0"><Cover item={p} mini /></div>;
+}
+
+function BonusCard({ i, thumb, title, desc, chips, value, cfg, showValue }) {
+  return (
+    <div className="sn-bn-card rounded-2xl bg-slate-100 p-2.5 flex gap-2 items-start min-h-[64px]" style={{ animationDelay: `${i * 90}ms` }} data-bonus-item>
+      {thumb}
       <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="text-[9px] font-black tracking-wider text-white bg-slate-900 rounded px-1.5 py-0.5">{it.tag || `BONUS ${it.n}`}</span>
-          {showValue && it.value > 0 && <span className="text-[10px] font-extrabold text-emerald-700 bg-emerald-100 rounded px-1.5 py-0.5">{T(SITE.bonus.valueLabel, { value: fmt(it.value) })}</span>}
-        </div>
-        <div className="text-[13px] md:text-sm font-black text-slate-900 leading-snug mt-1">{it.title}</div>
-        {it.description && <p className="text-[11px] md:text-xs text-slate-600 mt-0.5"><Lines text={it.description} /></p>}
+        <div className="text-[12.5px] font-black text-slate-900 leading-tight line-clamp-2" title={title}>{title}</div>
+        {desc && <div className="text-[10.5px] text-slate-500 leading-snug line-clamp-2 mt-0.5" title={desc}>{desc}</div>}
+        {((showValue && value > 0) || chips.some(Boolean)) && <div className="flex flex-wrap items-center gap-1 mt-1">
+          {showValue && value > 0 && <span className="text-[9px] font-bold text-slate-400 line-through">{T(cfg.originalValueLabel, { value: fmt(value) })}</span>}
+          {chips.filter(Boolean).map((c, k) => <span key={k} className={`text-[9px] font-extrabold rounded-full px-1.5 py-0.5 ${c.cls}`}>{c.text}</span>)}
+        </div>}
       </div>
     </div>
   );
 }
 
-/* एक Ebook को पूरा Package: MAIN EBOOK + Bonus cards + Offer-end + CTA */
-function BonusPackage({ p, cfg, mode }) {
+/* Ebook को Bonus Strip (Product page / Homepage) */
+function BonusStrip({ p, mode }) {
   const A = useContext(Ctx);
-  const b = p.bonus;
+  const b = p.bonus, cfg = SITE.bonus.strip, showValue = (mode === "home" ? SITE.bonus.home : SITE.bonus.product).showValue !== false;
   const t = useCountdown(b && b.showCountdown ? b.endMs : null);
   if (!b) return null;
-  const showValue = cfg.showValue !== false;
-  const hooks = (b.hook ? [b.hook] : cfg.hooks || []).filter(Boolean);
-  const eligibility = b.eligibility || cfg.eligibility;
-  const list = [toCartItem(p)];
-  const cta = b.cta || cfg.cta;
+  const free = cfg.freeLabel ? { text: cfg.freeLabel, cls: "bg-emerald-100 text-emerald-700" } : null;
+  const inc = cfg.mainBadge ? { text: cfg.mainBadge, cls: "bg-emerald-100 text-emerald-700" } : null;
+  const title = b.headline || cfg.title, sub = b.hook || cfg.sub, eligibility = b.eligibility || SITE.bonus.product.eligibility;
+  const n = b.items.length + 1;
+  const badges = (b.trustBadges && b.trustBadges.length ? b.trustBadges : cfg.trustBadges || []).filter(Boolean);
   return (
-    <div className="rounded-3xl bg-white border-2 border-amber-300 shadow-lg shadow-amber-100 overflow-hidden bonus-package" data-bonus-for={p.id}>
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2 min-w-0">
-          <span className="w-8 h-8 rounded-lg bg-amber-400 text-slate-900 flex items-center justify-center shrink-0"><Icon name="gift" className="w-5 h-5" /></span>
-          <div className="min-w-0"><div className="text-[10px] font-black tracking-widest text-amber-300">{b.items.length} EXCLUSIVE BONUS{b.items.length > 1 ? "ES" : ""}</div>{mode === "home" && <div className="text-xs md:text-sm font-black truncate">{p.title}</div>}</div>
+    <div className="bonus-strip" data-bonus-for={p.id}>
+      <BonusStyle />
+      {mode === "home" && <button onClick={() => A.openProduct(p.id)} className="w-full text-left text-[11px] font-black text-slate-700 mb-1.5 flex items-center gap-1 truncate"><Icon name="book" className="w-3.5 h-3.5 shrink-0 text-orange-500" /><span className="truncate">{p.title}</span><Icon name="arrowR" className="w-3 h-3 shrink-0" /></button>}
+      <div className="rounded-[26px] border-2 border-slate-200 bg-white p-3 md:p-4">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="text-[15px] md:text-lg font-black text-slate-900 leading-snug min-w-0">{T(title)}</h3>
+          {cfg.badge && <span className="shrink-0 text-[11px] md:text-xs font-extrabold text-emerald-700 bg-emerald-100 rounded-full px-3 py-1">{cfg.badge}</span>}
         </div>
-        {t ? <div className="flex items-center gap-1.5 text-[11px] font-extrabold bg-amber-400 text-slate-900 rounded-full px-3 py-1"><Icon name="clock" className="w-3.5 h-3.5" /><TimeText tpl={SITE.bonus.countdownText} time={t.text} /></div>
-          : b.limited && <div className="text-[11px] font-extrabold bg-amber-400 text-slate-900 rounded-full px-3 py-1">{T(SITE.bonus.limitedText)}</div>}
-      </div>
-      <div className="p-3 md:p-5">
-        {b.headline && <h3 className="text-base md:text-xl font-black text-slate-900 leading-snug mb-2">{b.headline}</h3>}
-        <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-3 md:gap-4 items-start">
-          <div className="flex md:flex-col items-center gap-3 rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-200 p-3">
-            <div className="w-16 md:w-24 aspect-[3/4] rounded-lg overflow-hidden shadow-xl shrink-0"><Cover item={p} mini /></div>
-            <div className="text-left md:text-center">
-              <span className="text-[9px] font-black tracking-wider text-white bg-orange-500 rounded px-1.5 py-0.5">{cfg.mainTitle}</span>
-              <div className="text-xs font-black text-slate-900 mt-1 leading-snug">{p.short || p.title}</div>
-              {cfg.mainDesc && <p className="text-[10px] text-slate-500 mt-0.5">{cfg.mainDesc}</p>}
-            </div>
+        {sub && <p className="text-[11px] md:text-xs text-slate-500 mt-1">{T(sub)}</p>}
+        {(cfg.trust || badges.length > 0 || b.limited || t) && (
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            {cfg.trust && <span className="text-[9.5px] font-extrabold text-slate-700 bg-slate-100 rounded-full px-2 py-0.5">{T(cfg.trust)}</span>}
+            {badges.map((x, k) => <span key={k} className="text-[9.5px] font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-full px-2 py-0.5 flex items-center gap-1"><Icon name="check" className="w-3 h-3" sw={3} />{x}</span>)}
+            {b.limited && cfg.offerLabel && <span className="text-[9.5px] font-extrabold text-white bg-slate-900 rounded-full px-2 py-0.5">{cfg.offerLabel}</span>}
+            {t ? <span className="text-[9.5px] font-extrabold text-amber-800 bg-amber-100 rounded-full px-2 py-0.5 flex items-center gap-1"><Icon name="clock" className="w-3 h-3" /><TimeText tpl={SITE.bonus.countdownText} time={t.text} /></span>
+              : b.limited && cfg.limitedLabel && <span className="text-[9.5px] font-extrabold text-amber-800 bg-amber-100 rounded-full px-2 py-0.5">{cfg.limitedLabel}</span>}
           </div>
-          <div className="space-y-2">
-            {b.items.map((it, i) => <BonusItemCard key={it.id + i} it={it} i={i} showValue={showValue} />)}
-          </div>
+        )}
+        <div className={`sn-bn-grid mt-2.5 ${n <= 2 ? "r1" : ""} ${n === 1 ? "c1" : ""}`}>
+          <BonusCard i={0} thumb={<MainThumb p={p} w={30} />} title={cfg.mainTitle} desc={cfg.mainDesc} chips={[inc]} cfg={cfg} showValue={false} />
+          {b.items.map((it, k) => (
+            <BonusCard key={it.id + k} i={k + 1} thumb={<BonusThumb it={it} i={k} w={30} />} title={it.title} desc={it.description} value={it.value} cfg={cfg} showValue={showValue}
+              chips={[it.value > 0 && showValue ? free : null, it.badge ? { text: it.badge, cls: "bg-violet-100 text-violet-700" } : null, it.tag ? { text: it.tag, cls: "bg-slate-900 text-white" } : null]} />
+          ))}
         </div>
-        {showValue && b.totalValue > 0 && <div className="mt-3 text-center text-xs font-black text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-xl py-2">{T(SITE.bonus.totalLabel, { value: fmt(b.totalValue) })}</div>}
-        {hooks.length > 0 && <div className="mt-3 text-center text-sm md:text-base font-black text-orange-600">{hooks.map((h, i) => <div key={i}>{T(h)}</div>)}</div>}
-        {eligibility && <p className="mt-2 text-[11px] text-slate-600 text-center">{b.limited ? "⏳ " : "✅ "}{T(eligibility)}{b.limited && b.endMs ? " " + T(SITE.bonus.untilText, { date: SN.formatDateTime(b.endMs) }) : ""}</p>}
-        <div className={`mt-3 grid grid-cols-2 gap-2`}>
-          <AddBtn item={p} className="col-span-1" />
-          {mode === "home" ? <button onClick={() => A.openProduct(p.id)} className="rounded-xl font-extrabold text-[11px] md:text-xs flex items-center justify-center gap-1.5 bg-white border-2 border-orange-400 text-orange-700 hover:bg-orange-50 py-2.5 px-3 transition"><Icon name="arrowR" className="w-4 h-4" />{cfg.viewCta}</button>
-            : <WaBtn list={list} className={CART_ON ? "" : "col-span-2"}>{cta}</WaBtn>}
-        </div>
-        {mode === "home" && <div className="mt-2"><WaBtn list={list} className="w-full">{cta}</WaBtn></div>}
+        {showValue && b.totalValue > 0 && <p className="mt-1 text-center text-[10.5px] font-black text-emerald-700">{T(SITE.bonus.totalLabel, { value: fmt(b.totalValue) })}</p>}
+        {cfg.footer && <p className="mt-2 text-center text-[12px] md:text-sm font-extrabold text-emerald-700 flex items-center justify-center gap-1.5"><Icon name="checkc" className="w-4 h-4" />{T(cfg.footer)}</p>}
+        {eligibility && <p className="mt-1 text-center text-[9.5px] text-slate-500 leading-snug">{b.limited ? "⏳ " : ""}{T(eligibility)}{b.limited && b.endMs ? " " + T(SITE.bonus.untilText, { date: SN.formatDateTime(b.endMs) }) : ""}</p>}
       </div>
     </div>
   );
@@ -1151,32 +1167,42 @@ function BonusSection() {
   const items = PRODUCTS.filter(p => p.bonus && p.bonus.showOnHome).slice(0, Math.max(1, cfg.maxProducts || 6));
   if (!items.length) return null;
   return (
-    <section id="bonus" className="py-8 md:py-12 px-3 bg-gradient-to-b from-amber-50 via-white to-white">
+    <section id="bonus" className="py-8 md:py-10 px-3">
       <div className="max-w-5xl mx-auto">
         <SectionHead eyebrow={cfg.eyebrow} title={T(cfg.title)} sub={T(cfg.sub)} />
-        {cfg.tagline && <p className="text-center text-sm md:text-base font-black text-orange-600 -mt-3 mb-5">{T(cfg.tagline)}</p>}
-        <div className={`grid grid-cols-1 ${items.length > 1 ? "md:grid-cols-2" : "max-w-xl mx-auto"} gap-4`}>
-          {items.map(p => <BonusPackage key={p.id} p={p} cfg={cfg} mode="home" />)}
-        </div>
+        {cfg.tagline && <p className="text-center text-sm font-black text-orange-600 -mt-3 mb-4">{T(cfg.tagline)}</p>}
+        <div className="space-y-4">{items.map(p => <BonusStrip key={p.id} p={p} mode="home" />)}</div>
       </div>
     </section>
   );
 }
 
-/* Product-page section */
+/* Product-page section (Hook / "कसका लागि हो" पछि) */
 function ProductBonus({ p }) {
-  const cfg = SITE.bonus.product;
-  if (cfg.enabled === false || !p.bonus || !p.bonus.showOnProduct) return null;
+  if (SITE.bonus.product.enabled === false || !p.bonus || !p.bonus.showOnProduct) return null;
+  return <section id="bonus" className="max-w-5xl mx-auto px-3 mt-5"><BonusStrip p={p} mode="product" /></section>;
+}
+
+/* Cart: एउटा Ebook को eligible Bonus — सानो Strip */
+function CartBonus({ it }) {
+  if (it.kind !== "ebook" || SITE.bonus.cart.enabled === false) return null;
+  const p = PBYID[it.id], b = p && p.bonus;
+  if (!b || !b.showInCart) return null;
   return (
-    <section id="bonus" className="max-w-5xl mx-auto px-3 mt-5">
-      <div className="text-center mb-3">
-        {cfg.eyebrow && <span className="inline-block text-amber-600 font-extrabold text-[11px] uppercase tracking-widest">{cfg.eyebrow}</span>}
-        <h2 className="text-lg md:text-2xl font-black text-slate-900 mt-0.5 leading-tight">{T(cfg.title)}</h2>
-        {cfg.sub && <p className="text-xs md:text-sm text-slate-600 mt-1">{T(cfg.sub)}</p>}
-        {cfg.tagline && <p className="text-xs md:text-sm font-black text-orange-600 mt-1">{T(cfg.tagline)}</p>}
+    <div className="px-2.5 pb-2.5" data-cart-bonus={it.id}>
+      <div className="rounded-xl bg-white border border-amber-200 px-2 py-1.5">
+        <div className="text-[9px] font-black text-amber-700 mb-1">{SITE.bonus.cart.title}</div>
+        <div className="sn-bn-strip flex gap-2"><BonusStyle />
+          {b.items.map((x, k) => (
+            <div key={x.id + k} className="flex items-center gap-1.5 shrink-0 max-w-[150px]">
+              <BonusThumb it={x} i={k} w={22} />
+              <div className="min-w-0"><div className="text-[9.5px] font-extrabold text-slate-800 truncate leading-tight">{x.title}</div>{SITE.bonus.strip.freeLabel && x.value > 0 && <div className="text-[8px] font-black text-emerald-700 leading-tight">{SITE.bonus.strip.freeLabel}</div>}</div>
+            </div>
+          ))}
+        </div>
+        {SITE.bonus.strip.footer && <div className="mt-1 text-[9px] font-extrabold text-emerald-700 flex items-center gap-1"><Icon name="checkc" className="w-3 h-3" />{T(SITE.bonus.strip.footer)}</div>}
       </div>
-      <BonusPackage p={p} cfg={cfg} mode="product" />
-    </section>
+    </div>
   );
 }
 
@@ -1486,7 +1512,8 @@ function CartDrawer() {
                 </div>
               )}
               {cart.map(it => (
-                <div key={it.id} className="flex items-center gap-3 p-2.5 rounded-2xl border border-orange-200 bg-orange-50/30">
+                <div key={it.id} className="rounded-2xl border border-orange-200 bg-orange-50/30">
+                <div className="flex items-center gap-3 p-2.5">
                   <CartThumb it={it} />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5"><span className="text-[9px] font-black text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded">{typeLabel[it.kind]}</span><span className="text-[9px] font-bold text-slate-500">ID {it.id}</span></div>
@@ -1496,24 +1523,24 @@ function CartDrawer() {
                   </div>
                   <button onClick={() => A.remove(it.id)} aria-label="Remove" className="w-8 h-8 rounded-full text-rose-500 hover:bg-rose-50 flex items-center justify-center shrink-0"><Icon name="trash" className="w-4 h-4" /></button>
                 </div>
+                <CartBonus it={it} />
+                </div>
               ))}
-              <p className="text-[10px] text-slate-500 text-center">{L("cartNoQty")}</p>
             </div>
           )}
         </div>
         {cart.length > 0 && (
           <div className="border-t border-orange-100 p-4 space-y-3 bg-white">
             <div className="space-y-1.5 text-xs">
-              {t.todayDiscount > 0 && <div className="flex justify-between text-slate-600"><span>{L("lblRegular")}</span><span className="line-through text-slate-400">{fmt(t.regular)}</span></div>}
-              {t.todayDiscount > 0 && <div className="flex justify-between text-emerald-700 font-bold"><span>{L("lblDiscount")}</span><span>-{fmt(t.todayDiscount)}</span></div>}
-              <div className="flex justify-between text-slate-800 font-bold"><span>{L("lblToday")}</span><span>{fmt(t.today)}</span></div>
-              {t.comboDiscount > 0 && <div className="flex justify-between text-emerald-700 font-bold"><span>{L("lblCombo")}</span><span>-{fmt(t.comboDiscount)}</span></div>}
-              <div className="flex justify-between items-baseline pt-2 border-t border-dashed border-orange-200"><span className="font-extrabold text-sm text-slate-900">{L("lblFinal")}</span><span className="text-2xl font-black text-orange-600">{fmt(t.final)}</span></div>
-              {t.saved > 0 && <p className="text-[11px] font-extrabold text-emerald-700 text-right">{L("cartSaved", { amount: fmt(t.saved) })}</p>}
+              {t.todayDiscount > 0 && <div className="flex justify-between text-slate-600"><span>{L("cartRowRegular")}</span><span className="line-through text-slate-400">{fmt(t.regular)}</span></div>}
+              {t.todayDiscount > 0 && <div className="flex justify-between text-emerald-700 font-bold"><span>{L("cartRowDiscount")}</span><span>-{fmt(t.todayDiscount)}</span></div>}
+              <div className="flex justify-between text-slate-800 font-bold"><span>{L("cartRowToday")}</span><span>{fmt(t.today)}</span></div>
+              {t.comboDiscount > 0 && <div className="flex justify-between text-emerald-700 font-bold"><span>{L("cartRowCombo", { percent: COMBO_PERCENT })}</span><span>-{fmt(t.comboDiscount)}</span></div>}
+              <div className="flex justify-between items-baseline pt-2 border-t border-dashed border-orange-200"><span className="font-extrabold text-sm text-slate-900">{L("cartRowFinal")}</span><span className="text-2xl font-black text-orange-600">{fmt(t.final)}</span></div>
+              {t.saved > 0 && <p className="text-[11px] font-extrabold text-emerald-700 text-center">{L("cartCongrats", { amount: fmt(t.saved) })}</p>}
             </div>
             {canPay && <button onClick={() => A.pay(cart)} className="relative overflow-hidden shine w-full py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-black text-xs md:text-sm flex items-center justify-center gap-2 shadow-lg shadow-orange-200"><Icon name="card" className="w-4 h-4" />{SITE.payment.ctaText}</button>}
             <button onClick={() => A.whatsapp(cart)} className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs md:text-sm flex items-center justify-center gap-2"><Icon name="wa" className="w-4 h-4" />{L("cartWa")}</button>
-            <button onClick={() => A.copyOrder(cart)} className="w-full py-2 rounded-xl border border-orange-200 text-orange-700 font-bold text-[11px] flex items-center justify-center gap-1.5 hover:bg-orange-50"><Icon name="copy" className="w-3.5 h-3.5" />{L("cartCopy")}</button>
             {note && <p className="text-[10px] text-slate-500 leading-snug text-center">{note}</p>}
           </div>
         )}
@@ -1708,8 +1735,6 @@ function ProductPage({ p }) {
         </div>
       </section>
 
-      <ProductBonus p={p} />
-
       {/* HOOK */}
       {(p.hook || p.description || p.forWho.length > 0) && (
         <section className="max-w-5xl mx-auto px-3 mt-5">
@@ -1724,6 +1749,8 @@ function ProductPage({ p }) {
           </div>
         </section>
       )}
+
+      <ProductBonus p={p} />
 
       {/* OUTCOMES + CAREER */}
       {(p.learningOutcomes.length > 0 || p.careerRelevance.length > 0) && (
