@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-01T07:04:26.512Z",
+  "updatedAt": "2026-11-01T12:20:39.392Z",
   "products": [
     {
       "id": "SN001CS",
@@ -79,7 +79,20 @@
       "reviewCount": 142,
       "soldCopies": 850,
       "copiesLeft": 14,
-      "updatedAt": "2026-11-01T03:35:29.661Z",
+      "bonus": {
+        "enabled": true,
+        "items": [
+          {
+            "id": "bon_mvw5y9ey6a2n",
+            "type": "workbook",
+            "title": "Resume Mastery Practice",
+            "description": "Practical Resume Writing",
+            "value": 599
+          }
+        ],
+        "end": "2026-12-01T14:36+05:45"
+      },
+      "updatedAt": "2026-11-01T12:20:05.766Z",
       "isFeatured": true
     },
     {
@@ -529,7 +542,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-01T07:04:26.512Z",
+      "updatedAt": "2026-11-01T12:20:39.392Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1135,6 +1148,62 @@
           "comboMin": 3,
           "comboPercent": 15
         },
+        "bonus": {
+          "valueLabel": "Value {value}",
+          "totalLabel": "🎁 कुल Bonus Value: {value} — Ebook सँगै",
+          "countdownText": "Bonus Offer सकिन बाँकी: {time}",
+          "limitedText": "सीमित समयको Bonus Offer",
+          "untilText": "यो Bonus Offer {date} सम्म मात्र।",
+          "home": {
+            "enabled": false,
+            "eyebrow": "🎁 EXCLUSIVE BONUS RESOURCES",
+            "title": "एउटा Ebook मात्र होइन, Complete Learning & Practice Package!",
+            "sub": "Read It. Practice It. Apply It. Get Skilled.",
+            "tagline": "One Book. Multiple Resources. Real Results.",
+            "mainTitle": "MAIN EBOOK",
+            "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
+            "hooks": [
+              "Buy Before the Offer Ends & Unlock Your Exclusive Bonuses!"
+            ],
+            "cta": "Bonus सहित Order गर्नुहोस्",
+            "viewCta": "Bonus हेर्नुहोस्",
+            "eligibility": "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
+            "showValue": false,
+            "maxProducts": 6
+          },
+          "product": {
+            "enabled": true,
+            "eyebrow": "🎁 EXCLUSIVE BONUSES",
+            "title": "यो Ebook सँग तपाईंले पाउने Bonus Resources",
+            "sub": "Read It. Practice It. Apply It. Get Skilled.",
+            "tagline": "One Book. Multiple Resources. Real Results.",
+            "mainTitle": "MAIN EBOOK",
+            "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
+            "hooks": [
+              "Buy Before the Offer Ends & Unlock Your Exclusive Bonuses!"
+            ],
+            "cta": "Order गर्नुहोस्",
+            "eligibility": "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
+            "showValue": true
+          },
+          "strip": {
+            "title": "यस Ebook सँग तपाईंले पाउनुहुन्छ",
+            "sub": "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।",
+            "badge": "INCLUDED",
+            "mainTitle": "Ebook PDF",
+            "mainDesc": "Complete Guide & Practical Lessons",
+            "mainBadge": "INCLUDED",
+            "trust": "📦 Your Complete Learning & Success Package",
+            "freeLabel": "NOW FREE 🎁",
+            "originalValueLabel": "Original Value: {value}",
+            "offerLabel": "BONUS OFFER",
+            "limitedLabel": "Limited-Time Bonus"
+          },
+          "cart": {
+            "enabled": true,
+            "title": "🎁 Included Bonus"
+          }
+        },
         "messages": {
           "order": "Hello {storeName}! मैले यी Ebook Order गर्न चाहन्छु 👇\n\n{items}\n\n{priceSummary}\n\nPayment: NSPAY / WhatsApp\nकृपया Payment विवरण पठाइदिनुहोस् 🙏",
           "paymentInstruction": "नमस्कार {customerName}! 🙏\n\n{productName} (ID: {productId}) को लागि जम्मा रकम: {total}\n\nNSPAY बाट Payment गर्नुहोस्: {nspayUrl}\nPayment पछि Screenshot र Product ID यहीँ पठाउनुहोस्।",
@@ -1265,6 +1334,10 @@
           },
           {
             "id": "bundles",
+            "enabled": true
+          },
+          {
+            "id": "bonus",
             "enabled": true
           },
           {
@@ -1425,62 +1498,6 @@
           "loadFail": "Store लोड हुन सकेन। Internet check गरेर फेरि प्रयास गर्नुहोस्।",
           "loadRetry": "फेरि प्रयास गर्नुहोस्",
           "emptyStore": "हाम्रो Store अहिले अपडेट हुँदैछ। कृपया केही समयपछि फेरि हेर्नुहोस् वा WhatsApp मा सम्पर्क गर्नुहोस्।"
-        },
-        "bonus": {
-          "strip": {
-            "title": "यस Ebook सँग तपाईंले पाउनुहुन्छ",
-            "sub": "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।",
-            "badge": "INCLUDED",
-            "mainTitle": "Ebook PDF",
-            "mainDesc": "Complete Guide & Practical Lessons",
-            "mainBadge": "INCLUDED",
-            "trust": "📦 Your Complete Learning & Success Package",
-            "freeLabel": "NOW FREE 🎁",
-            "originalValueLabel": "Original Value: {value}",
-            "offerLabel": "BONUS OFFER",
-            "limitedLabel": "Limited-Time Bonus"
-          },
-          "cart": {
-            "enabled": true,
-            "title": "🎁 Included Bonus"
-          },
-          "valueLabel": "Value {value}",
-          "totalLabel": "🎁 कुल Bonus Value: {value} — Ebook सँगै",
-          "countdownText": "Bonus Offer सकिन बाँकी: {time}",
-          "limitedText": "सीमित समयको Bonus Offer",
-          "untilText": "यो Bonus Offer {date} सम्म मात्र।",
-          "home": {
-            "enabled": false,
-            "eyebrow": "🎁 EXCLUSIVE BONUS RESOURCES",
-            "title": "एउटा Ebook मात्र होइन, Complete Learning & Practice Package!",
-            "sub": "Read It. Practice It. Apply It. Get Skilled.",
-            "tagline": "One Book. Multiple Resources. Real Results.",
-            "mainTitle": "MAIN EBOOK",
-            "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
-            "hooks": [
-              "Buy Before the Offer Ends & Unlock Your Exclusive Bonuses!"
-            ],
-            "cta": "Bonus सहित Order गर्नुहोस्",
-            "viewCta": "Bonus हेर्नुहोस्",
-            "eligibility": "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
-            "showValue": false,
-            "maxProducts": 6
-          },
-          "product": {
-            "enabled": true,
-            "eyebrow": "🎁 EXCLUSIVE BONUSES",
-            "title": "यो Ebook सँग तपाईंले पाउने Bonus Resources",
-            "sub": "Read It. Practice It. Apply It. Get Skilled.",
-            "tagline": "One Book. Multiple Resources. Real Results.",
-            "mainTitle": "MAIN EBOOK",
-            "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
-            "hooks": [
-              "Buy Before the Offer Ends & Unlock Your Exclusive Bonuses!"
-            ],
-            "cta": "Order गर्नुहोस्",
-            "eligibility": "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
-            "showValue": true
-          }
         }
       }
     }
