@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-01T12:20:39.392Z",
+  "updatedAt": "2026-11-01T16:04:57.052Z",
   "products": [
     {
       "id": "SN001CS",
@@ -92,7 +92,7 @@
         ],
         "end": "2026-12-01T14:36+05:45"
       },
-      "updatedAt": "2026-11-01T12:20:05.766Z",
+      "updatedAt": "2026-11-01T16:04:22.571Z",
       "isFeatured": true
     },
     {
@@ -542,7 +542,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-01T12:20:39.392Z",
+      "updatedAt": "2026-11-01T16:04:57.052Z",
       "site": {
         "v": 1,
         "preloader": {
