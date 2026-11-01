@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-01T16:14:58.125Z",
+  "updatedAt": "2026-11-01T16:24:51.177Z",
   "products": [
     {
       "id": "SN001CS",
@@ -89,18 +89,13 @@
             "type": "workbook",
             "title": "Resume Mastery Practice",
             "description": "Practical Resume Writing",
-            "tag": "Cm",
             "value": 599
           }
         ],
         "start": "2026-11-01T21:57+05:45",
-        "end": "2026-12-01T14:36+05:45",
-        "headline": "Practical workbook",
-        "hook": "Buy before end offers",
-        "cta": "Order me",
-        "eligibility": "A"
+        "end": "2026-12-01T14:36+05:45"
       },
-      "updatedAt": "2026-11-01T16:13:02.132Z",
+      "updatedAt": "2026-11-01T16:20:41.685Z",
       "isFeatured": true
     },
     {
@@ -550,7 +545,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-01T16:14:58.125Z",
+      "updatedAt": "2026-11-01T16:24:51.177Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1160,8 +1155,8 @@
           "valueLabel": "Value {value}",
           "totalLabel": "🎁 कुल Bonus Value: {value} — Ebook सँगै",
           "countdownText": "Bonus Offer सकिन बाँकी: {time}",
-          "limitedText": "सीमित समयको Bonus Offer",
-          "untilText": "यो Bonus Offer {date} सम्म मात्र।",
+          "limitedText": "",
+          "untilText": "",
           "home": {
             "enabled": true,
             "eyebrow": "🎁 EXCLUSIVE BONUS RESOURCES",
@@ -1181,10 +1176,10 @@
           },
           "product": {
             "enabled": true,
-            "eyebrow": "🎁 EXCLUSIVE BONUSES",
-            "title": "यो Ebook सँग तपाईंले पाउने Bonus Resources",
-            "sub": "Read It. Practice It. Apply It. Get Skilled.",
-            "tagline": "One Book. Multiple Resources. Real Results.",
+            "eyebrow": "",
+            "title": "",
+            "sub": "",
+            "tagline": "",
             "mainTitle": "MAIN EBOOK",
             "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
             "hooks": [
@@ -1192,7 +1187,7 @@
             ],
             "cta": "Order गर्नुहोस्",
             "eligibility": "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
-            "showValue": true
+            "showValue": false
           },
           "strip": {
             "title": "यस Ebook सँग तपाईंले पाउनुहुन्छ",
