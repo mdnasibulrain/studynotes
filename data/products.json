@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T15:59:15.157Z",
+  "updatedAt": "2026-11-01T03:36:30.964Z",
   "products": [
     {
       "id": "SN001CS",
@@ -71,7 +71,7 @@
       "regularPrice": 999,
       "offerPrice": 499,
       "offerActive": true,
-      "offerEndsAt": "2026-10-31T23:59+05:45",
+      "offerEndsAt": "2026-12-30T23:59+05:45",
       "offerLabel": "BESTSELLER",
       "urgencyLabel": "Limited Copies Offer",
       "countdownVisible": true,
@@ -93,7 +93,7 @@
         "end": "2026-11-01T14:36+05:45",
         "showOnHome": false
       },
-      "updatedAt": "2026-10-31T15:50:22.448Z",
+      "updatedAt": "2026-11-01T03:35:29.661Z",
       "isFeatured": true
     },
     {
@@ -543,7 +543,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-10-31T15:59:15.157Z",
+      "updatedAt": "2026-11-01T03:36:30.964Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1150,6 +1150,23 @@
           "comboPercent": 15
         },
         "bonus": {
+          "strip": {
+            "title": "यस Ebook सँग तपाईंले पाउनुहुन्छ",
+            "sub": "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।",
+            "badge": "INCLUDED",
+            "mainTitle": "Ebook PDF",
+            "mainDesc": "Complete Guide & Practical Lessons",
+            "mainBadge": "INCLUDED",
+            "trust": "📦 Your Complete Learning & Success Package",
+            "freeLabel": "NOW FREE 🎁",
+            "originalValueLabel": "Original Value: {value}",
+            "offerLabel": "BONUS OFFER",
+            "limitedLabel": "Limited-Time Bonus"
+          },
+          "cart": {
+            "enabled": true,
+            "title": "🎁 Included Bonus"
+          },
           "valueLabel": "Value {value}",
           "totalLabel": "🎁 कुल Bonus Value: {value} — Ebook सँगै",
           "countdownText": "Bonus Offer सकिन बाँकी: {time}",
