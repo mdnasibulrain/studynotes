@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-01T16:11:36.675Z",
+  "updatedAt": "2026-11-01T16:14:58.125Z",
   "products": [
     {
       "id": "SN001CS",
@@ -93,13 +93,14 @@
             "value": 599
           }
         ],
+        "start": "2026-11-01T21:57+05:45",
         "end": "2026-12-01T14:36+05:45",
         "headline": "Practical workbook",
         "hook": "Buy before end offers",
         "cta": "Order me",
         "eligibility": "A"
       },
-      "updatedAt": "2026-11-01T16:10:52.653Z",
+      "updatedAt": "2026-11-01T16:13:02.132Z",
       "isFeatured": true
     },
     {
@@ -549,7 +550,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-01T16:11:36.675Z",
+      "updatedAt": "2026-11-01T16:14:58.125Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1162,7 +1163,7 @@
           "limitedText": "सीमित समयको Bonus Offer",
           "untilText": "यो Bonus Offer {date} सम्म मात्र।",
           "home": {
-            "enabled": false,
+            "enabled": true,
             "eyebrow": "🎁 EXCLUSIVE BONUS RESOURCES",
             "title": "एउटा Ebook मात्र होइन, Complete Learning & Practice Package!",
             "sub": "Read It. Practice It. Apply It. Get Skilled.",
@@ -1175,7 +1176,7 @@
             "cta": "Bonus सहित Order गर्नुहोस्",
             "viewCta": "Bonus हेर्नुहोस्",
             "eligibility": "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
-            "showValue": false,
+            "showValue": true,
             "maxProducts": 6
           },
           "product": {
