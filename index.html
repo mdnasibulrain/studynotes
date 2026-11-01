@@ -282,7 +282,8 @@ const secOn = id => RT.sectionOn(id);
 const toCartItem = item => ({
   id: item.id, kind: item.kind, title: item.title,
   ebookIds: item.kind === "ebook" ? [item.id] : item.includes,
-  regularPrice: item.regularPrice, todayPrice: item.salePrice, comboOff: 0
+  regularPrice: item.regularPrice, todayPrice: item.salePrice, comboOff: 0,
+  ...(item.kind === "ebook" && item.bonus ? { bonus: item.bonus.items.map(x => x.title) } : {})
 });
 /* पुरानो Cart लाई हालको catalog (नयाँ price) सँग मिलाउने; हराएको item हटाउने */
 function refreshItem(it) {
@@ -1065,6 +1066,122 @@ function BundlesSection() {
 
 
 /* =====================================================================
+   BONUS RESOURCES — Ebook सँगको Exclusive Bonus Package (Admin → Bonus Resources)
+   कुनै Ebook मा Bonus सक्रिय र समय बाँकी भए मात्र देखिन्छ; नभए केही पनि देखिँदैन।
+   ===================================================================== */
+const BONUS_ICONS = Object.fromEntries(SN.ICON_LIST.map(x => [x[0], 1]));
+const bonusIcon = it => (it.icon && BONUS_ICONS[it.icon]) ? it.icon : (SN.BONUS_TYPES.find(t => t[0] === it.type) || SN.BONUS_TYPES[3])[2];
+const BONUS_TONES = [["from-amber-400 to-orange-500", "bg-amber-50 border-amber-200"], ["from-violet-500 to-indigo-600", "bg-violet-50 border-violet-200"], ["from-emerald-500 to-teal-600", "bg-emerald-50 border-emerald-200"], ["from-rose-500 to-pink-600", "bg-rose-50 border-rose-200"]];
+const bonusCartTitles = p => (p && p.bonus ? p.bonus.items.map(x => x.title) : []);
+
+function BonusItemCard({ it, i, showValue }) {
+  const tone = BONUS_TONES[i % BONUS_TONES.length];
+  const [bad, setBad] = useState(false);
+  return (
+    <div className={`rounded-2xl border ${tone[1]} p-3 flex gap-3 items-start bonus-item`} data-bonus-item={it.id}>
+      <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br ${tone[0]} text-white flex items-center justify-center shrink-0 overflow-hidden shadow-md`}>
+        {it.cover && !bad ? <img src={it.cover} alt={it.title} loading="lazy" onError={() => setBad(true)} className="w-full h-full object-cover" /> : <Icon name={bonusIcon(it)} className="w-6 h-6" />}
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-[9px] font-black tracking-wider text-white bg-slate-900 rounded px-1.5 py-0.5">{it.tag || `BONUS ${it.n}`}</span>
+          {showValue && it.value > 0 && <span className="text-[10px] font-extrabold text-emerald-700 bg-emerald-100 rounded px-1.5 py-0.5">{T(SITE.bonus.valueLabel, { value: fmt(it.value) })}</span>}
+        </div>
+        <div className="text-[13px] md:text-sm font-black text-slate-900 leading-snug mt-1">{it.title}</div>
+        {it.description && <p className="text-[11px] md:text-xs text-slate-600 mt-0.5"><Lines text={it.description} /></p>}
+      </div>
+    </div>
+  );
+}
+
+/* एक Ebook को पूरा Package: MAIN EBOOK + Bonus cards + Offer-end + CTA */
+function BonusPackage({ p, cfg, mode }) {
+  const A = useContext(Ctx);
+  const b = p.bonus;
+  const t = useCountdown(b && b.showCountdown ? b.endMs : null);
+  if (!b) return null;
+  const showValue = cfg.showValue !== false;
+  const hooks = (b.hook ? [b.hook] : cfg.hooks || []).filter(Boolean);
+  const eligibility = b.eligibility || cfg.eligibility;
+  const list = [toCartItem(p)];
+  const cta = b.cta || cfg.cta;
+  return (
+    <div className="rounded-3xl bg-white border-2 border-amber-300 shadow-lg shadow-amber-100 overflow-hidden bonus-package" data-bonus-for={p.id}>
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="w-8 h-8 rounded-lg bg-amber-400 text-slate-900 flex items-center justify-center shrink-0"><Icon name="gift" className="w-5 h-5" /></span>
+          <div className="min-w-0"><div className="text-[10px] font-black tracking-widest text-amber-300">{b.items.length} EXCLUSIVE BONUS{b.items.length > 1 ? "ES" : ""}</div>{mode === "home" && <div className="text-xs md:text-sm font-black truncate">{p.title}</div>}</div>
+        </div>
+        {t ? <div className="flex items-center gap-1.5 text-[11px] font-extrabold bg-amber-400 text-slate-900 rounded-full px-3 py-1"><Icon name="clock" className="w-3.5 h-3.5" /><TimeText tpl={SITE.bonus.countdownText} time={t.text} /></div>
+          : b.limited && <div className="text-[11px] font-extrabold bg-amber-400 text-slate-900 rounded-full px-3 py-1">{T(SITE.bonus.limitedText)}</div>}
+      </div>
+      <div className="p-3 md:p-5">
+        {b.headline && <h3 className="text-base md:text-xl font-black text-slate-900 leading-snug mb-2">{b.headline}</h3>}
+        <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-3 md:gap-4 items-start">
+          <div className="flex md:flex-col items-center gap-3 rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-200 p-3">
+            <div className="w-16 md:w-24 aspect-[3/4] rounded-lg overflow-hidden shadow-xl shrink-0"><Cover item={p} mini /></div>
+            <div className="text-left md:text-center">
+              <span className="text-[9px] font-black tracking-wider text-white bg-orange-500 rounded px-1.5 py-0.5">{cfg.mainTitle}</span>
+              <div className="text-xs font-black text-slate-900 mt-1 leading-snug">{p.short || p.title}</div>
+              {cfg.mainDesc && <p className="text-[10px] text-slate-500 mt-0.5">{cfg.mainDesc}</p>}
+            </div>
+          </div>
+          <div className="space-y-2">
+            {b.items.map((it, i) => <BonusItemCard key={it.id + i} it={it} i={i} showValue={showValue} />)}
+          </div>
+        </div>
+        {showValue && b.totalValue > 0 && <div className="mt-3 text-center text-xs font-black text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-xl py-2">{T(SITE.bonus.totalLabel, { value: fmt(b.totalValue) })}</div>}
+        {hooks.length > 0 && <div className="mt-3 text-center text-sm md:text-base font-black text-orange-600">{hooks.map((h, i) => <div key={i}>{T(h)}</div>)}</div>}
+        {eligibility && <p className="mt-2 text-[11px] text-slate-600 text-center">{b.limited ? "⏳ " : "✅ "}{T(eligibility)}{b.limited && b.endMs ? " " + T(SITE.bonus.untilText, { date: SN.formatDateTime(b.endMs) }) : ""}</p>}
+        <div className={`mt-3 grid grid-cols-2 gap-2`}>
+          <AddBtn item={p} className="col-span-1" />
+          {mode === "home" ? <button onClick={() => A.openProduct(p.id)} className="rounded-xl font-extrabold text-[11px] md:text-xs flex items-center justify-center gap-1.5 bg-white border-2 border-orange-400 text-orange-700 hover:bg-orange-50 py-2.5 px-3 transition"><Icon name="arrowR" className="w-4 h-4" />{cfg.viewCta}</button>
+            : <WaBtn list={list} className={CART_ON ? "" : "col-span-2"}>{cta}</WaBtn>}
+        </div>
+        {mode === "home" && <div className="mt-2"><WaBtn list={list} className="w-full">{cta}</WaBtn></div>}
+      </div>
+    </div>
+  );
+}
+
+/* Homepage section */
+function BonusSection() {
+  const cfg = SITE.bonus.home;
+  if (cfg.enabled === false) return null;
+  const items = PRODUCTS.filter(p => p.bonus && p.bonus.showOnHome).slice(0, Math.max(1, cfg.maxProducts || 6));
+  if (!items.length) return null;
+  return (
+    <section id="bonus" className="py-8 md:py-12 px-3 bg-gradient-to-b from-amber-50 via-white to-white">
+      <div className="max-w-5xl mx-auto">
+        <SectionHead eyebrow={cfg.eyebrow} title={T(cfg.title)} sub={T(cfg.sub)} />
+        {cfg.tagline && <p className="text-center text-sm md:text-base font-black text-orange-600 -mt-3 mb-5">{T(cfg.tagline)}</p>}
+        <div className={`grid grid-cols-1 ${items.length > 1 ? "md:grid-cols-2" : "max-w-xl mx-auto"} gap-4`}>
+          {items.map(p => <BonusPackage key={p.id} p={p} cfg={cfg} mode="home" />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* Product-page section */
+function ProductBonus({ p }) {
+  const cfg = SITE.bonus.product;
+  if (cfg.enabled === false || !p.bonus || !p.bonus.showOnProduct) return null;
+  return (
+    <section id="bonus" className="max-w-5xl mx-auto px-3 mt-5">
+      <div className="text-center mb-3">
+        {cfg.eyebrow && <span className="inline-block text-amber-600 font-extrabold text-[11px] uppercase tracking-widest">{cfg.eyebrow}</span>}
+        <h2 className="text-lg md:text-2xl font-black text-slate-900 mt-0.5 leading-tight">{T(cfg.title)}</h2>
+        {cfg.sub && <p className="text-xs md:text-sm text-slate-600 mt-1">{T(cfg.sub)}</p>}
+        {cfg.tagline && <p className="text-xs md:text-sm font-black text-orange-600 mt-1">{T(cfg.tagline)}</p>}
+      </div>
+      <BonusPackage p={p} cfg={cfg} mode="product" />
+    </section>
+  );
+}
+
+
+/* =====================================================================
    RATINGS & REVIEWS  (केवल Admin ले राखेका वास्तविक Review / Rating देखिन्छन्)
    ===================================================================== */
 function ReviewCard({ r }) {
@@ -1591,6 +1708,8 @@ function ProductPage({ p }) {
         </div>
       </section>
 
+      <ProductBonus p={p} />
+
       {/* HOOK */}
       {(p.hook || p.description || p.forWho.length > 0) && (
         <section className="max-w-5xl mx-auto px-3 mt-5">
@@ -1743,7 +1862,7 @@ function ProductPage({ p }) {
 /* =====================================================================
    APP
    ===================================================================== */
-const SECTION_VIEW = { hero: HeroSection, trust: TrustStrip, goals: GoalsSection, library: LibrarySection, combo: ComboSection, bundles: BundlesSection, reviews: ReviewsSection, steps: ProcessSection, chat: ChatSection, faq: FaqSection, about: AuthorSection, finalcta: FinalCta };
+const SECTION_VIEW = { hero: HeroSection, trust: TrustStrip, goals: GoalsSection, library: LibrarySection, combo: ComboSection, bundles: BundlesSection, bonus: BonusSection, reviews: ReviewsSection, steps: ProcessSection, chat: ChatSection, faq: FaqSection, about: AuthorSection, finalcta: FinalCta };
 const NAV_MAP = { hero: "home", explore: "ebooks", combos: "offers", bundles: "offers" };
 
 function setMeta(attr, key, value) {
@@ -1803,7 +1922,7 @@ function App({ rev }) {
 
   useEffect(() => { const i = setInterval(() => setTick(t => t + 1), 30000); return () => clearInterval(i); }, []);
   useEffect(() => { // Offer समाप्त हुने क्षणमा Price फेरि हिसाब गर्ने
-    const end = RT && RT.nearestEnd; if (!end) return;
+    const end = RT && [RT.nearestEnd, RT.changeAt].filter(Boolean).sort((x, y) => x - y)[0]; if (!end) return;
     const ms = end - Date.now() + 700; if (ms <= 0 || ms > 2147000000) return;
     const t = setTimeout(() => setTick(x => x + 1), ms); return () => clearTimeout(t);
   }, [rev, tick]);
