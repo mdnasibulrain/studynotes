@@ -52,3 +52,6 @@ Offers end on 31 Dec 2026 (Nepal time) — extend in Admin → Ebooks → Price/
 - 🔒 "PDF फाइलको नाम / Private Reference" Admin मै रहन्छ — Publish मा जाँदैन। मूल PDF GitHub मा Upload हुँदैन।
 - Bonus नराखेको Ebook/Site जस्ताको तस्तै देखिन्छ। Worker परिवर्तन छैन।
 - Rollback: `assets/js/site-core.js`, `admin-*.js`, `index.html`, `next.html`, `mnrsnadmin*.html` को अघिल्लो संस्करण फर्काउनुहोस् (`admin-bonus.js` मेटे हुन्छ)।
+
+### Bonus Strip (compact UI)
+Product पेजमा Description/"कसका लागि" पछि, Homepage र Cart मा सानो horizontal Bonus Strip। Admin → Bonus Resources: शीर्षक, Subtitle, INCLUDED Badge, Trust लाइन, Free/Original Value Label, Cart Strip on/off र प्रत्येक Bonus को Cover/Badge/Value। नयाँ फाइल केही छैन; `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-bonus.js` मात्र बदलिए।
