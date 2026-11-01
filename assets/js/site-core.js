@@ -238,8 +238,8 @@ const D = {
   delivery: { time: "3–5 मिनेट", short: "3–5 min", method: "WhatsApp / Email", text: "Payment verify भएपछि {delivery} भित्र WhatsApp वा Email बाट ebook प्राप्त गर्नुहोस्।" },
   cart: { enabled: true, comboEnabled: true, comboMin: 3, comboPercent: 15 },
   bonus: {
-    strip: { title: "यस Ebook सँग तपाईंले पाउनुहुन्छ", sub: "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।", badge: "Included", mainTitle: "Ebook PDF", mainDesc: "Complete Guide & Practical Lessons", mainBadge: "", trust: "", trustBadges: ["Included with Ebook"], footer: "Your Complete Learning & Success Package 🎁", freeLabel: "FREE 🎁 GIFT", originalValueLabel: "Original Value: {value}", offerLabel: "Limited-Time Bonus", limitedLabel: "Offer Ending Soon" },
-    cart: { enabled: true, title: "🎁 Included Bonus" },
+    strip: { title: "यस Ebook सँग तपाईंले पाउनुहुन्छ", sub: "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।", badge: "Included", mainTitle: "Ebook PDF", mainDesc: "Complete Guide & Practical Lessons", mainBadge: "", trust: "", trustBadges: ["Included with Ebook"], footer: "Your Complete Learning & Success Package 📦", offersBadge: "OFFERS", freeLabel: "FREE 🎁 Gift", originalValueLabel: "Original Value: {value}", offerLabel: "Limited-Time Bonus", limitedLabel: "Offer Ending Soon" },
+    cart: { enabled: true, title: "🎁 Included Bonus", trust: "Complete Learning & Success Package 📦" },
     valueLabel: "Value {value}", totalLabel: "🎁 कुल Bonus Value: {value} — Ebook सँगै", countdownText: "Bonus Offer सकिन बाँकी: {time}", limitedText: "सीमित समयको Bonus Offer", untilText: "यो Bonus Offer {date} सम्म मात्र।",
     home: {
       enabled: true,
