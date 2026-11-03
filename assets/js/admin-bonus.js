@@ -63,10 +63,10 @@ const stripCard = () => {
     f(b.cart, "enabled", "🛒 Cart मा Bonus Strip देखाउने (सबै Ebook)", { t: "bool" }) +
     f(c, "title", "शीर्षक") + f(c, "sub", "Subtitle") + A.row(f(c, "offersBadge", "माथि-बायाँको Badge", { h: "जस्तै OFFERS (खाली = नदेखाउने)" }) + f(c, "mainBadge", "Ebook कार्डको सानो Badge (खाली = नदेखाउने)")) +
     A.row(f(c, "mainTitle", "Ebook कार्डको नाम") + f(c, "mainDesc", "Ebook कार्डको वर्णन")) +
-    f(c, "trustBadges", "Trust Highlights (एक लाइनमा एक)", { t: "lines", rows: 3, h: "जस्तै: Included with Ebook · Verified Learning Resources (वास्तविक भए मात्र)" }) + f(c, "trust", "अतिरिक्त Highlight Chip (वैकल्पिक)") + f(c, "footer", "तलको Footer लाइन (✓ सहित)") +
+    f(c, "trustBadges", "Trust Highlights (एक लाइनमा एक)", { t: "lines", rows: 3, h: "जस्तै: Included with Ebook · Verified Learning Resources (वास्तविक भए मात्र)" }) + f(c, "footer", "तलको Footer लाइन (✓ सहित)") +
     A.row(f(c, "freeLabel", "Free Label", { h: "हरेक Bonus मा देखिन्छ; खाली = देखिँदैन" }) + f(c, "originalValueLabel", "Original Value वाक्य", { h: "{value}" })) +
-    A.row(f(c, "offerLabel", "Offer Chip (समय सीमा भएको Bonus मा)", { h: "जस्तै Limited-Time Bonus" }) + f(c, "limitedLabel", "Countdown बन्द भए देखिने Chip", { h: "जस्तै Offer Ending Soon" })) +
-    f(b.product, "eligibility", "को पाउँछ? (साझा Eligibility वाक्य)", { t: "area", rows: 2 }) + f(b.cart, "title", "Cart को Strip शीर्षक") + f(b.cart, "trust", "Cart को Trust लाइन (✓ सहित)"));
+    f(c, "limitedLabel", "Countdown बन्द भए देखिने Chip", { h: "जस्तै Offer Ending Soon" }) +
+    f(b.product, "eligibility", "Eligibility + Delivery वाक्य (पहिलो वाक्य = Eligibility, बाँकी = Delivery; ‘।’ ले छुट्टिन्छ)", { t: "area", rows: 3 }) + f(b.cart, "title", "Cart को Strip शीर्षक") + f(b.cart, "trust", "Cart को Trust लाइन (✓ सहित)"));
 };
 const siteCard = (key, title) => {
   const c = A.site().bonus[key], f = (k, l, extra) => A.f(c, Object.assign({ k, l }, extra || {}));

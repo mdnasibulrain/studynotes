@@ -157,10 +157,10 @@ SN.SECTIONS = [
   ["goals", "Categories / Goals (तपाईंको Goal के हो?)", true],
   ["library", "Featured Ebooks / Library (सबै Ebook)", false],
   ["combo", "Custom Combo", true],
-  ["bundles", "Bundles / Offers", true],
-  ["bonus", "Bonus Resources (Ebook सँगको Bonus Package)", true],
-  ["reviews", "Reviews (पाठकहरूको भरोसा)", true],
   ["steps", "Steps (कसरी किन्ने)", true],
+  ["bundles", "Bundles / Offers", true],
+  ["reviews", "Reviews (पाठकहरूको भरोसा)", true],
+  ["bonus", "Bonus Resources (Ebook सँगको Bonus Package)", true],
   ["chat", "Testimonials (WhatsApp कुराकानी)", true],
   ["faq", "FAQ", true],
   ["about", "Career / Mission (About)", true],
@@ -240,7 +240,7 @@ const D = {
   bonus: {
     strip: { title: "यस Ebook सँग तपाईंले पाउनुहुन्छ", sub: "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।", badge: "Included", mainTitle: "Ebook PDF", mainDesc: "Complete Guide & Practical Lessons", mainBadge: "", trust: "", trustBadges: ["Included with Ebook"], footer: "Your Complete Learning & Success Package 📦", offersBadge: "OFFERS", freeLabel: "FREE 🎁 Gift", originalValueLabel: "Original Value: {value}", offerLabel: "Limited-Time Bonus", limitedLabel: "Offer Ending Soon" },
     cart: { enabled: true, title: "🎁 Included Bonus", trust: "Complete Learning & Success Package 📦" },
-    valueLabel: "Value {value}", totalLabel: "🎁 कुल Bonus Value: {value} — Ebook सँगै", countdownText: "Bonus Offer सकिन बाँकी: {time}", limitedText: "सीमित समयको Bonus Offer", untilText: "यो Bonus Offer {date} सम्म मात्र।",
+    valueLabel: "Value {value}", totalLabel: "🎁 कुल Bonus Value: {value}", countdownText: "Bonus Offer सकिन बाँकी: {time}", limitedText: "सीमित समयको Bonus Offer", untilText: "यो Bonus Offer {date} सम्म मात्र।",
     home: {
       enabled: true,
       eyebrow: "🎁 EXCLUSIVE BONUS RESOURCES", title: "एउटा Ebook मात्र होइन, Complete Learning & Practice Package!", sub: "Read It. Practice It. Apply It. Get Skilled.",
@@ -436,7 +436,7 @@ SN.mergeSite = pub => {
   const seen = new Set(), list = [];
   for (const it of arr(pub && pub.sections)) if (it && SN.SECTION_IDS.includes(it.id) && !seen.has(it.id)) { seen.add(it.id); list.push({ id: it.id, enabled: it.enabled !== false }); }
   for (const id of SN.SECTION_IDS) if (!seen.has(id)) {
-    if (id === "bonus") { const bi = list.findIndex(x => x.id === "bundles"); list.splice(bi >= 0 ? bi + 1 : list.length, 0, { id, enabled: true }); } else list.push({ id, enabled: true });
+    if (id === "bonus") { const bi = list.findIndex(x => x.id === "reviews"); list.splice(bi >= 0 ? bi + 1 : list.length, 0, { id, enabled: true }); } else list.push({ id, enabled: true });
   }
   s.sections = list.map(x => (x.id === "library" ? { id: "library", enabled: true } : x));
   s.cart.comboMin = Math.max(2, Math.round(num(s.cart.comboMin) || 3));
