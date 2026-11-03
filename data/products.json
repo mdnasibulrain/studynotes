@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-01T16:24:51.177Z",
+  "updatedAt": "2026-11-03T23:39:28.055Z",
   "products": [
     {
       "id": "SN001CS",
@@ -93,9 +93,15 @@
           }
         ],
         "start": "2026-11-01T21:57+05:45",
-        "end": "2026-12-01T14:36+05:45"
+        "end": "2026-12-01T14:36+05:45",
+        "headline": "B",
+        "hook": "C",
+        "eligibility": "D",
+        "trustBadges": [
+          "A"
+        ]
       },
-      "updatedAt": "2026-11-01T16:20:41.685Z",
+      "updatedAt": "2026-11-03T23:35:36.991Z",
       "isFeatured": true
     },
     {
@@ -545,7 +551,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-01T16:24:51.177Z",
+      "updatedAt": "2026-11-03T23:39:28.055Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1152,6 +1158,29 @@
           "comboPercent": 15
         },
         "bonus": {
+          "strip": {
+            "title": "यस Ebook सँग तपाईंले पाउनुहुन्छ",
+            "sub": "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।",
+            "badge": "INCLUDED",
+            "mainTitle": "Ebook PDF",
+            "mainDesc": "Complete Guide & Practical Lessons",
+            "mainBadge": "INCLUDED",
+            "trust": "",
+            "trustBadges": [
+              "Included with Ebook"
+            ],
+            "footer": "Your Complete Learning & Success Package 📦",
+            "offersBadge": "OFFERS",
+            "freeLabel": "NOW FREE 🎁",
+            "originalValueLabel": "Original Value: {value}",
+            "offerLabel": "",
+            "limitedLabel": "Limited-Time Bonus"
+          },
+          "cart": {
+            "enabled": true,
+            "title": "🎁 Included Bonus",
+            "trust": "Complete Learning & Success Package 📦"
+          },
           "valueLabel": "Value {value}",
           "totalLabel": "🎁 कुल Bonus Value: {value} — Ebook सँगै",
           "countdownText": "Bonus Offer सकिन बाँकी: {time}",
@@ -1187,24 +1216,7 @@
             ],
             "cta": "Order गर्नुहोस्",
             "eligibility": "Offer सकिनु अघि Purchase गर्ने Buyer ले मात्र यी Bonus पाउँछन्। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
-            "showValue": false
-          },
-          "strip": {
-            "title": "यस Ebook सँग तपाईंले पाउनुहुन्छ",
-            "sub": "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।",
-            "badge": "INCLUDED",
-            "mainTitle": "Ebook PDF",
-            "mainDesc": "Complete Guide & Practical Lessons",
-            "mainBadge": "INCLUDED",
-            "trust": "📦 Your Complete Learning & Success Package",
-            "freeLabel": "NOW FREE 🎁",
-            "originalValueLabel": "Original Value: {value}",
-            "offerLabel": "BONUS OFFER",
-            "limitedLabel": "Limited-Time Bonus"
-          },
-          "cart": {
-            "enabled": true,
-            "title": "🎁 Included Bonus"
+            "showValue": true
           }
         },
         "messages": {
@@ -1442,6 +1454,12 @@
           "cartIncludes": "समावेश: {ids}",
           "cartNoQty": "ℹ️ डिजिटल Ebook एउटै मात्र किनिन्छ — Quantity थप्न मिल्दैन।",
           "cartSaved": "🎉 तपाईंले {amount} बचत गर्दै हुनुहुन्छ",
+          "cartRowRegular": "Regular Price",
+          "cartRowDiscount": "Today Discount",
+          "cartRowToday": "Today Price",
+          "cartRowCombo": "Combo Discount ({percent}%)",
+          "cartRowFinal": "Final Amount",
+          "cartCongrats": "🎉 बधाई छ! तपाईंले {amount} रुपैयाँको छुट पाउनुभएको छ।",
           "cartWa": "WhatsApp मा Order गर्नुहोस्",
           "cartCopy": "Order विवरण Copy गर्नुहोस्",
           "toastCopied": "📋 Order विवरण Copy भयो",
