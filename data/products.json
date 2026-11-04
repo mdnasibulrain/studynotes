@@ -1112,10 +1112,10 @@
           "contactMessage": "Hello {storeName}! मलाई Ebook बारे जानकारी चाहिएको थियो 🙏"
         },
         "payment": {
-          "nspayUrl": "https://srain.com.np/paysn/",
-          "ctaText": "PaySN मा Payment गर्नुहोस्",
-          "ctaShort": "PaySN",
-          "ctaNow": "PaySN मा अहिल्यै Payment",
+          "nspayUrl": "https://srain.com.np/nspay/",
+          "ctaText": "NSPAY मा Payment गर्नुहोस्",
+          "ctaShort": "NSPAY",
+          "ctaNow": "NSPAY मा अहिल्यै Payment",
           "instructions": "Payment पछि Screenshot र माथिका Product ID हाम्रो WhatsApp ({whatsappDisplay}) मा पठाउनुहोस्।",
           "copiedToast": "📋 Order विवरण Copy भयो — Payment पछि Screenshot र ID WhatsApp मा पठाउनुहोस्",
           "steps": [
