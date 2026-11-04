@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-04T05:33:10.465Z",
+  "updatedAt": "2026-11-04T22:25:31.012Z",
   "products": [
     {
       "id": "SN001CS",
@@ -26,6 +26,7 @@
       "pages": 180,
       "chapters": 12,
       "format": "Mobile PDF",
+      "previewPdf": "https://drive.google.com/file/d/11sB6juGGEJNX79dhGRbK6wUBSY2HigRp/view?usp=drivesdk",
       "forWho": [
         "Office Job वा Data Entry खोज्दै हुनुहुन्छ",
         "Computer Operator परीक्षाको तयारी गर्दै हुनुहुन्छ",
@@ -95,7 +96,7 @@
         "start": "2026-11-01T21:57+05:45",
         "end": "2026-12-01T14:36+05:45"
       },
-      "updatedAt": "2026-11-04T05:32:35.262Z",
+      "updatedAt": "2026-11-04T22:25:01.008Z",
       "isFeatured": true
     },
     {
@@ -545,7 +546,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-04T05:33:10.465Z",
+      "updatedAt": "2026-11-04T22:25:31.012Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1463,6 +1464,8 @@
           "toastBlocked": "⚠️ यसमा भएका केही Ebook \"{title}\" मा पहिले नै छन्।",
           "toastNoWa": "WhatsApp नम्बर सेट गरिएको छैन।",
           "toastNoNspay": "NSPAY link सेट गरिएको छैन — WhatsApp मा Order गर्नुहोस्।",
+          "toastOrderSent": "✓ Order पठाइयो — Cart खाली गरियो",
+          "toastOrderFail": "⚠️ खुल्न सकेन — Cart सुरक्षित छ, फेरि प्रयास गर्नुहोस्।",
           "prevTitle": "📄 Sample Chapter Preview — {name}",
           "prevSoon": "नमुना अध्याय तयार हुँदैछ",
           "prevText": "यो Ebook को Sample Chapter WhatsApp मार्फत तुरुन्तै पठाइन्छ। तलको बटन थिचेर अनुरोध गर्नुहोस्।",
