@@ -52,7 +52,7 @@ A.bonusEditor = (p, opt) => {
 };
 
 /* card shown inside the Ebook editor */
-A.bonusCard = p => A.card("६. 🎁 Bonus Resources", A.note("एउटा Ebook सँग Workbook · Templates · Action Plan जस्ता Bonus दिन सकिन्छ। <b>मूल PDF/Workbook यहाँ Upload हुँदैन</b> — केवल नाम/वर्णन Public हुन्छ; फाइल तपाईं हातले पठाउनुहुन्छ।") + A.bonusEditor(p));
+A.bonusCard = p => A.card("७. 🎁 Bonus Resources", A.note("एउटा Ebook सँग Workbook · Templates · Action Plan जस्ता Bonus दिन सकिन्छ। <b>मूल PDF/Workbook यहाँ Upload हुँदैन</b> — केवल नाम/वर्णन Public हुन्छ; फाइल तपाईं हातले पठाउनुहुन्छ।") + A.bonusEditor(p));
 
 /* ------------------------------------------------------------ BONUS PAGE */
 A.bonusSel = null;

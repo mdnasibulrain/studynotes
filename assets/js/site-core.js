@@ -375,6 +375,21 @@ SN.LABEL_META = [
   ["prevSoon","Preview","Preview नभएको शीर्षक","नमुना अध्याय तयार हुँदैछ"],
   ["prevText","Preview","Preview नभएको वर्णन","यो Ebook को Sample Chapter WhatsApp मार्फत तुरुन्तै पठाइन्छ। तलको बटन थिचेर अनुरोध गर्नुहोस्।"],
   ["prevAsk","Preview","Sample माग्ने button","Sample माग्नुहोस्"],
+  ["pvTitle","Preview","Preview Slideshow शीर्षक (ID आफैं नारंगीमा देखिन्छ)","Preview —"],
+  ["pvCoverHook","Preview","Slide १ (Cover) को Hook — छोटो अनुच्छेद","किन्नुअघि एक झलक हेर्नुहोस् — यो Ebook भित्र के-के छ?"],
+  ["pvTocHook","Preview","Slide २ (Table of Contents) को Hook","Chapter-by-chapter व्यवस्थित सिकाइ — सुरुका अध्यायको झलक।"],
+  ["pvSampleHook","Preview","Slide ३ (Sample Chapter) को Hook","Sample बाटै थाहा पाउनुहोस् — सिकाइ कति सजिलो र व्यावहारिक छ।"],
+  ["pvLockedHook","Preview","Slide ४ (Locked) को Hook","बाँकी सबै Chapter र Bonus अनलक गर्न अहिले नै Ebook लिनुहोस्।"],
+  ["pvCta","Preview","CTA button (Cart चालु हुँदा; {price})","🛒 Add to Cart — {price}"],
+  ["pvCtaIn","Preview","CTA button (Cart मा भइसकेको)","✓ Cart मा छ — Cart हेर्नुहोस्"],
+  ["pvCtaWa","Preview","CTA button (Cart बन्द हुँदा; WhatsApp Order)","WhatsApp मा Order गर्नुहोस् — {price}"],
+  ["pvToc","Preview","Table of Contents शीर्षक","Table of Contents"],
+  ["pvMore","Preview","बाँकी Chapter को लाइन ({n})","+ {n} more chapters in full ebook"],
+  ["pvSample","Preview","Sample Chapter Tag ({n})","Sample — Chapter {n}"],
+  ["pvLearn","Preview","\"यो पुस्तकबाट सिक्नुहुन्छ\" शीर्षक","यो पुस्तकबाट तपाईंले सिक्नुहुन्छ:"],
+  ["pvLocked","Preview","Locked Slide शीर्षक","पूरा Ebook अनलक गर्नुहोस्"],
+  ["pvLockedNote","Preview","Locked Slide को सानो वाक्य ({pages},{chapters})","{pages} पृष्ठ · {chapters} अध्याय"],
+  ["pvPdf","Preview","Sample PDF खोल्ने link (PDF Link राखेको भए)","📄 Sample PDF खोल्नुहोस्"],
   ["prevMsg","Preview","Sample माग्ने WhatsApp message ({storeName},{id},{title})","Hello {storeName}! कृपया [{id}] {title} को Sample Chapter पठाइदिनुहोस् 🙏"],
   ["policyClose","Policy","Policy बन्द button","बुझें (Close)"],
   ["navHome","Menu","Bottom menu: Home","Home"],
@@ -466,12 +481,27 @@ SN.normalizeProduct = (p) => {
   o.offerActive = o.offerActive !== false;
   o.countdownVisible = o.countdownVisible !== false;
   o.offerStart = o.offerStart || null; o.offerEndsAt = o.offerEndsAt || null;
-  if (o.kind === "ebook") o.bonus = SN.normBonus(o.bonus); else delete o.bonus;
+  if (o.kind === "ebook") { o.bonus = SN.normBonus(o.bonus); o.preview = SN.normPreview(o.preview); } else { delete o.bonus; delete o.preview; }
   return o;
 };
 /* ------------------------------------------------------------------ BONUS RESOURCES (per Ebook; additive, off by default) */
 SN.BONUS_TYPES = [["workbook", "BONUS: Workbook", "book"], ["templates", "BONUS: Templates", "file"], ["action", "BONUS: Action Plan & Roadmap", "target"], ["custom", "BONUS: Custom", "gift"]];
 SN.BONUS_TYPE_IDS = SN.BONUS_TYPES.map(x => x[0]);
+/* Preview slideshow ("Preview PDF हेर्नुहोस्" थिच्दा खुल्ने) — प्रति-Ebook नियन्त्रण; खाली भएको ठाउँमा Ebook को आफ्नै Data प्रयोग हुन्छ */
+SN.PREVIEW_SLIDES = ["cover", "toc", "sample", "locked"];
+SN.normPreview = v => {
+  v = isObj(v) ? v : {};
+  const sl = isObj(v.slides) ? v.slides : {}, sm = isObj(v.sample) ? v.sample : {}, lk = isObj(v.locked) ? v.locked : {};
+  const slides = {};
+  for (const k of SN.PREVIEW_SLIDES) { const x = isObj(sl[k]) ? sl[k] : {}; slides[k] = { visible: x.visible !== false, hook: str(x.hook).slice(0, 300), cta: str(x.cta).slice(0, 80) }; }
+  const tc = Math.round(num(v.tocCount) || 0);
+  return {
+    enabled: v.enabled !== false, title: str(v.title).slice(0, 60), tocCount: tc >= 1 && tc <= 12 ? tc : 5, slides,
+    sample: { title: str(sm.title).slice(0, 120), text: str(sm.text).slice(0, 600), points: arr(sm.points).map(x => str(x).slice(0, 160)).filter(Boolean).slice(0, 6) },
+    locked: { title: str(lk.title).slice(0, 80), note: str(lk.note).slice(0, 120) }
+  };
+};
+SN.publicPreview = v => { const n = SN.normPreview(v); return JSON.stringify(n) === JSON.stringify(SN.normPreview({})) ? null : n; };
 SN.normBonus = b => {
   b = isObj(b) ? b : {};
   const items = arr(b.items).filter(isObj).map((x, i) => ({
@@ -685,7 +715,7 @@ SN.nextBundleId = products => { let max = 0; for (const p of products) { const m
 SN.slug = s => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || SN.uid("c");
 
 /* ------------------------------------------------------------------ PUBLIC DATA BUILD (admin -> Worker payload) */
-const PRODUCT_FIELDS = ["id", "kind", "title", "short", "subtitle", "summary", "description", "hook", "category", "language", "tags", "cover", "coverAlt", "badge", "status", "availability", "featured", "isNew", "order", "pages", "chapters", "format", "previewPdf", "forWho", "learningOutcomes", "careerRelevance", "chapterOutline", "regularPrice", "offerPrice", "offerActive", "offerStart", "offerEndsAt", "offerLabel", "offerDescription", "urgencyLabel", "countdownVisible", "countdownText", "rating", "reviewCount", "soldCopies", "copiesLeft", "includes", "bonus", "createdAt", "updatedAt"];
+const PRODUCT_FIELDS = ["id", "kind", "title", "short", "subtitle", "summary", "description", "hook", "category", "language", "tags", "cover", "coverAlt", "badge", "status", "availability", "featured", "isNew", "order", "pages", "chapters", "format", "previewPdf", "forWho", "learningOutcomes", "careerRelevance", "chapterOutline", "regularPrice", "offerPrice", "offerActive", "offerStart", "offerEndsAt", "offerLabel", "offerDescription", "urgencyLabel", "countdownVisible", "countdownText", "rating", "reviewCount", "soldCopies", "copiesLeft", "includes", "bonus", "preview", "createdAt", "updatedAt"];
 SN.IMAGE_FIELDS = (site) => {
   const out = [];
   const add = (obj, key, where) => { if (obj && obj[key]) out.push({ obj, key, where }); };
@@ -699,6 +729,7 @@ SN.cleanProduct = p => {
     let v = n[k];
     if (k === "featured") v = !!n.featured;
     if (k === "bonus") { const pb = SN.publicBonus(n.bonus); if (pb) o.bonus = pb; continue; }
+    if (k === "preview") { const pp = n.kind === "ebook" ? SN.publicPreview(n.preview) : null; if (pp) o.preview = pp; continue; }
     if (v === "" || v === undefined || (Array.isArray(v) && !v.length && k !== "tags")) continue;
     if (v === null && !["offerPrice", "pages"].includes(k)) continue;
     o[k] = v;

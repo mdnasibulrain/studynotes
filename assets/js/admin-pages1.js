@@ -177,9 +177,29 @@ A.productEditor = p => {
       `<div class="field"><label>Chapters सूची (नमुना)</label>${A.coll({ id: "chapters", list: p.chapterOutline = p.chapterOutline || [], label: c => c.title, addText: "Chapter थप्नुहोस्", useId: false, make: () => ({ title: "", description: "" }), item: c => A.f(c, { k: "title", l: "Chapter को नाम", after: touch }) + A.f(c, { k: "description", l: "छोटो वर्णन", after: touch }) })}</div>`);
   }
   const actions = `<div class="editor-footer"><button class="btn btn-ghost" data-do="pclose">✓ बचत गरी फर्कनुहोस्</button>${p.status !== "published" ? `<button class="btn btn-primary" data-do="ppub" data-id="${esc(p.id)}">✅ Published बनाउनुहोस्</button>` : `<button class="btn btn-primary" data-go="publishing">🚀 Website मा Publish</button>`}</div>`;
-  return head + basic + cover + price + proof + value + (isB || !A.bonusCard ? "" : A.bonusCard(p)) + actions;
+  return head + basic + cover + price + proof + value + (isB ? "" : A.previewCard(p)) + (isB || !A.bonusCard ? "" : A.bonusCard(p)) + actions;
 };
 
+/* Preview Slideshow ("Preview PDF हेर्नुहोस्" थिच्दा खुल्ने ४ Slide) — प्रति-Ebook नियन्त्रण */
+A.previewCard = p => {
+  p.preview = SN.normPreview(p.preview);
+  const v = p.preview, touch = () => { p.updatedAt = A.now(); };
+  const F = (obj, k, l, x) => A.f(obj, Object.assign({ k, l, after: touch }, x || {}));
+  const slide = (k, name, extra) => `<div class="field" style="border:1px solid var(--line,#e2e8f0);border-radius:12px;padding:10px;margin-top:10px"><b>${name}</b>` +
+    F(v.slides[k], "visible", "✅ यो Slide देखाउने", { t: "bool" }) +
+    F(v.slides[k], "hook", "छोटो Hook (अनुच्छेद) — खाली = साझा Text", { t: "area", rows: 2, ph: "यो Slide मुनि देखिने १–२ वाक्य" }) +
+    F(v.slides[k], "cta", "CTA Button को Text — खाली = साझा Text", { ph: "🛒 Add to Cart — {price}", h: "{price}, {id}, {name}, {pages}, {chapters} प्रयोग गर्न सकिन्छ।" }) + (extra || "") + `</div>`;
+  return A.card("६. 👁 Preview Slides (Preview PDF हेर्नुहोस् थिच्दा)",
+    A.note("Preview बटन थिचेपछि <b>४ Slide</b> खुल्छन्: Cover → Table of Contents → Sample Chapter → Locked। शीर्षक <b>👁 Preview — {ID}</b> हो। खाली छोडेका ठाउँमा Ebook को आफ्नै Data (Chapter सूची, Description, Learning Outcomes) प्रयोग हुन्छ। साझा Text <b>Labels → Preview</b> मा बदल्न सकिन्छ।") +
+    F(v, "enabled", "✅ Preview बटन र Slideshow देखाउने", { t: "bool" }) +
+    A.row(F(v, "title", "शीर्षक (खाली = 'Preview —')", { ph: "Preview —" }) + F(v, "tocCount", "Table of Contents मा कति Chapter", { t: "num", min: 1, max: 12, step: 1 })) +
+    slide("cover", "Slide १ · Cover") +
+    slide("toc", "Slide २ · Table of Contents", `<small>Chapter सूची माथिको "Chapters सूची (नमुना)" बाट आउँछ — खाली भए यो Slide लुक्छ।</small>`) +
+    slide("sample", "Slide ३ · Sample Chapter",
+      F(v.sample, "title", "Sample Chapter को शीर्षक (खाली = पहिलो Chapter)") + F(v.sample, "text", "Sample वर्णन (खाली = Ebook को Description)", { t: "area", rows: 3 }) +
+      F(v.sample, "points", "यो पुस्तकबाट सिक्नुहुन्छ — बुँदाहरू (खाली = Learning Outcomes)", { t: "lines", rows: 3, h: "एक लाइनमा एक; अधिकतम ६।" })) +
+    slide("locked", "Slide ४ · Locked Chapter", F(v.locked, "title", "Locked शीर्षक (खाली = साझा Text)") + F(v.locked, "note", "सानो वाक्य (खाली = 'पृष्ठ · अध्याय')", { ph: "{pages} पृष्ठ · {chapters} अध्याय" })));
+};
 /* product list/editor actions */
 A.actions = {
   newEbook() { const p = A.newProduct("ebook"); A.editing = p.id; A.show("products"); },
