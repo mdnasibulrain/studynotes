@@ -369,6 +369,8 @@ SN.LABEL_META = [
   ["toastBlocked","Toast","दोहोरो Ebook ({title})","⚠️ यसमा भएका केही Ebook \"{title}\" मा पहिले नै छन्।"],
   ["toastNoWa","Toast","WhatsApp नम्बर नभएको सन्देश","WhatsApp नम्बर सेट गरिएको छैन।"],
   ["toastNoNspay","Toast","NSPAY link नभएको सन्देश","NSPAY link सेट गरिएको छैन — WhatsApp मा Order गर्नुहोस्।"],
+  ["toastOrderSent","Toast","Order पठाइएपछि Cart खाली सन्देश","✓ Order पठाइयो — Cart खाली गरियो"],
+  ["toastOrderFail","Toast","Order खुल्न नसके सन्देश","⚠️ खुल्न सकेन — Cart सुरक्षित छ, फेरि प्रयास गर्नुहोस्।"],
   ["prevTitle","Preview","Preview modal शीर्षक ({name})","📄 Sample Chapter Preview — {name}"],
   ["prevSoon","Preview","Preview नभएको शीर्षक","नमुना अध्याय तयार हुँदैछ"],
   ["prevText","Preview","Preview नभएको वर्णन","यो Ebook को Sample Chapter WhatsApp मार्फत तुरुन्तै पठाइन्छ। तलको बटन थिचेर अनुरोध गर्नुहोस्।"],
