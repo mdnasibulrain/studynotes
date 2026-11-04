@@ -35,6 +35,55 @@ section[id]{scroll-margin-top:116px}
 .tabular{font-variant-numeric:tabular-nums}
 button{-webkit-tap-highlight-color:transparent}
 </style>
+<script>
+/* Mobile-app view on every device: मोबाइल (≤480px) मा सिधै; ठूलो स्क्रिनमा त्यही Mobile layout बीचमा (430px) iframe भित्र */
+(function () {
+  var MAXW = 480, APP = 430;
+  try {
+    var top_ = window.top === window;
+    if (!top_) { // हाम्रै shell भित्रको पेज: Hash र Title माथिको URL सँग मिलाउने
+      if (window.name !== "sn-app") return;
+      var post = function (m) { try { parent.postMessage(m, location.origin); } catch (e) {} };
+      var sync = function () { post({ sn: "hash", h: location.hash || "" }); post({ sn: "title", t: document.title }); };
+      window.addEventListener("hashchange", sync);
+      window.addEventListener("load", function () { sync(); setTimeout(sync, 1500); });
+      return;
+    }
+    if (/[?&](snpreview|nowrap)=1/.test(location.search)) return;
+    var w = window.innerWidth || document.documentElement.clientWidth || 0, wide = w > MAXW, tm = null;
+    window.addEventListener("resize", function () {
+      var n = window.innerWidth || 0;
+      if ((n > MAXW) !== wide) { clearTimeout(tm); tm = setTimeout(function () { location.reload(); }, 300); }
+    });
+    if (!wide) return;
+    window.__snShell = true; /* outer page: the app itself runs inside the frame */
+    /* बाहिरी पेजको preloader ले "sn_pre_seen" नलेखोस् — Preloader भित्रको पेजमा मात्र चल्छ */
+    var _si = Storage.prototype.setItem;
+    Storage.prototype.setItem = function (k, v) { if (k === "sn_pre_seen" && !window.__snInner) return; return _si.apply(this, arguments); };
+    document.addEventListener("DOMContentLoaded", function () { Storage.prototype.setItem = _si; });
+    var d = document, h = d.documentElement, hd = d.head || h.appendChild(d.createElement("head"));
+    var st = d.createElement("style");
+    st.textContent = "html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#FFF7ED}body{display:flex;justify-content:center}" +
+      "#snp{display:none!important}#sn-app{display:block;width:" + APP + "px;max-width:100%;height:100vh;height:100dvh;border:0;background:#fff;box-shadow:0 0 0 1px rgba(249,115,22,.16),0 12px 48px rgba(15,23,42,.14)}";
+    hd.appendChild(st);
+    if (!d.querySelector('meta[name="viewport"]')) { var mv = d.createElement("meta"); mv.name = "viewport"; mv.content = "width=device-width,initial-scale=1"; hd.appendChild(mv); }
+    var b = d.body || h.appendChild(d.createElement("body"));
+    var f = d.createElement("iframe");
+    f.id = "sn-app"; f.name = "sn-app"; f.title = "StudyNotes"; f.setAttribute("allow", "clipboard-write; clipboard-read");
+    f.src = location.href;
+    b.appendChild(f);
+    window.addEventListener("message", function (e) {
+      if (e.origin !== location.origin || e.source !== f.contentWindow || !e.data || !e.data.sn) return;
+      try {
+        if (e.data.sn === "hash") { var nh = String(e.data.h || ""); if (nh !== location.hash) history.replaceState(null, "", location.pathname + location.search + nh); }
+        else if (e.data.sn === "title" && e.data.t) d.title = e.data.t;
+      } catch (x) {}
+    });
+    window.addEventListener("hashchange", function () { try { if (f.contentWindow.location.hash !== location.hash) f.contentWindow.location.hash = location.hash; } catch (e) {} });
+  } catch (e) {}
+})();
+</script>
+
 </head>
 <body>
 <!-- ===== StudyNotes Preloader v3: plain HTML/CSS/SVG/JS (no React, no Tailwind) so it paints before the heavy scripts load.
@@ -1550,8 +1599,8 @@ function CartDrawer() {
               <div className="flex justify-between items-baseline pt-2 border-t border-dashed border-orange-200"><span className="font-extrabold text-sm text-slate-900">{L("cartRowFinal")}</span><span className="text-2xl font-black text-orange-600">{fmt(t.final)}</span></div>
               {t.saved > 0 && <p className="text-[11px] font-extrabold text-emerald-700 text-center">{L("cartCongrats", { amount: fmt(t.saved) })}</p>}
             </div>
-            {canPay && <button onClick={() => A.pay(cart)} className="relative overflow-hidden shine w-full py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-black text-xs md:text-sm flex items-center justify-center gap-2 shadow-lg shadow-orange-200"><Icon name="card" className="w-4 h-4" />{SITE.payment.ctaText}</button>}
-            <button onClick={() => A.whatsapp(cart)} className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs md:text-sm flex items-center justify-center gap-2"><Icon name="wa" className="w-4 h-4" />{L("cartWa")}</button>
+            {canPay && <button onClick={() => A.cartPay(cart)} className="relative overflow-hidden shine w-full py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-black text-xs md:text-sm flex items-center justify-center gap-2 shadow-lg shadow-orange-200"><Icon name="card" className="w-4 h-4" />{SITE.payment.ctaText}</button>}
+            <button onClick={() => A.cartWhatsapp(cart)} className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs md:text-sm flex items-center justify-center gap-2"><Icon name="wa" className="w-4 h-4" />{L("cartWa")}</button>
             {note && <p className="text-[10px] text-slate-500 leading-snug text-center">{note}</p>}
           </div>
         )}
@@ -2030,10 +2079,11 @@ function App({ rev }) {
 
   // बाहिरी link: user click को तुरुन्तै (synchronous) खोल्ने — Popup block नहोस् भनेर
   const open = url => {
-    if (PREVIEW) { toast("Preview मा बाहिरी link खुल्दैन: " + url.slice(0, 60)); return; }
+    if (PREVIEW) { toast("Preview मा बाहिरी link खुल्दैन: " + url.slice(0, 60)); return "failed"; }
     let w = null;
-    try { w = window.open(url, "_blank", "noopener"); } catch (e) {}
-    if (!w) { try { window.location.href = url; } catch (e) {} }
+    try { w = window.open(url, "_blank"); } catch (e) {}
+    if (w) { try { w.opener = null; } catch (e) {} return "opened"; }
+    try { (window.top || window).location.href = url; return "navigated"; } catch (e) { return "failed"; }
   };
   const whatsappText = txt => { if (!SITE.contact.whatsapp) { toast(L("toastNoWa")); return; } open(`https://wa.me/${SITE.contact.whatsapp}?text=${encodeURIComponent(txt)}`); };
   const whatsapp = list => whatsappText(list && list.length ? buildOrderText(list) : T(SITE.contact.contactMessage, {}, "keep"));
@@ -2044,6 +2094,42 @@ function App({ rev }) {
     toast(T(SITE.payment.copiedToast, {}, "keep") || L("toastCopied"));
     open(BRAND.nspayUrl);
   };
+  /* Cart बाट Order: hand-off सफल भएपछि मात्र Cart खाली हुन्छ। असफल / रद्द भए Cart जस्ताको तस्तै रहन्छ। */
+  const lastOrder = useRef(0);
+  const orderOnce = () => { const n = Date.now(); if (n - lastOrder.current < 3000) return false; lastOrder.current = n; return true; };
+  const clearOrdered = ids => setCart(prev => prev.filter(i => !ids.includes(i.id)));
+  const sameOrigin = u => { try { return new URL(u, location.href).origin === location.origin; } catch (e) { return false; } };
+  const cartWhatsapp = list => {
+    if (!list || !list.length || !orderOnce()) return;
+    if (!SITE.contact.whatsapp) { toast(L("toastNoWa")); return; }
+    const st = open(`https://wa.me/${SITE.contact.whatsapp}?text=${encodeURIComponent(buildOrderText(list))}`);
+    if (st === "opened") { clearOrdered(list.map(i => i.id)); setCartOpen(false); toast(L("toastOrderSent")); }
+    else if (st === "failed") toast(L("toastOrderFail"));
+  };
+  const cartPay = list => {
+    if (!list || !list.length || !orderOnce()) return;
+    if (!SN.safeUrl(BRAND.nspayUrl)) { toast(L("toastNoNspay")); return; }
+    copyToClipboard(buildOrderText(list));
+    const st = open(BRAND.nspayUrl);
+    if (st === "failed") { toast(L("toastOrderFail")); return; }
+    toast(T(SITE.payment.copiedToast, {}, "keep") || L("toastCopied"));
+    const ids = list.map(i => i.id);
+    if (sameOrigin(BRAND.nspayUrl)) lsSet("sn_pay_pending", { at: Date.now(), ids }); // NSPAY पेजले Submit सफल भएको जनाएपछि Cart खाली हुन्छ
+    else if (st === "opened") { clearOrdered(ids); setCartOpen(false); toast(L("toastOrderSent")); }
+  };
+  useEffect(() => { // NSPAY (same site) बाट "Order submit भयो" संकेत आएपछि मात्र सम्बन्धित item हटाउने
+    if (PREVIEW) return;
+    const check = () => {
+      const pend = lsGet("sn_pay_pending", null), done = lsGet("sn_order_done", null);
+      if (!pend || !done || !(done.at >= pend.at)) { if (pend && Date.now() - pend.at > 86400000) { try { localStorage.removeItem("sn_pay_pending"); } catch (e) {} } return; }
+      try { localStorage.removeItem("sn_pay_pending"); localStorage.removeItem("sn_order_done"); } catch (e) {}
+      clearOrdered(Array.isArray(pend.ids) ? pend.ids : []); setCartOpen(false); toast(L("toastOrderSent"));
+    };
+    check();
+    const ev = ["storage", "focus", "pageshow"], vis = () => { if (!document.hidden) check(); };
+    ev.forEach(e => window.addEventListener(e, check)); document.addEventListener("visibilitychange", vis);
+    return () => { ev.forEach(e => window.removeEventListener(e, check)); document.removeEventListener("visibilitychange", vis); };
+  }, []);
   const payItem = item => { if (CART_ON && status(item) === "none") commit(toCartItem(item), true); pay([toCartItem(item)]); };
   const runAction = a => {
     const x = SN.parseAction(a);
@@ -2060,7 +2146,7 @@ function App({ rev }) {
     route, cart, cartOpen, openCart: () => setCartOpen(true), closeCart: () => setCartOpen(false), totals, tick, rev,
     searchOpen, setSearchOpen, category, setCategory, query, setQuery, sortBy, setSortBy,
     preview, setPreview, policy, setPolicy, status, add, addCombo, remove,
-    openProduct, goHome, goSection, runAction, whatsapp, whatsappText, pay, payItem, copyOrder, activeNav, toast
+    openProduct, goHome, goSection, runAction, whatsapp, whatsappText, pay, payItem, cartPay, cartWhatsapp, copyOrder, activeNav, toast
   };
   const order = SITE.sections.filter(s => s.enabled && SECTION_VIEW[s.id]).map(s => s.id);
   const showTop = secOn("announcement");
@@ -2130,7 +2216,7 @@ function Boot() {
   }
   return <div className="min-h-screen flex items-center justify-center"><div className="w-10 h-10 rounded-full border-4 border-orange-200 border-t-orange-500 animate-spin"></div></div>;
 }
-ReactDOM.createRoot(document.getElementById("root")).render(<Boot />);
+if (!window.__snShell) ReactDOM.createRoot(document.getElementById("root")).render(<Boot />);
 
 </script>
 </body>
