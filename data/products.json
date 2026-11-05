@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-05T12:26:18.298Z",
+  "updatedAt": "2026-11-05T12:27:13.158Z",
   "products": [
     {
       "id": "SN001CS",
@@ -539,6 +539,727 @@
       "isFeatured": false
     },
     {
+      "id": "SN001OA",
+      "title": "Office Assistant Complete Practical Guide",
+      "short": "Office Assistant Guide",
+      "subtitle": "फाइलिङ, फोन, पत्र, दैनिक रिपोर्ट र Office Etiquette",
+      "summary": "फाइलिङ, फोन, पत्र, कार्यालय सामग्री, दैनिक रिपोर्ट र Office Etiquette सिकाउने व्यावहारिक गाइड। Series 1–2: Basic Work & Office Support।",
+      "description": "फाइलिङ, फोन, पत्र, कार्यालय सामग्री, दैनिक रिपोर्ट र Office Etiquette सिकाउने व्यावहारिक गाइड। Series 1–2: Basic Work & Office Support।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: फाइल वर्गीकरण, डेलिभरी रजिस्टर, सामग्री रेकर्ड, प्याकिङ चेकलिस्ट, दैनिक कार्य रिपोर्ट, फोन उठाउने अभ्यास, भेटघाट रजिस्टर, हाजिरी सिट, पत्र दर्ता र दैनिक कार्यालय चेकलिस्ट\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Office & Admin Skills",
+      "tags": [
+        "Series 1–2",
+        "Class 5–7 Starter",
+        "Class 8–10 Practical Starter",
+        "Office",
+        "Admin"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 40,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "कार्यालयमा काम सुरु गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "फाइल तथा कागजात व्यवस्थित गर्ने",
+        "फोन र ग्राहक सोधपुछ शिष्ट तरिकाले सम्हाल्ने",
+        "दैनिक कार्य रिपोर्ट र रजिस्टर तयार गर्ने"
+      ],
+      "careerRelevance": [
+        "Office Assistant, Reception Assistant र Document Control जस्ता पदका लागि आधारभूत तयारी (नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "फाइल वर्गीकरण, डेलिभरी रजिस्टर, सामग्री रेकर्ड, प्याकिङ चेकलिस्ट, दैनिक कार्य रिपोर्ट, फोन उठाउने अभ्यास, भेटघाट रजिस्टर, हाजिरी सिट, पत्र दर्ता र दैनिक कार्यालय चेकलिस्ट"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:44.172Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001SI",
+      "title": "Storekeeper & Inventory Management",
+      "short": "Storekeeper & Inventory",
+      "subtitle": "GRN, Stock In/Out, FIFO/FEFO, Stock Count र Reconciliation",
+      "summary": "स्टोरसम्बन्धी काममा सही गणना, रेकर्ड र प्रक्रिया पालना सिकाउने गाइड। Series 3–4: Store, Stock & Inventory।",
+      "description": "स्टोरसम्बन्धी काममा सही गणना, रेकर्ड र प्रक्रिया पालना सिकाउने गाइड। Series 3–4: Store, Stock & Inventory।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Goods Received Note (GRN), Stock In/Out Register, Stock Card, Physical Stock Count र Stock Difference Report तयार गर्ने\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Store & Inventory",
+      "tags": [
+        "Series 3–4",
+        "Class 5–7 Starter",
+        "Class 8–10 Practical Starter",
+        "Store",
+        "Inventory"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 41,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "Store वा Inventory को काम गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "GRN र Stock Register ठीकसँग भर्ने",
+        "Physical Stock Count गरी Difference Report बनाउने",
+        "FIFO/FEFO सिद्धान्त बुझ्ने"
+      ],
+      "careerRelevance": [
+        "Store Assistant, Storekeeper र Inventory Assistant जस्ता पदका लागि आधारभूत तयारी (नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Goods Received Note (GRN), Stock In/Out Register, Stock Card, Physical Stock Count र Stock Difference Report तयार गर्ने"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:46.432Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001RP",
+      "title": "Cashier, POS & Billing Mastery",
+      "short": "Cashier, POS & Billing",
+      "subtitle": "Cash Handling, POS Billing, Refund Procedure र Daily Cash Closing",
+      "summary": "पसल तथा रिटेलमा नगद व्यवहार, POS बिलिङ र दैनिक नगद मिलान सिकाउने गाइड। Series 5 र 8।",
+      "description": "पसल तथा रिटेलमा नगद व्यवहार, POS बिलिङ र दैनिक नगद मिलान सिकाउने गाइड। Series 5 र 8।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: ग्राहकसँग संवाद, POS बिलिङ अभ्यास, Cash Closing Sheet, Order Register र Customer Complaint Handling\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Retail, Billing & POS",
+      "tags": [
+        "Series 5, 8",
+        "Class 8–10 Practical Starter",
+        "Class 11–12 Job Preparation",
+        "Cashier",
+        "POS",
+        "Billing"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 42,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "Cashier वा Billing को काम गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "नगद गणना र दैनिक Cash Closing गर्ने",
+        "POS Billing र Refund प्रक्रिया बुझ्ने",
+        "Order Register राख्ने"
+      ],
+      "careerRelevance": [
+        "Cashier, POS Operator र Billing Assistant जस्ता पदका लागि आधारभूत तयारी (नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "ग्राहकसँग संवाद, POS बिलिङ अभ्यास, Cash Closing Sheet, Order Register र Customer Complaint Handling"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:48.116Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001SC",
+      "title": "Sales & Customer Service Skills",
+      "short": "Sales & Customer Service",
+      "subtitle": "Customer Conversation, Product Knowledge, Complaint Handling र Sales Techniques",
+      "summary": "ग्राहकसँग व्यवहार, उत्पादन बुझाउने र बिक्री गर्ने सीप सिकाउने गाइड। Series 5–6: Retail, Sales र Market।",
+      "description": "ग्राहकसँग व्यवहार, उत्पादन बुझाउने र बिक्री गर्ने सीप सिकाउने गाइड। Series 5–6: Retail, Sales र Market।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Market Survey Form, Daily Sales Report, Customer Lead Sheet, Sales Target Tracker र Product Pitch Script\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Sales & Customer Service",
+      "tags": [
+        "Series 5–6",
+        "Class 8–10 Practical Starter",
+        "Class 11–12 Job Preparation",
+        "Sales",
+        "Customer Service"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 43,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "Sales वा Customer Service मा काम गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "ग्राहकको समस्या बुझेर राम्रो सेवा दिने",
+        "Product Pitch तयार गरी प्रस्तुत गर्ने",
+        "Daily Sales Report र Lead Sheet राख्ने"
+      ],
+      "careerRelevance": [
+        "Shop Assistant, Sales Associate र Customer Service Assistant जस्ता पदका लागि आधारभूत तयारी (नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Market Survey Form, Daily Sales Report, Customer Lead Sheet, Sales Target Tracker र Product Pitch Script"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:49.563Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001AB",
+      "title": "Basic Bookkeeping & Business Records",
+      "short": "Basic Bookkeeping",
+      "subtitle": "Cashbook, Sales/Purchase Register, Expenses र Receivables/Payables",
+      "summary": "लेखा तथा साना व्यवसायका रेकर्ड राख्ने आधारभूत सीप। Series 8: Accounts, Billing & Business Records।",
+      "description": "लेखा तथा साना व्यवसायका रेकर्ड राख्ने आधारभूत सीप। Series 8: Accounts, Billing & Business Records।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Sales Invoice, Purchase Register, Cashbook, Petty Cash, Accounts Receivable/Payable र Monthly Expense Report\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Accounts & Bookkeeping",
+      "tags": [
+        "Series 8",
+        "Class 11–12 Job Preparation",
+        "Bachelor Career Development",
+        "Accounts",
+        "Bookkeeping"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 44,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "हिसाब-किताबको काम सिक्न चाहने व्यक्ति",
+        "आफ्नो सानो व्यवसायको रेकर्ड राख्न चाहने व्यक्ति"
+      ],
+      "learningOutcomes": [
+        "Cashbook र Petty Cash राख्ने",
+        "Sales/Purchase Register र Invoice तयार गर्ने",
+        "Monthly Expense Report बनाउने"
+      ],
+      "careerRelevance": [
+        "लेखा सहायकका केही पदमा औपचारिक योग्यता वा अनुभव चाहिन्छ। कर, अडिट र नियमनयुक्त वित्तीय कामका लागि आवश्यक कानुनी योग्यता अलग्गै पूरा गर्नुपर्छ।"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Sales Invoice, Purchase Register, Cashbook, Petty Cash, Accounts Receivable/Payable र Monthly Expense Report"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:50.898Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001JR",
+      "title": "Job Ready: CV, Interview & Application",
+      "short": "Job Ready Guide",
+      "subtitle": "CV बनाउने, सीप प्रस्तुत गर्ने, Interview अभ्यास र आवेदन प्रक्रिया",
+      "summary": "सबै Series का विद्यार्थीका लागि साझा eBook: CV, Interview र Job Application तयारी।",
+      "description": "सबै Series का विद्यार्थीका लागि साझा eBook: CV, Interview र Job Application तयारी।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: CV, Interview Questions अभ्यास, Application Templates, Job Search योजना र योग्यता जाँच्ने तरिका\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Job Ready & Career",
+      "tags": [
+        "All Series",
+        "Class 11–12 Job Preparation",
+        "Bachelor Career Development",
+        "CV",
+        "Interview"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 45,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "पहिलो पटक Job Application दिन लागेका व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "आफ्नो CV तयार गर्ने",
+        "Interview का सामान्य प्रश्नको अभ्यास गर्ने",
+        "Job Application Template प्रयोग गर्ने"
+      ],
+      "careerRelevance": [
+        "Job Application र Interview तयारीमा सहयोगी (रोजगारीको ग्यारेन्टी होइन)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "CV, Interview Questions अभ्यास, Application Templates, Job Search योजना र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:52.215Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001WP",
+      "title": "Warehouse, Logistics & Procurement",
+      "short": "Warehouse & Procurement",
+      "subtitle": "Purchase Order, Supplier Comparison, Dispatch र Reorder Planning",
+      "summary": "सामानको आवागमनदेखि खरिद र आपूर्ति समन्वयसम्म सिकाउने गाइड। Series 4: Warehouse, Logistics & Procurement।",
+      "description": "सामानको आवागमनदेखि खरिद र आपूर्ति समन्वयसम्म सिकाउने गाइड। Series 4: Warehouse, Logistics & Procurement।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Purchase Requisition, Purchase Order, Supplier Comparison Sheet, Reorder Level र Stock Reconciliation Report\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Warehouse & Procurement",
+      "tags": [
+        "Series 4",
+        "Class 11–12 Job Preparation",
+        "Bachelor Career Development",
+        "Warehouse",
+        "Procurement"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 46,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "Warehouse वा Procurement तर्फ अघि बढ्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "Purchase Requisition र Purchase Order तयार गर्ने",
+        "Supplier तुलना गर्ने",
+        "Reorder Level र Stock Reconciliation गर्ने"
+      ],
+      "careerRelevance": [
+        "Logistics, Purchase र Procurement Assistant जस्ता पदका लागि तयारीमा सहयोगी (नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Purchase Requisition, Purchase Order, Supplier Comparison Sheet, Reorder Level र Stock Reconciliation Report"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:53.507Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001BS",
+      "title": "Start Your Small Business",
+      "short": "Start Small Business",
+      "subtitle": "ग्राहक पहिचान, लागत, मूल्य निर्धारण, बजेट र पहिलो बिक्रीको योजना",
+      "summary": "सानो र परीक्षण गर्न सकिने मोडेलबाट आफ्नै व्यवसाय सुरु गर्ने बाटो। Series 10: Self-Employment & Business Owner।",
+      "description": "सानो र परीक्षण गर्न सकिने मोडेलबाट आफ्नै व्यवसाय सुरु गर्ने बाटो। Series 10: Self-Employment & Business Owner।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Business Idea Validation, Customer Survey, Cost & Pricing Sheet, Simple Business Plan, Marketing Plan र पहिलो ग्राहक प्राप्त गर्ने कार्ययोजना\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Business & Self-Employment",
+      "tags": [
+        "Series 10",
+        "Class 11–12 Job Preparation",
+        "Bachelor Career Development",
+        "Master Specialization",
+        "Business",
+        "Self-Employment"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 47,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "आफ्नै सानो व्यवसाय सुरु गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "व्यवसायको Idea ग्राहकसँग परीक्षण गर्ने",
+        "लागत र मूल्य निर्धारण गर्ने",
+        "सरल Business Plan बनाउने"
+      ],
+      "careerRelevance": [
+        "सानो व्यवसाय परीक्षण गर्न सहयोगी (आम्दानी वा नाफाको ग्यारेन्टी होइन)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Business Idea Validation, Customer Survey, Cost & Pricing Sheet, Simple Business Plan, Marketing Plan र पहिलो ग्राहक प्राप्त गर्ने कार्ययोजना"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:54.860Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN002DS",
+      "title": "Mobile AI & Digital Work Starter",
+      "short": "Mobile AI & Digital Work",
+      "subtitle": "AI उपकरण प्रयोग, कामका लागि लेखन, उत्पादकता र डिजिटल सेवा",
+      "summary": "मोबाइलबाटै AI उपकरण प्रयोग, कामका लागि लेखन, उत्पादकता र सानो डिजिटल कामको नमुना तयार गर्ने गाइड। Series 7 र 10।",
+      "description": "मोबाइलबाटै AI उपकरण प्रयोग, कामका लागि लेखन, उत्पादकता र सानो डिजिटल कामको नमुना तयार गर्ने गाइड। Series 7 र 10।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Professional Email, Online Order Tracker, Customer Support Reply Templates र सानो डिजिटल कामको नमुना\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Digital Skills & Online Income",
+      "tags": [
+        "Series 7, 10",
+        "Class 8–10 Practical Starter",
+        "Class 11–12 Job Preparation",
+        "Digital Work",
+        "AI"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 48,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "मोबाइलबाट डिजिटल सीप सिक्न सुरु गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "AI उपकरण कामका लागि प्रयोग गर्ने",
+        "Professional Email र Reply Template बनाउने",
+        "Online Order Tracker राख्ने"
+      ],
+      "careerRelevance": [
+        "Digital Customer Support र Online Order Management जस्ता कामका लागि तयारीमा सहयोगी (आम्दानीको ग्यारेन्टी होइन)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Professional Email, Online Order Tracker, Customer Support Reply Templates र सानो डिजिटल कामको नमुना"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:56.103Z",
+      "isFeatured": false
+    },
+    {
       "id": "__site__",
       "kind": "site",
       "title": "StudyNotes site settings",
@@ -546,7 +1267,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-05T12:26:18.298Z",
+      "updatedAt": "2026-11-05T12:27:13.158Z",
       "site": {
         "v": 1,
         "preloader": {
