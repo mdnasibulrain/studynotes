@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-05T03:31:56.898Z",
+  "updatedAt": "2026-11-05T09:57:35.586Z",
   "products": [
     {
       "id": "SN001CS",
@@ -546,7 +546,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-05T03:31:56.898Z",
+      "updatedAt": "2026-11-05T09:57:35.586Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -568,7 +568,7 @@
         "store": {
           "name": "StudyNotes",
           "tagline": "Your First Step to Success",
-          "taglineNe": "नेपाली युवा, विद्यार्थी र प्रोफेसनलहरूका लागि Digital Learning Resources।",
+          "taglineNe": "Class 5 देखि Master सम्म — Job Ready देखि Business Owner सम्म",
           "founder": "MD. NS (MD. NASA)",
           "logo": null,
           "currency": "रु.",
@@ -643,7 +643,7 @@
           "headBefore": "सफलताको",
           "headHighlight": "पहिलो कदम",
           "headAfter": "आजै यहीँबाट सुरु गर्नुहोस्",
-          "description": "Skill, Exam र Career तिर स्पष्ट बाटो देखाउने Practical Ebooks — सरल नेपाली भाषामा, मोबाइलमै पढ्न मिल्ने। यो खर्च होइन, तपाईंको **पहिलो उपलब्धि** हो।",
+          "description": "Class 5 देखि Master सम्म — आफू जहाँ हुनुहुन्छ त्यहीँबाट सीप सिक्नुहोस्। Office, Store, Sales, Computer, Accounts र Business का Practical Ebooks — सरल नेपाली भाषामा, मोबाइलमै पढ्न मिल्ने। यो खर्च होइन, तपाईंको **पहिलो उपलब्धि** हो।",
           "cta1": {
             "text": "Ebooks हेर्नुहोस्",
             "action": "section:explore"
@@ -754,12 +754,44 @@
               "category": "Personality Development",
               "text": "निरन्तर सिकाइ",
               "visible": true
+            },
+            {
+              "id": "g9",
+              "title": "Office मा काम सुरु गर्ने",
+              "icon": "file",
+              "category": "Office & Admin Skills",
+              "text": "Filing, Phone र Reports",
+              "visible": true
+            },
+            {
+              "id": "g10",
+              "title": "Store / Inventory सिक्ने",
+              "icon": "book",
+              "category": "Store & Inventory",
+              "text": "Stock Record र GRN",
+              "visible": true
+            },
+            {
+              "id": "g11",
+              "title": "Cashier / Sales सिक्ने",
+              "icon": "card",
+              "category": "Retail, Billing & POS",
+              "text": "POS र ग्राहक सेवा",
+              "visible": true
+            },
+            {
+              "id": "g12",
+              "title": "आफ्नै Business सुरु गर्ने",
+              "icon": "zap",
+              "category": "Business & Self-Employment",
+              "text": "सानो व्यवसायको योजना",
+              "visible": true
             }
           ]
         },
         "library": {
           "eyebrow": "STUDYNOTES LIBRARY",
-          "title": "Explore Ebook Library"
+          "title": "Learn. Grow. Succeed."
         },
         "combo": {
           "eyebrow": "CUSTOM COMBO",
@@ -1044,18 +1076,32 @@
               "a": "WhatsApp {whatsappDisplay} वा Email: {email} मा जुनसुकै बेला सम्पर्क गर्नुहोस्।",
               "visible": true,
               "onProduct": false
+            },
+            {
+              "id": "f11",
+              "q": "कक्षा ५ मात्र पढेको व्यक्तिले पनि सुरु गर्न सक्छ?",
+              "a": "आधारभूत सीप र अनुभवबाट सुरु गर्न सकिन्छ। तर सबै औपचारिक पदमा शैक्षिक योग्यता, उमेर वा कानुनी प्रमाणपत्र फरक–फरक चाहिन्छ, र नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ। StudyNotes ले आफ्नो अहिलेको अवस्थाबाट सीप सिक्ने बाटो देखाउँछ — जागिरको ग्यारेन्टी दिँदैन।",
+              "visible": true,
+              "onProduct": false
+            },
+            {
+              "id": "f12",
+              "q": "मैले कुन Ebook बाट सुरु गर्ने?",
+              "a": "आफ्नो कक्षा र लक्ष्य हेरेर छान्नुहोस्: Class 5–7 → Office/Store को आधारभूत सीप; Class 8–10 → Office, Store, Sales र Cashier; Class 11–12 → Computer, Billing, Bookkeeping र Job Ready; Bachelor/Master → Procurement, Accounts र Business। अन्योल भए WhatsApp मा सोध्नुहोस्।",
+              "visible": true,
+              "onProduct": false
             }
           ]
         },
         "about": {
           "eyebrow": "ABOUT {storeNameUpper}",
-          "heading": "{storeName} — by {founder}",
-          "text": "StudyNotes को उद्देश्य नेपाली युवा, विद्यार्थी र रोजगारी खोजीमा रहेका व्यक्तिहरूलाई Computer Skills, Digital Skills, परीक्षा तयारी, Share Market र Personality Development सम्बन्धी व्यावहारिक र गुणस्तरीय Ebooks उपलब्ध गराउनु हो।"
+          "heading": "{storeName} — Class 5 देखि Master सम्म",
+          "text": "StudyNotes को उद्देश्य ebook बेच्नु मात्र होइन। पढाइको स्तर, आर्थिक अवस्था वा शैक्षिक यात्रामा आएको अवरोधका कारण आफूले केही गर्न सक्दिनँ भन्ने महसुस गर्ने व्यक्तिलाई व्यावहारिक सीप सिकाएर काम, करियर र व्यवसायका अवसरतर्फ अघि बढ्न सहयोग गर्नु हो।\n\nतपाईंले कति कक्षा पढ्नुभयो भन्ने मात्र महत्त्वपूर्ण होइन; तपाईंले के सीप सिक्नुभयो, कति अभ्यास गर्नुभयो र आफूलाई कामका लागि कति तयार बनाउनुभयो भन्ने पनि महत्त्वपूर्ण छ। सबै पदमा शैक्षिक योग्यता, उमेर, अनुभव वा कानुनी प्रमाणपत्र फरक–फरक चाहिन्छ — हामी सीप सिकाउँछौं र अर्को स्तरसम्म पुग्ने योजना दिन्छौं; जागिर वा आम्दानीको ग्यारेन्टी दिँदैनौं।"
         },
         "finalcta": {
           "pill": "🏁 आजको निर्णय, भोलिको बाटो",
           "heading": "तपाईंको सफलताको पहिलो उपलब्धि\nआजै हासिल गर्नुहोस्",
-          "text": "धेरैले “पछि गर्छु” भन्दै समय गुमाउँछन्। आज {maxDiscount}% सम्मको छुटमा सुरु गर्नुहोस् — सिक्ने बानीको पहिलो पाइला यहीँबाट।",
+          "text": "आफ्नो अहिलेको अवस्थाबाट सुरु गर्नुहोस् — आज एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस्। {maxDiscount}% सम्मको छुटमा सुरु गर्ने मौका यहीँबाट।",
           "countdownLabel": "Offer सकिन्छ:",
           "buttons": [
             {
@@ -1231,8 +1277,8 @@
           }
         ],
         "seo": {
-          "title": "StudyNotes — Your First Step to Success | Practical Ebooks",
-          "description": "StudyNotes — Computer Skills, Digital Income, LokSewa, Share Market, Personality & Career Ebooks for Nepali youth.",
+          "title": "StudyNotes — Learn. Grow. Succeed. | Class 5 देखि Master सम्म Practical Ebooks",
+          "description": "StudyNotes — Class 5 देखि Master सम्म: Office, Store, Sales, Computer, Accounts र Business Practical Ebooks। Practical Knowledge for a Better Future.",
           "keywords": "",
           "ogTitle": "",
           "ogDescription": "",
@@ -1296,6 +1342,78 @@
             "code": "NY",
             "icon": "compass",
             "palette": "amber",
+            "visible": true
+          },
+          {
+            "id": "office-admin",
+            "name": "Office & Admin Skills",
+            "short": "Office",
+            "code": "OA",
+            "icon": "file",
+            "palette": "orange",
+            "visible": true
+          },
+          {
+            "id": "store-inventory",
+            "name": "Store & Inventory",
+            "short": "Store",
+            "code": "SI",
+            "icon": "book",
+            "palette": "emerald",
+            "visible": true
+          },
+          {
+            "id": "retail-billing-pos",
+            "name": "Retail, Billing & POS",
+            "short": "POS",
+            "code": "RP",
+            "icon": "card",
+            "palette": "sky",
+            "visible": true
+          },
+          {
+            "id": "sales-customer-service",
+            "name": "Sales & Customer Service",
+            "short": "Sales",
+            "code": "SC",
+            "icon": "user",
+            "palette": "violet",
+            "visible": true
+          },
+          {
+            "id": "accounts-bookkeeping",
+            "name": "Accounts & Bookkeeping",
+            "short": "Accounts",
+            "code": "AB",
+            "icon": "trend",
+            "palette": "rose",
+            "visible": true
+          },
+          {
+            "id": "job-ready-career",
+            "name": "Job Ready & Career",
+            "short": "Job Ready",
+            "code": "JR",
+            "icon": "target",
+            "palette": "amber",
+            "visible": true
+          },
+          {
+            "id": "warehouse-procurement",
+            "name": "Warehouse & Procurement",
+            "short": "Warehouse",
+            "code": "WP",
+            "icon": "compass",
+            "palette": "orange",
+            "visible": true
+          },
+          {
+            "id": "business-self-employment",
+            "name": "Business & Self-Employment",
+            "short": "Business",
+            "code": "BS",
+            "icon": "zap",
+            "palette": "emerald",
             "visible": true
           }
         ],
