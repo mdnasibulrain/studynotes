@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T14:55:37.916Z",
+  "updatedAt": "2026-11-07T15:43:09.628Z",
   "products": [
     {
       "id": "SN001CS",
@@ -107,7 +107,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-07T14:55:37.916Z",
+      "updatedAt": "2026-11-07T15:43:09.628Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -201,10 +201,10 @@
         "hero": {
           "carouselMode": "all",
           "badge": "{storeName} • {tagline}",
-          "headBefore": "जागिर खोज्ने होइन,",
-          "headHighlight": "योग्य बन्ने तयारी गर्नुहोस्।",
-          "headAfter": "कमाउने सपना होइन, कमाउन सक्ने क्षमता विकास गर्नुहोस्।",
-          "description": "जागिर, आम्दानी, व्यवसाय वा आफूले चाहेको जीवन — हरेक लक्ष्यका लागि सही ज्ञान, उपयोगी सीप र निरन्तर सिकाइ आवश्यक हुन्छ। **केवल पढाइमा सीमित नरहनुहोस्।** आफूले चाहेको लक्ष्यअनुसार Computer, Office, Store, Cashier, Sales, Accounts, Business, Digital Skills, Share Market, LokSewa र Career सम्बन्धी Practical Knowledge सिक्नुहोस्। जागिरका लागि सीप सिक्नुहोस्, आम्दानीका लागि क्षमता विकास गर्नुहोस् र व्यवसायका लागि ज्ञान प्राप्त गर्नुहोस्। **आजै आफ्नो यात्रा Class 5 देखि Master सम्म — Job Ready देखि Business Owner सम्म StudyNotes को साथ सुरु गर्नुस्।**",
+          "headBefore": "कमाउने सपना होइन,",
+          "headHighlight": "कमाउन सक्ने क्षमता विकास गर्नुहोस्।",
+          "headAfter": "जागिर, आम्दानी, व्यवसाय वा आफूले चाहेको जीवन — हरेक लक्ष्यका लागि सही ज्ञान, उपयोगी सीप र निरन्तर सिकाइ आवश्यक हुन्छ।",
+          "description": "**केवल पढाइमा सीमित नरहनुहोस्।** जागिरका लागि सीप सिक्नुहोस्, आम्दानीका लागि क्षमता विकास गर्नुहोस् र व्यवसायका लागि ज्ञान प्राप्त गर्नुहोस्। आफूले चाहेको लक्ष्यअनुसार Office Skills, Store Skills, Market Skills, Business Skills, Digital Skills, Share Market, LokSewa र Career सम्बन्धी Practical Knowledge सिक्नुहोस्। **आजै आफ्नो Job Ready देखि Business Owner सम्मको यात्रा StudyNotes सँग सुरु गर्नुहोस्।**",
           "cta1": {
             "text": "Ebooks हेर्नुहोस्",
             "action": "section:explore"
