@@ -1,102 +1,280 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T17:04:16.905Z",
+  "updatedAt": "2026-11-07T22:28:46.843Z",
   "products": [
     {
       "id": "SN001CS",
-      "title": "Complete Computer Operator & Office Skills Guide",
-      "short": "Computer Operator & Office Skills",
-      "subtitle": "MS Office, Typing, Shortcut Keys र Practical Office Work मा पोख्त हुनुहोस्",
-      "summary": "नेपाली कार्यालय, डाटा इन्ट्री र कम्प्युटर अपरेटर तयारीका लागि सम्पूर्ण व्यवहारिक गाइड।",
-      "description": "यो Ebook ले तपाईंलाई MS Word, MS Excel, PowerPoint, नेपाली/अंग्रेजी टाइपिंग, र कम्प्युटर ट्रबलशूटिंगको व्यवहारिक ज्ञान दिन्छ। Computer Operator परीक्षा वा Office Job को लागि उपयुक्त।",
-      "hook": "आजै सिक्नुहोस् — भोलिदेखि Office मा आत्मविश्वासका साथ काम गर्नुहोस्।",
+      "title": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY",
+      "short": "Computer Operator & Office Assistant Mastery",
+      "subtitle": "Computer Basics देखि MS Office, Office Administration, Accounting, AI Tools र Career Skills सम्म — ४० Chapter, ७ Part",
+      "summary": "Computer Operator र Office Assistant काम सिक्न चाहनेहरूका लागि सरल नेपालीमा लेखिएको ४० Chapter को व्यवहारिक Ebook — अभ्यास, Quiz र Career Guidance सहित।",
+      "description": "यो Ebook (लेखक: MD. NASA, प्रकाशक: StudyNotes) मा Computer Fundamentals, Microsoft Word/Excel/PowerPoint, Internet र Email, Office Administration, Basic Accounting र Cashier/Storekeeping, Advanced Excel, PDF तथा AI Tools, Troubleshooting र Career (CV, Interview, Skill Test, Freelancing) सम्मका ४० Chapter छन्। हरेक Chapter मा उद्देश्य, उदाहरण, सामान्य गल्ती, अभ्यास र Quiz समावेश छ। यो शैक्षिक सामग्री हो — रोजगारी वा परीक्षामा सफलताको ग्यारेन्टी होइन।",
+      "hook": "Learn. Grow. Succeed. — Computer र Office काममा आत्मविश्वासका साथ अगाडि बढ्नुहोस्।",
       "category": "Computer Skills",
       "tags": [
         "Computer Skills",
         "MS Office",
-        "Office Operator",
-        "Typing"
+        "Office Assistant",
+        "Computer Operator",
+        "Nepali"
       ],
-      "cover": "assets/covers/SN001CS-vqgmo.jpg",
-      "badge": "BESTSELLER",
+      "cover": "assets/covers/SN001CS.jpg",
+      "coverAlt": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY — Ebook Cover",
       "status": "published",
       "availability": "available",
       "featured": true,
       "isNew": true,
       "order": 10,
-      "pages": 180,
-      "chapters": 12,
-      "format": "Mobile PDF",
+      "pages": 392,
+      "chapters": 40,
+      "format": "PDF (Mobile/Desktop)",
       "previewPdf": "https://drive.google.com/file/d/11sB6juGGEJNX79dhGRbK6wUBSY2HigRp/view?usp=drivesdk",
       "forWho": [
-        "Office Job वा Data Entry खोज्दै हुनुहुन्छ",
-        "Computer Operator परीक्षाको तयारी गर्दै हुनुहुन्छ",
-        "टाइपिङ र Excel मा आत्मविश्वास बढाउन चाहनुहुन्छ"
+        "Computer Operator वा Office Assistant बन्न चाहने विद्यार्थी र नयाँ जागिरे",
+        "Data Entry, Reception, Cashier, Storekeeping जस्ता Office काममा सुरु गर्दै हुनुहुन्छ",
+        "MS Office, Email, AI Tools र Digital Workflow व्यवस्थित सिक्न चाहनुहुन्छ",
+        "CV, Interview र Skill Test को तयारी गर्दै हुनुहुन्छ"
       ],
       "learningOutcomes": [
-        "MS Word र Excel मा Professional Document तथा Sheet तयार गर्ने",
-        "द्रुत नेपाली (Preeti / Unicode) र अंग्रेजी टाइपिंग कमान्ड गर्ने",
-        "कार्यालयमा दैनिक प्रयोग हुने Important Computer Shortcuts प्रयोग गर्ने",
-        "File Management र Email Communication व्यवस्थित गर्ने"
+        "Computer, Windows, Typing र File Management को आधारभूत ज्ञान",
+        "MS Word, Excel र PowerPoint मा व्यवहारिक Office काम गर्ने तरिका",
+        "Internet, Professional Email र Google Workspace सुरक्षित रूपमा प्रयोग गर्ने",
+        "Office Administration, Letter Writing, Filing र Front Desk को आधार",
+        "Basic Accounting, Cashier/POS र Inventory को परिचय",
+        "CV, Interview र Skill Test को तयारी गर्ने तरिका"
       ],
       "careerRelevance": [
-        "Office Assistant र Data Entry Operator पदका लागि सहयोगी",
-        "LokSewa Computer Operator प्रयोगात्मक परीक्षा तयारी",
-        "निजी कार्यालय तथा संस्थामा रोजगार तयारी"
+        "Computer Operator, Office Assistant र Data Entry जस्ता पदका लागि आधारभूत सीप निर्माणमा सहयोगी",
+        "Skill Test र Practical परीक्षाको तयारीका लागि अभ्यास सामग्री",
+        "नोट: यो Ebook ले जागिर वा परीक्षामा सफलताको ग्यारेन्टी गर्दैन"
       ],
       "chapterOutline": [
         {
           "number": 1,
-          "title": "Computer Basics & Operating System",
-          "description": "कम्प्युटरका आधारभूत सिद्धान्त र Windows setup"
+          "title": "Computer भनेको के हो?",
+          "description": "Computer Fundamentals"
         },
         {
           "number": 2,
-          "title": "Nepali & English Typing Mastery",
-          "description": "टाइपिंग स्पीड र एक्युरेसी बढाउने उपाय"
+          "title": "Computer का भागहरू (Hardware)",
+          "description": "Computer Fundamentals"
         },
         {
           "number": 3,
-          "title": "MS Word Professional Formatting",
-          "description": "अफिसियल पत्र, प्रतिवेदन र फारम डिजाइन"
+          "title": "Software र Operating System (Windows)",
+          "description": "Computer Fundamentals"
         },
         {
           "number": 4,
-          "title": "MS Excel Formulas & Data Handling",
-          "description": "Sum, VLOOKUP, Pivot Table र Accounting Sheet"
+          "title": "Keyboard, Mouse र Typing Mastery",
+          "description": "Computer Fundamentals"
         },
         {
           "number": 5,
-          "title": "Internet, Email & Office Utilities",
-          "description": "सुरक्षित ब्राउजिङ, इमेल शिष्टाचार र प्रिन्टर सेटिङ"
+          "title": "File र Folder Management",
+          "description": "Computer Fundamentals"
+        },
+        {
+          "number": 6,
+          "title": "Microsoft Word — Professional Training",
+          "description": "Microsoft Office Mastery"
+        },
+        {
+          "number": 7,
+          "title": "Microsoft Excel — Beginner to Advanced",
+          "description": "Microsoft Office Mastery"
+        },
+        {
+          "number": 8,
+          "title": "Microsoft PowerPoint",
+          "description": "Microsoft Office Mastery"
+        },
+        {
+          "number": 9,
+          "title": "Microsoft Office Integration",
+          "description": "Microsoft Office Mastery"
+        },
+        {
+          "number": 10,
+          "title": "Internet Fundamentals",
+          "description": "Internet And Digital Office Skills"
+        },
+        {
+          "number": 11,
+          "title": "Professional Email Management",
+          "description": "Internet And Digital Office Skills"
+        },
+        {
+          "number": 12,
+          "title": "Google Workspace",
+          "description": "Internet And Digital Office Skills"
+        },
+        {
+          "number": 13,
+          "title": "Online Meetings र Communication",
+          "description": "Internet And Digital Office Skills"
+        },
+        {
+          "number": 14,
+          "title": "Cybersecurity र Digital Safety",
+          "description": "Internet And Digital Office Skills"
+        },
+        {
+          "number": 15,
+          "title": "Office Administration Fundamentals",
+          "description": "Office Administration"
+        },
+        {
+          "number": 16,
+          "title": "Professional Communication",
+          "description": "Office Administration"
+        },
+        {
+          "number": 17,
+          "title": "Letter र Document Writing",
+          "description": "Office Administration"
+        },
+        {
+          "number": 18,
+          "title": "Filing र Documentation Systems",
+          "description": "Office Administration"
+        },
+        {
+          "number": 19,
+          "title": "Reception र Front Desk Management",
+          "description": "Office Administration"
+        },
+        {
+          "number": 20,
+          "title": "Time र Task Management",
+          "description": "Office Administration"
+        },
+        {
+          "number": 21,
+          "title": "Basic Accounting for Office Assistants",
+          "description": "Accounting, Cashier And Inventory Skills"
+        },
+        {
+          "number": 22,
+          "title": "Cashier र POS Operations",
+          "description": "Accounting, Cashier And Inventory Skills"
+        },
+        {
+          "number": 23,
+          "title": "Storekeeping र Inventory Management",
+          "description": "Accounting, Cashier And Inventory Skills"
+        },
+        {
+          "number": 24,
+          "title": "Procurement र Purchase Documentation",
+          "description": "Accounting, Cashier And Inventory Skills"
+        },
+        {
+          "number": 25,
+          "title": "Practical Office Accounting र Reporting",
+          "description": "Accounting, Cashier And Inventory Skills"
+        },
+        {
+          "number": 26,
+          "title": "Advanced Excel for Office Professionals",
+          "description": "Advanced Digital Productivity"
+        },
+        {
+          "number": 27,
+          "title": "PDF र Document Productivity",
+          "description": "Advanced Digital Productivity"
+        },
+        {
+          "number": 28,
+          "title": "AI Tools for Office Productivity",
+          "description": "Advanced Digital Productivity"
+        },
+        {
+          "number": 29,
+          "title": "Digital Workflow र Automation",
+          "description": "Advanced Digital Productivity"
+        },
+        {
+          "number": 30,
+          "title": "Troubleshooting र Technical Support",
+          "description": "Advanced Digital Productivity"
+        },
+        {
+          "number": 31,
+          "title": "Career Roadmap र Job Roles",
+          "description": "Career And Job Readiness"
+        },
+        {
+          "number": 32,
+          "title": "Workplace Ethics र Professional Behavior",
+          "description": "Career And Job Readiness"
+        },
+        {
+          "number": 33,
+          "title": "CV र Cover Letter बनाउने तरिका",
+          "description": "Career And Job Readiness"
+        },
+        {
+          "number": 34,
+          "title": "Job Search र Application Process",
+          "description": "Career And Job Readiness"
+        },
+        {
+          "number": 35,
+          "title": "Interview Preparation",
+          "description": "Career And Job Readiness"
+        },
+        {
+          "number": 36,
+          "title": "Skill Test र Practical Exam तयारी",
+          "description": "Career And Job Readiness"
+        },
+        {
+          "number": 37,
+          "title": "Freelancing र Remote Work",
+          "description": "Career And Job Readiness"
+        },
+        {
+          "number": 38,
+          "title": "नयाँ काममा पहिलो ९० दिन",
+          "description": "Career And Job Readiness"
+        },
+        {
+          "number": 39,
+          "title": "Capstone Projects र Portfolio",
+          "description": "Career And Job Readiness"
+        },
+        {
+          "number": 40,
+          "title": "निरन्तर सिकाइ र Career Growth",
+          "description": "Career And Job Readiness"
         }
       ],
       "regularPrice": 999,
       "offerPrice": 499,
       "offerActive": true,
       "offerEndsAt": "2026-12-30T23:59+05:45",
-      "offerLabel": "BESTSELLER",
-      "urgencyLabel": "Limited Copies Offer",
-      "countdownVisible": true,
-      "rating": 4.9,
-      "reviewCount": 142,
-      "soldCopies": 850,
-      "copiesLeft": 14,
+      "countdownVisible": false,
+      "reviewCount": 0,
+      "soldCopies": 0,
       "bonus": {
         "enabled": true,
         "items": [
           {
-            "id": "bon_mvw5y9ey6a2n",
+            "id": "bon_workbook",
             "type": "workbook",
-            "title": "Resume Mastery Practice",
-            "description": "Practical Resume Writing",
-            "value": 599
+            "title": "Practice Workbook PDF",
+            "description": "१३२ पृष्ठ — ४० Chapter × ३ अभ्यास पृष्ठ, ४० प्रश्नको Final Review Test, Answer Key र Progress Tracker"
+          },
+          {
+            "id": "bon_templates",
+            "type": "templates",
+            "title": "Office Templates PDF",
+            "description": "५५ पृष्ठ — ५० वटा तयार Office Templates (नमुना, शैक्षिक प्रयोगका लागि)"
           }
-        ],
-        "start": "2026-11-01T21:57+05:45",
-        "end": "2026-12-01T14:36+05:45"
+        ]
       },
-      "updatedAt": "2026-11-05T12:25:27.164Z",
+      "updatedAt": "2026-11-07T21:41:57.974996Z",
       "isFeatured": true
     },
     {
@@ -107,7 +285,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-07T17:04:16.905Z",
+      "updatedAt": "2026-11-07T22:28:46.843Z",
       "site": {
         "v": 1,
         "preloader": {
