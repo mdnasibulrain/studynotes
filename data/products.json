@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T15:59:23.516Z",
+  "updatedAt": "2026-11-07T16:49:22.351Z",
   "products": [
     {
       "id": "SN001CS",
@@ -107,7 +107,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-07T15:59:23.516Z",
+      "updatedAt": "2026-11-07T16:49:22.351Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -204,7 +204,7 @@
           "headBefore": "कमाउने सपना होइन,",
           "headHighlight": "कमाउन सक्ने क्षमता",
           "headAfter": "विकास गर्नुहोस्।",
-          "description": "**केवल पढाइमा सीमित नरहनुहोस्।** जागिरका लागि सीप सिक्नुहोस्, आम्दानीका लागि क्षमता विकास गर्नुहोस् र व्यवसायका लागि ज्ञान प्राप्त गर्नुहोस्। **Job Ready देखि Business Owner सम्म** आफूले चाहेको लक्ष्यअनुसार Office Skills, Store Skills, Market Skills, Business Skills, Digital Skills, Share Market, LokSewa र Career सम्बन्धी Practical Knowledge आजै StudyNotes सँगै सिक्नुहोस्।",
+          "description": "**केवल पढाइमा सीमित नरहनुहोस्।** जागिरका लागि सीप सिक्नुहोस्, आम्दानीका लागि क्षमता विकास गर्नुहोस् र व्यवसायका लागि ज्ञान प्राप्त गर्नुहोस्। **Job Ready देखि Business Owner सम्म** आफूले चाहेको लक्ष्यअनुसार Office Skills, Store Skills, Market Skills, Business Skills, Digital Skills, Share Market, LokSewa र Career सम्बन्धी Practical Knowledge **आजै StudyNotes सँगै सिक्नुहोस्।**",
           "cta1": {
             "text": "Ebooks हेर्नुहोस्",
             "action": "section:explore"
@@ -379,10 +379,11 @@
               "rating": 5,
               "productId": "SN001CS",
               "text": "Typing र Excel को भाग धेरै व्यवहारिक छ। Office काम सुरु गर्न सजिलो भयो।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
-              "order": 0
+              "order": 0,
+              "date": "2083/01/04"
             },
             {
               "id": "r1",
@@ -391,7 +392,7 @@
               "rating": 5,
               "productId": "SN001LS",
               "text": "GK सम्झने ट्रिक्सले पढाइ हल्का बनायो। परीक्षा तयारीका लागि राम्रो गाइड।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 1
@@ -403,7 +404,7 @@
               "rating": 4,
               "productId": "SN001SM",
               "text": "IPO र MeroShare प्रक्रिया सरल भाषामा बुझाइएको छ। शुरुवातीका लागि उपयुक्त।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 2
@@ -415,7 +416,7 @@
               "rating": 5,
               "productId": "SN001PD",
               "text": "Interview का नमुना उत्तरहरूले आत्मविश्वास बढायो।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 3
@@ -427,7 +428,7 @@
               "rating": 5,
               "productId": "SN001DS",
               "text": "Freelancing कहाँबाट सुरु गर्ने भन्ने स्पष्ट रोडम्याप पाएँ।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 4
@@ -439,7 +440,7 @@
               "rating": 5,
               "productId": "SN001NY",
               "text": "CV बनाउने तरिका र Job Portal प्रयोगको भाग उपयोगी लाग्यो।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 5
@@ -507,7 +508,7 @@
             {
               "id": "c0",
               "from": "in",
-              "name": "Sample User",
+              "name": "Shyam Sharma",
               "time": "10:21",
               "text": "Hello, Computer Operator Guide को Payment गरेँ। Screenshot पठाएँ 🙏",
               "sample": true,
@@ -517,7 +518,7 @@
             {
               "id": "c1",
               "from": "out",
-              "name": "",
+              "name": "StudyNotes",
               "time": "10:22",
               "text": "धन्यवाद! Payment confirm भयो ✅ Product ID: SN001CS — अब PDF पठाउँदैछु।",
               "sample": true,
@@ -527,7 +528,7 @@
             {
               "id": "c2",
               "from": "out",
-              "name": "",
+              "name": "StudyNotes",
               "time": "10:24",
               "text": "📘 Ebook यो रह्यो। पढ्दै जानुहोस्, केही सोध्नु परे यहीँ लेख्नुहोस्।",
               "sample": true,
@@ -537,7 +538,7 @@
             {
               "id": "c3",
               "from": "in",
-              "name": "Sample User",
+              "name": "Shyam Sharma",
               "time": "10:25",
               "text": "Received! धेरै छिटो आयो 😍 धन्यवाद StudyNotes",
               "sample": true,
@@ -547,7 +548,7 @@
             {
               "id": "c4",
               "from": "in",
-              "name": "Sample User 2",
+              "name": "Shiv Shankar Sah",
               "time": "14:08",
               "text": "Bundle लिएँ — सबै Ebook एकै पटक आयो। पहिलो पाइला राम्रो भयो 💪",
               "sample": true,
@@ -657,7 +658,7 @@
         "about": {
           "eyebrow": "ABOUT {storeNameUpper}",
           "heading": "{storeName} — Class 5 देखि Master सम्म",
-          "text": "StudyNotes को उद्देश्य ebook बेच्नु मात्र होइन। पढाइको स्तर, आर्थिक अवस्था वा शैक्षिक यात्रामा आएको अवरोधका कारण आफूले केही गर्न सक्दिनँ भन्ने महसुस गर्ने व्यक्तिलाई व्यावहारिक सीप सिकाएर काम, करियर र व्यवसायका अवसरतर्फ अघि बढ्न सहयोग गर्नु हो।\n\nतपाईंले कति कक्षा पढ्नुभयो भन्ने मात्र महत्त्वपूर्ण होइन; तपाईंले के सीप सिक्नुभयो, कति अभ्यास गर्नुभयो र आफूलाई कामका लागि कति तयार बनाउनुभयो भन्ने पनि महत्त्वपूर्ण छ। सबै पदमा शैक्षिक योग्यता, उमेर, अनुभव वा कानुनी प्रमाणपत्र फरक–फरक चाहिन्छ — हामी सीप सिकाउँछौं र अर्को स्तरसम्म पुग्ने योजना दिन्छौं; जागिर वा आम्दानीको ग्यारेन्टी दिँदैनौं।"
+          "text": "StudyNotes को उद्देश्य पढाइको स्तर, आर्थिक अवस्था वा शैक्षिक यात्रामा आएको अवरोधका कारण आफूले केही गर्न सक्दिनँ भन्ने महसुस गर्ने व्यक्तिलाई व्यावहारिक सीप सिकाएर काम, करियर र व्यवसायका अवसरतर्फ अघि बढ्न सहयोग गर्नु हो।\n\nतपाईंले कति कक्षा पढ्नुभयो भन्ने महत्त्वपूर्ण होइन; तपाईंले के सीप सिक्नुभयो, कति अभ्यास गर्नुभयो र आफूलाई कामका लागि कति तयार बनाउनुभयो भन्ने महत्त्वपूर्ण छ। हामी सीप सिकाउँछौं र अर्को स्तरसम्म पुग्ने योजना दिन्छौं।"
         },
         "finalcta": {
           "pill": "🏁 आजको निर्णय, भोलिको बाटो",
@@ -703,7 +704,7 @@
             {
               "id": "p3",
               "title": "Educational Disclaimer",
-              "content": "हामी तपाईंलाई सिक्न आवश्यक सामग्री दिन्छौँ।\nहामी तपाईंलाई व्यवहारिक ज्ञान दिन्छौँ।\nहामी तपाईंलाई आफ्नो सीप विकास गर्न मार्गदर्शन गर्छौँ।\nतपाईंले सिकेको कुरा अभ्यास गरेर आफ्नो लक्ष्यतर्फ अगाडि बढ्न सक्नुहुन्छ।",
+              "content": "⚠️ यो Ebook शैक्षिक प्रयोजनका लागि हो। जागिर, परीक्षा सफलता वा आम्दानी/नाफाको कुनै ग्यारेन्टी छैन; नतिजा तपाईंको अभ्यास र परिस्थितिमा निर्भर हुन्छ।",
               "visible": true
             }
           ]
@@ -711,7 +712,7 @@
         "contact": {
           "whatsapp": "9779702784684",
           "whatsappDisplay": "+977 9702784684",
-          "supportEmail": "mdnasibulrain4@gmail.com",
+          "supportEmail": "studynotes.nasa@gmail.com",
           "businessEmail": "",
           "supportText": "",
           "supportHours": "",
@@ -835,6 +836,24 @@
             "name": "WhatsApp",
             "enabled": true,
             "url": ""
+          },
+          {
+            "name": "Facebook",
+            "enabled": true,
+            "url": "https://",
+            "id": "soc_mw6my5xiyxwj"
+          },
+          {
+            "name": "Instagram",
+            "enabled": true,
+            "url": "https://",
+            "id": "soc_mw6myhj583ew"
+          },
+          {
+            "name": "TikTok",
+            "enabled": true,
+            "url": "https://",
+            "id": "soc_mw6mypv5wttm"
           }
         ],
         "seo": {
@@ -848,7 +867,7 @@
           "siteUrl": ""
         },
         "product": {
-          "disclaimer": "⚠️ यो Ebook शैक्षिक प्रयोजनका लागि हो। जागिर, परीक्षा सफलता वा आम्दानी/नाफाको कुनै ग्यारेन्टी छैन; नतिजा तपाईंको अभ्यास र परिस्थितिमा निर्भर हुन्छ।"
+          "disclaimer": "हामी तपाईंलाई सिक्न आवश्यक सामग्री दिन्छौँ। हामी तपाईंलाई व्यवहारिक ज्ञान दिन्छौँ। हामी तपाईंलाई आफ्नो सीप विकास गर्न मार्गदर्शन दिन्छौँ। तपाईंले सिकेको कुरा अभ्यास गरेर आफ्नो लक्ष्यतर्फ अगाडि बढ्न सक्नुहुन्छ।"
         },
         "categories": [
           {
