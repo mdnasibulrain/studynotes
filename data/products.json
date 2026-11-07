@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T13:28:55.176Z",
+  "updatedAt": "2026-11-07T13:34:30.160Z",
   "products": [
     {
       "id": "SN001CS",
@@ -1267,7 +1267,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-07T13:28:55.176Z",
+      "updatedAt": "2026-11-07T13:34:30.160Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1291,7 +1291,7 @@
           "tagline": "Learn. Grow. Succeed.",
           "taglineNe": "मानिसको भविष्य उसले कति कक्षा पढ्यो भन्ने कुराले मात्र निर्धारण गर्दैन। उसले आफ्नो लक्ष्यअनुसार के सिक्यो, कति सीप विकास गर्‍यो र आफूलाई कति तयार बनायो भन्ने कुराले फरक पार्छ। आजै आफ्नो यात्रा Class 5 देखि Master सम्म — Job Ready देखि Business Owner सम्म StudyNotes को साथ सुरु गर्नुस्।",
           "founder": "MD. NS (MD. NASA)",
-          "logo": "assets/covers/site-logo-eslnf.png",
+          "logo": "assets/covers/site-logo-cau3w.png",
           "currency": "रु.",
           "copyright": "© {year} {storeName}. All rights reserved."
         },
