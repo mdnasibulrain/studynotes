@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T16:59:48.553Z",
+  "updatedAt": "2026-11-07T17:04:16.905Z",
   "products": [
     {
       "id": "SN001CS",
@@ -107,7 +107,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-07T16:59:48.553Z",
+      "updatedAt": "2026-11-07T17:04:16.905Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -383,14 +383,14 @@
               "sample": true,
               "visible": true,
               "order": 0,
-              "date": "2083/01/04"
+              "date": ""
             },
             {
               "id": "r1",
               "name": "अनिता के.",
               "place": "पोखरा",
               "rating": 5,
-              "productId": "SN001LS",
+              "productId": "SN001CS",
               "text": "GK सम्झने ट्रिक्सले पढाइ हल्का बनायो। परीक्षा तयारीका लागि राम्रो गाइड।",
               "verified": true,
               "sample": true,
@@ -402,7 +402,7 @@
               "name": "रमेश थ.",
               "place": "बुटवल",
               "rating": 4,
-              "productId": "SN001SM",
+              "productId": "SN001CS",
               "text": "IPO र MeroShare प्रक्रिया सरल भाषामा बुझाइएको छ। शुरुवातीका लागि उपयुक्त।",
               "verified": true,
               "sample": true,
@@ -414,7 +414,7 @@
               "name": "सृजना ग.",
               "place": "विराटनगर",
               "rating": 5,
-              "productId": "SN001PD",
+              "productId": "SN001CS",
               "text": "Interview का नमुना उत्तरहरूले आत्मविश्वास बढायो।",
               "verified": true,
               "sample": true,
@@ -426,7 +426,7 @@
               "name": "प्रकाश र.",
               "place": "चितवन",
               "rating": 5,
-              "productId": "SN001DS",
+              "productId": "SN001CS",
               "text": "Freelancing कहाँबाट सुरु गर्ने भन्ने स्पष्ट रोडम्याप पाएँ।",
               "verified": true,
               "sample": true,
@@ -438,7 +438,7 @@
               "name": "निशा प.",
               "place": "धरान",
               "rating": 5,
-              "productId": "SN001NY",
+              "productId": "SN001CS",
               "text": "CV बनाउने तरिका र Job Portal प्रयोगको भाग उपयोगी लाग्यो।",
               "verified": true,
               "sample": true,
@@ -615,20 +615,6 @@
               "id": "f8",
               "q": "के Ebook मोबाइलमा पढ्न सकिन्छ?",
               "a": "सकिन्छ। Ebook साधारण PDF ढाँचामा हुन्छ — Android, iPhone वा Laptop जुनसुकैमा पढ्न मिल्छ।",
-              "visible": true,
-              "onProduct": false
-            },
-            {
-              "id": "f9",
-              "q": "के Ebook पढेपछि जागिर वा आम्दानीको १००% guarantee हुन्छ?",
-              "a": "हुँदैन। Ebook ले व्यवहारिक ज्ञान, सीप र तयारीको बाटो देखाउँछ। वास्तविक सफलता तपाईंको निरन्तर अभ्यास, मिहिनेत र बजारको अवस्थामा निर्भर हुन्छ। कुनै भ्रामक ग्यारेन्टी दिइँदैन।",
-              "visible": true,
-              "onProduct": true
-            },
-            {
-              "id": "f10",
-              "q": "Share Market Ebook ले निश्चित Profit guarantee गर्छ?",
-              "a": "गर्दैन। शेयर बजार जोखिमयुक्त हुन्छ। सामग्री केवल शैक्षिक प्रयोजनका लागि हो। लगानी सम्बन्धी निर्णय आफ्नै जोखिममा लिनुहोस्।",
               "visible": true,
               "onProduct": false
             },
