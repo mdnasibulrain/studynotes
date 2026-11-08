@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T18:03:19.412Z",
+  "updatedAt": "2026-11-08T18:11:30.412Z",
   "products": [
     {
       "id": "SN001CS",
@@ -18,7 +18,7 @@
         "Computer Operator",
         "Nepali"
       ],
-      "cover": "assets/covers/SN001CS-rkggn.jpg",
+      "cover": "assets/covers/SN001CS-zzmrx.jpg",
       "coverAlt": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY — Ebook Cover",
       "badge": "CAREER SPECIAL",
       "status": "published",
@@ -316,18 +316,7 @@
         "end": "2026-11-15T08:24+05:45"
       },
       "preview": {
-        "pages": [
-          "assets/covers/SN001CS-pv1-i6gn7.jpg",
-          "assets/covers/SN001CS-pv2-5fi1n.jpg",
-          "assets/covers/SN001CS-pv3-xsuv8.jpg",
-          "assets/covers/SN001CS-pv4-85c4l.jpg",
-          "assets/covers/SN001CS-pv5-xwp6v.jpg",
-          "assets/covers/SN001CS-pv6-r9k8x.jpg",
-          "assets/covers/SN001CS-pv7-kw39s.jpg",
-          "assets/covers/SN001CS-pv8-qszg1.jpg",
-          "assets/covers/SN001CS-pv9-eosqa.jpg",
-          "assets/covers/SN001CS-pv10-zfqk5.jpg"
-        ],
+        "pages": [],
         "pageHook": "",
         "pageCta": "",
         "keepLocked": true,
@@ -366,7 +355,7 @@
           "note": ""
         }
       },
-      "updatedAt": "2026-11-08T18:02:07.614Z",
+      "updatedAt": "2026-11-08T18:11:21.129Z",
       "isFeatured": true
     },
     {
@@ -377,7 +366,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T18:03:19.412Z",
+      "updatedAt": "2026-11-08T18:11:30.412Z",
       "site": {
         "v": 1,
         "preloader": {
