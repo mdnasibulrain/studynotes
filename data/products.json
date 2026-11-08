@@ -1,358 +1,1263 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T06:02:35.646Z",
+  "updatedAt": "2026-11-06T00:13:07.191Z",
   "products": [
     {
       "id": "SN001CS",
-      "title": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY",
-      "short": "Computer Operator & Office Assistant Mastery",
-      "subtitle": "Computer Basics देखि MS Office, Office Administration, Accounting, AI Tools र Career Skills सम्म — ४० Chapter, ७ Part",
-      "summary": "Computer Operator र Office Assistant काम सिक्न चाहनेहरूका लागि सरल नेपालीमा लेखिएको ४० Chapter को व्यवहारिक Ebook — अभ्यास, Quiz र Career Guidance सहित।",
-      "description": "यो Ebook पहिलो पटक computer देख्नेदेखि Computer Operator र Office Assistant को काम गर्न चाहनेसम्मका लागि बनाइएको व्यावहारिक, चरणबद्ध गाइड हो। ७ भाग र ४० अध्यायमा Computer Fundamentals, Windows, Typing, File Management, Microsoft Word / Excel / PowerPoint, Internet, Email, Google Workspace, Cybersecurity, Office Administration, Accounting, Cashier/POS, Inventory, Advanced Excel, PDF, AI Tools, Troubleshooting र Career तयारी (CV, Interview, Skill Test, Freelancing, पहिलो ९० दिन, Portfolio) समेटिएको छ।\n\nहरेक अध्यायमा: यो chapter मा के सिक्ने (८ वटा उद्देश्य) → चरणबद्ध व्याख्या र उदाहरण → Important Terms → सामान्य गलत बुझाइ → Pro Tips → Job Connection → Mini Project → Knowledge Check (MCQ, True/False, Fill in the blanks, Short Answer) → Answer Key → Quick Revision → Key Takeaways।",
-      "hook": "पढ्नुहोस्, अभ्यास गर्नुहोस्, Portfolio बनाउनुहोस् — शून्यदेखि Job-Ready सम्म — Job Ready देखि Business Owner सम्मको पूरै यात्रा एउटै Ebook मा।",
+      "title": "Complete Computer Operator & Office Skills Guide",
+      "short": "Computer Operator & Office Skills",
+      "subtitle": "MS Office, Typing, Shortcut Keys र Practical Office Work मा पोख्त हुनुहोस्",
+      "summary": "नेपाली कार्यालय, डाटा इन्ट्री र कम्प्युटर अपरेटर तयारीका लागि सम्पूर्ण व्यवहारिक गाइड।",
+      "description": "यो Ebook ले तपाईंलाई MS Word, MS Excel, PowerPoint, नेपाली/अंग्रेजी टाइपिंग, र कम्प्युटर ट्रबलशूटिंगको व्यवहारिक ज्ञान दिन्छ। Computer Operator परीक्षा वा Office Job को लागि उपयुक्त।",
+      "hook": "आजै सिक्नुहोस् — भोलिदेखि Office मा आत्मविश्वासका साथ काम गर्नुहोस्।",
       "category": "Computer Skills",
       "tags": [
         "Computer Skills",
         "MS Office",
-        "Office Assistant",
-        "Computer Operator",
-        "Nepali"
+        "Office Operator",
+        "Typing"
       ],
-      "cover": "assets/covers/SN001CS-rkggn.jpg",
-      "coverAlt": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY — Ebook Cover",
-      "badge": "CAREER SPECIAL",
+      "cover": "assets/covers/SN001CS-vqgmo.jpg",
+      "badge": "BESTSELLER",
       "status": "published",
       "availability": "available",
       "featured": true,
       "isNew": true,
-      "order": 1,
-      "pages": 392,
-      "chapters": 40,
-      "format": "Mobile/Desktop",
+      "order": 10,
+      "pages": 180,
+      "chapters": 12,
+      "format": "Mobile PDF",
       "previewPdf": "https://drive.google.com/file/d/11sB6juGGEJNX79dhGRbK6wUBSY2HigRp/view?usp=drivesdk",
       "forWho": [
-        "पहिलो पटक computer सिक्दै हुनुहुन्छ र शून्यदेखि सुरु गर्न चाहनुहुन्छ",
-        "Computer Operator, Data Entry Operator वा Office Assistant को काम गर्न तयारी गर्दै हुनुहुन्छ",
-        "Word, Excel, PowerPoint, Email र Google Workspace आत्मविश्वासका साथ चलाउन चाहनुहुन्छ",
-        "Typing / Word / Excel को Skill Test वा Practical परीक्षाको तयारी गर्दै हुनुहुन्छ",
-        "Reception, Cashier, Store वा Basic Accounting जस्ता कार्यालय/पसल सहयोगी कामबारे सिक्न चाहनुहुन्छ",
-        "CV, Cover Letter, Interview र पहिलो ९० दिनको तयारी एकै ठाउँ चाहनुहुन्छ"
+        "Office Job वा Data Entry खोज्दै हुनुहुन्छ",
+        "Computer Operator परीक्षाको तयारी गर्दै हुनुहुन्छ",
+        "टाइपिङ र Excel मा आत्मविश्वास बढाउन चाहनुहुन्छ"
       ],
       "learningOutcomes": [
-        "Computer का भाग, Windows र File/Folder व्यवस्थापन आत्मविश्वासका साथ गर्ने",
-        "Keyboard, Shortcut र Nepali/English Typing अभ्यास गरी speed र accuracy नाप्ने",
-        "MS Word मा पत्र, Resume, report र official document बनाई PDF export गर्ने",
-        "Excel मा Formula, IF, SUMIF/COUNTIF, VLOOKUP/XLOOKUP, Chart र PivotTable प्रयोग गर्ने",
-        "PowerPoint presentation बनाउने र Word–Excel–PowerPoint जोडेर Mail Merge जस्ता काम गर्ने",
-        "Gmail, Google Workspace, Online Meeting चलाउने र Password/Phishing/ठगीबाट सुरक्षित रहने",
-        "Filing, Reception, Letter Writing र Time/Task Management जस्ता Office Administration काम गर्ने",
-        "Basic Accounting, Cashier/POS, Stock Register र Purchase Documentation बुझ्ने",
-        "PDF tools, AI Tools र Digital Workflow प्रयोग गरी कामको गति बढाउने (जिम्मेवारीपूर्वक)",
-        "CV, Cover Letter, Interview, Skill Test, पहिलो ९० दिन र Portfolio को तयारी गर्ने"
+        "MS Word र Excel मा Professional Document तथा Sheet तयार गर्ने",
+        "द्रुत नेपाली (Preeti / Unicode) र अंग्रेजी टाइपिंग कमान्ड गर्ने",
+        "कार्यालयमा दैनिक प्रयोग हुने Important Computer Shortcuts प्रयोग गर्ने",
+        "File Management र Email Communication व्यवस्थित गर्ने"
       ],
       "careerRelevance": [
-        "Computer Operator, Data Entry Operator र Office Assistant जस्ता पदका लागि आधारभूत सीप तयारी (अध्याय ३१)",
-        "Receptionist, Store Assistant, Accounting Assistant र Cashier जस्ता कार्यालय/पसल सहयोगी भूमिकाका सीप",
-        "Typing, Word, Excel र कार्यालय कार्य परीक्षाको तयारी (अध्याय ३६) र Portfolio निर्माण (अध्याय ३९)",
-        "घरबाट डाटा इन्ट्री/documentation सेवा दिने सम्भावना र ठगीबाट सावधानी (अध्याय ३७)"
+        "Office Assistant र Data Entry Operator पदका लागि सहयोगी",
+        "LokSewa Computer Operator प्रयोगात्मक परीक्षा तयारी",
+        "निजी कार्यालय तथा संस्थामा रोजगार तयारी"
       ],
       "chapterOutline": [
         {
           "number": 1,
-          "title": "Computer भनेको के हो?",
-          "description": "कम्प्युटरको सबैभन्दा सजिलो, व्यावहारिक र नेपालीमा गरिने सुरुवात — पहिलो पटक computer देख्नेहरूका लागि"
+          "title": "Computer Basics & Operating System",
+          "description": "कम्प्युटरका आधारभूत सिद्धान्त र Windows setup"
         },
         {
           "number": 2,
-          "title": "Computer का भागहरू (Hardware)",
-          "description": "CPU, RAM, SSD, monitor, keyboard, mouse, printer र UPS — हरेक भागको काम र सामान्य समस्याको समाधान"
+          "title": "Nepali & English Typing Mastery",
+          "description": "टाइपिंग स्पीड र एक्युरेसी बढाउने उपाय"
         },
         {
           "number": 3,
-          "title": "Software र Operating System",
-          "description": "Windows को Desktop, Start menu, Taskbar, Settings र File Explorer — computer लाई आत्मविश्वासका साथ चलाउन सिक्ने chapter"
+          "title": "MS Word Professional Formatting",
+          "description": "अफिसियल पत्र, प्रतिवेदन र फारम डिजाइन"
         },
         {
           "number": 4,
-          "title": "Keyboard, Mouse र Typing Mastery",
-          "description": "सही तरिकाले keyboard चलाउने, shortcut सिक्ने, Nepali र English typing अभ्यास गर्ने र speed/accuracy नाप्ने सीप"
+          "title": "MS Excel Formulas & Data Handling",
+          "description": "Sum, VLOOKUP, Pivot Table र Accounting Sheet"
         },
         {
           "number": 5,
-          "title": "File र Folder Management",
-          "description": "फाइल बनाउने, नाम राख्ने, copy/move गर्ने, मेटेको फिर्ता ल्याउने, compress र backup गर्ने — अफिसको सबैभन्दा उपयोगी सीप"
-        },
-        {
-          "number": 6,
-          "title": "Microsoft Word",
-          "description": "पत्र, आवेदन, resume, report र official document तयार गर्ने — Word को सुरुदेखि उन्नतसम्म"
-        },
-        {
-          "number": 7,
-          "title": "Microsoft Excel",
-          "description": "Cell, formula, function, sorting, chart र PivotTable — हाजिरी, stock, बिक्री र खर्च रिपोर्ट बनाउने सीप"
-        },
-        {
-          "number": 8,
-          "title": "Microsoft PowerPoint",
-          "description": "प्रभावकारी presentation डिजाइन गर्ने, slide master प्रयोग गर्ने र आत्मविश्वासका साथ प्रस्तुत गर्ने"
-        },
-        {
-          "number": 9,
-          "title": "Microsoft Office Integration",
-          "description": "Word, Excel र PowerPoint लाई जोडेर काम गर्ने — Mail Merge, chart paste, PDF र document sharing"
-        },
-        {
-          "number": 10,
-          "title": "Internet Fundamentals",
-          "description": "Internet, Browser, Search, Website, Download/Upload, Cloud र Online Safety — सुरक्षित र प्रभावकारी इन्टरनेट प्रयोग"
-        },
-        {
-          "number": 11,
-          "title": "Professional Email Management",
-          "description": "Gmail चलाउने, professional email लेख्ने, attachment, CC/BCC, job application र follow-up email पठाउने सीप"
-        },
-        {
-          "number": 12,
-          "title": "Google Workspace",
-          "description": "Google Drive, Docs, Sheets, Slides, Forms र Meet — मिलेर काम गर्ने निःशुल्क र व्यावहारिक औजार"
-        },
-        {
-          "number": 13,
-          "title": "Online Meetings र Communication",
-          "description": "Zoom, Google Meet र Teams जस्ता औजारबाट मिटिङ चलाउने, सहभागी हुने र पेशागत सञ्चार गर्ने तरिका"
-        },
-        {
-          "number": 14,
-          "title": "Cybersecurity र Digital Safety",
-          "description": "Password, 2-step verification, phishing, malware, ठगी, safe download, data privacy र backup — आफ्नो र कार्यालयको डाटा जोगाउने तरिका"
-        },
-        {
-          "number": 15,
-          "title": "Office Administration Fundamentals",
-          "description": "कार्यालयको संरचना, दैनिक काम, कागजात र रेकर्ड व्यवस्थापन — एक भरपर्दो office assistant को आधार"
-        },
-        {
-          "number": 16,
-          "title": "Professional Communication",
-          "description": "बोलचाल, लेखन, टेलिफोन शिष्टाचार, ग्राहक व्यवहार र कार्यस्थलको आचरण — व्यावसायिक छवि बनाउने सीप"
-        },
-        {
-          "number": 17,
-          "title": "Letter र Document Writing",
-          "description": "आधिकारिक पत्र, दरखास्त, सूचना, memo, circular, meeting minutes र report — सही ढाँचामा लेख्ने सीप"
-        },
-        {
-          "number": 18,
-          "title": "Filing र Documentation Systems",
-          "description": "Physical र digital filing, indexing, रजिस्टर, record retention र document security"
-        },
-        {
-          "number": 19,
-          "title": "Reception र Front Desk Management",
-          "description": "आगन्तुक स्वागत, फोन, appointment, ग्राहक सहयोग र front desk रेकर्ड — कार्यालयको पहिलो छाप बनाउने सीप"
-        },
-        {
-          "number": 20,
-          "title": "Time र Task Management",
-          "description": "दैनिक योजना, प्राथमिकता, task tracking, meeting schedule र workplace productivity"
-        },
-        {
-          "number": 21,
-          "title": "Basic Accounting for Office Assistants",
-          "description": "Assets, liabilities, income, expenses, debit-credit, journal, ledger, trial balance र cashbook — हिसाबको आधारभूत भाषा"
-        },
-        {
-          "number": 22,
-          "title": "Cashier र POS Operations",
-          "description": "नगद सम्हाल्ने, bill बनाउने, discount/refund गर्ने, दैनिक नगद मिलान र ग्राहक सेवा — भरपर्दो cashier को सीप"
-        },
-        {
-          "number": 23,
-          "title": "Storekeeping र Inventory Management",
-          "description": "Stock register, goods receiving/issuing, FIFO, weighted average, reorder level, physical verification र Excel inventory"
-        },
-        {
-          "number": 24,
-          "title": "Procurement र Purchase Documentation",
-          "description": "Purchase requisition, purchase order, supplier record, delivery note, GRN, invoice र payment record"
-        },
-        {
-          "number": 25,
-          "title": "Practical Office Accounting र Reporting",
-          "description": "दैनिक कारोबार, खर्च ट्र्याकिङ, petty cash, तलब गणना र Excel रिपोर्ट — शैक्षिक उदाहरणसहित"
-        },
-        {
-          "number": 26,
-          "title": "Advanced Excel for Office Professionals",
-          "description": "SUMIFS, COUNTIFS, IFERROR, lookup, data cleaning, PivotTable, dashboard र error checking"
-        },
-        {
-          "number": 27,
-          "title": "PDF र Document Productivity",
-          "description": "PDF बनाउने, रूपान्तरण, merge, split, compress, digital signature र document security"
-        },
-        {
-          "number": 28,
-          "title": "AI Tools for Office Productivity",
-          "description": "AI को आधारभूत, जिम्मेवार प्रयोग, prompt लेखन, drafting, summarization र नतिजा जाँच्ने तरिका"
-        },
-        {
-          "number": 29,
-          "title": "Digital Workflow र Automation",
-          "description": "दोहोरिने काम सजिलो बनाउने: template, shortcut, filter, sync, collaboration र digital recordkeeping"
-        },
-        {
-          "number": 30,
-          "title": "Troubleshooting र Technical Support",
-          "description": "Computer, printer, network र software समस्या व्यवस्थित तरिकाले हल गर्ने र फाइल recovery"
-        },
-        {
-          "number": 31,
-          "title": "Career Roadmap र Job Roles",
-          "description": "Computer Operator र Office Assistant क्षेत्रका सम्भावित भूमिका, आवश्यक सीप र आफ्नो बाटो छान्ने तरिका"
-        },
-        {
-          "number": 32,
-          "title": "Workplace Ethics र Professional Behavior",
-          "description": "इमानदारी, गोपनीयता, समयपालन, पोशाक, व्यवहार र जिम्मेवारी — विश्वास जित्ने आधार"
-        },
-        {
-          "number": 33,
-          "title": "CV र Cover Letter बनाउने तरिका",
-          "description": "स्पष्ट, सत्य र व्यवस्थित CV, आवेदन पत्र र सम्पर्क विवरण तयार गर्ने तरिका"
-        },
-        {
-          "number": 34,
-          "title": "Job Search र Application Process",
-          "description": "विज्ञापन पढ्ने, अवसर खोज्ने, आवेदन दिने र ठगीबाट बच्ने तरिका"
-        },
-        {
-          "number": 35,
-          "title": "Interview Preparation",
-          "description": "अन्तर्वार्ताको तयारी, सामान्य प्रश्न, उत्तर दिने ढाँचा, व्यवहार र follow-up"
-        },
-        {
-          "number": 36,
-          "title": "Skill Test र Practical Exam तयारी",
-          "description": "Typing, Word, Excel र कार्यालय कार्य परीक्षाको तयारी र समय व्यवस्थापन"
-        },
-        {
-          "number": 37,
-          "title": "Freelancing र Remote Work",
-          "description": "घरबाट डाटा इन्ट्री, documentation र सेवा दिने सम्भावना, सुरक्षा, सम्झौता र ठगीबाट सावधानी"
-        },
-        {
-          "number": 38,
-          "title": "नयाँ काममा पहिलो ९० दिन",
-          "description": "नयाँ कार्यालयमा सिक्ने, सहकर्मीसँग मिल्ने, प्रतिक्रिया लिने र विश्वास बनाउने तरिका"
-        },
-        {
-          "number": 39,
-          "title": "Capstone Projects र Portfolio",
-          "description": "सिकेका सीप जोडेर अन्तिम व्यावहारिक प्रोजेक्ट बनाउने र आफ्नो कामको portfolio तयार गर्ने"
-        },
-        {
-          "number": 40,
-          "title": "निरन्तर सिकाइ र Career Growth",
-          "description": "सीप अद्यावधिक राख्ने, नयाँ प्रविधि सिक्ने, नेटवर्क बनाउने र आगामी बाटो तय गर्ने"
+          "title": "Internet, Email & Office Utilities",
+          "description": "सुरक्षित ब्राउजिङ, इमेल शिष्टाचार र प्रिन्टर सेटिङ"
         }
       ],
-      "regularPrice": 962,
-      "offerPrice": 289,
+      "regularPrice": 999,
+      "offerPrice": 499,
       "offerActive": true,
-      "offerEndsAt": "2026-11-15T23:59+05:45",
+      "offerEndsAt": "2026-12-30T23:59+05:45",
       "offerLabel": "BESTSELLER",
-      "urgencyLabel": "Limited Copies",
+      "urgencyLabel": "Limited Copies Offer",
       "countdownVisible": true,
       "rating": 4.9,
-      "reviewCount": 1642,
-      "soldCopies": 1682,
-      "copiesLeft": 18,
+      "reviewCount": 142,
+      "soldCopies": 850,
+      "copiesLeft": 14,
       "bonus": {
         "enabled": true,
         "items": [
           {
-            "id": "bon_workbook",
+            "id": "bon_mvw5y9ey6a2n",
             "type": "workbook",
-            "title": "Practice Workbook PDF",
-            "description": "१३२ पृष्ठ — ४० Chapter × ३ अभ्यास पृष्ठ, ४० प्रश्नको Final Review Test, Answer Key र Progress Tracker",
-            "badge": "FREE GIFT",
-            "value": 178
-          },
-          {
-            "id": "bon_templates",
-            "type": "templates",
-            "title": "Office Templates PDF",
-            "description": "५५ पृष्ठ — ५० वटा तयार Office Templates (नमुना, शैक्षिक प्रयोगका लागि)",
-            "badge": "FREE GIFT",
-            "value": 156
-          },
-          {
-            "id": "bon_action",
-            "type": "action",
-            "title": "Action Plan & Roadmap PDF",
-            "description": "९० दिनको अध्ययन योजना: Self-Assessment, १३ हप्ताको योजना, Checkpoint, Career Roadmap र Progress Log (१२ पृष्ठ)",
-            "badge": "FREE GIFT",
-            "value": 123
-          },
-          {
-            "id": "bon_shortcuts",
-            "type": "custom",
-            "title": "Shortcut Keys Cheat Sheet",
-            "description": "Windows, Word, Excel, PowerPoint, Chrome र Google Docs का Shortcut + ७ दिने Challenge (९ पृष्ठ)",
-            "badge": "FREE GIFT",
-            "value": 107
-          },
-          {
-            "id": "bon_cvkit",
-            "type": "custom",
-            "title": "Interview & CV Kit",
-            "description": "CV Checklist, नमुना CV, Cover Letter/Email, १० सामान्य प्रश्न, STAR, Skill Test र Tracker (१४ पृष्ठ)",
-            "badge": "FREE GIFT",
-            "value": 97
+            "title": "Resume Mastery Practice",
+            "description": "Practical Resume Writing",
+            "value": 599
           }
         ],
-        "end": "2026-11-15T08:24+05:45"
+        "start": "2026-11-01T21:57+05:45",
+        "end": "2026-12-01T14:36+05:45"
       },
-      "preview": {
-        "enabled": true,
-        "title": "",
-        "tocCount": 10,
-        "slides": {
-          "cover": {
-            "visible": true,
-            "hook": "",
-            "cta": ""
-          },
-          "toc": {
-            "visible": true,
-            "hook": "",
-            "cta": ""
-          },
-          "sample": {
-            "visible": false,
-            "hook": "",
-            "cta": ""
-          },
-          "locked": {
-            "visible": true,
-            "hook": "",
-            "cta": ""
-          }
-        },
-        "sample": {
-          "title": "",
-          "text": "",
-          "points": []
-        },
-        "locked": {
-          "title": "",
-          "note": ""
-        }
-      },
-      "updatedAt": "2026-11-08T04:13:18.792Z",
+      "updatedAt": "2026-11-05T12:25:27.164Z",
       "isFeatured": true
+    },
+    {
+      "id": "SN001DS",
+      "title": "Freelancing & Digital Skills Blueprint for Nepali Youth",
+      "short": "Freelancing & Digital Skills",
+      "subtitle": "घरमै बसेर Digital Skills सिक्ने र International Client सँग काम गर्ने गाइड",
+      "summary": "Upwork, Fiverr र Remote Work मा सफलता प्राप्त गर्ने व्यवहारिक रणनीति।",
+      "description": "नेपालमा बसेर डिजिटल सीप जस्तै Graphic Design, Content Writing, Virtual Assistance र Social Media Management मार्फत अनलाइन आम्दानीका अवसर बुझ्ने र सुरु गर्ने तरिका।",
+      "hook": "घरमै बसेर सीप सिक्नुहोस्, विश्वबजारसँग जोडिनुहोस्।",
+      "category": "Digital Skills & Online Income",
+      "tags": [
+        "Digital Skills",
+        "Freelancing",
+        "Online Income",
+        "Remote Work"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": true,
+      "isNew": true,
+      "order": 20,
+      "pages": 210,
+      "chapters": 14,
+      "format": "Mobile PDF",
+      "forWho": [
+        "पढाइसँगै पार्ट-टाइम आम्दानीको बाटो खोज्दै हुनुहुन्छ",
+        "Freelancing सुरु गर्न चाहनुहुन्छ तर कहाँबाट थाल्ने थाहा छैन",
+        "Remote Work मा आफ्नो करियर बनाउन चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "हाई-डिमान्ड Digital Skills चयन र सिकाइ रोडम्याप",
+        "Fiverr र Upwork मा आकर्षित Profile तयार गर्ने",
+        "विदेशी ग्राहकसँग व्यवहारिक Communication र Proposal लेखन",
+        "नेपालमा Payment प्राप्त गर्ने वैधानिक तरिकाहरू बुझ्ने"
+      ],
+      "careerRelevance": [
+        "Global Remote Job र Freelance Contract प्राप्त गर्न",
+        "Self-employment र Digital Agency सुरु गर्न",
+        "पढाइसँगै पार्ट-टाइम आम्दानी अवसर"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Understanding Digital Economy",
+          "description": "डिजिटल स्किल र ग्लोबल मार्केटको सम्भावना"
+        },
+        {
+          "number": 2,
+          "title": "Choosing Your Skill Track",
+          "description": "राइटिङ, डिजाइन वा टेक स्किल छनोट"
+        },
+        {
+          "number": 3,
+          "title": "Profile Creation & Branding",
+          "description": "पोर्टफोलियो र प्रोफाईल सेटअप"
+        },
+        {
+          "number": 4,
+          "title": "Winning Proposal Writing",
+          "description": "क्लाइन्ट आकर्षित गर्ने प्रस्तावना कसरी लेख्ने"
+        }
+      ],
+      "regularPrice": 1299,
+      "offerPrice": 599,
+      "offerActive": true,
+      "offerEndsAt": "2026-12-30T23:59+05:45",
+      "offerLabel": "HOT DEAL",
+      "urgencyLabel": "Popular Choice",
+      "countdownVisible": true,
+      "rating": 4.8,
+      "reviewCount": 98,
+      "soldCopies": 620,
+      "copiesLeft": 9,
+      "updatedAt": "2026-11-01T07:03:56.723Z",
+      "isFeatured": true
+    },
+    {
+      "id": "SN001LS",
+      "title": "Smart LokSewa General Knowledge & Exam Strategy",
+      "short": "LokSewa GK & Exam Strategy",
+      "subtitle": "लोकसेवा प्रथम पत्र (GK & IQ) मा उच्च अंक ल्याउने तयारी गाइड",
+      "summary": "स्मार्ट अध्ययन विधि, नेपाल र विश्व भूगोल, इतिहास र समसामयिक विषय।",
+      "description": "खरिदार, नायब सुब्बा र शाखा अधिकृत परीक्षाका लागि विषयवस्तुलाई सम्झन सजिलो ट्रिक्स र माइन्डम्याप सहितको व्यवस्थित तयारी पुस्तक।",
+      "hook": "अब GK सम्झनु बोझ होइन — ट्रिक्सले पढाइ सजिलो बनाउँछ।",
+      "category": "LokSewa Preparation",
+      "tags": [
+        "LokSewa",
+        "GK & IQ",
+        "Kharidar",
+        "Nasu",
+        "Section Officer"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": true,
+      "isNew": false,
+      "order": 30,
+      "pages": 250,
+      "chapters": 16,
+      "format": "Mobile PDF",
+      "forWho": [
+        "खरिदार, नासु वा शाखा अधिकृत परीक्षाको तयारी गर्दै हुनुहुन्छ",
+        "धेरै पढेर पनि सम्झन गाह्रो भइरहेको छ",
+        "परीक्षाको समय व्यवस्थापन सिक्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "GK सम्झने सम्झना ट्रिक्स (Memory Tricks)",
+        "IQ Questions छिटो र सही हल गर्ने विधि",
+        "वस्तुगत (MCQ) प्रश्न हल गर्दा ध्यान दिनुपर्ने कुराहरू",
+        "परीक्षा अघिको समय व्यवस्थापन (Time Management)"
+      ],
+      "careerRelevance": [
+        "निजामती सेवाका विभिन्न तहको प्रथम पत्र परीक्षा",
+        "नेपाल राष्ट्र बैंक, संस्थान तथा सुरक्षा निकाय परीक्षा",
+        "शिक्षक सेवा आयोग सामान्य परीक्षा"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Nepal Geography & Environment",
+          "description": "नेपालको भूगोल, नदीनाला र हावापानी ट्रिक्स"
+        },
+        {
+          "number": 2,
+          "title": "History & Socio-Cultural Facts",
+          "description": "नेपालको इतिहास र सांस्कृतिक पक्ष"
+        },
+        {
+          "number": 3,
+          "title": "International Affairs & Organizations",
+          "description": "संयुक्त राष्ट्रसंघ, SAARC र विश्व घटनाक्रम"
+        },
+        {
+          "number": 4,
+          "title": "IQ Shortcut Methods",
+          "description": "शाब्दिक र अशाब्दिक तर्कशक्ति प्रश्न"
+        }
+      ],
+      "regularPrice": 1100,
+      "offerPrice": 499,
+      "offerActive": true,
+      "offerEndsAt": "2026-10-31T23:59+05:45",
+      "offerLabel": "EXAM SPECIAL",
+      "urgencyLabel": "High Demand",
+      "countdownVisible": true,
+      "rating": 4.9,
+      "reviewCount": 210,
+      "soldCopies": 1200,
+      "copiesLeft": 17,
+      "updatedAt": "2026-10-30T22:33:55.955Z",
+      "isFeatured": true
+    },
+    {
+      "id": "SN001SM",
+      "title": "Nepali Share Market Fundamentals: NEPSE Beginner Guide",
+      "short": "NEPSE Beginner Guide",
+      "subtitle": "Primary (IPO) र Secondary Market मा सही र सुरक्षित लगानी कसरी गर्ने?",
+      "summary": "IPO भर्ने तरिकादेखि Fundamental र Technical Analysis को आधारभूत ज्ञान।",
+      "description": "नेपाली शेयर बजारमा नयाँ हुनुहुन्छ? यो पुस्तकले Demat, MeroShare, IPO, Dividend, Microfinance, Hydro, Commercial Banks को Financial Report विश्लेषण गर्न सिकाउँछ।",
+      "hook": "अनुमानले होइन, बुझेर लगानी गर्न सुरु गर्नुहोस्।",
+      "category": "Share Market Fundamentals",
+      "tags": [
+        "Share Market",
+        "NEPSE",
+        "IPO",
+        "Investment",
+        "Finance"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 40,
+      "pages": 160,
+      "chapters": 10,
+      "format": "Mobile PDF",
+      "forWho": [
+        "शेयर बजारमा नयाँ हुनुहुन्छ",
+        "IPO भर्न चाहनुहुन्छ तर प्रक्रिया बुझ्नुभएको छैन",
+        "Financial Report पढ्न सिक्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "Demat र MeroShare खाता सञ्चालन र IPO भर्ने सही तरिका",
+        "कम्पनीको EPS, P/E Ratio र Net Worth विश्लेषण गर्ने विधि",
+        "Secondary Market मा Broker System र TMS प्रयोग गर्ने तरिका",
+        "दीर्घकालीन लगानी (Value Investing) र जोखिम व्यवस्थापन"
+      ],
+      "careerRelevance": [
+        "व्यक्तिगत वित्तीय साक्षरता र सम्पत्ति वृद्धि",
+        "शेयर बजार विश्लेषक वा लगानीकर्ता बन्ने आधार",
+        "वित्तीय बजारसम्बन्धी ज्ञान अभिवृद्धि"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Introduction to NEPSE & SEBON",
+          "description": "शेयर बजारको संरचना र नियमक निकाय"
+        },
+        {
+          "number": 2,
+          "title": "Primary Market & IPO Application",
+          "description": "IPO, FPO र Right Share को आधार"
+        },
+        {
+          "number": 3,
+          "title": "Fundamental Analysis Basics",
+          "description": "वित्तीय विवरण कसरी पढ्ने"
+        },
+        {
+          "number": 4,
+          "title": "Risk Management & Portfolio Design",
+          "description": "घाटाबाट जोगिने र विविधीकरण गर्ने रणनीति"
+        }
+      ],
+      "regularPrice": 899,
+      "offerPrice": 399,
+      "offerActive": true,
+      "offerEndsAt": "2026-10-31T23:59+05:45",
+      "offerLabel": "FINANCE PICK",
+      "urgencyLabel": "Beginner Friendly",
+      "countdownVisible": true,
+      "rating": 4.7,
+      "reviewCount": 85,
+      "soldCopies": 510,
+      "copiesLeft": 22,
+      "updatedAt": "2026-10-30T22:33:26.261Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001PD",
+      "title": "Confidence, Communication & Interview Success Guide",
+      "short": "Confidence & Interview Success",
+      "subtitle": "बोल्ने कला, व्यक्तित्व विकास र Job Interview मा सफलता",
+      "summary": "आत्मविश्वास बढाउन, धक फुकाउन र अन्तरवार्तामा सफल हुने व्यावहारिक उपाय।",
+      "description": "इन्टरभ्यु दिँदा डर लाग्छ? सार्वजनिक ठाउँमा बोल्न अप्ठ्यारो हुन्छ? यो Ebook ले तपाईंको Personality, Body Language, Communication र Interview Skills सुधार्छ।",
+      "hook": "डर होइन, आत्मविश्वासका साथ अन्तरवार्ता दिनुहोस्।",
+      "category": "Personality Development",
+      "tags": [
+        "Personality Development",
+        "Communication",
+        "Interview Prep",
+        "Confidence"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": false,
+      "order": 50,
+      "pages": 140,
+      "chapters": 9,
+      "format": "Mobile PDF",
+      "forWho": [
+        "Interview अघि नर्भस महसुस गर्नुहुन्छ",
+        "सार्वजनिक रूपमा बोल्न हिच्किचाउनुहुन्छ",
+        "Office मा आफ्नो छाप छाड्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "सार्वजनिक बोल्दा (Public Speaking) डर हटाउने प्रविधि",
+        "प्रभावशाली Body Language र Visual Impression",
+        "Interview मा सोधिने कडा प्रश्नहरूको उत्कृष्ट उत्तर कसरी दिने",
+        "कार्यस्थलमा मिलाएर बोल्ने र नेटवर्किङ गर्ने कला"
+      ],
+      "careerRelevance": [
+        "कुनै पनि Job Interview मा निर्धक्क प्रस्तुत हुन",
+        "कार्यालयमा प्रस्तुतिकरण (Presentation) र नेतृत्व",
+        "व्यक्तिगत जीवनमा उच्च आत्मविश्वास"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Building Inner Confidence",
+          "description": "हिचकिचाहट र डर हटाउने अभ्यास"
+        },
+        {
+          "number": 2,
+          "title": "Body Language & Eye Contact",
+          "description": "सकारात्मक शारीरिक भाषा"
+        },
+        {
+          "number": 3,
+          "title": "Top 20 Interview Questions",
+          "description": "उत्कृष्ट नमुना उत्तरहरू र तयारी"
+        },
+        {
+          "number": 4,
+          "title": "Professional Workplace Ethics",
+          "description": "व्यावसायिक व्यवहार र पोशाक"
+        }
+      ],
+      "regularPrice": 799,
+      "offerPrice": 349,
+      "offerActive": true,
+      "offerEndsAt": "2026-10-31T23:59+05:45",
+      "offerLabel": "CAREER BOOST",
+      "urgencyLabel": "Essential Guide",
+      "countdownVisible": true,
+      "rating": 4.9,
+      "reviewCount": 115,
+      "soldCopies": 730,
+      "copiesLeft": 18,
+      "updatedAt": "2026-10-30T22:33:05.119Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001NY",
+      "title": "Nepali Youth Career Roadmap & Job Search Masterclass",
+      "short": "Career Roadmap & Job Search",
+      "subtitle": "CV / Resume लेखन, Job Search रणनीति र career direction छनोट",
+      "summary": "प्लस टु वा ब्याचलर्स पछि सही बाटो रोज्न र छिटो जागिर पाउन मार्गदर्शन।",
+      "description": "नेपाली युवाहरूका लागि आफ्नो करियरको लक्ष्य तय गर्ने, आकर्षक CV/Resume बनाउने, merojob, jobsnepal, LinkedIn प्रयोग गरी जागिर खोज्ने व्यावहारिक Ebook।",
+      "hook": "आफ्नो करियरको बाटो अरूले होइन, तपाईं आफैंले तय गर्नुहोस्।",
+      "category": "Nepali Youth Career Guides",
+      "tags": [
+        "Career Guide",
+        "CV Writing",
+        "Job Search",
+        "Nepali Youth"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": false,
+      "order": 60,
+      "pages": 175,
+      "chapters": 11,
+      "format": "Mobile PDF",
+      "forWho": [
+        "प्लस टु वा ब्याचलर्स सकेर अब के गर्ने भन्ने द्विविधामा हुनुहुन्छ",
+        "पहिलो जागिरका लागि CV बनाउँदै हुनुहुन्छ",
+        "Career Switch गर्ने सोचमा हुनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "HR ले रुचाउने ATS-Friendly Professional CV/Resume निर्माण",
+        "LinkedIn Profile Optimal बनाउने र Networking गर्ने",
+        "नेपालका प्रमुख Job Portals प्रयोग गरी अवसर खोज्ने",
+        "Career Direction र Short/Long term लक्ष्य निर्धारण"
+      ],
+      "careerRelevance": [
+        "नयाँ स्नातक (Fresh Graduates) का लागि पहिलो जागिर",
+        "करियर परिवर्तन (Career Switch) गर्न चाहनेका लागि",
+        "रोजगारी खोज्ने रणनीति व्यवस्थित बनाउन"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Understanding Job Market in Nepal",
+          "description": "नेपालमा बजारको माग र सीप"
+        },
+        {
+          "number": 2,
+          "title": "Crafting High-Impact Resume",
+          "description": "रिज्युमे नमुना र गल्तीहरू"
+        },
+        {
+          "number": 3,
+          "title": "Digital Job Search Strategies",
+          "description": "मेरोजब र लिङ्क्डइनको प्रयोग"
+        },
+        {
+          "number": 4,
+          "title": "First 90 Days in a Job",
+          "description": "कार्यस्थलमा छाप छाड्ने कला"
+        }
+      ],
+      "regularPrice": 899,
+      "offerPrice": 399,
+      "offerActive": true,
+      "offerEndsAt": "2026-10-31T23:59+05:45",
+      "offerLabel": "RECOMMENDED",
+      "urgencyLabel": "High Value",
+      "countdownVisible": true,
+      "rating": 4.8,
+      "reviewCount": 94,
+      "soldCopies": 490,
+      "copiesLeft": 25,
+      "updatedAt": "2026-10-30T22:32:42.988Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SNB001",
+      "kind": "bundle",
+      "title": "Ultimate Success Career Bundle",
+      "short": "Ultimate Success Bundle",
+      "subtitle": "६ वटै Ebooks को पूर्ण प्याकेज — सर्वाधिक बचत र सम्पूर्ण करियर रूपान्तरण!",
+      "summary": "कम्प्युटर, डिजिटल सीप, लोकसेवा, शेयर बजार, व्यक्तित्व र करियर गाइड सबै एकै ठाउँमा।",
+      "category": "Bundles",
+      "tags": [],
+      "badge": "POPULAR",
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": false,
+      "order": 200,
+      "pages": null,
+      "regularPrice": 5995,
+      "offerPrice": 1499,
+      "offerActive": true,
+      "offerEndsAt": "2026-10-31T23:59+05:45",
+      "offerLabel": "ULTIMATE VALUE",
+      "countdownVisible": true,
+      "copiesLeft": 40,
+      "includes": [
+        "SN001CS",
+        "SN001DS",
+        "SN001LS",
+        "SN001SM",
+        "SN001PD",
+        "SN001NY"
+      ],
+      "updatedAt": "2026-10-30T22:37:23.723Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SNB002",
+      "kind": "bundle",
+      "title": "Office & Digital Income Master Bundle",
+      "short": "Office & Digital Income",
+      "subtitle": "Computer Skills + Freelancing Blueprint",
+      "summary": "कार्यालय काम र अनलाइन आम्दानी दुवैमा पोख्त हुन २ प्रमुख Ebook प्याकेज।",
+      "category": "Bundles",
+      "tags": [],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": false,
+      "order": 210,
+      "pages": null,
+      "regularPrice": 2298,
+      "offerPrice": 899,
+      "offerActive": true,
+      "offerEndsAt": "2026-12-31T23:59:00+05:45",
+      "offerLabel": "SAVINGS BUNDLE",
+      "countdownVisible": true,
+      "copiesLeft": 30,
+      "includes": [
+        "SN001CS",
+        "SN001DS"
+      ],
+      "isFeatured": false
+    },
+    {
+      "id": "SN001OA",
+      "title": "Office Assistant Complete Practical Guide",
+      "short": "Office Assistant Guide",
+      "subtitle": "फाइलिङ, फोन, पत्र, दैनिक रिपोर्ट र Office Etiquette",
+      "summary": "फाइलिङ, फोन, पत्र, कार्यालय सामग्री, दैनिक रिपोर्ट र Office Etiquette सिकाउने व्यावहारिक गाइड। Series 1–2: Basic Work & Office Support।",
+      "description": "फाइलिङ, फोन, पत्र, कार्यालय सामग्री, दैनिक रिपोर्ट र Office Etiquette सिकाउने व्यावहारिक गाइड। Series 1–2: Basic Work & Office Support।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: फाइल वर्गीकरण, डेलिभरी रजिस्टर, सामग्री रेकर्ड, प्याकिङ चेकलिस्ट, दैनिक कार्य रिपोर्ट, फोन उठाउने अभ्यास, भेटघाट रजिस्टर, हाजिरी सिट, पत्र दर्ता र दैनिक कार्यालय चेकलिस्ट\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Office & Admin Skills",
+      "tags": [
+        "Series 1–2",
+        "Class 5–7 Starter",
+        "Class 8–10 Practical Starter",
+        "Office",
+        "Admin"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 40,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "कार्यालयमा काम सुरु गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "फाइल तथा कागजात व्यवस्थित गर्ने",
+        "फोन र ग्राहक सोधपुछ शिष्ट तरिकाले सम्हाल्ने",
+        "दैनिक कार्य रिपोर्ट र रजिस्टर तयार गर्ने"
+      ],
+      "careerRelevance": [
+        "Office Assistant, Reception Assistant र Document Control जस्ता पदका लागि आधारभूत तयारी (नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "फाइल वर्गीकरण, डेलिभरी रजिस्टर, सामग्री रेकर्ड, प्याकिङ चेकलिस्ट, दैनिक कार्य रिपोर्ट, फोन उठाउने अभ्यास, भेटघाट रजिस्टर, हाजिरी सिट, पत्र दर्ता र दैनिक कार्यालय चेकलिस्ट"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:44.172Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001SI",
+      "title": "Storekeeper & Inventory Management",
+      "short": "Storekeeper & Inventory",
+      "subtitle": "GRN, Stock In/Out, FIFO/FEFO, Stock Count र Reconciliation",
+      "summary": "स्टोरसम्बन्धी काममा सही गणना, रेकर्ड र प्रक्रिया पालना सिकाउने गाइड। Series 3–4: Store, Stock & Inventory।",
+      "description": "स्टोरसम्बन्धी काममा सही गणना, रेकर्ड र प्रक्रिया पालना सिकाउने गाइड। Series 3–4: Store, Stock & Inventory।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Goods Received Note (GRN), Stock In/Out Register, Stock Card, Physical Stock Count र Stock Difference Report तयार गर्ने\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Store & Inventory",
+      "tags": [
+        "Series 3–4",
+        "Class 5–7 Starter",
+        "Class 8–10 Practical Starter",
+        "Store",
+        "Inventory"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 41,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "Store वा Inventory को काम गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "GRN र Stock Register ठीकसँग भर्ने",
+        "Physical Stock Count गरी Difference Report बनाउने",
+        "FIFO/FEFO सिद्धान्त बुझ्ने"
+      ],
+      "careerRelevance": [
+        "Store Assistant, Storekeeper र Inventory Assistant जस्ता पदका लागि आधारभूत तयारी (नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Goods Received Note (GRN), Stock In/Out Register, Stock Card, Physical Stock Count र Stock Difference Report तयार गर्ने"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:46.432Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001RP",
+      "title": "Cashier, POS & Billing Mastery",
+      "short": "Cashier, POS & Billing",
+      "subtitle": "Cash Handling, POS Billing, Refund Procedure र Daily Cash Closing",
+      "summary": "पसल तथा रिटेलमा नगद व्यवहार, POS बिलिङ र दैनिक नगद मिलान सिकाउने गाइड। Series 5 र 8।",
+      "description": "पसल तथा रिटेलमा नगद व्यवहार, POS बिलिङ र दैनिक नगद मिलान सिकाउने गाइड। Series 5 र 8।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: ग्राहकसँग संवाद, POS बिलिङ अभ्यास, Cash Closing Sheet, Order Register र Customer Complaint Handling\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Retail, Billing & POS",
+      "tags": [
+        "Series 5, 8",
+        "Class 8–10 Practical Starter",
+        "Class 11–12 Job Preparation",
+        "Cashier",
+        "POS",
+        "Billing"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 42,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "Cashier वा Billing को काम गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "नगद गणना र दैनिक Cash Closing गर्ने",
+        "POS Billing र Refund प्रक्रिया बुझ्ने",
+        "Order Register राख्ने"
+      ],
+      "careerRelevance": [
+        "Cashier, POS Operator र Billing Assistant जस्ता पदका लागि आधारभूत तयारी (नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "ग्राहकसँग संवाद, POS बिलिङ अभ्यास, Cash Closing Sheet, Order Register र Customer Complaint Handling"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:48.116Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001SC",
+      "title": "Sales & Customer Service Skills",
+      "short": "Sales & Customer Service",
+      "subtitle": "Customer Conversation, Product Knowledge, Complaint Handling र Sales Techniques",
+      "summary": "ग्राहकसँग व्यवहार, उत्पादन बुझाउने र बिक्री गर्ने सीप सिकाउने गाइड। Series 5–6: Retail, Sales र Market।",
+      "description": "ग्राहकसँग व्यवहार, उत्पादन बुझाउने र बिक्री गर्ने सीप सिकाउने गाइड। Series 5–6: Retail, Sales र Market।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Market Survey Form, Daily Sales Report, Customer Lead Sheet, Sales Target Tracker र Product Pitch Script\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Sales & Customer Service",
+      "tags": [
+        "Series 5–6",
+        "Class 8–10 Practical Starter",
+        "Class 11–12 Job Preparation",
+        "Sales",
+        "Customer Service"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 43,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "Sales वा Customer Service मा काम गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "ग्राहकको समस्या बुझेर राम्रो सेवा दिने",
+        "Product Pitch तयार गरी प्रस्तुत गर्ने",
+        "Daily Sales Report र Lead Sheet राख्ने"
+      ],
+      "careerRelevance": [
+        "Shop Assistant, Sales Associate र Customer Service Assistant जस्ता पदका लागि आधारभूत तयारी (नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Market Survey Form, Daily Sales Report, Customer Lead Sheet, Sales Target Tracker र Product Pitch Script"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:49.563Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001AB",
+      "title": "Basic Bookkeeping & Business Records",
+      "short": "Basic Bookkeeping",
+      "subtitle": "Cashbook, Sales/Purchase Register, Expenses र Receivables/Payables",
+      "summary": "लेखा तथा साना व्यवसायका रेकर्ड राख्ने आधारभूत सीप। Series 8: Accounts, Billing & Business Records।",
+      "description": "लेखा तथा साना व्यवसायका रेकर्ड राख्ने आधारभूत सीप। Series 8: Accounts, Billing & Business Records।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Sales Invoice, Purchase Register, Cashbook, Petty Cash, Accounts Receivable/Payable र Monthly Expense Report\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Accounts & Bookkeeping",
+      "tags": [
+        "Series 8",
+        "Class 11–12 Job Preparation",
+        "Bachelor Career Development",
+        "Accounts",
+        "Bookkeeping"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 44,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "हिसाब-किताबको काम सिक्न चाहने व्यक्ति",
+        "आफ्नो सानो व्यवसायको रेकर्ड राख्न चाहने व्यक्ति"
+      ],
+      "learningOutcomes": [
+        "Cashbook र Petty Cash राख्ने",
+        "Sales/Purchase Register र Invoice तयार गर्ने",
+        "Monthly Expense Report बनाउने"
+      ],
+      "careerRelevance": [
+        "लेखा सहायकका केही पदमा औपचारिक योग्यता वा अनुभव चाहिन्छ। कर, अडिट र नियमनयुक्त वित्तीय कामका लागि आवश्यक कानुनी योग्यता अलग्गै पूरा गर्नुपर्छ।"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Sales Invoice, Purchase Register, Cashbook, Petty Cash, Accounts Receivable/Payable र Monthly Expense Report"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:50.898Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001JR",
+      "title": "Job Ready: CV, Interview & Application",
+      "short": "Job Ready Guide",
+      "subtitle": "CV बनाउने, सीप प्रस्तुत गर्ने, Interview अभ्यास र आवेदन प्रक्रिया",
+      "summary": "सबै Series का विद्यार्थीका लागि साझा eBook: CV, Interview र Job Application तयारी।",
+      "description": "सबै Series का विद्यार्थीका लागि साझा eBook: CV, Interview र Job Application तयारी।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: CV, Interview Questions अभ्यास, Application Templates, Job Search योजना र योग्यता जाँच्ने तरिका\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Job Ready & Career",
+      "tags": [
+        "All Series",
+        "Class 11–12 Job Preparation",
+        "Bachelor Career Development",
+        "CV",
+        "Interview"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 45,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "पहिलो पटक Job Application दिन लागेका व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "आफ्नो CV तयार गर्ने",
+        "Interview का सामान्य प्रश्नको अभ्यास गर्ने",
+        "Job Application Template प्रयोग गर्ने"
+      ],
+      "careerRelevance": [
+        "Job Application र Interview तयारीमा सहयोगी (रोजगारीको ग्यारेन्टी होइन)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "CV, Interview Questions अभ्यास, Application Templates, Job Search योजना र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:52.215Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001WP",
+      "title": "Warehouse, Logistics & Procurement",
+      "short": "Warehouse & Procurement",
+      "subtitle": "Purchase Order, Supplier Comparison, Dispatch र Reorder Planning",
+      "summary": "सामानको आवागमनदेखि खरिद र आपूर्ति समन्वयसम्म सिकाउने गाइड। Series 4: Warehouse, Logistics & Procurement।",
+      "description": "सामानको आवागमनदेखि खरिद र आपूर्ति समन्वयसम्म सिकाउने गाइड। Series 4: Warehouse, Logistics & Procurement।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Purchase Requisition, Purchase Order, Supplier Comparison Sheet, Reorder Level र Stock Reconciliation Report\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Warehouse & Procurement",
+      "tags": [
+        "Series 4",
+        "Class 11–12 Job Preparation",
+        "Bachelor Career Development",
+        "Warehouse",
+        "Procurement"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 46,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "Warehouse वा Procurement तर्फ अघि बढ्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "Purchase Requisition र Purchase Order तयार गर्ने",
+        "Supplier तुलना गर्ने",
+        "Reorder Level र Stock Reconciliation गर्ने"
+      ],
+      "careerRelevance": [
+        "Logistics, Purchase र Procurement Assistant जस्ता पदका लागि तयारीमा सहयोगी (नियुक्तिको योग्यता रोजगारदाताले निर्धारण गर्छ)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Purchase Requisition, Purchase Order, Supplier Comparison Sheet, Reorder Level र Stock Reconciliation Report"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:53.507Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN001BS",
+      "title": "Start Your Small Business",
+      "short": "Start Small Business",
+      "subtitle": "ग्राहक पहिचान, लागत, मूल्य निर्धारण, बजेट र पहिलो बिक्रीको योजना",
+      "summary": "सानो र परीक्षण गर्न सकिने मोडेलबाट आफ्नै व्यवसाय सुरु गर्ने बाटो। Series 10: Self-Employment & Business Owner।",
+      "description": "सानो र परीक्षण गर्न सकिने मोडेलबाट आफ्नै व्यवसाय सुरु गर्ने बाटो। Series 10: Self-Employment & Business Owner।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Business Idea Validation, Customer Survey, Cost & Pricing Sheet, Simple Business Plan, Marketing Plan र पहिलो ग्राहक प्राप्त गर्ने कार्ययोजना\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Business & Self-Employment",
+      "tags": [
+        "Series 10",
+        "Class 11–12 Job Preparation",
+        "Bachelor Career Development",
+        "Master Specialization",
+        "Business",
+        "Self-Employment"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 47,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "आफ्नै सानो व्यवसाय सुरु गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "व्यवसायको Idea ग्राहकसँग परीक्षण गर्ने",
+        "लागत र मूल्य निर्धारण गर्ने",
+        "सरल Business Plan बनाउने"
+      ],
+      "careerRelevance": [
+        "सानो व्यवसाय परीक्षण गर्न सहयोगी (आम्दानी वा नाफाको ग्यारेन्टी होइन)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Business Idea Validation, Customer Survey, Cost & Pricing Sheet, Simple Business Plan, Marketing Plan र पहिलो ग्राहक प्राप्त गर्ने कार्ययोजना"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:54.860Z",
+      "isFeatured": false
+    },
+    {
+      "id": "SN002DS",
+      "title": "Mobile AI & Digital Work Starter",
+      "short": "Mobile AI & Digital Work",
+      "subtitle": "AI उपकरण प्रयोग, कामका लागि लेखन, उत्पादकता र डिजिटल सेवा",
+      "summary": "मोबाइलबाटै AI उपकरण प्रयोग, कामका लागि लेखन, उत्पादकता र सानो डिजिटल कामको नमुना तयार गर्ने गाइड। Series 7 र 10।",
+      "description": "मोबाइलबाटै AI उपकरण प्रयोग, कामका लागि लेखन, उत्पादकता र सानो डिजिटल कामको नमुना तयार गर्ने गाइड। Series 7 र 10।\n\nStudyNotes Learning System: Learn (काम बुझ्नुहोस्) → Practice (अभ्यास गर्नुहोस्) → Prove (क्षमता देखाउनुहोस्) → Apply (जागिरका लागि तयार हुनुहोस्) → Grow (अर्को स्तरमा बढ्नुहोस्)।\n\nPractical Project: Professional Email, Online Order Tracker, Customer Support Reply Templates र सानो डिजिटल कामको नमुना\n\nयो eBook तयारी/प्रकाशन योजनाअनुसारको सामग्री हो; जागिर, परीक्षा सफलता वा निश्चित आम्दानीको ग्यारेन्टी होइन।",
+      "hook": "आजै एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस् — तपाईंको पहिलो कदम यहीँबाट।",
+      "category": "Digital Skills & Online Income",
+      "tags": [
+        "Series 7, 10",
+        "Class 8–10 Practical Starter",
+        "Class 11–12 Job Preparation",
+        "Digital Work",
+        "AI"
+      ],
+      "status": "published",
+      "availability": "available",
+      "featured": false,
+      "isNew": true,
+      "order": 48,
+      "pages": null,
+      "chapters": 6,
+      "format": "Mobile PDF",
+      "forWho": [
+        "मोबाइलबाट डिजिटल सीप सिक्न सुरु गर्न चाहने व्यक्ति",
+        "आफ्नो अहिलेको अवस्थाबाट सीप सिकेर अघि बढ्न चाहनुहुन्छ",
+        "पढाइ बीचमै छोड्नुभएको वा औपचारिक अनुभव नभएको भए पनि व्यावहारिक सीपबाट सुरु गर्न चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "AI उपकरण कामका लागि प्रयोग गर्ने",
+        "Professional Email र Reply Template बनाउने",
+        "Online Order Tracker राख्ने"
+      ],
+      "careerRelevance": [
+        "Digital Customer Support र Online Order Management जस्ता कामका लागि तयारीमा सहयोगी (आम्दानीको ग्यारेन्टी होइन)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Learn: काम र जिम्मेवारी बुझ्नुहोस्",
+          "description": "पदको परिचय, दैनिक जिम्मेवारी, आवश्यक सीप र सामान्य शब्दावली"
+        },
+        {
+          "number": 2,
+          "title": "Practice: Sample Forms र अभ्यास",
+          "description": "Sheet, Form र कामको वास्तविक उदाहरणमा अभ्यास"
+        },
+        {
+          "number": 3,
+          "title": "Practical Project",
+          "description": "Professional Email, Online Order Tracker, Customer Support Reply Templates र सानो डिजिटल कामको नमुना"
+        },
+        {
+          "number": 4,
+          "title": "Prove: Practical Test र Self-Assessment",
+          "description": "Answer Key, गल्ती सुधार र नमुना काम (Portfolio)"
+        },
+        {
+          "number": 5,
+          "title": "Apply: CV, Interview र आवेदन तयारी",
+          "description": "CV, Interview Questions, Application Template र योग्यता जाँच्ने तरिका"
+        },
+        {
+          "number": 6,
+          "title": "Grow: अर्को स्तर",
+          "description": "Next-Level Skills र अनुभव बढाउने योजना"
+        }
+      ],
+      "regularPrice": 0,
+      "offerPrice": null,
+      "offerActive": false,
+      "countdownVisible": false,
+      "rating": 0,
+      "reviewCount": 0,
+      "soldCopies": 0,
+      "copiesLeft": 0,
+      "updatedAt": "2026-11-05T12:26:56.103Z",
+      "isFeatured": false
     },
     {
       "id": "__site__",
@@ -362,7 +1267,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T06:02:35.646Z",
+      "updatedAt": "2026-11-06T00:13:07.191Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -383,10 +1288,10 @@
         },
         "store": {
           "name": "StudyNotes",
-          "tagline": "Learn. Grow. Succeed.",
-          "taglineNe": "मानिसको भविष्य उसले कति कक्षा पढ्यो भन्ने कुराले मात्र निर्धारण गर्दैन। उसले आफ्नो लक्ष्यअनुसार के सिक्यो, कति सीप विकास गर्‍यो र आफूलाई कति तयार बनायो भन्ने कुराले फरक पार्छ। आजै आफ्नो यात्रा Class 5 देखि Master सम्म — Job Ready देखि Business Owner सम्म StudyNotes को साथ सुरु गर्नुस्।",
+          "tagline": "Your First Step to Success",
+          "taglineNe": "Class 5 देखि Master सम्म — Job Ready देखि Business Owner सम्म",
           "founder": "MD. NS (MD. NASA)",
-          "logo": "",
+          "logo": null,
           "currency": "रु.",
           "copyright": "© {year} {storeName}. All rights reserved."
         },
@@ -404,20 +1309,62 @@
           "items": [
             {
               "id": "t0",
-              "text": "📘 COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY — ४० Chapter, Workbook र Templates सहित",
+              "text": "⚡ Flash Sale — Complete Computer Operator Guide (50% OFF)!",
               "visible": true,
               "order": 0,
               "ctaAction": "product:SN001CS"
+            },
+            {
+              "id": "t1",
+              "text": "🔥 Limited-Time Offer — Freelancing & Digital Skills Blueprint (54% OFF)!",
+              "visible": true,
+              "order": 1,
+              "ctaAction": "product:SN001DS"
+            },
+            {
+              "id": "t2",
+              "text": "🎁 Ultimate Success Bundle — ६ Ebooks मा 75% सम्म बचत!",
+              "visible": true,
+              "order": 2,
+              "ctaAction": "section:bundles"
+            },
+            {
+              "id": "t3",
+              "text": "📚 LokSewa Exam Special — Smart GK & Exam Strategy Ebook!",
+              "visible": true,
+              "order": 3,
+              "ctaAction": "product:SN001LS"
+            },
+            {
+              "id": "t4",
+              "text": "🧩 ३ वा सोभन्दा बढी Ebook छान्दा थप 15% Combo Discount!",
+              "visible": true,
+              "order": 4,
+              "ctaAction": "section:combos"
+            },
+            {
+              "id": "t5",
+              "text": "📈 NEPSE Beginner Guide केवल रु. ३९९ मा!",
+              "visible": true,
+              "order": 5,
+              "ctaAction": "product:SN001SM"
+            },
+            {
+              "id": "t6",
+              "text": "🗣️ Confidence & Interview Success Guide — आजै सुरु गर्नुहोस्!",
+              "visible": true,
+              "order": 6,
+              "ctaAction": "product:SN001PD"
             }
           ]
         },
         "hero": {
           "carouselMode": "all",
           "badge": "{storeName} • {tagline}",
-          "headBefore": "कमाउने सपना होइन,",
-          "headHighlight": "कमाउन सक्ने क्षमता",
-          "headAfter": "विकास गर्नुहोस्।",
-          "description": "Computer Operator र Office Assistant काम सिक्न चाहनेहरूका लागि सरल नेपालीमा ४० Chapter को व्यवहारिक Ebook — मोबाइलमै पढ्न मिल्ने।",
+          "headBefore": "सफलताको",
+          "headHighlight": "पहिलो कदम",
+          "headAfter": "आजै यहीँबाट सुरु गर्नुहोस्",
+          "description": "Class 5 देखि Master सम्म — आफू जहाँ हुनुहुन्छ त्यहीँबाट सीप सिक्नुहोस्। Office, Store, Sales, Computer, Accounts र Business का Practical Ebooks — सरल नेपाली भाषामा, मोबाइलमै पढ्न मिल्ने। यो खर्च होइन, तपाईंको **पहिलो उपलब्धि** हो।",
           "cta1": {
             "text": "Ebooks हेर्नुहोस्",
             "action": "section:explore"
@@ -426,7 +1373,7 @@
             "text": "Bundle Offers",
             "action": "section:bundles"
           },
-          "cardNote": "🏆 आफूले चाहेको भविष्यका लागि आजै तयार हुनुहोस्। यो तपाईंको सफलतातर्फको पहिलो उपलब्धि — आजै सुरु गर्नुहोस्।"
+          "cardNote": "🏆 यो तपाईंको सफलतातर्फको पहिलो उपलब्धि — आजै सुरु गर्नुहोस्।"
         },
         "trust": {
           "items": [
@@ -586,15 +1533,76 @@
           "sampleBadge": "Sample",
           "items": [
             {
-              "name": "Suman Thapa",
-              "place": "Janakpur",
+              "id": "r0",
+              "name": "सुजन श.",
+              "place": "काठमाडौं",
               "rating": 5,
               "productId": "SN001CS",
-              "date": "2083/07/22",
-              "text": "Complete Computer Operator & Office Assistant Mastery Ebook worth it.",
-              "verified": true,
+              "text": "Typing र Excel को भाग धेरै व्यवहारिक छ। Office काम सुरु गर्न सजिलो भयो।",
+              "verified": false,
+              "sample": true,
               "visible": true,
-              "id": "rev_mw7f6hcy09a2"
+              "order": 0
+            },
+            {
+              "id": "r1",
+              "name": "अनिता के.",
+              "place": "पोखरा",
+              "rating": 5,
+              "productId": "SN001LS",
+              "text": "GK सम्झने ट्रिक्सले पढाइ हल्का बनायो। परीक्षा तयारीका लागि राम्रो गाइड।",
+              "verified": false,
+              "sample": true,
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "r2",
+              "name": "रमेश थ.",
+              "place": "बुटवल",
+              "rating": 4,
+              "productId": "SN001SM",
+              "text": "IPO र MeroShare प्रक्रिया सरल भाषामा बुझाइएको छ। शुरुवातीका लागि उपयुक्त।",
+              "verified": false,
+              "sample": true,
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "r3",
+              "name": "सृजना ग.",
+              "place": "विराटनगर",
+              "rating": 5,
+              "productId": "SN001PD",
+              "text": "Interview का नमुना उत्तरहरूले आत्मविश्वास बढायो।",
+              "verified": false,
+              "sample": true,
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "r4",
+              "name": "प्रकाश र.",
+              "place": "चितवन",
+              "rating": 5,
+              "productId": "SN001DS",
+              "text": "Freelancing कहाँबाट सुरु गर्ने भन्ने स्पष्ट रोडम्याप पाएँ।",
+              "verified": false,
+              "sample": true,
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "r5",
+              "name": "निशा प.",
+              "place": "धरान",
+              "rating": 5,
+              "productId": "SN001NY",
+              "text": "CV बनाउने तरिका र Job Portal प्रयोगको भाग उपयोगी लाग्यो।",
+              "verified": false,
+              "sample": true,
+              "visible": true,
+              "order": 5
             }
           ]
         },
@@ -657,36 +1665,54 @@
           "sampleNote": "ℹ️ नमुना (Sample) कुराकानी — वास्तविक ग्राहक सन्देश (अनुमति सहित) थपेर यो खण्ड अपडेट गर्नुहोस्।",
           "items": [
             {
+              "id": "c0",
               "from": "in",
-              "name": "Suman Thapa",
+              "name": "Sample User",
               "time": "10:21",
-              "text": "Maile payment gri ske ebook pathaeedinu hjr.",
+              "text": "Hello, Computer Operator Guide को Payment गरेँ। Screenshot पठाएँ 🙏",
+              "sample": true,
               "visible": true,
-              "id": "cha_mw7f8i4o75tx"
+              "order": 0
             },
             {
+              "id": "c1",
               "from": "out",
-              "name": "StudyNotes",
-              "time": "10:23",
-              "text": "Payment Verified vyo, Lw yo ho hjr ko Ebook and Bonus.",
+              "name": "",
+              "time": "10:22",
+              "text": "धन्यवाद! Payment confirm भयो ✅ Product ID: SN001CS — अब PDF पठाउँदैछु।",
+              "sample": true,
               "visible": true,
-              "id": "cha_mw7f9y02byrs"
+              "order": 1
             },
             {
+              "id": "c2",
+              "from": "out",
+              "name": "",
+              "time": "10:24",
+              "text": "📘 Ebook यो रह्यो। पढ्दै जानुहोस्, केही सोध्नु परे यहीँ लेख्नुहोस्।",
+              "sample": true,
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "c3",
               "from": "in",
-              "name": "Suman Thapa",
+              "name": "Sample User",
               "time": "10:25",
-              "text": "Thank You So Much.",
+              "text": "Received! धेरै छिटो आयो 😍 धन्यवाद StudyNotes",
+              "sample": true,
               "visible": true,
-              "id": "cha_mw7fbrsvfsnn"
+              "order": 3
             },
             {
-              "from": "out",
-              "name": "StudyNotes",
-              "time": "10:26",
-              "text": "Welcome 🤗, It's my pleasure.",
+              "id": "c4",
+              "from": "in",
+              "name": "Sample User 2",
+              "time": "14:08",
+              "text": "Bundle लिएँ — सबै Ebook एकै पटक आयो। पहिलो पाइला राम्रो भयो 💪",
+              "sample": true,
               "visible": true,
-              "id": "cha_mw7fczd08smy"
+              "order": 4
             }
           ]
         },
@@ -697,17 +1723,17 @@
           "items": [
             {
               "id": "f1",
-              "q": "यो Ebook के हो र कसका लागि हो?",
-              "a": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY (लेखक: MD. NASA) ७ भाग, ४० अध्याय र ३९१ पृष्ठको नेपाली Ebook हो। पहिलो पटक computer सिक्नेदेखि Computer Operator, Data Entry वा Office Assistant को काम गर्न चाहनेसम्म सबैका लागि चरणबद्ध गाइड।",
+              "q": "Ebook भनेको के हो र यो कसरी प्राप्त हुन्छ?",
+              "a": "Ebook (Electronic Book) डिजिटल पुस्तक हो जसलाई तपाईं आफ्नो मोबाइल, ट्याब्लेट वा कम्प्युटरमा सजिलै पढ्न सक्नुहुन्छ। Payment पुष्टि भएपछि PDF फाइल तपाईंको WhatsApp वा Email मा {deliveryNe}भित्र पठाइन्छ।",
               "visible": true,
-              "onProduct": true
+              "onProduct": false
             },
             {
               "id": "f2",
-              "q": "अभ्यासका लागि के-के सामग्री छ?",
-              "a": "हरेक अध्यायमा १ वटा Mini Project (जम्मा ४०) र Knowledge Check — MCQ, True/False, Fill in the blanks र Short Answer (जम्मा ६८० प्रश्न) Answer Key सहित छ। साथै हरेक अध्यायमा Quick Revision र Key Takeaways, र अन्त्यमा Shortcut Quick Reference र २८७ शब्दको Glossary छ।",
+              "q": "कुन-कुन विषयका Ebook उपलब्ध छन्?",
+              "a": "हाल यी विधाका Ebook उपलब्ध छन्: {categories}।",
               "visible": true,
-              "onProduct": true
+              "onProduct": false
             },
             {
               "id": "f3",
@@ -752,6 +1778,20 @@
               "onProduct": false
             },
             {
+              "id": "f9",
+              "q": "के Ebook पढेपछि जागिर वा आम्दानीको १००% guarantee हुन्छ?",
+              "a": "हुँदैन। Ebook ले व्यवहारिक ज्ञान, सीप र तयारीको बाटो देखाउँछ। वास्तविक सफलता तपाईंको निरन्तर अभ्यास, मिहिनेत र बजारको अवस्थामा निर्भर हुन्छ। कुनै भ्रामक ग्यारेन्टी दिइँदैन।",
+              "visible": true,
+              "onProduct": true
+            },
+            {
+              "id": "f10",
+              "q": "Share Market Ebook ले निश्चित Profit guarantee गर्छ?",
+              "a": "गर्दैन। शेयर बजार जोखिमयुक्त हुन्छ। सामग्री केवल शैक्षिक प्रयोजनका लागि हो। लगानी सम्बन्धी निर्णय आफ्नै जोखिममा लिनुहोस्।",
+              "visible": true,
+              "onProduct": false
+            },
+            {
               "id": "f11",
               "q": "समस्या परे कसरी सम्पर्क गर्ने?",
               "a": "WhatsApp {whatsappDisplay} वा Email: {email} मा जुनसुकै बेला सम्पर्क गर्नुहोस्।",
@@ -776,8 +1816,8 @@
         },
         "about": {
           "eyebrow": "ABOUT {storeNameUpper}",
-          "heading": "{storeName} — शून्यदेखि Job-Ready सम्म — Job Ready देखि Business Owner सम्म",
-          "text": "StudyNotes को उद्देश्य पढाइको स्तर, आर्थिक अवस्था वा शैक्षिक यात्रामा आएको अवरोधका कारण आफूले केही गर्न सक्दिनँ भन्ने महसुस गर्ने व्यक्तिलाई व्यावहारिक सीप सिकाएर काम, करियर र व्यवसायका अवसरतर्फ अघि बढ्न सहयोग गर्नु हो।\n\nतपाईंले कति कक्षा पढ्नुभयो भन्ने महत्त्वपूर्ण होइन; तपाईंले के सीप सिक्नुभयो, कति अभ्यास गर्नुभयो र आफूलाई कामका लागि कति तयार बनाउनुभयो भन्ने महत्त्वपूर्ण छ। हामी सीप सिकाउँछौं र अर्को स्तरसम्म पुग्ने योजना दिन्छौं।"
+          "heading": "{storeName} — Class 5 देखि Master सम्म",
+          "text": "StudyNotes को उद्देश्य ebook बेच्नु मात्र होइन। पढाइको स्तर, आर्थिक अवस्था वा शैक्षिक यात्रामा आएको अवरोधका कारण आफूले केही गर्न सक्दिनँ भन्ने महसुस गर्ने व्यक्तिलाई व्यावहारिक सीप सिकाएर काम, करियर र व्यवसायका अवसरतर्फ अघि बढ्न सहयोग गर्नु हो।\n\nतपाईंले कति कक्षा पढ्नुभयो भन्ने मात्र महत्त्वपूर्ण होइन; तपाईंले के सीप सिक्नुभयो, कति अभ्यास गर्नुभयो र आफूलाई कामका लागि कति तयार बनाउनुभयो भन्ने पनि महत्त्वपूर्ण छ। सबै पदमा शैक्षिक योग्यता, उमेर, अनुभव वा कानुनी प्रमाणपत्र फरक–फरक चाहिन्छ — हामी सीप सिकाउँछौं र अर्को स्तरसम्म पुग्ने योजना दिन्छौं; जागिर वा आम्दानीको ग्यारेन्टी दिँदैनौं।"
         },
         "finalcta": {
           "pill": "🏁 आजको निर्णय, भोलिको बाटो",
@@ -788,15 +1828,15 @@
             {
               "text": "Best Bundle हेर्नुहोस्",
               "action": "section:bundles",
-              "visible": false
+              "visible": true
             },
             {
-              "text": "Ebooks हेर्नुहोस्",
+              "text": "Ebooks Browse",
               "action": "section:explore",
               "visible": true
             },
             {
-              "text": "Order गर्नुहोस्",
+              "text": "WhatsApp मा Order",
               "action": "whatsapp",
               "visible": true
             }
@@ -823,7 +1863,7 @@
             {
               "id": "p3",
               "title": "Educational Disclaimer",
-              "content": "⚠️ यो Ebook शैक्षिक प्रयोजनका लागि हो। जागिर, परीक्षा सफलता वा आम्दानी/नाफाको कुनै ग्यारेन्टी छैन; नतिजा तपाईंको अभ्यास र परिस्थितिमा निर्भर हुन्छ।",
+              "content": "सामग्री अध्ययन र ज्ञान साक्षरताका लागि हो। यसले शतप्रतिशत रोजगारी, परीक्षा सफलता वा निश्चित आम्दानी/नाफाको ग्यारेन्टी गर्दैन।",
               "visible": true
             }
           ]
@@ -831,7 +1871,7 @@
         "contact": {
           "whatsapp": "9779702784684",
           "whatsappDisplay": "+977 9702784684",
-          "supportEmail": "studynotes.nasa@gmail.com",
+          "supportEmail": "mdnasibulrain4@gmail.com",
           "businessEmail": "",
           "supportText": "",
           "supportHours": "",
@@ -884,16 +1924,16 @@
             "title": "यस Ebook सँग तपाईंले पाउनुहुन्छ",
             "sub": "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।",
             "badge": "INCLUDED",
-            "mainTitle": "COMPLETE JOB READY PACKAGE 📦",
+            "mainTitle": "Ebook PDF",
             "mainDesc": "Complete Guide & Practical Lessons",
-            "mainBadge": "Job Ready देखि Business Owner सम्म",
+            "mainBadge": "INCLUDED",
             "trust": "",
             "trustBadges": [
               "Included with Ebook"
             ],
             "footer": "Your Complete Learning & Success Package 📦",
-            "offersBadge": "LIMITED OFFERS",
-            "freeLabel": "BONUS 🎁",
+            "offersBadge": "OFFERS",
+            "freeLabel": "NOW FREE 🎁",
             "originalValueLabel": "Original Value: {value}",
             "offerLabel": "",
             "limitedLabel": "Limited-Time Bonus"
@@ -905,16 +1945,16 @@
           },
           "valueLabel": "Value {value}",
           "totalLabel": "🎁 कुल Bonus Value: {value}",
-          "countdownText": "{time} सकिन बाँकी",
+          "countdownText": "Bonus Offer सकिन बाँकी: {time}",
           "limitedText": "",
           "untilText": "",
           "home": {
             "enabled": true,
             "eyebrow": "🎁 EXCLUSIVE BONUS RESOURCES",
             "title": "एउटा Ebook मात्र होइन, Complete Learning & Practice Package!",
-            "sub": "",
-            "tagline": "",
-            "mainTitle": "COMPLETE JOB READY PACKAGE 📦",
+            "sub": "Read It. Practice It. Apply It. Get Skilled.",
+            "tagline": "One Book. Multiple Resources. Real Results.",
+            "mainTitle": "MAIN EBOOK",
             "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
             "hooks": [
               "Buy Before the Offer Ends & Unlock Your Exclusive Bonuses!"
@@ -955,29 +1995,11 @@
             "name": "WhatsApp",
             "enabled": true,
             "url": ""
-          },
-          {
-            "name": "Facebook",
-            "enabled": true,
-            "url": "https://",
-            "id": "soc_mw6my5xiyxwj"
-          },
-          {
-            "name": "Instagram",
-            "enabled": true,
-            "url": "https://",
-            "id": "soc_mw6myhj583ew"
-          },
-          {
-            "name": "TikTok",
-            "enabled": true,
-            "url": "https://",
-            "id": "soc_mw6mypv5wttm"
           }
         ],
         "seo": {
-          "title": "StudyNotes — Computer Operator & Office Assistant Mastery Ebook",
-          "description": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY — ४० Chapter को नेपाली Ebook, Workbook र Templates सहित।",
+          "title": "StudyNotes — Learn. Grow. Succeed. | Class 5 देखि Master सम्म Practical Ebooks",
+          "description": "StudyNotes — Class 5 देखि Master सम्म: Office, Store, Sales, Computer, Accounts र Business Practical Ebooks। Practical Knowledge for a Better Future.",
           "keywords": "",
           "ogTitle": "",
           "ogDescription": "",
@@ -986,7 +2008,7 @@
           "siteUrl": ""
         },
         "product": {
-          "disclaimer": "हामी तपाईंलाई सिक्न आवश्यक सामग्री दिन्छौँ। हामी तपाईंलाई व्यवहारिक ज्ञान दिन्छौँ। हामी तपाईंलाई आफ्नो सीप विकास गर्न मार्गदर्शन दिन्छौँ। तपाईंले सिकेको कुरा अभ्यास गरेर आफ्नो लक्ष्यतर्फ अगाडि बढ्न सक्नुहुन्छ।"
+          "disclaimer": "⚠️ यो Ebook शैक्षिक प्रयोजनका लागि हो। जागिर, परीक्षा सफलता वा आम्दानी/नाफाको कुनै ग्यारेन्टी छैन; नतिजा तपाईंको अभ्यास र परिस्थितिमा निर्भर हुन्छ।"
         },
         "categories": [
           {
@@ -1127,9 +2149,7 @@
             "start": null,
             "end": null,
             "discountPercent": null,
-            "productIds": [
-              "SN001CS"
-            ],
+            "productIds": [],
             "bundleIds": [],
             "ctaText": "",
             "ctaAction": "section:bundles",
@@ -1159,7 +2179,7 @@
           },
           {
             "id": "combo",
-            "enabled": false
+            "enabled": true
           },
           {
             "id": "steps",
@@ -1167,7 +2187,7 @@
           },
           {
             "id": "bundles",
-            "enabled": false
+            "enabled": true
           },
           {
             "id": "reviews",
