@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T02:43:41.874Z",
+  "updatedAt": "2026-11-08T03:11:09.093Z",
   "products": [
     {
       "id": "SN001CS",
@@ -8,8 +8,8 @@
       "short": "Computer Operator & Office Assistant Mastery",
       "subtitle": "Computer Basics देखि MS Office, Office Administration, Accounting, AI Tools र Career Skills सम्म — ४० Chapter, ७ Part",
       "summary": "Computer Operator र Office Assistant काम सिक्न चाहनेहरूका लागि सरल नेपालीमा लेखिएको ४० Chapter को व्यवहारिक Ebook — अभ्यास, Quiz र Career Guidance सहित।",
-      "description": "यो Ebook पहिलो पटक computer देख्नेदेखि Computer Operator र Office Assistant को काम गर्न चाहनेसम्मका लागि बनाइएको व्यावहारिक, चरणबद्ध गाइड हो। ७ भाग र ४० अध्यायमा Computer Fundamentals, Windows, Typing, File Management, Microsoft Word / Excel / PowerPoint, Internet, Email, Google Workspace, Cybersecurity, Office Administration, Accounting, Cashier/POS, Inventory, Advanced Excel, PDF, AI Tools, Troubleshooting र Career तयारी (CV, Interview, Skill Test, Freelancing, पहिलो ९० दिन, Portfolio) समेटिएको छ।\n\nहरेक अध्यायमा: यो chapter मा के सिक्ने (८ वटा उद्देश्य) → चरणबद्ध व्याख्या र उदाहरण → Important Terms → सामान्य गलत बुझाइ → Pro Tips → Job Connection → Mini Project → Knowledge Check (MCQ, True/False, Fill in the blanks, Short Answer) → Answer Key → Quick Revision → Key Takeaways।\n\nपढ्नु मात्र पर्याप्त हुँदैन — हरेक Mini Project अभ्यास गर्नुहोस् र आफ्नो Portfolio बनाउँदै जानुहोस्। लेखक: MD. NASA · प्रकाशक: StudyNotes।\n\nयो शैक्षिक प्रकाशन हो — जागिर, आम्दानी, परीक्षा नतिजा वा नियुक्तिको ग्यारेन्टी होइन; नतिजा तपाईंको अभ्यास र परिस्थितिमा निर्भर हुन्छ।",
-      "hook": "पढ्नुहोस्, अभ्यास गर्नुहोस्, Portfolio बनाउनुहोस् — शून्यदेखि Job-Ready सम्मको पूरा बाटो एउटै Ebook मा।",
+      "description": "यो Ebook पहिलो पटक computer देख्नेदेखि Computer Operator र Office Assistant को काम गर्न चाहनेसम्मका लागि बनाइएको व्यावहारिक, चरणबद्ध गाइड हो। ७ भाग र ४० अध्यायमा Computer Fundamentals, Windows, Typing, File Management, Microsoft Word / Excel / PowerPoint, Internet, Email, Google Workspace, Cybersecurity, Office Administration, Accounting, Cashier/POS, Inventory, Advanced Excel, PDF, AI Tools, Troubleshooting र Career तयारी (CV, Interview, Skill Test, Freelancing, पहिलो ९० दिन, Portfolio) समेटिएको छ।\n\nहरेक अध्यायमा: यो chapter मा के सिक्ने (८ वटा उद्देश्य) → चरणबद्ध व्याख्या र उदाहरण → Important Terms → सामान्य गलत बुझाइ → Pro Tips → Job Connection → Mini Project → Knowledge Check (MCQ, True/False, Fill in the blanks, Short Answer) → Answer Key → Quick Revision → Key Takeaways।",
+      "hook": "पढ्नुहोस्, अभ्यास गर्नुहोस्, Portfolio बनाउनुहोस् — शून्यदेखि Job-Ready सम्म — Job Ready देखि Business Owner सम्मको पूरै यात्रा एउटै Ebook मा।",
       "category": "Computer Skills",
       "tags": [
         "Computer Skills",
@@ -18,14 +18,14 @@
         "Computer Operator",
         "Nepali"
       ],
-      "cover": "assets/covers/SN001CS-vqgmo.jpg",
+      "cover": "assets/covers/SN001CS-6f91v.jpg",
       "coverAlt": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY — Ebook Cover",
       "badge": "CAREER SPECIAL",
       "status": "published",
       "availability": "available",
       "featured": true,
       "isNew": true,
-      "order": 10,
+      "order": 1,
       "pages": 392,
       "chapters": 40,
       "format": "Mobile/Desktop",
@@ -303,10 +303,9 @@
             "description": "CV Checklist, नमुना CV, Cover Letter/Email, १० सामान्य प्रश्न, STAR, Skill Test र Tracker (१४ पृष्ठ)"
           }
         ],
-        "end": "2026-11-15T08:24+05:45",
-        "hook": "Computer Operator & Office Assistant Mastery"
+        "end": "2026-11-15T08:24+05:45"
       },
-      "updatedAt": "2026-11-08T02:43:29.819Z",
+      "updatedAt": "2026-11-08T03:02:55.655Z",
       "isFeatured": true
     },
     {
@@ -317,7 +316,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T02:43:41.874Z",
+      "updatedAt": "2026-11-08T03:11:09.093Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -796,13 +795,13 @@
             "badge": "INCLUDED",
             "mainTitle": "Ebook PDF",
             "mainDesc": "Complete Guide & Practical Lessons",
-            "mainBadge": "INCLUDED",
+            "mainBadge": "INCLUDE",
             "trust": "",
             "trustBadges": [
               "Included with Ebook"
             ],
             "footer": "Your Complete Learning & Success Package 📦",
-            "offersBadge": "OFFERS",
+            "offersBadge": "LIMITED OFFERS",
             "freeLabel": "NOW FREE 🎁",
             "originalValueLabel": "Original Value: {value}",
             "offerLabel": "",
@@ -822,8 +821,8 @@
             "enabled": true,
             "eyebrow": "🎁 EXCLUSIVE BONUS RESOURCES",
             "title": "एउटा Ebook मात्र होइन, Complete Learning & Practice Package!",
-            "sub": "Read It. Practice It. Apply It. Get Skilled.",
-            "tagline": "One Book. Multiple Resources. Real Results.",
+            "sub": "",
+            "tagline": "",
             "mainTitle": "MAIN EBOOK",
             "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
             "hooks": [
