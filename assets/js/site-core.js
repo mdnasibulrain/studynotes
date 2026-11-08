@@ -417,10 +417,6 @@ SN.LABEL_META = [
   ["ppCareer","Product page","Career Relevance शीर्षक","Career Relevance"],
   ["ppInside","Product page","Chapters शीर्षक","Inside the Ebook"],
   ["ppChaptersNote","Product page","Chapters टिप्पणी ({n})","कुल {n} अध्यायमध्ये मुख्य अध्यायहरू देखाइएको।"],
-  ["ppSeeAll","Product page","See all Chapters बटन ({n})","सबै {n} Chapters हेर्नुहोस्"],
-  ["ppAllTitle","Product page","Chapters Popup शीर्षक","सबै Chapters"],
-  ["ppAllSub","Product page","Chapters Popup उपशीर्षक","हरेक Chapter मा के सिक्न पाइन्छ — एकै ठाउँमा।"],
-  ["ppInfoFooter","Product page","Chapters Footer जानकारी ({chapters},{parts},{pages})","📘 {chapters} Chapters · {parts} Parts · {pages} पृष्ठ — सुरुदेखि अन्त्यसम्म क्रमबद्ध सिकाइ"],
   ["ppPreviewTitle","Product page","Preview card शीर्षक","Preview PDF"],
   ["ppPreviewText","Product page","Preview card वर्णन","किन्नुअघि नमुना अध्याय हेर्नुहोस् र निर्धक्क निर्णय लिनुहोस्।"],
   ["ppPreviewBtn","Product page","Preview button","Preview PDF हेर्नुहोस्"],
@@ -476,7 +472,7 @@ SN.normalizeProduct = (p) => {
   for (const k of ["title", "short", "subtitle", "summary", "description", "hook", "category", "language", "coverAlt", "badge", "format", "offerLabel", "offerDescription", "urgencyLabel", "countdownText", "previewPdf", "cover"]) o[k] = str(o[k]);
   for (const k of ["tags", "forWho", "learningOutcomes", "careerRelevance", "benefits", "includes"]) o[k] = arr(o[k]).map(x => str(x)).filter(Boolean);
   if (!o.learningOutcomes.length && o.benefits.length) o.learningOutcomes = o.benefits.slice();
-  o.chapterOutline = arr(o.chapterOutline).map((c, i) => ({ number: i + 1, title: str(c && c.title), description: str(c && c.description), part: str(c && c.part) })).filter(c => c.title);
+  o.chapterOutline = arr(o.chapterOutline).map((c, i) => ({ number: i + 1, title: str(c && c.title), description: str(c && c.description) })).filter(c => c.title);
   for (const k of ["regularPrice", "offerPrice", "rating", "reviewCount", "soldCopies", "copiesLeft", "pages", "chapters", "order"]) o[k] = num(o[k]);
   o.status = ["published", "draft", "hidden", "archived", "config"].includes(o.status) ? o.status : "draft";
   o.availability = ["available", "unavailable", "sold_out"].includes(o.availability) ? o.availability : "available";
