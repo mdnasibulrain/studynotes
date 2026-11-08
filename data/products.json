@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T04:13:55.425Z",
+  "updatedAt": "2026-11-08T06:02:35.646Z",
   "products": [
     {
       "id": "SN001CS",
@@ -60,242 +60,202 @@
         {
           "number": 1,
           "title": "Computer भनेको के हो?",
-          "description": "कम्प्युटरको सबैभन्दा सजिलो, व्यावहारिक र नेपालीमा गरिने सुरुवात — पहिलो पटक computer देख्नेहरूका लागि",
-          "part": "PART 1 — Computer Fundamentals"
+          "description": "कम्प्युटरको सबैभन्दा सजिलो, व्यावहारिक र नेपालीमा गरिने सुरुवात — पहिलो पटक computer देख्नेहरूका लागि"
         },
         {
           "number": 2,
           "title": "Computer का भागहरू (Hardware)",
-          "description": "CPU, RAM, SSD, monitor, keyboard, mouse, printer र UPS — हरेक भागको काम र सामान्य समस्याको समाधान",
-          "part": "PART 1 — Computer Fundamentals"
+          "description": "CPU, RAM, SSD, monitor, keyboard, mouse, printer र UPS — हरेक भागको काम र सामान्य समस्याको समाधान"
         },
         {
           "number": 3,
-          "title": "Software र Operating System (Windows)",
-          "description": "Windows को Desktop, Start menu, Taskbar, Settings र File Explorer — computer लाई आत्मविश्वासका साथ चलाउन सिक्ने chapter",
-          "part": "PART 1 — Computer Fundamentals"
+          "title": "Software र Operating System",
+          "description": "Windows को Desktop, Start menu, Taskbar, Settings र File Explorer — computer लाई आत्मविश्वासका साथ चलाउन सिक्ने chapter"
         },
         {
           "number": 4,
           "title": "Keyboard, Mouse र Typing Mastery",
-          "description": "सही तरिकाले keyboard चलाउने, shortcut सिक्ने, Nepali र English typing अभ्यास गर्ने र speed/accuracy नाप्ने सीप",
-          "part": "PART 1 — Computer Fundamentals"
+          "description": "सही तरिकाले keyboard चलाउने, shortcut सिक्ने, Nepali र English typing अभ्यास गर्ने र speed/accuracy नाप्ने सीप"
         },
         {
           "number": 5,
           "title": "File र Folder Management",
-          "description": "फाइल बनाउने, नाम राख्ने, copy/move गर्ने, मेटेको फिर्ता ल्याउने, compress र backup गर्ने — अफिसको सबैभन्दा उपयोगी सीप",
-          "part": "PART 1 — Computer Fundamentals"
+          "description": "फाइल बनाउने, नाम राख्ने, copy/move गर्ने, मेटेको फिर्ता ल्याउने, compress र backup गर्ने — अफिसको सबैभन्दा उपयोगी सीप"
         },
         {
           "number": 6,
-          "title": "Microsoft Word — Professional Training",
-          "description": "पत्र, आवेदन, resume, report र official document तयार गर्ने — Word को सुरुदेखि उन्नतसम्म",
-          "part": "PART 2 — Microsoft Office Mastery"
+          "title": "Microsoft Word",
+          "description": "पत्र, आवेदन, resume, report र official document तयार गर्ने — Word को सुरुदेखि उन्नतसम्म"
         },
         {
           "number": 7,
-          "title": "Microsoft Excel — Beginner to Advanced",
-          "description": "Cell, formula, function, sorting, chart र PivotTable — हाजिरी, stock, बिक्री र खर्च रिपोर्ट बनाउने सीप",
-          "part": "PART 2 — Microsoft Office Mastery"
+          "title": "Microsoft Excel",
+          "description": "Cell, formula, function, sorting, chart र PivotTable — हाजिरी, stock, बिक्री र खर्च रिपोर्ट बनाउने सीप"
         },
         {
           "number": 8,
           "title": "Microsoft PowerPoint",
-          "description": "प्रभावकारी presentation डिजाइन गर्ने, slide master प्रयोग गर्ने र आत्मविश्वासका साथ प्रस्तुत गर्ने",
-          "part": "PART 2 — Microsoft Office Mastery"
+          "description": "प्रभावकारी presentation डिजाइन गर्ने, slide master प्रयोग गर्ने र आत्मविश्वासका साथ प्रस्तुत गर्ने"
         },
         {
           "number": 9,
           "title": "Microsoft Office Integration",
-          "description": "Word, Excel र PowerPoint लाई जोडेर काम गर्ने — Mail Merge, chart paste, PDF र document sharing",
-          "part": "PART 2 — Microsoft Office Mastery"
+          "description": "Word, Excel र PowerPoint लाई जोडेर काम गर्ने — Mail Merge, chart paste, PDF र document sharing"
         },
         {
           "number": 10,
           "title": "Internet Fundamentals",
-          "description": "Internet, Browser, Search, Website, Download/Upload, Cloud र Online Safety — सुरक्षित र प्रभावकारी इन्टरनेट प्रयोग",
-          "part": "PART 3 — Internet and Digital Office Skills"
+          "description": "Internet, Browser, Search, Website, Download/Upload, Cloud र Online Safety — सुरक्षित र प्रभावकारी इन्टरनेट प्रयोग"
         },
         {
           "number": 11,
           "title": "Professional Email Management",
-          "description": "Gmail चलाउने, professional email लेख्ने, attachment, CC/BCC, job application र follow-up email पठाउने सीप",
-          "part": "PART 3 — Internet and Digital Office Skills"
+          "description": "Gmail चलाउने, professional email लेख्ने, attachment, CC/BCC, job application र follow-up email पठाउने सीप"
         },
         {
           "number": 12,
           "title": "Google Workspace",
-          "description": "Google Drive, Docs, Sheets, Slides, Forms र Meet — मिलेर काम गर्ने निःशुल्क र व्यावहारिक औजार",
-          "part": "PART 3 — Internet and Digital Office Skills"
+          "description": "Google Drive, Docs, Sheets, Slides, Forms र Meet — मिलेर काम गर्ने निःशुल्क र व्यावहारिक औजार"
         },
         {
           "number": 13,
           "title": "Online Meetings र Communication",
-          "description": "Zoom, Google Meet र Teams जस्ता औजारबाट मिटिङ चलाउने, सहभागी हुने र पेशागत सञ्चार गर्ने तरिका",
-          "part": "PART 3 — Internet and Digital Office Skills"
+          "description": "Zoom, Google Meet र Teams जस्ता औजारबाट मिटिङ चलाउने, सहभागी हुने र पेशागत सञ्चार गर्ने तरिका"
         },
         {
           "number": 14,
           "title": "Cybersecurity र Digital Safety",
-          "description": "Password, 2-step verification, phishing, malware, ठगी, safe download, data privacy र backup — आफ्नो र कार्यालयको डाटा जोगाउने तरिका",
-          "part": "PART 3 — Internet and Digital Office Skills"
+          "description": "Password, 2-step verification, phishing, malware, ठगी, safe download, data privacy र backup — आफ्नो र कार्यालयको डाटा जोगाउने तरिका"
         },
         {
           "number": 15,
           "title": "Office Administration Fundamentals",
-          "description": "कार्यालयको संरचना, दैनिक काम, कागजात र रेकर्ड व्यवस्थापन — एक भरपर्दो office assistant को आधार",
-          "part": "PART 4 — Office Administration"
+          "description": "कार्यालयको संरचना, दैनिक काम, कागजात र रेकर्ड व्यवस्थापन — एक भरपर्दो office assistant को आधार"
         },
         {
           "number": 16,
           "title": "Professional Communication",
-          "description": "बोलचाल, लेखन, टेलिफोन शिष्टाचार, ग्राहक व्यवहार र कार्यस्थलको आचरण — व्यावसायिक छवि बनाउने सीप",
-          "part": "PART 4 — Office Administration"
+          "description": "बोलचाल, लेखन, टेलिफोन शिष्टाचार, ग्राहक व्यवहार र कार्यस्थलको आचरण — व्यावसायिक छवि बनाउने सीप"
         },
         {
           "number": 17,
           "title": "Letter र Document Writing",
-          "description": "आधिकारिक पत्र, दरखास्त, सूचना, memo, circular, meeting minutes र report — सही ढाँचामा लेख्ने सीप",
-          "part": "PART 4 — Office Administration"
+          "description": "आधिकारिक पत्र, दरखास्त, सूचना, memo, circular, meeting minutes र report — सही ढाँचामा लेख्ने सीप"
         },
         {
           "number": 18,
           "title": "Filing र Documentation Systems",
-          "description": "Physical र digital filing, indexing, रजिस्टर, record retention र document security",
-          "part": "PART 4 — Office Administration"
+          "description": "Physical र digital filing, indexing, रजिस्टर, record retention र document security"
         },
         {
           "number": 19,
           "title": "Reception र Front Desk Management",
-          "description": "आगन्तुक स्वागत, फोन, appointment, ग्राहक सहयोग र front desk रेकर्ड — कार्यालयको पहिलो छाप बनाउने सीप",
-          "part": "PART 4 — Office Administration"
+          "description": "आगन्तुक स्वागत, फोन, appointment, ग्राहक सहयोग र front desk रेकर्ड — कार्यालयको पहिलो छाप बनाउने सीप"
         },
         {
           "number": 20,
           "title": "Time र Task Management",
-          "description": "दैनिक योजना, प्राथमिकता, task tracking, meeting schedule र workplace productivity",
-          "part": "PART 4 — Office Administration"
+          "description": "दैनिक योजना, प्राथमिकता, task tracking, meeting schedule र workplace productivity"
         },
         {
           "number": 21,
           "title": "Basic Accounting for Office Assistants",
-          "description": "Assets, liabilities, income, expenses, debit-credit, journal, ledger, trial balance र cashbook — हिसाबको आधारभूत भाषा",
-          "part": "PART 5 — Accounting, Cashier and Inventory Skills"
+          "description": "Assets, liabilities, income, expenses, debit-credit, journal, ledger, trial balance र cashbook — हिसाबको आधारभूत भाषा"
         },
         {
           "number": 22,
           "title": "Cashier र POS Operations",
-          "description": "नगद सम्हाल्ने, bill बनाउने, discount/refund गर्ने, दैनिक नगद मिलान र ग्राहक सेवा — भरपर्दो cashier को सीप",
-          "part": "PART 5 — Accounting, Cashier and Inventory Skills"
+          "description": "नगद सम्हाल्ने, bill बनाउने, discount/refund गर्ने, दैनिक नगद मिलान र ग्राहक सेवा — भरपर्दो cashier को सीप"
         },
         {
           "number": 23,
           "title": "Storekeeping र Inventory Management",
-          "description": "Stock register, goods receiving/issuing, FIFO, weighted average, reorder level, physical verification र Excel inventory",
-          "part": "PART 5 — Accounting, Cashier and Inventory Skills"
+          "description": "Stock register, goods receiving/issuing, FIFO, weighted average, reorder level, physical verification र Excel inventory"
         },
         {
           "number": 24,
           "title": "Procurement र Purchase Documentation",
-          "description": "Purchase requisition, purchase order, supplier record, delivery note, GRN, invoice र payment record",
-          "part": "PART 5 — Accounting, Cashier and Inventory Skills"
+          "description": "Purchase requisition, purchase order, supplier record, delivery note, GRN, invoice र payment record"
         },
         {
           "number": 25,
           "title": "Practical Office Accounting र Reporting",
-          "description": "दैनिक कारोबार, खर्च ट्र्याकिङ, petty cash, तलब गणना र Excel रिपोर्ट — शैक्षिक उदाहरणसहित",
-          "part": "PART 5 — Accounting, Cashier and Inventory Skills"
+          "description": "दैनिक कारोबार, खर्च ट्र्याकिङ, petty cash, तलब गणना र Excel रिपोर्ट — शैक्षिक उदाहरणसहित"
         },
         {
           "number": 26,
           "title": "Advanced Excel for Office Professionals",
-          "description": "SUMIFS, COUNTIFS, IFERROR, lookup, data cleaning, PivotTable, dashboard र error checking",
-          "part": "PART 6 — Advanced Digital Productivity"
+          "description": "SUMIFS, COUNTIFS, IFERROR, lookup, data cleaning, PivotTable, dashboard र error checking"
         },
         {
           "number": 27,
           "title": "PDF र Document Productivity",
-          "description": "PDF बनाउने, रूपान्तरण, merge, split, compress, digital signature र document security",
-          "part": "PART 6 — Advanced Digital Productivity"
+          "description": "PDF बनाउने, रूपान्तरण, merge, split, compress, digital signature र document security"
         },
         {
           "number": 28,
           "title": "AI Tools for Office Productivity",
-          "description": "AI को आधारभूत, जिम्मेवार प्रयोग, prompt लेखन, drafting, summarization र नतिजा जाँच्ने तरिका",
-          "part": "PART 6 — Advanced Digital Productivity"
+          "description": "AI को आधारभूत, जिम्मेवार प्रयोग, prompt लेखन, drafting, summarization र नतिजा जाँच्ने तरिका"
         },
         {
           "number": 29,
           "title": "Digital Workflow र Automation",
-          "description": "दोहोरिने काम सजिलो बनाउने: template, shortcut, filter, sync, collaboration र digital recordkeeping",
-          "part": "PART 6 — Advanced Digital Productivity"
+          "description": "दोहोरिने काम सजिलो बनाउने: template, shortcut, filter, sync, collaboration र digital recordkeeping"
         },
         {
           "number": 30,
           "title": "Troubleshooting र Technical Support",
-          "description": "Computer, printer, network र software समस्या व्यवस्थित तरिकाले हल गर्ने र फाइल recovery",
-          "part": "PART 6 — Advanced Digital Productivity"
+          "description": "Computer, printer, network र software समस्या व्यवस्थित तरिकाले हल गर्ने र फाइल recovery"
         },
         {
           "number": 31,
           "title": "Career Roadmap र Job Roles",
-          "description": "Computer Operator र Office Assistant क्षेत्रका सम्भावित भूमिका, आवश्यक सीप र आफ्नो बाटो छान्ने तरिका",
-          "part": "PART 7 — Career and Job Readiness"
+          "description": "Computer Operator र Office Assistant क्षेत्रका सम्भावित भूमिका, आवश्यक सीप र आफ्नो बाटो छान्ने तरिका"
         },
         {
           "number": 32,
           "title": "Workplace Ethics र Professional Behavior",
-          "description": "इमानदारी, गोपनीयता, समयपालन, पोशाक, व्यवहार र जिम्मेवारी — विश्वास जित्ने आधार",
-          "part": "PART 7 — Career and Job Readiness"
+          "description": "इमानदारी, गोपनीयता, समयपालन, पोशाक, व्यवहार र जिम्मेवारी — विश्वास जित्ने आधार"
         },
         {
           "number": 33,
           "title": "CV र Cover Letter बनाउने तरिका",
-          "description": "स्पष्ट, सत्य र व्यवस्थित CV, आवेदन पत्र र सम्पर्क विवरण तयार गर्ने तरिका",
-          "part": "PART 7 — Career and Job Readiness"
+          "description": "स्पष्ट, सत्य र व्यवस्थित CV, आवेदन पत्र र सम्पर्क विवरण तयार गर्ने तरिका"
         },
         {
           "number": 34,
           "title": "Job Search र Application Process",
-          "description": "विज्ञापन पढ्ने, अवसर खोज्ने, आवेदन दिने र ठगीबाट बच्ने तरिका",
-          "part": "PART 7 — Career and Job Readiness"
+          "description": "विज्ञापन पढ्ने, अवसर खोज्ने, आवेदन दिने र ठगीबाट बच्ने तरिका"
         },
         {
           "number": 35,
           "title": "Interview Preparation",
-          "description": "अन्तर्वार्ताको तयारी, सामान्य प्रश्न, उत्तर दिने ढाँचा, व्यवहार र follow-up",
-          "part": "PART 7 — Career and Job Readiness"
+          "description": "अन्तर्वार्ताको तयारी, सामान्य प्रश्न, उत्तर दिने ढाँचा, व्यवहार र follow-up"
         },
         {
           "number": 36,
           "title": "Skill Test र Practical Exam तयारी",
-          "description": "Typing, Word, Excel र कार्यालय कार्य परीक्षाको तयारी र समय व्यवस्थापन",
-          "part": "PART 7 — Career and Job Readiness"
+          "description": "Typing, Word, Excel र कार्यालय कार्य परीक्षाको तयारी र समय व्यवस्थापन"
         },
         {
           "number": 37,
           "title": "Freelancing र Remote Work",
-          "description": "घरबाट डाटा इन्ट्री, documentation र सेवा दिने सम्भावना, सुरक्षा, सम्झौता र ठगीबाट सावधानी",
-          "part": "PART 7 — Career and Job Readiness"
+          "description": "घरबाट डाटा इन्ट्री, documentation र सेवा दिने सम्भावना, सुरक्षा, सम्झौता र ठगीबाट सावधानी"
         },
         {
           "number": 38,
           "title": "नयाँ काममा पहिलो ९० दिन",
-          "description": "नयाँ कार्यालयमा सिक्ने, सहकर्मीसँग मिल्ने, प्रतिक्रिया लिने र विश्वास बनाउने तरिका",
-          "part": "PART 7 — Career and Job Readiness"
+          "description": "नयाँ कार्यालयमा सिक्ने, सहकर्मीसँग मिल्ने, प्रतिक्रिया लिने र विश्वास बनाउने तरिका"
         },
         {
           "number": 39,
           "title": "Capstone Projects र Portfolio",
-          "description": "सिकेका सीप जोडेर अन्तिम व्यावहारिक प्रोजेक्ट बनाउने र आफ्नो कामको portfolio तयार गर्ने",
-          "part": "PART 7 — Career and Job Readiness"
+          "description": "सिकेका सीप जोडेर अन्तिम व्यावहारिक प्रोजेक्ट बनाउने र आफ्नो कामको portfolio तयार गर्ने"
         },
         {
           "number": 40,
           "title": "निरन्तर सिकाइ र Career Growth",
-          "description": "सीप अद्यावधिक राख्ने, नयाँ प्रविधि सिक्ने, नेटवर्क बनाउने र आगामी बाटो तय गर्ने",
-          "part": "PART 7 — Career and Job Readiness"
+          "description": "सीप अद्यावधिक राख्ने, नयाँ प्रविधि सिक्ने, नेटवर्क बनाउने र आगामी बाटो तय गर्ने"
         }
       ],
       "regularPrice": 962,
@@ -402,7 +362,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T04:13:55.425Z",
+      "updatedAt": "2026-11-08T06:02:35.646Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -624,7 +584,19 @@
           "sampleNote": "ℹ️ देखाइएका समीक्षा नमुना (Sample) हुन् — वास्तविक ग्राहक feedback थपेपछि “Verified” देखिन्छ।",
           "productSampleNote": "ℹ️ नमुना (Sample) समीक्षा — वास्तविक ग्राहक feedback थपेपछि “Verified” देखिन्छ।",
           "sampleBadge": "Sample",
-          "items": []
+          "items": [
+            {
+              "name": "Suman Thapa",
+              "place": "Janakpur",
+              "rating": 5,
+              "productId": "SN001CS",
+              "date": "2083/07/22",
+              "text": "Complete Computer Operator & Office Assistant Mastery Ebook worth it.",
+              "verified": true,
+              "visible": true,
+              "id": "rev_mw7f6hcy09a2"
+            }
+          ]
         },
         "steps": {
           "eyebrow": "EBOOK RECEIVING PROCESS",
@@ -683,7 +655,40 @@
           "status": "online",
           "inputText": "WhatsApp मा Message गर्नुहोस्...",
           "sampleNote": "ℹ️ नमुना (Sample) कुराकानी — वास्तविक ग्राहक सन्देश (अनुमति सहित) थपेर यो खण्ड अपडेट गर्नुहोस्।",
-          "items": []
+          "items": [
+            {
+              "from": "in",
+              "name": "Suman Thapa",
+              "time": "10:21",
+              "text": "Maile payment gri ske ebook pathaeedinu hjr.",
+              "visible": true,
+              "id": "cha_mw7f8i4o75tx"
+            },
+            {
+              "from": "out",
+              "name": "StudyNotes",
+              "time": "10:23",
+              "text": "Payment Verified vyo, Lw yo ho hjr ko Ebook and Bonus.",
+              "visible": true,
+              "id": "cha_mw7f9y02byrs"
+            },
+            {
+              "from": "in",
+              "name": "Suman Thapa",
+              "time": "10:25",
+              "text": "Thank You So Much.",
+              "visible": true,
+              "id": "cha_mw7fbrsvfsnn"
+            },
+            {
+              "from": "out",
+              "name": "StudyNotes",
+              "time": "10:26",
+              "text": "Welcome 🤗, It's my pleasure.",
+              "visible": true,
+              "id": "cha_mw7fczd08smy"
+            }
+          ]
         },
         "faq": {
           "eyebrow": "FAQ",
