@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T20:09:05.597Z",
+  "updatedAt": "2026-11-08T20:26:39.833Z",
   "products": [
     {
       "id": "SN001CS",
@@ -366,7 +366,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T20:09:05.597Z",
+      "updatedAt": "2026-11-08T20:26:39.833Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1445,7 +1445,7 @@
           "ppCareer": "Career Relevance",
           "ppInside": "Inside the Ebook",
           "ppChaptersNote": "कुल {n} अध्यायमध्ये मुख्य अध्यायहरू देखाइएको।",
-          "ppSeeAll": "सबै {n} Chapters हेर्नुहोस्",
+          "ppSeeAll": "सबै Chapters हेर्नुहोस्",
           "ppModalTitle": "Inside the Ebook — सबै {n} Chapters",
           "ppModalHook": "{n} Chapters मा के-के सिक्नुहुन्छ — पूरा सूची तल हेर्नुहोस्।",
           "ppModalCta": "🛒 Add to Cart — {price}",
