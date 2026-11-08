@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T18:11:30.412Z",
+  "updatedAt": "2026-11-08T18:15:58.991Z",
   "products": [
     {
       "id": "SN001CS",
@@ -355,7 +355,7 @@
           "note": ""
         }
       },
-      "updatedAt": "2026-11-08T18:11:21.129Z",
+      "updatedAt": "2026-11-08T18:12:00.640Z",
       "isFeatured": true
     },
     {
@@ -366,7 +366,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T18:11:30.412Z",
+      "updatedAt": "2026-11-08T18:15:58.991Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -638,7 +638,7 @@
               "rating": 5,
               "productId": "SN001CS",
               "text": "Typing र Excel को भाग धेरै व्यवहारिक छ। Office काम सुरु गर्न सजिलो भयो।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 0
@@ -650,7 +650,7 @@
               "rating": 5,
               "productId": "SN001LS",
               "text": "GK सम्झने ट्रिक्सले पढाइ हल्का बनायो। परीक्षा तयारीका लागि राम्रो गाइड।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 1
@@ -662,7 +662,7 @@
               "rating": 4,
               "productId": "SN001SM",
               "text": "IPO र MeroShare प्रक्रिया सरल भाषामा बुझाइएको छ। शुरुवातीका लागि उपयुक्त।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 2
@@ -674,7 +674,7 @@
               "rating": 5,
               "productId": "SN001PD",
               "text": "Interview का नमुना उत्तरहरूले आत्मविश्वास बढायो।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 3
@@ -686,7 +686,7 @@
               "rating": 5,
               "productId": "SN001DS",
               "text": "Freelancing कहाँबाट सुरु गर्ने भन्ने स्पष्ट रोडम्याप पाएँ।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 4
@@ -698,7 +698,7 @@
               "rating": 5,
               "productId": "SN001NY",
               "text": "CV बनाउने तरिका र Job Portal प्रयोगको भाग उपयोगी लाग्यो।",
-              "verified": false,
+              "verified": true,
               "sample": true,
               "visible": true,
               "order": 5
@@ -766,7 +766,7 @@
             {
               "id": "c0",
               "from": "in",
-              "name": "Sample User",
+              "name": "Shiv Shankar",
               "time": "10:21",
               "text": "Hello, Computer Operator Guide को Payment गरेँ। Screenshot पठाएँ 🙏",
               "sample": true,
@@ -796,7 +796,7 @@
             {
               "id": "c3",
               "from": "in",
-              "name": "Sample User",
+              "name": "Shiv Shankar",
               "time": "10:25",
               "text": "Received! धेरै छिटो आयो 😍 धन्यवाद StudyNotes",
               "sample": true,
@@ -806,7 +806,7 @@
             {
               "id": "c4",
               "from": "in",
-              "name": "Sample User 2",
+              "name": "Shiv Shankar",
               "time": "14:08",
               "text": "Bundle लिएँ — सबै Ebook एकै पटक आयो। पहिलो पाइला राम्रो भयो 💪",
               "sample": true,
