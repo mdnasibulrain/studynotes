@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T03:43:15.757Z",
+  "updatedAt": "2026-11-08T04:13:55.425Z",
   "products": [
     {
       "id": "SN001CS",
@@ -315,7 +315,43 @@
         ],
         "end": "2026-11-15T08:24+05:45"
       },
-      "updatedAt": "2026-11-08T03:27:50.551Z",
+      "preview": {
+        "enabled": true,
+        "title": "",
+        "tocCount": 10,
+        "slides": {
+          "cover": {
+            "visible": true,
+            "hook": "",
+            "cta": ""
+          },
+          "toc": {
+            "visible": true,
+            "hook": "",
+            "cta": ""
+          },
+          "sample": {
+            "visible": false,
+            "hook": "",
+            "cta": ""
+          },
+          "locked": {
+            "visible": true,
+            "hook": "",
+            "cta": ""
+          }
+        },
+        "sample": {
+          "title": "",
+          "text": "",
+          "points": []
+        },
+        "locked": {
+          "title": "",
+          "note": ""
+        }
+      },
+      "updatedAt": "2026-11-08T04:13:18.792Z",
       "isFeatured": true
     },
     {
@@ -326,7 +362,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T03:43:15.757Z",
+      "updatedAt": "2026-11-08T04:13:55.425Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -616,17 +652,17 @@
           "items": [
             {
               "id": "f1",
-              "q": "Ebook भनेको के हो र यो कसरी प्राप्त हुन्छ?",
-              "a": "Ebook (Electronic Book) डिजिटल पुस्तक हो जसलाई तपाईं आफ्नो मोबाइल, ट्याब्लेट वा कम्प्युटरमा सजिलै पढ्न सक्नुहुन्छ। Payment पुष्टि भएपछि PDF फाइल तपाईंको WhatsApp वा Email मा {deliveryNe}भित्र पठाइन्छ।",
+              "q": "यो Ebook के हो र कसका लागि हो?",
+              "a": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY (लेखक: MD. NASA) ७ भाग, ४० अध्याय र ३९१ पृष्ठको नेपाली Ebook हो। पहिलो पटक computer सिक्नेदेखि Computer Operator, Data Entry वा Office Assistant को काम गर्न चाहनेसम्म सबैका लागि चरणबद्ध गाइड।",
               "visible": true,
-              "onProduct": false
+              "onProduct": true
             },
             {
               "id": "f2",
-              "q": "कुन-कुन विषयका Ebook उपलब्ध छन्?",
-              "a": "हाल यी विधाका Ebook उपलब्ध छन्: {categories}।",
+              "q": "अभ्यासका लागि के-के सामग्री छ?",
+              "a": "हरेक अध्यायमा १ वटा Mini Project (जम्मा ४०) र Knowledge Check — MCQ, True/False, Fill in the blanks र Short Answer (जम्मा ६८० प्रश्न) Answer Key सहित छ। साथै हरेक अध्यायमा Quick Revision र Key Takeaways, र अन्त्यमा Shortcut Quick Reference र २८७ शब्दको Glossary छ।",
               "visible": true,
-              "onProduct": false
+              "onProduct": true
             },
             {
               "id": "f3",
@@ -695,7 +731,7 @@
         },
         "about": {
           "eyebrow": "ABOUT {storeNameUpper}",
-          "heading": "{storeName} — Class 5 देखि Master सम्म",
+          "heading": "{storeName} — शून्यदेखि Job-Ready सम्म — Job Ready देखि Business Owner सम्म",
           "text": "StudyNotes को उद्देश्य पढाइको स्तर, आर्थिक अवस्था वा शैक्षिक यात्रामा आएको अवरोधका कारण आफूले केही गर्न सक्दिनँ भन्ने महसुस गर्ने व्यक्तिलाई व्यावहारिक सीप सिकाएर काम, करियर र व्यवसायका अवसरतर्फ अघि बढ्न सहयोग गर्नु हो।\n\nतपाईंले कति कक्षा पढ्नुभयो भन्ने महत्त्वपूर्ण होइन; तपाईंले के सीप सिक्नुभयो, कति अभ्यास गर्नुभयो र आफूलाई कामका लागि कति तयार बनाउनुभयो भन्ने महत्त्वपूर्ण छ। हामी सीप सिकाउँछौं र अर्को स्तरसम्म पुग्ने योजना दिन्छौं।"
         },
         "finalcta": {
@@ -707,15 +743,15 @@
             {
               "text": "Best Bundle हेर्नुहोस्",
               "action": "section:bundles",
-              "visible": true
+              "visible": false
             },
             {
-              "text": "Ebooks Browse",
+              "text": "Ebooks हेर्नुहोस्",
               "action": "section:explore",
               "visible": true
             },
             {
-              "text": "WhatsApp मा Order",
+              "text": "Order गर्नुहोस्",
               "action": "whatsapp",
               "visible": true
             }
@@ -805,7 +841,7 @@
             "badge": "INCLUDED",
             "mainTitle": "COMPLETE JOB READY PACKAGE 📦",
             "mainDesc": "Complete Guide & Practical Lessons",
-            "mainBadge": "Zero देखि Job Ready सम्म — Job Ready देखि Business Owner सम्म",
+            "mainBadge": "Job Ready देखि Business Owner सम्म",
             "trust": "",
             "trustBadges": [
               "Included with Ebook"
@@ -1046,7 +1082,9 @@
             "start": null,
             "end": null,
             "discountPercent": null,
-            "productIds": [],
+            "productIds": [
+              "SN001CS"
+            ],
             "bundleIds": [],
             "ctaText": "",
             "ctaAction": "section:bundles",
@@ -1088,7 +1126,7 @@
           },
           {
             "id": "reviews",
-            "enabled": false
+            "enabled": true
           },
           {
             "id": "bonus",
@@ -1096,7 +1134,7 @@
           },
           {
             "id": "chat",
-            "enabled": false
+            "enabled": true
           },
           {
             "id": "faq",
