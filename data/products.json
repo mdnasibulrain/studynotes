@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T03:22:45.961Z",
+  "updatedAt": "2026-11-08T03:32:46.751Z",
   "products": [
     {
       "id": "SN001CS",
@@ -18,7 +18,7 @@
         "Computer Operator",
         "Nepali"
       ],
-      "cover": "assets/covers/SN001CS-6f91v.jpg",
+      "cover": "assets/covers/SN001CS-rkggn.jpg",
       "coverAlt": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY — Ebook Cover",
       "badge": "CAREER SPECIAL",
       "status": "published",
@@ -277,7 +277,6 @@
             "type": "workbook",
             "title": "Practice Workbook PDF",
             "description": "१३२ पृष्ठ — ४० Chapter × ३ अभ्यास पृष्ठ, ४० प्रश्नको Final Review Test, Answer Key र Progress Tracker",
-            "tag": "BONUS 1",
             "badge": "FREE GIFT",
             "value": 178
           },
@@ -286,7 +285,6 @@
             "type": "templates",
             "title": "Office Templates PDF",
             "description": "५५ पृष्ठ — ५० वटा तयार Office Templates (नमुना, शैक्षिक प्रयोगका लागि)",
-            "tag": "BONUS 2",
             "badge": "FREE GIFT",
             "value": 156
           },
@@ -295,32 +293,29 @@
             "type": "action",
             "title": "Action Plan & Roadmap PDF",
             "description": "९० दिनको अध्ययन योजना: Self-Assessment, १३ हप्ताको योजना, Checkpoint, Career Roadmap र Progress Log (१२ पृष्ठ)",
-            "tag": "BONUS 3",
             "badge": "FREE GIFT",
-            "value": 93
+            "value": 123
           },
           {
             "id": "bon_shortcuts",
             "type": "custom",
             "title": "Shortcut Keys Cheat Sheet",
             "description": "Windows, Word, Excel, PowerPoint, Chrome र Google Docs का Shortcut + ७ दिने Challenge (९ पृष्ठ)",
-            "tag": "BONUS 4",
             "badge": "FREE GIFT",
-            "value": 87
+            "value": 107
           },
           {
             "id": "bon_cvkit",
             "type": "custom",
             "title": "Interview & CV Kit",
             "description": "CV Checklist, नमुना CV, Cover Letter/Email, १० सामान्य प्रश्न, STAR, Skill Test र Tracker (१४ पृष्ठ)",
-            "tag": "BONUS 5",
             "badge": "FREE GIFT",
-            "value": 67
+            "value": 97
           }
         ],
         "end": "2026-11-15T08:24+05:45"
       },
-      "updatedAt": "2026-11-08T03:21:52.654Z",
+      "updatedAt": "2026-11-08T03:27:50.551Z",
       "isFeatured": true
     },
     {
@@ -331,7 +326,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T03:22:45.961Z",
+      "updatedAt": "2026-11-08T03:32:46.751Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -808,7 +803,7 @@
             "title": "यस Ebook सँग तपाईंले पाउनुहुन्छ",
             "sub": "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।",
             "badge": "INCLUDED",
-            "mainTitle": "Ebook PDF",
+            "mainTitle": "{title}",
             "mainDesc": "Complete Guide & Practical Lessons",
             "mainBadge": "INCLUDE",
             "trust": "",
@@ -817,7 +812,7 @@
             ],
             "footer": "Your Complete Learning & Success Package 📦",
             "offersBadge": "LIMITED OFFERS",
-            "freeLabel": "NOW FREE 🎁",
+            "freeLabel": "BONUS 🎁",
             "originalValueLabel": "Original Value: {value}",
             "offerLabel": "",
             "limitedLabel": "Limited-Time Bonus"
@@ -829,7 +824,7 @@
           },
           "valueLabel": "Value {value}",
           "totalLabel": "🎁 कुल Bonus Value: {value}",
-          "countdownText": "Bonus Offer सकिन बाँकी: {time}",
+          "countdownText": "{time}",
           "limitedText": "",
           "untilText": "",
           "home": {
