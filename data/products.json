@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T23:47:07.923Z",
+  "updatedAt": "2026-11-07T23:59:58.650Z",
   "products": [
     {
       "id": "SN001CS",
@@ -310,7 +310,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-07T23:47:07.923Z",
+      "updatedAt": "2026-11-07T23:59:58.650Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -600,17 +600,17 @@
           "items": [
             {
               "id": "f1",
-              "q": "Ebook भनेको के हो र यो कसरी प्राप्त हुन्छ?",
-              "a": "Ebook (Electronic Book) डिजिटल पुस्तक हो जसलाई तपाईं आफ्नो मोबाइल, ट्याब्लेट वा कम्प्युटरमा सजिलै पढ्न सक्नुहुन्छ। Payment पुष्टि भएपछि PDF फाइल तपाईंको WhatsApp वा Email मा {deliveryNe}भित्र पठाइन्छ।",
+              "q": "यो Ebook के हो र कसका लागि हो?",
+              "a": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY (लेखक: MD. NASA) ७ भाग, ४० अध्याय र ३९१ पृष्ठको नेपाली Ebook हो। पहिलो पटक computer सिक्नेदेखि Computer Operator, Data Entry वा Office Assistant को काम गर्न चाहनेसम्म सबैका लागि चरणबद्ध गाइड।",
               "visible": true,
-              "onProduct": false
+              "onProduct": true
             },
             {
               "id": "f2",
-              "q": "कुन-कुन विषयका Ebook उपलब्ध छन्?",
-              "a": "हाल यी विधाका Ebook उपलब्ध छन्: {categories}।",
+              "q": "अभ्यासका लागि के-के सामग्री छ?",
+              "a": "हरेक अध्यायमा १ वटा Mini Project (जम्मा ४०) र Knowledge Check — MCQ, True/False, Fill in the blanks र Short Answer (जम्मा ६८० प्रश्न) Answer Key सहित छ। साथै हरेक अध्यायमा Quick Revision र Key Takeaways, र अन्त्यमा Shortcut Quick Reference र २८७ शब्दको Glossary छ।",
               "visible": true,
-              "onProduct": false
+              "onProduct": true
             },
             {
               "id": "f3",
