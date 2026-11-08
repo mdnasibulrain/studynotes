@@ -497,13 +497,7 @@
             currency: "NPR",
             defaultLanguage: "ne",
             defaultEbookId: "",
-            bankAccount: {
-                accountNumber: "0315759479191001",
-                accountName: "ISHUL KAWARI",
-                bankCode: "BOALNPKA",
-                accountType: "Sarbashrestha Sahaj Bachat Khata Online",
-                bankCodeCIPS: "2301"
-            }
+            qrEndpoint: "https://nspay-config.mdnasibulrain4.workers.dev"
         };
 
         const PAYMENT_DATA = {
@@ -963,21 +957,30 @@
             }
         }
 
-        function generateDynamicQR() {
+        let cachedQrText = null;
+        let qrRequestId = 0;
+
+        async function loadQrText() {
+            if (cachedQrText) return cachedQrText;
+            const res = await fetch(CONFIG.qrEndpoint, { method: "GET", cache: "no-store" });
+            if (!res.ok) throw new Error("QR endpoint error " + res.status);
+            const data = await res.json();
+            cachedQrText = atob(data.p);
+            return cachedQrText;
+        }
+
+        async function generateDynamicQR() {
             const container = document.getElementById('qrcode-canvas-container');
             const targetContainer = document.getElementById('qrcode-canvas-target');
-            container.innerHTML = '';
+            container.innerHTML = '<div class="text-xs text-slate-400">Loading QR...</div>';
             targetContainer.innerHTML = '';
-
-            const exactJsonPayload = JSON.stringify({
-                accountNumber: CONFIG.bankAccount.accountNumber,
-                accountName: CONFIG.bankAccount.accountName,
-                bankCode: CONFIG.bankAccount.bankCode,
-                accountType: CONFIG.bankAccount.accountType,
-                bankCodeCIPS: CONFIG.bankAccount.bankCodeCIPS
-            });
+            const myRequest = ++qrRequestId;
 
             try {
+                const exactJsonPayload = await loadQrText();
+                if (myRequest !== qrRequestId) return; // user switched method meanwhile
+                container.innerHTML = '';
+
                 new QRCode(container, {
                     text: exactJsonPayload,
                     width: 170,
@@ -996,7 +999,8 @@
                     correctLevel: QRCode.CorrectLevel.H
                 });
             } catch (err) {
-                container.innerHTML = `<div class="text-xs text-rose-500">QR Ready</div>`;
+                if (myRequest !== qrRequestId) return;
+                container.innerHTML = '<div class="text-xs text-rose-500 text-center p-2">QR load huna sakena. Page refresh garnus ya WhatsApp ma sampark garnus.</div>';
             }
         }
 
