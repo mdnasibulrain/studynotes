@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T03:32:46.751Z",
+  "updatedAt": "2026-11-08T03:43:15.757Z",
   "products": [
     {
       "id": "SN001CS",
@@ -326,7 +326,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T03:32:46.751Z",
+      "updatedAt": "2026-11-08T03:43:15.757Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -803,9 +803,9 @@
             "title": "यस Ebook सँग तपाईंले पाउनुहुन्छ",
             "sub": "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।",
             "badge": "INCLUDED",
-            "mainTitle": "{title}",
+            "mainTitle": "COMPLETE JOB READY PACKAGE 📦",
             "mainDesc": "Complete Guide & Practical Lessons",
-            "mainBadge": "INCLUDE",
+            "mainBadge": "Zero देखि Job Ready सम्म — Job Ready देखि Business Owner सम्म",
             "trust": "",
             "trustBadges": [
               "Included with Ebook"
@@ -824,7 +824,7 @@
           },
           "valueLabel": "Value {value}",
           "totalLabel": "🎁 कुल Bonus Value: {value}",
-          "countdownText": "{time}",
+          "countdownText": "{time} सकिन बाँकी",
           "limitedText": "",
           "untilText": "",
           "home": {
@@ -833,7 +833,7 @@
             "title": "एउटा Ebook मात्र होइन, Complete Learning & Practice Package!",
             "sub": "",
             "tagline": "",
-            "mainTitle": "MAIN EBOOK",
+            "mainTitle": "COMPLETE JOB READY PACKAGE 📦",
             "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
             "hooks": [
               "Buy Before the Offer Ends & Unlock Your Exclusive Bonuses!"
