@@ -55,3 +55,11 @@ Offers end on 31 Dec 2026 (Nepal time) — extend in Admin → Ebooks → Price/
 
 ### Bonus Strip (compact UI)
 Product पेजमा Description/"कसका लागि" पछि, Homepage र Cart मा सानो horizontal Bonus Strip। Admin → Bonus Resources: शीर्षक, Subtitle, INCLUDED Badge, Trust लाइन, Free/Original Value Label, Cart Strip on/off र प्रत्येक Bonus को Cover/Badge/Value। नयाँ फाइल केही छैन; `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-bonus.js` मात्र बदलिए।
+
+---
+## 🧾 Product Page नियन्त्रण / Preview PDF / Chapters Popup / Cover Badges (नयाँ)
+- Admin → **Product Page** : Cover ४-कुने Badge (Carousel · Library · Product · Preview), Hero का बटन/chip, खण्डको क्रम र देखाउने/लुकाउने, शीर्षक, Inside the Ebook + "See all Chapters" Popup (Hook + CTA)।
+- Ebooks → सम्पादन → **६. Preview Slides** : ५–१० पृष्ठको Preview PDF Upload → हरेक पृष्ठ Slide बन्छ। Browser मै PDF → Image (pdf.js, `assets/vendor/`)। Image हरू `assets/covers/` मार्फत Publish हुन्छन् (Worker परिवर्तन छैन)। पूरा PDF कहिल्यै Publish हुँदैन।
+- Ebooks → सम्पादन → **८. यो Ebook को Product Page** : यही Ebook मा मात्र खण्ड लुकाउने / Chapters संख्या।
+- "Publish नगरिएका परिवर्तन" पट्टी: Live site सँग Data एउटै भए आफैं हरियो हुन्छ; पट्टी थिचेर पनि जाँच्न सकिन्छ।
+- नयाँ Data: `site.productPage` (Site record भित्र), product मा `preview.pages`, `pageHide`, `insideCount`। Worker जस्ताको तस्तै।

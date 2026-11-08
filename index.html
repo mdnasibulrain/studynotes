@@ -507,31 +507,44 @@ function Cover({ item, mini = false }) {
   );
 }
 
-function CoverFrame({ item, big = false, className = "" }) {
+/* ४ कुनामा Badge (Admin → Product Page → Cover Badges ले नियन्त्रण): Carousel, Library, Product page र Preview मा एउटै */
+function CoverBadges({ item, big = false, ctx = "library" }) {
+  const cfg = (SITE.productPage || {}).badges || {};
+  if (cfg[ctx] === false) return null;
+  const on = k => cfg[k] !== false;
   const d = pct(item.regularPrice, item.salePrice);
   const t = big ? "text-[11px] px-2 py-1" : "text-[8px] sm:text-[9px] px-1.5 py-0.5";
   const hasRating = item.rating != null && item.rating > 0;
   const hasSold = item.soldCopies != null && item.soldCopies > 0;
   const hasLeft = item.copiesLeft != null && item.copiesLeft > 0;
+  const tl = item.offerLabel || (item.kind === "bundle" ? L("tagBundle") : "");
   return (
-    <div className={`relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-orange-50 ${className}`}>
-      <Cover item={item} />
-      {item.offerLabel && <span className={`absolute top-1.5 left-1.5 rounded-md bg-orange-500 text-white font-extrabold uppercase shadow ${t}`}>{item.offerLabel}</span>}
-      {d > 0 && <span className={`absolute top-1.5 right-1.5 rounded-md bg-rose-600 text-white font-black shadow ${t}`}>-{d}%</span>}
-      {hasRating && (
+    <>
+      {on("tl") && tl && <span className={`absolute top-1.5 left-1.5 rounded-md ${item.offerLabel ? "bg-orange-500 text-white" : "bg-slate-900 text-amber-300"} font-extrabold uppercase shadow ${t}`}>{tl}</span>}
+      {on("tr") && d > 0 && <span className={`absolute top-1.5 right-1.5 rounded-md bg-rose-600 text-white font-black shadow ${t}`}>-{d}%</span>}
+      {on("bl") && hasRating && (
         <span className={`absolute bottom-1.5 left-1.5 rounded-md bg-white/95 text-slate-900 font-bold shadow flex items-center gap-0.5 ${t}`}>
           <span className="text-amber-500">★</span>{item.rating}{item.reviewCount > 0 && <span className="text-slate-500 font-semibold">({item.reviewCount})</span>}
         </span>
       )}
-      {(hasSold || hasLeft) && (
+      {on("br") && (hasSold || hasLeft) && (
         <span className={`absolute bottom-1.5 right-1.5 rounded-md bg-slate-900/85 text-white font-bold shadow text-right leading-tight ${t}`}>
           {hasSold && <span className="block">🔥 {item.soldCopies} sold</span>}
           {hasLeft && <span className="block text-amber-300">⏳ {item.copiesLeft} left</span>}
         </span>
       )}
+    </>
+  );
+}
+function CoverFrame({ item, big = false, className = "", ctx }) {
+  return (
+    <div className={`relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-orange-50 ${className}`}>
+      <Cover item={item} />
+      <CoverBadges item={item} big={big} ctx={ctx || (big ? "product" : "library")} />
     </div>
   );
 }
+
 function PriceBlock({ regular, today, compact = false }) {
   const d = pct(regular, today);
   if (d <= 0) {
@@ -777,8 +790,7 @@ function HeroSection() {
                   style={{ left: `calc(50% + ${c * 50}%)`, transform: `translate(-50%,-50%) scale(${off === 0 ? 1 : abs === 1 ? 0.78 : 0.55})`, opacity: off === 0 ? 1 : abs === 1 ? 0.78 : 0, zIndex: 10 - abs, pointerEvents: abs > 1 ? "none" : "auto", transition: "all .7s cubic-bezier(.4,0,.2,1)", filter: off === 0 ? "none" : "saturate(.85)" }}>
                   <div className={`relative aspect-[3/4] rounded-xl overflow-hidden ${off === 0 ? "ring-4 ring-white shadow-2xl shadow-orange-300/60 floaty" : "shadow-lg"}`}>
                     <Cover item={it} />
-                    {it.hasOffer && <span className="absolute top-1.5 right-1.5 bg-rose-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded">-{pct(it.regularPrice, it.salePrice)}%</span>}
-                    {it.kind === "bundle" && <span className="absolute top-1.5 left-1.5 bg-slate-900 text-amber-300 text-[9px] font-black px-1.5 py-0.5 rounded">{L("tagBundle")}</span>}
+                    <CoverBadges item={it} ctx="carousel" />
                   </div>
                 </button>
               );
@@ -1631,7 +1643,11 @@ function PreviewBody({ p }) {
     { id: "sample", on: sc.sample.visible && !!(sText || sPoints.length), hook: sc.sample.hook || L("pvSampleHook", X), cta: sc.sample.cta },
     { id: "locked", on: sc.locked.visible, hook: sc.locked.hook || L("pvLockedHook", X), cta: sc.locked.cta }
   ].filter(x => x.on);
-  const list = slides.length ? slides : [{ id: "cover", hook: L("pvCoverHook", X), cta: "" }];
+  const pdfPages = (pv.pages || []).filter(Boolean);
+  const lockedSlide = slides.find(x => x.id === "locked");
+  const list = pdfPages.length
+    ? pdfPages.map((src, k) => ({ id: "page", src, k, hook: pv.pageHook ? T(pv.pageHook, Object.assign({}, X, { n: k + 1, total: pdfPages.length }), "keep") : L("pvPageHook", { n: k + 1, total: pdfPages.length }), cta: pv.pageCta || "" })).concat(pv.keepLocked !== false && lockedSlide ? [lockedSlide] : [])
+    : (slides.length ? slides : [{ id: "cover", hook: L("pvCoverHook", X), cta: "" }]);
   const [i, setI] = useState(0);
   const touch = useRef(null);
   const n = list.length, cur = list[Math.min(i, n - 1)];
@@ -1649,8 +1665,10 @@ function PreviewBody({ p }) {
     else if (st === "covered") cta = <button disabled className="w-full py-3.5 rounded-2xl bg-slate-100 text-slate-400 font-black text-sm">{L("covered")}</button>;
     else cta = <button onClick={() => A.add(p)} className="w-full py-3.5 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-black text-sm shadow-lg shadow-orange-200 flex items-center justify-center gap-2">{label(cur) || L("pvCta", X)}</button>;
   } else cta = <button onClick={() => A.whatsapp([toCartItem(p)])} className="w-full py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm shadow-lg shadow-emerald-200 flex items-center justify-center gap-2"><Icon name="wa" className="w-4 h-4" />{label(cur) || L("pvCtaWa", X)}</button>;
-  const stage = { cover: (
-      <div className="w-[172px] mx-auto"><CoverFrame item={p} className="shadow-2xl shadow-orange-200 ring-4 ring-white" /></div>
+  const stage = { page: (
+      <img src={cur.src} alt={"Preview page " + ((cur.k || 0) + 1)} className="max-h-full max-w-full w-auto h-auto object-contain rounded-md shadow-sm select-none" draggable="false" />
+    ), cover: (
+      <div className="w-[172px] mx-auto"><CoverFrame item={p} ctx="preview" className="shadow-2xl shadow-orange-200 ring-4 ring-white" /></div>
     ), toc: (
       <div className="w-full text-left">
         <div className="text-[11px] font-black tracking-widest text-orange-600 uppercase">{L("pvToc")}</div>
@@ -1683,12 +1701,12 @@ function PreviewBody({ p }) {
           <div className="min-w-0"><h4 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="eye" className="w-5 h-5 text-slate-500 shrink-0" /><span>{pv.title || L("pvTitle", X)} <span className="text-orange-600">{p.id}</span></span></h4><div className="text-[11px] text-slate-400 truncate pl-7">{p.short}</div></div>
           <button onClick={close} aria-label="Close" className="w-9 h-9 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0"><Icon name="x" className="w-5 h-5" /></button>
         </div>
-        <div className="mt-3 h-[300px] rounded-2xl border border-slate-200 bg-white shadow-md flex items-center justify-center p-4 overflow-hidden"
+        <div className={`mt-3 rounded-2xl border border-slate-200 bg-white shadow-md flex items-center justify-center overflow-hidden ${cur.id === "page" ? "h-[min(62vh,460px)] p-1.5" : "h-[300px] p-4"}`}
           onTouchStart={e => { touch.current = e.touches[0].clientX; }} onTouchEnd={e => { if (touch.current === null) return; const dx = e.changedTouches[0].clientX - touch.current; touch.current = null; if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1); }}>
           {stage}
         </div>
         <p data-pv-hook className="text-center text-[13px] font-semibold text-slate-600 leading-snug mt-3 min-h-[2.5rem]">{tx(cur.hook)}</p>
-        {cur.id === "sample" && p.previewPdf && <div className="text-center mt-1"><a href={p.previewPdf} target="_blank" rel="noopener noreferrer" className="text-xs font-extrabold text-orange-700 underline">{L("pvPdf")}</a></div>}
+        {(cur.id === "sample" || cur.id === "page") && p.previewPdf && <div className="text-center mt-1"><a href={p.previewPdf} target="_blank" rel="noopener noreferrer" className="text-xs font-extrabold text-orange-700 underline">{L("pvPdf")}</a></div>}
         <div className="flex items-center justify-center gap-4 mt-3">
           <button onClick={() => go(-1)} disabled={i === 0} aria-label="Previous" className={circ}><Icon name="arrowL" className="w-4 h-4" /></button>
           <div className="flex items-center gap-2">{list.map((x, k) => <button key={x.id} onClick={() => setI(k)} aria-label={"Slide " + (k + 1)} className={`h-2 rounded-full transition-all ${k === i ? "w-7 bg-orange-500" : "w-2 bg-orange-200"}`} />)}</div>
@@ -1790,13 +1808,72 @@ function TimeText({ tpl, time }) {
   const [a, ...rest] = s.split("{time}");
   return <>{a}<span className="tabular">{time}</span>{rest.join("{time}")}</>;
 }
+/* "See all Chapters" Popup — सबै Chapter, Hook र CTA (Admin → Product Page → Inside the Ebook ले नियन्त्रण) */
+function ChaptersModal({ p, onClose }) {
+  const A = useContext(Ctx);
+  const IN = (SITE.productPage || {}).inside || {};
+  const list = p.chapterOutline || [];
+  const X = { price: fmt(p.salePrice), id: p.id, name: p.short, pages: p.pages || "", chapters: p.chapters || list.length, n: list.length, title: p.title };
+  const tx = v => T(v, X, "keep");
+  const st = CART_ON ? A.status(p) : "";
+  useEffect(() => {
+    const k = e => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", k);
+    const prev = document.body.style.overflow; document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", k); document.body.style.overflow = prev; };
+  }, []);
+  let cta = null;
+  if (IN.modalShowCta !== false) {
+    const lbl = IN.modalCta ? tx(IN.modalCta) : null;
+    if (CART_ON) {
+      if (st === "in") cta = <button onClick={() => { onClose(); A.openCart(); }} className="w-full py-3.5 rounded-2xl bg-orange-50 border-2 border-orange-500 text-orange-700 font-black text-sm flex items-center justify-center gap-2">{L("pvCtaIn")}</button>;
+      else if (st === "covered") cta = <button disabled className="w-full py-3.5 rounded-2xl bg-slate-100 text-slate-400 font-black text-sm">{L("covered")}</button>;
+      else cta = <button onClick={() => A.add(p)} className="w-full py-3.5 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-black text-sm shadow-lg shadow-orange-200 flex items-center justify-center gap-2">{lbl || L("ppModalCta", X)}</button>;
+    } else cta = <button onClick={() => A.whatsapp([toCartItem(p)])} className="w-full py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm shadow-lg shadow-emerald-200 flex items-center justify-center gap-2"><Icon name="wa" className="w-4 h-4" />{lbl || L("ppModalCtaWa", X)}</button>;
+  }
+  const hook = IN.modalHook ? tx(IN.modalHook) : L("ppModalHook", X);
+  return (
+    <div className="fixed inset-0 z-[66] flex items-end sm:items-center justify-center sm:p-3 bg-slate-900/70 backdrop-blur-sm" onClick={onClose} role="dialog" aria-modal="true">
+      <div className="bg-white w-full sm:max-w-[520px] max-h-[92vh] flex flex-col rounded-t-3xl sm:rounded-3xl shadow-2xl" onClick={e => e.stopPropagation()}>
+        <div className="p-4 pb-3 border-b border-orange-100 flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h4 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="book" className="w-5 h-5 text-orange-500 shrink-0" /><span>{IN.modalTitle ? tx(IN.modalTitle) : L("ppModalTitle", X)}</span></h4>
+            {hook && <p data-ch-hook className="text-[12px] font-semibold text-slate-600 mt-1.5 leading-snug">{hook}</p>}
+          </div>
+          <button onClick={onClose} aria-label="Close" className="w-9 h-9 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0"><Icon name="x" className="w-5 h-5" /></button>
+        </div>
+        <div className="overflow-y-auto p-4 space-y-2 flex-1" data-ch-list>
+          {list.map(ch => (
+            <div key={ch.number} className="flex gap-3 p-2.5 rounded-xl bg-orange-50/50 border border-orange-100">
+              {IN.showNumbers !== false && <span className="w-7 h-7 rounded-lg bg-orange-500 text-white text-xs font-black flex items-center justify-center shrink-0">{ch.number}</span>}
+              <div><div className="text-xs font-extrabold text-slate-900">{ch.title}</div>{IN.showDesc !== false && ch.description && <div className="text-[11px] text-slate-500 mt-0.5">{ch.description}</div>}</div>
+            </div>
+          ))}
+        </div>
+        <div className="p-4 pt-3 border-t border-orange-100 space-y-2" style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }} data-ch-cta>
+          {cta}
+          <button onClick={onClose} className="w-full py-2 text-xs font-bold text-slate-500">{L("ppModalClose")}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ProductPage({ p }) {
   const A = useContext(Ctx);
+  const PP = SITE.productPage, PPS = PP.sections, PPH = PP.hero, IN = PP.inside;
+  const hiddenSecs = p.pageHide || [];
+  const ppVis = id => (PPS[id] || {}).visible !== false && !hiddenSecs.includes(id);
+  const lo = ppVis("outcomes") ? p.learningOutcomes : [], cr = ppVis("career") ? p.careerRelevance : [];
+  const showDisc = !!SITE.product.disclaimer && PPS.faq.disclaimer !== false;
+  const inN = Math.max(1, Math.round(p.insideCount > 0 ? p.insideCount : IN.initialCount || 5));
+  const insideShown = p.chapterOutline.slice(0, inN), insideMore = p.chapterOutline.length > inN;
+  const [showCh, setShowCh] = useState(false);
   const t = useCountdown(p.showCountdown ? p.endMs : null);
   const d = pct(p.regularPrice, p.salePrice);
   const hasLeft = p.copiesLeft != null && p.copiesLeft > 0, hasSold = p.soldCopies != null && p.soldCopies > 0;
   const claimed = hasLeft && hasSold ? Math.round((p.soldCopies / (p.soldCopies + p.copiesLeft)) * 100) : null;
-  const more = PRODUCTS.filter(x => x.id !== p.id).sort((a, b) => (a.category === p.category ? -1 : 0) - (b.category === p.category ? -1 : 0) || (b.soldCopies || 0) - (a.soldCopies || 0)).slice(0, 4);
+  const more = PRODUCTS.filter(x => x.id !== p.id).sort((a, b) => (a.category === p.category ? -1 : 0) - (b.category === p.category ? -1 : 0) || (b.soldCopies || 0) - (a.soldCopies || 0)).slice(0, PPS.suggested.count == null ? 4 : PPS.suggested.count);
   const revs = [...REVIEWS.filter(r => r.productId === p.id), ...REVIEWS.filter(r => r.productId !== p.id)].slice(0, 3);
   const list = [toCartItem(p)];
   const cat = CAT[p.category] || { name: p.categoryName };
@@ -1806,14 +1883,14 @@ function ProductPage({ p }) {
   const hasRating = p.rating > 0;
   const tag = p.urgencyLabel || p.offerLabel;
   const st = A.status(p);
-  const offerBox = !!(t || hasLeft || p.offerDescription);
+  const offerBox = !!(t || hasLeft || p.offerDescription) && PPH.showOfferBox !== false;
   const showReviewBox = hasRating || hasSold || revs.length > 0;
   const nBtn = (CART_ON ? 1 : 0) + (canPay ? 1 : 0) + 1;
   return (
-    <div className="pb-40">
+    <div className={ppVis("stickyCta") ? "pb-40" : "pb-12"}>
       <div className="max-w-5xl mx-auto px-3 pt-3">
-        <button onClick={A.goHome} className="inline-flex items-center gap-1.5 text-xs font-extrabold text-orange-700 bg-orange-50 border border-orange-200 rounded-full px-3 py-1.5 hover:bg-orange-100"><Icon name="arrowL" className="w-3.5 h-3.5" />{L("ppBack")}</button>
-        <span className="ml-2 text-[11px] text-slate-500">{cat.name}</span>
+        {PPH.showBack !== false && <button onClick={A.goHome} className="inline-flex items-center gap-1.5 text-xs font-extrabold text-orange-700 bg-orange-50 border border-orange-200 rounded-full px-3 py-1.5 hover:bg-orange-100"><Icon name="arrowL" className="w-3.5 h-3.5" />{L("ppBack")}</button>}
+        {PPH.showCategory !== false && <span className="ml-2 text-[11px] text-slate-500">{cat.name}</span>}
       </div>
 
       {/* HERO */}
@@ -1821,17 +1898,17 @@ function ProductPage({ p }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start bg-gradient-to-br from-orange-50 to-white rounded-3xl border border-orange-200 p-4 md:p-6">
           <div className="max-w-[260px] md:max-w-xs mx-auto w-full">
             <CoverFrame item={p} big className="shadow-2xl shadow-orange-200 ring-4 ring-white" />
-            {(!p.preview || p.preview.enabled !== false) && <div className="mt-3 flex justify-center"><button onClick={() => A.setPreview(p)} className="px-4 py-2 rounded-xl bg-white border-2 border-orange-400 text-orange-700 font-extrabold text-xs inline-flex items-center gap-2 hover:bg-orange-50"><Icon name="file" className="w-4 h-4" />{L("ppPreviewBtn")}</button></div>}
+            {(!p.preview || p.preview.enabled !== false) && PPH.showPreviewBtn !== false && <div className="mt-3 flex justify-center"><button onClick={() => A.setPreview(p)} className="px-4 py-2 rounded-xl bg-white border-2 border-orange-400 text-orange-700 font-extrabold text-xs inline-flex items-center gap-2 hover:bg-orange-50"><Icon name="file" className="w-4 h-4" />{L("ppPreviewBtn")}</button></div>}
           </div>
           <div>
             <div className="flex flex-wrap gap-1.5 text-[10px] font-extrabold">
-              {tag && <span className="bg-orange-500 text-white px-2 py-0.5 rounded">{tag}</span>}
-              <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">ID: {p.id}</span>
+              {tag && PPH.showTag !== false && <span className="bg-orange-500 text-white px-2 py-0.5 rounded">{tag}</span>}
+              {PPH.showIdChip !== false && <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">ID: {p.id}</span>}
               {p.isNew && <span className="bg-sky-100 text-sky-700 px-2 py-0.5 rounded">{L("newTag")}</span>}
             </div>
             <h1 className="text-xl md:text-3xl font-black text-slate-900 leading-snug mt-2">{p.title}</h1>
             {p.subtitle && <p className="text-sm text-slate-600 mt-1.5">{p.subtitle}</p>}
-            {(hasRating || hasSold || p.pages > 0 || p.chapters > 0) && (
+            {(hasRating || hasSold || p.pages > 0 || p.chapters > 0) && PPH.showStats !== false && (
               <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-bold text-slate-700">
                 {hasRating && <span className="flex items-center gap-1"><Stars value={p.rating} size="w-4 h-4" />{p.reviewCount > 0 ? L("ppReviewsN", { rating: p.rating, n: p.reviewCount }) : p.rating}</span>}
                 {hasSold && <span>🔥 {L("ppSold", { n: p.soldCopies })}</span>}
@@ -1855,10 +1932,10 @@ function ProductPage({ p }) {
             <div className="mt-3"><PriceBlock regular={p.regularPrice} today={p.salePrice} /></div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <AddBtn item={p} />
-              <WaBtn list={list} className={CART_ON ? "" : "col-span-2"}>{L("waOrder")}</WaBtn>
-              {canPay && <button onClick={() => A.payItem(p)} className="col-span-2 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-black text-xs flex items-center justify-center gap-2"><Icon name="card" className="w-4 h-4" />{SITE.payment.ctaNow}</button>}
+              {PPH.showWaBtn !== false && <WaBtn list={list} className={CART_ON ? "" : "col-span-2"}>{L("waOrder")}</WaBtn>}
+              {canPay && PPH.showPayBtn !== false && <button onClick={() => A.payItem(p)} className="col-span-2 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-black text-xs flex items-center justify-center gap-2"><Icon name="card" className="w-4 h-4" />{SITE.payment.ctaNow}</button>}
             </div>
-            <div className="mt-3 grid grid-cols-3 gap-1.5 text-center text-[10px] font-bold text-slate-600">
+            <div className={`mt-3 grid grid-cols-3 gap-1.5 text-center text-[10px] font-bold text-slate-600 ${PPH.showTiles === false ? "hidden" : ""}`}>
               <div className="rounded-lg bg-white border border-orange-100 py-1.5"><Icon name="zap" className="w-4 h-4 text-orange-500 mx-auto" />{BRAND.delivery}</div>
               <div className="rounded-lg bg-white border border-orange-100 py-1.5"><Icon name="phone" className="w-4 h-4 text-orange-500 mx-auto" />{p.format || L("ppTileFormat")}</div>
               <div className="rounded-lg bg-white border border-orange-100 py-1.5"><Icon name="wa" className="w-4 h-4 text-orange-500 mx-auto" />{L("ppTileSupport")}</div>
@@ -1867,11 +1944,13 @@ function ProductPage({ p }) {
         </div>
       </section>
 
-      {/* HOOK */}
+      {(() => {
+        const blk = {};
+        blk.hook = (<React.Fragment key="hook">
       {(p.hook || p.description || p.forWho.length > 0) && (
         <section className="max-w-5xl mx-auto px-3 mt-5">
           <div className="rounded-3xl bg-gradient-to-br from-orange-500 to-orange-700 text-white p-5 md:p-7 shadow-lg shadow-orange-200">
-            <span className="text-[11px] font-extrabold bg-white/20 rounded-full px-3 py-1">{L("ppHookTag")}</span>
+            <span className="text-[11px] font-extrabold bg-white/20 rounded-full px-3 py-1">{PPS.hook.tag || L("ppHookTag")}</span>
             {p.hook && <h2 className="text-xl md:text-3xl font-black mt-3 leading-snug">{p.hook}</h2>}
             {p.description && <p className="text-sm opacity-95 mt-2"><Lines text={p.description} /></p>}
             {p.forWho.length > 0 && <>
@@ -1881,45 +1960,51 @@ function ProductPage({ p }) {
           </div>
         </section>
       )}
-
+      </React.Fragment>);
+        blk.bonus = (<React.Fragment key="bonus">
       <ProductBonus p={p} />
-
-      {/* INSIDE THE EBOOK */}
+      </React.Fragment>);
+        blk.inside = (<React.Fragment key="inside">
       {p.chapterOutline.length > 0 && (
         <section className="max-w-5xl mx-auto px-3 mt-5">
           <div className="bg-white rounded-3xl border border-orange-200 p-4 md:p-5">
-            <h3 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="book" className="w-5 h-5 text-orange-500" />{L("ppInside")}</h3>
-            <div className="mt-3 space-y-2">{p.chapterOutline.map(ch => (
+            <h3 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="book" className="w-5 h-5 text-orange-500" />{IN.title || L("ppInside")}</h3>
+            <div className="mt-3 space-y-2">{insideShown.map(ch => (
               <div key={ch.number} className="flex gap-3 p-2.5 rounded-xl bg-orange-50/50 border border-orange-100">
-                <span className="w-7 h-7 rounded-lg bg-orange-500 text-white text-xs font-black flex items-center justify-center shrink-0">{ch.number}</span>
-                <div><div className="text-xs font-extrabold text-slate-900">{ch.title}</div>{ch.description && <div className="text-[11px] text-slate-500 mt-0.5">{ch.description}</div>}</div>
+                {IN.showNumbers !== false && <span className="w-7 h-7 rounded-lg bg-orange-500 text-white text-xs font-black flex items-center justify-center shrink-0">{ch.number}</span>}
+                <div><div className="text-xs font-extrabold text-slate-900">{ch.title}</div>{IN.showDesc !== false && ch.description && <div className="text-[11px] text-slate-500 mt-0.5">{ch.description}</div>}</div>
               </div>
             ))}</div>
+            {insideMore && IN.showAllBtn !== false && (
+              <div className="mt-4 flex justify-center">
+                <button onClick={() => setShowCh(true)} className="px-5 py-2.5 rounded-xl bg-white border-2 border-orange-400 text-orange-700 hover:bg-orange-50 font-extrabold text-xs inline-flex items-center gap-2 shadow-sm">{IN.btnText ? T(IN.btnText, { n: p.chapterOutline.length, id: p.id }, "keep") : L("ppSeeAll")}{!IN.btnText && <span className="text-[10px] bg-orange-100 text-orange-700 rounded-full px-2 py-0.5">{p.chapterOutline.length}</span>}</button>
+              </div>
+            )}
             {p.chapters > p.chapterOutline.length && <p className="text-[10px] text-slate-400 mt-2">{L("ppChaptersNote", { n: p.chapters })}</p>}
           </div>
         </section>
       )}
-
-      {/* OUTCOMES + CAREER */}
-      {(p.learningOutcomes.length > 0 || p.careerRelevance.length > 0) && (
-        <section className={`max-w-5xl mx-auto px-3 mt-5 grid grid-cols-1 ${p.learningOutcomes.length > 0 && p.careerRelevance.length > 0 ? "md:grid-cols-2" : ""} gap-4`}>
-          {p.learningOutcomes.length > 0 && (
+      </React.Fragment>);
+        blk.outcomes = (<React.Fragment key="outcomes">
+      {(lo.length > 0 || cr.length > 0) && (
+        <section className={`max-w-5xl mx-auto px-3 mt-5 grid grid-cols-1 ${lo.length > 0 && cr.length > 0 ? "md:grid-cols-2" : ""} gap-4`}>
+          {lo.length > 0 && (
             <div className="bg-white rounded-3xl border border-orange-200 p-4 md:p-5">
-              <h3 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="award" className="w-5 h-5 text-orange-500" />{L("ppOutcomes")}</h3>
-              <ul className="mt-3 space-y-2.5">{p.learningOutcomes.map((o, i) => <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-slate-700"><span className="mt-0.5 w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0"><Icon name="check" className="w-3 h-3" sw={3.5} /></span>{o}</li>)}</ul>
-              {p.careerRelevance.length === 0 && p.tags.length > 0 && <div className="mt-3 flex flex-wrap gap-1.5">{p.tags.map(tg => <span key={tg} className="text-[10px] font-bold bg-orange-50 text-orange-700 border border-orange-200 rounded-full px-2 py-0.5">#{tg}</span>)}</div>}
+              <h3 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="award" className="w-5 h-5 text-orange-500" />{PPS.outcomes.title || L("ppOutcomes")}</h3>
+              <ul className="mt-3 space-y-2.5">{lo.map((o, i) => <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-slate-700"><span className="mt-0.5 w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0"><Icon name="check" className="w-3 h-3" sw={3.5} /></span>{o}</li>)}</ul>
+              {cr.length === 0 && p.tags.length > 0 && <div className="mt-3 flex flex-wrap gap-1.5">{p.tags.map(tg => <span key={tg} className="text-[10px] font-bold bg-orange-50 text-orange-700 border border-orange-200 rounded-full px-2 py-0.5">#{tg}</span>)}</div>}
             </div>
           )}
-          {p.careerRelevance.length > 0 && (
+          {cr.length > 0 && (
             <div className="bg-white rounded-3xl border border-orange-200 p-4 md:p-5">
-              <h3 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="target" className="w-5 h-5 text-orange-500" />{L("ppCareer")}</h3>
-              <ul className="mt-3 space-y-2.5">{p.careerRelevance.map((o, i) => <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-slate-700"><span className="mt-0.5 w-5 h-5 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0"><Icon name="arrowR" className="w-3 h-3" sw={3} /></span>{o}</li>)}</ul>
+              <h3 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name="target" className="w-5 h-5 text-orange-500" />{PPS.career.title || L("ppCareer")}</h3>
+              <ul className="mt-3 space-y-2.5">{cr.map((o, i) => <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-slate-700"><span className="mt-0.5 w-5 h-5 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0"><Icon name="arrowR" className="w-3 h-3" sw={3} /></span>{o}</li>)}</ul>
             </div>
           )}
         </section>
       )}
-
-      {/* REVIEWS */}
+      </React.Fragment>);
+        blk.reviews = (<React.Fragment key="reviews">
       {showReviewBox && (
         <section className="max-w-5xl mx-auto px-3 mt-5">
           <div className="bg-white rounded-3xl border border-orange-200 p-4 md:p-5">
@@ -1932,11 +2017,11 @@ function ProductPage({ p }) {
           </div>
         </section>
       )}
-
-      {/* PRICE BREAKDOWN + BUNDLE UPSELL */}
+      </React.Fragment>);
+        blk.price = (<React.Fragment key="price">
       <section className={`max-w-5xl mx-auto px-3 mt-5 grid grid-cols-1 ${bundleFor ? "md:grid-cols-2" : ""} gap-4`}>
         <div className="bg-white rounded-3xl border-2 border-orange-300 p-4 md:p-5">
-          <h3 className="font-black text-base text-slate-900">{L("ppPriceTitle")}</h3>
+          <h3 className="font-black text-base text-slate-900">{PPS.price.title || L("ppPriceTitle")}</h3>
           <div className="mt-3 space-y-2 text-sm">
             {d > 0 && <div className="flex justify-between text-slate-600"><span>{L("lblRegular")}</span><span className="line-through text-slate-400">{fmt(p.regularPrice)}</span></div>}
             {d > 0 && <div className="flex justify-between text-emerald-700 font-bold"><span>{L("ppDiscountRow", { n: d })}</span><span>-{fmt(p.regularPrice - p.salePrice)}</span></div>}
@@ -1956,8 +2041,8 @@ function ProductPage({ p }) {
           </div>
         )}
       </section>
-
-      {/* HOW DELIVERY */}
+      </React.Fragment>);
+        blk.delivery = (<React.Fragment key="delivery">
       {SITE.payment.steps.length > 0 && (
         <section className="max-w-5xl mx-auto px-3 mt-5">
           <div className={`grid gap-2.5 ${{ 1: "grid-cols-1", 2: "grid-cols-2" }[SITE.payment.steps.length] || "grid-cols-3"}`}>
@@ -1971,27 +2056,32 @@ function ProductPage({ p }) {
           </div>
         </section>
       )}
-
-      {/* SUGGESTED */}
+      </React.Fragment>);
+        blk.suggested = (<React.Fragment key="suggested">
       {more.length > 0 && (
         <section className="max-w-5xl mx-auto px-3 mt-7">
-          <h3 className="font-black text-lg text-slate-900 mb-3">{L("ppSuggested")}</h3>
+          <h3 className="font-black text-lg text-slate-900 mb-3">{PPS.suggested.title || L("ppSuggested")}</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-4">{more.map(m => <BookCard key={m.id} p={m} />)}</div>
         </section>
       )}
-
-      {/* FAQ + DISCLAIMER */}
-      {(faqs.length > 0 || SITE.product.disclaimer) && (
+      </React.Fragment>);
+        blk.faq = (<React.Fragment key="faq">
+      {(faqs.length > 0 || showDisc) && (
         <section className="max-w-3xl mx-auto px-3 mt-8">
           {faqs.length > 0 && <>
-            <h3 className="font-black text-lg text-slate-900 mb-3 text-center">{T(SITE.faq.productTitle)}</h3>
+            <h3 className="font-black text-lg text-slate-900 mb-3 text-center">{PPS.faq.title || T(SITE.faq.productTitle)}</h3>
             <Faq items={faqs} />
           </>}
-          {SITE.product.disclaimer && <p className="mt-4 text-[10px] text-slate-500 text-center leading-relaxed">{SITE.product.disclaimer}</p>}
+          {showDisc && <p className="mt-4 text-[10px] text-slate-500 text-center leading-relaxed">{SITE.product.disclaimer}</p>}
         </section>
       )}
+      </React.Fragment>);
+        return PP.order.map(id => (id === "outcomes" || ppVis(id)) ? blk[id] : null);
+      })()}
 
-      {/* STICKY CTA */}
+      {showCh && <ChaptersModal p={p} onClose={() => setShowCh(false)} />}
+
+      {ppVis("stickyCta") && (
       <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t-2 border-orange-300 shadow-[0_-8px_24px_rgba(249,115,22,.18)]" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         <div className="max-w-3xl mx-auto px-3 pt-2 pb-2.5">
           <div className="flex items-center justify-between text-[11px] font-extrabold mb-1.5">
@@ -2007,6 +2097,7 @@ function ProductPage({ p }) {
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }
