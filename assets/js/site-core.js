@@ -168,6 +168,9 @@ SN.SECTIONS = [
   ["footer", "Footer", true]
 ];
 SN.SECTION_IDS = SN.SECTIONS.map(s => s[0]);
+/* Product Page को क्रम मिल्ने खण्डहरू */
+SN.PP_ORDER = [["hook", "🔥 Hook बक्स + कसका लागि"], ["bonus", "🎁 Bonus Resources"], ["inside", "📖 Inside the Ebook (Chapters)"], ["outcomes", "🎯 Outcomes + Career"], ["reviews", "⭐ Reviews"], ["price", "💰 Price Breakdown + Bundle Offer"], ["delivery", "📨 Delivery Steps"], ["suggested", "📚 सुझाव गरिएका Ebooks"], ["faq", "❓ FAQ + Disclaimer"]];
+SN.PP_ORDER_IDS = SN.PP_ORDER.map(x => x[0]);
 
 /* ------------------------------------------------------------------ DEFAULT content = exactly the approved design's text */
 const D = {
@@ -272,6 +275,17 @@ const D = {
     { id: "linkedin", name: "LinkedIn", enabled: false, url: "" }, { id: "whatsapp", name: "WhatsApp", enabled: true, url: "" }],
   seo: { title: "StudyNotes — Your First Step to Success | Practical Ebooks", description: "StudyNotes — Computer Skills, Digital Income, LokSewa, Share Market, Personality & Career Ebooks for Nepali youth.", keywords: "", ogTitle: "", ogDescription: "", ogImage: null, favicon: null, siteUrl: "" },
   product: { disclaimer: "⚠️ यो Ebook शैक्षिक प्रयोजनका लागि हो। जागिर, परीक्षा सफलता वा आम्दानी/नाफाको कुनै ग्यारेन्टी छैन; नतिजा तपाईंको अभ्यास र परिस्थितिमा निर्भर हुन्छ।" },
+  /* Product Page नियन्त्रण (Admin → Product Page) */
+  productPage: {
+    badges: { tl: true, tr: true, bl: true, br: true, carousel: true, library: true, product: true, preview: true },
+    hero: { showBack: true, showCategory: true, showPreviewBtn: true, showIdChip: true, showTag: true, showStats: true, showOfferBox: true, showWaBtn: true, showPayBtn: true, showTiles: true },
+    order: ["hook", "bonus", "inside", "outcomes", "reviews", "price", "delivery", "suggested", "faq"],
+    sections: {
+      hook: { visible: true, tag: "" }, bonus: { visible: true }, inside: { visible: true }, outcomes: { visible: true, title: "" }, career: { visible: true, title: "" },
+      reviews: { visible: true }, price: { visible: true, title: "" }, delivery: { visible: true }, suggested: { visible: true, title: "", count: 4 }, faq: { visible: true, title: "", disclaimer: true }, stickyCta: { visible: true }
+    },
+    inside: { title: "", initialCount: 5, showAllBtn: true, btnText: "", showNumbers: true, showDesc: true, modalTitle: "", modalHook: "", modalShowCta: true, modalCta: "" }
+  },
   categories: [
     { id: "computer-skills", name: "Computer Skills", short: "Computer", code: "CS", icon: "laptop", palette: "orange", visible: true },
     { id: "digital-skills-online-income", name: "Digital Skills & Online Income", short: "Digital Income", code: "DS", icon: "globe", palette: "sky", visible: true },
@@ -417,6 +431,13 @@ SN.LABEL_META = [
   ["ppCareer","Product page","Career Relevance शीर्षक","Career Relevance"],
   ["ppInside","Product page","Chapters शीर्षक","Inside the Ebook"],
   ["ppChaptersNote","Product page","Chapters टिप्पणी ({n})","कुल {n} अध्यायमध्ये मुख्य अध्यायहरू देखाइएको।"],
+  ["ppSeeAll","Product page","'See all Chapters' button","📖 See all Chapters"],
+  ["ppModalTitle","Product page","Chapters Popup शीर्षक ({n},{title})","Inside the Ebook — सबै {n} Chapters"],
+  ["ppModalHook","Product page","Chapters Popup को Hook ({n},{pages},{title})","{n} Chapters मा के-के सिक्नुहुन्छ — पूरा सूची तल हेर्नुहोस्।"],
+  ["ppModalCta","Product page","Chapters Popup को CTA ({price})","🛒 Add to Cart — {price}"],
+  ["ppModalCtaWa","Product page","Chapters Popup को CTA (Cart बन्द हुँदा) ({price})","WhatsApp मा Order गर्नुहोस् — {price}"],
+  ["ppModalClose","Product page","Chapters Popup बन्द button","बन्द गर्नुहोस्"],
+  ["pvPageHook","Preview","PDF Page Slide को Hook ({n},{total})","Preview — Page {n} / {total}"],
   ["ppPreviewTitle","Product page","Preview card शीर्षक","Preview PDF"],
   ["ppPreviewText","Product page","Preview card वर्णन","किन्नुअघि नमुना अध्याय हेर्नुहोस् र निर्धक्क निर्णय लिनुहोस्।"],
   ["ppPreviewBtn","Product page","Preview button","Preview PDF हेर्नुहोस्"],
@@ -456,6 +477,12 @@ SN.mergeSite = pub => {
     if (id === "bonus") { const bi = list.findIndex(x => x.id === "reviews"); list.splice(bi >= 0 ? bi + 1 : list.length, 0, { id, enabled: true }); } else list.push({ id, enabled: true });
   }
   s.sections = list.map(x => (x.id === "library" ? { id: "library", enabled: true } : x));
+  { const pp = s.productPage, ids = SN.PP_ORDER_IDS, o = [];
+    for (const id of arr(pub && pub.productPage && pub.productPage.order)) if (ids.includes(id) && !o.includes(id)) o.push(id);
+    for (const id of ids) if (!o.includes(id)) o.push(id);
+    pp.order = o;
+    const ic = Math.round(num(pp.inside.initialCount) || 0); pp.inside.initialCount = ic >= 1 && ic <= 40 ? ic : 5;
+    const sc = Math.round(num(pp.sections.suggested.count) || 0); pp.sections.suggested.count = sc >= 0 && sc <= 8 ? sc : 4; }
   s.cart.comboMin = Math.max(2, Math.round(num(s.cart.comboMin) || 3));
   s.cart.comboPercent = Math.min(90, Math.max(0, num(s.cart.comboPercent) ?? 15));
   s.contact.whatsapp = SN.waDigits(s.contact.whatsapp);
@@ -472,8 +499,9 @@ SN.normalizeProduct = (p) => {
   for (const k of ["title", "short", "subtitle", "summary", "description", "hook", "category", "language", "coverAlt", "badge", "format", "offerLabel", "offerDescription", "urgencyLabel", "countdownText", "previewPdf", "cover"]) o[k] = str(o[k]);
   for (const k of ["tags", "forWho", "learningOutcomes", "careerRelevance", "benefits", "includes"]) o[k] = arr(o[k]).map(x => str(x)).filter(Boolean);
   if (!o.learningOutcomes.length && o.benefits.length) o.learningOutcomes = o.benefits.slice();
+  o.pageHide = arr(o.pageHide).map(x => str(x)).filter(x => SN.PP_ORDER_IDS.concat(["career", "stickyCta"]).includes(x));
   o.chapterOutline = arr(o.chapterOutline).map((c, i) => ({ number: i + 1, title: str(c && c.title), description: str(c && c.description) })).filter(c => c.title);
-  for (const k of ["regularPrice", "offerPrice", "rating", "reviewCount", "soldCopies", "copiesLeft", "pages", "chapters", "order"]) o[k] = num(o[k]);
+  for (const k of ["regularPrice", "offerPrice", "rating", "reviewCount", "soldCopies", "copiesLeft", "pages", "chapters", "order", "insideCount"]) o[k] = num(o[k]);
   o.status = ["published", "draft", "hidden", "archived", "config"].includes(o.status) ? o.status : "draft";
   o.availability = ["available", "unavailable", "sold_out"].includes(o.availability) ? o.availability : "available";
   o.featured = !!(o.featured || o.isFeatured);
@@ -496,6 +524,8 @@ SN.normPreview = v => {
   for (const k of SN.PREVIEW_SLIDES) { const x = isObj(sl[k]) ? sl[k] : {}; slides[k] = { visible: x.visible !== false, hook: str(x.hook).slice(0, 300), cta: str(x.cta).slice(0, 80) }; }
   const tc = Math.round(num(v.tocCount) || 0);
   return {
+    pages: arr(v.pages).map(x => str(x)).filter(x => /^assets\/covers\/[a-zA-Z0-9_-]+\.(jpg|png|webp)$/.test(x)).slice(0, 10),
+    pageHook: str(v.pageHook).slice(0, 300), pageCta: str(v.pageCta).slice(0, 80), keepLocked: v.keepLocked !== false,
     enabled: v.enabled !== false, title: str(v.title).slice(0, 60), tocCount: tc >= 1 && tc <= 12 ? tc : 5, slides,
     sample: { title: str(sm.title).slice(0, 120), text: str(sm.text).slice(0, 600), points: arr(sm.points).map(x => str(x).slice(0, 160)).filter(Boolean).slice(0, 6) },
     locked: { title: str(lk.title).slice(0, 80), note: str(lk.note).slice(0, 120) }
@@ -603,7 +633,7 @@ SN.runtime = (catalog, settings, now, opts) => {
     ebooks.push({
       ...p, kind: "ebook", category: c.id, categoryName: c.name, code: c.code,
       short: p.short || p.title, subtitle: p.subtitle, summary: p.summary || p.subtitle || p.description.slice(0, 140),
-      bonus: SN.bonusRuntime(p.bonus, now, img), cover: img(p.cover) || null, previewPdf: SN.safeDoc(p.previewPdf) || null, pages: p.pages, chapters: p.chapters || (p.chapterOutline.length || null),
+      bonus: SN.bonusRuntime(p.bonus, now, img), preview: p.preview ? { ...p.preview, pages: arr(p.preview.pages).map(img).filter(Boolean) } : p.preview, cover: img(p.cover) || null, previewPdf: SN.safeDoc(p.previewPdf) || null, pages: p.pages, chapters: p.chapters || (p.chapterOutline.length || null),
       regularPrice: pi.regular, salePrice: pi.price, hasOffer: pi.has, discount: pi.discount, offerLabel: pi.label, urgencyLabel: p.urgencyLabel,
       endMs: pi.endMs, showCountdown: pi.showCountdown, countdownText: pi.countdownText, offerDescription: pi.offerDescription,
       rating: p.rating, reviewCount: p.reviewCount, soldCopies: p.soldCopies, copiesLeft: p.copiesLeft, isFeatured: p.featured, isNew: p.isNew, _order: p.order
@@ -715,7 +745,7 @@ SN.nextBundleId = products => { let max = 0; for (const p of products) { const m
 SN.slug = s => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || SN.uid("c");
 
 /* ------------------------------------------------------------------ PUBLIC DATA BUILD (admin -> Worker payload) */
-const PRODUCT_FIELDS = ["id", "kind", "title", "short", "subtitle", "summary", "description", "hook", "category", "language", "tags", "cover", "coverAlt", "badge", "status", "availability", "featured", "isNew", "order", "pages", "chapters", "format", "previewPdf", "forWho", "learningOutcomes", "careerRelevance", "chapterOutline", "regularPrice", "offerPrice", "offerActive", "offerStart", "offerEndsAt", "offerLabel", "offerDescription", "urgencyLabel", "countdownVisible", "countdownText", "rating", "reviewCount", "soldCopies", "copiesLeft", "includes", "bonus", "preview", "createdAt", "updatedAt"];
+const PRODUCT_FIELDS = ["id", "kind", "title", "short", "subtitle", "summary", "description", "hook", "category", "language", "tags", "cover", "coverAlt", "badge", "status", "availability", "featured", "isNew", "order", "pages", "chapters", "format", "previewPdf", "forWho", "learningOutcomes", "careerRelevance", "chapterOutline", "pageHide", "insideCount", "regularPrice", "offerPrice", "offerActive", "offerStart", "offerEndsAt", "offerLabel", "offerDescription", "urgencyLabel", "countdownVisible", "countdownText", "rating", "reviewCount", "soldCopies", "copiesLeft", "includes", "bonus", "preview", "createdAt", "updatedAt"];
 SN.IMAGE_FIELDS = (site) => {
   const out = [];
   const add = (obj, key, where) => { if (obj && obj[key]) out.push({ obj, key, where }); };
@@ -774,7 +804,7 @@ SN.buildPublic = (state, opts) => {
   const settings = { whatsappNumber: site.contact.whatsapp, supportEmail: site.contact.supportEmail, paymentInstructions: String(site.payment.instructions || "").slice(0, 2000) };
   // every image path that the public data points at
   const paths = new Set();
-  recs.forEach(r => { if (r.cover) paths.add(r.cover); if (r.bonus) r.bonus.items.forEach(x => { if (x.cover) paths.add(x.cover); }); });
+  recs.forEach(r => { if (r.cover) paths.add(r.cover); if (r.bonus) r.bonus.items.forEach(x => { if (x.cover) paths.add(x.cover); }); if (r.preview && r.preview.pages) r.preview.pages.forEach(x => paths.add(x)); });
   SN.IMAGE_FIELDS(pub).forEach(f => paths.add(f.obj[f.key]));
   return { catalog, settings, imagePaths: [...paths].filter(p => /^assets\/covers\//.test(p)), counts: { ebooks: live.filter(p => p.kind !== "bundle").length, bundles: live.filter(p => p.kind === "bundle").length } };
 };

@@ -69,6 +69,17 @@ A.setStatus = t => { const e = A.$("#saveStatus"); if (e) e.textContent = t; };
 A.publicBuild = opts => SN.buildPublic({ products: A.state.products, site: A.state.site }, opts || {});
 A.publicHash = () => { const b = A.publicBuild(); return A.hash(JSON.stringify({ c: b.catalog, s: b.settings }, (k, v) => (k === "updatedAt" ? undefined : v))); };
 A.hasUnpublished = () => A.state.publishedHash !== A.publicHash();
+/* Live सँग तुलना: यो Browser को Data र Website मा भएको Data एउटै भए "Publish नगरिएका परिवर्तन" हट्छ। (तुलना सटीक छ — वास्तविक परिवर्तन लुकाउँदैन) */
+A.liveHash = async () => { const j = await A.fetchLive(); const r = A.parseImport(j); const b = SN.buildPublic({ products: r.products, site: r.site }, {}); return A.hash(JSON.stringify({ c: b.catalog, s: b.settings }, (k, v) => (k === "updatedAt" ? undefined : v))); };
+A.syncLive = async manual => {
+  try {
+    if (!manual && !A.hasUnpublished()) return true;
+    const lh = await A.liveHash();
+    if (lh === A.publicHash()) { A.state.publishedHash = lh; A.saveNow(); if (manual && A.toast) A.toast("✓ Public site सँग मिलेको छ"); return true; }
+    if (manual && A.toast) A.toast("⚠️ Live site र यो Browser को Data फरक छ — Publish गर्नुहोस् वा Backup → Live Store Data ल्याउनुहोस्।", 5000);
+  } catch (e) { if (manual && A.toast) A.toast("Live Data जाँच्न सकिएन: " + e.message, 4000); }
+  return false;
+};
 A.updateBadges = () => {
   const e = A.$("#pubBadge");
   if (e) { const u = A.hasUnpublished(); e.textContent = u ? "⚠️ Publish नगरिएका परिवर्तन छन्" : "✓ Public site सँग मिलेको"; e.className = "pub-badge " + (u ? "warn" : "ok"); }

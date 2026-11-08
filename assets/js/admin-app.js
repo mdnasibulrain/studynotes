@@ -4,7 +4,7 @@
 const A = window.ADM, SN = window.SN, esc = A.esc;
 
 const NAV = [
-  ["मुख्य", [["overview", "🏠", "Overview"], ["products", "📘", "Ebooks"], ["bundles", "🎁", "Bundles"], ["bonus", "➕", "Bonus Resources"], ["offers", "🔥", "Offers"]]],
+  ["मुख्य", [["overview", "🏠", "Overview"], ["products", "📘", "Ebooks"], ["bundles", "🎁", "Bundles"], ["bonus", "➕", "Bonus Resources"], ["productpage", "🧾", "Product Page"], ["offers", "🔥", "Offers"]]],
   ["Homepage", [["homepage", "🖼", "Hero / शीर्षक"], ["preloader", "⏳", "Preloader"], ["sections", "↕️", "Sections क्रम"], ["categories", "🗂", "Categories"], ["marketing", "📣", "Marketing / Ticker"], ["steps", "🪜", "Steps"], ["reviews", "⭐", "Reviews"], ["faq", "❓", "FAQ"]]],
   ["व्यवसाय", [["payment", "💳", "Payment / Cart"], ["delivery", "📨", "Delivery"], ["whatsapp", "💬", "WhatsApp"], ["email", "✉️", "Email"], ["messages", "📝", "Messages"]]],
   ["Store", [["store", "🏪", "Store / Footer"], ["social", "🔗", "Social Links"], ["seo", "🔎", "SEO / Share"], ["labels", "🔤", "Button / Text"]]],
@@ -112,6 +112,8 @@ A.boot = async () => {
   A.cur = A.pages[start] ? start : "overview";
   A.render();
   A.updateBadges();
+  { const pb = A.$("#pubBadge"); if (pb) { pb.style.cursor = "pointer"; pb.title = "थिचेर Live site सँग जाँच्नुहोस्"; pb.addEventListener("click", () => A.syncLive(true)); } }
+  A.syncLive(false);
   window.addEventListener("beforeunload", () => { try { A.saveNow(); } catch (e) {} });
   if (how === "migrated") A.toast("✓ पुरानो Manager को Data ल्याइयो (पुरानो Data जस्ताको तस्तै छ)", 5000);
 };
