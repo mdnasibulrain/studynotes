@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T19:31:28.578Z",
+  "updatedAt": "2026-11-08T19:52:10.493Z",
   "products": [
     {
       "id": "SN001CS",
@@ -366,7 +366,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T19:31:28.578Z",
+      "updatedAt": "2026-11-08T19:52:10.493Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -633,8 +633,8 @@
           "items": [
             {
               "id": "r0",
-              "name": "सुजन सहनी",
-              "place": "काठमाडौं",
+              "name": "विशाल सहनी",
+              "place": "जनकपुर",
               "rating": 5,
               "productId": "SN001CS",
               "text": "यो Ebook बाट सिकेका Computer र Office Skills अभ्यास गरेपछि मैले Office Clerk मा जागिर पाएँ। आफ्नो करियर सुरु गर्न सहयोगी बन्यो। धन्यवाद StudyNotes!",
@@ -1391,7 +1391,7 @@
           },
           {
             "id": "reviews",
-            "enabled": true
+            "enabled": false
           },
           {
             "id": "bonus",
@@ -1399,7 +1399,7 @@
           },
           {
             "id": "chat",
-            "enabled": true
+            "enabled": false
           },
           {
             "id": "faq",
