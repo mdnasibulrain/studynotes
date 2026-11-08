@@ -684,8 +684,8 @@ SN.runtime = (catalog, settings, now, opts) => {
   rawList.forEach(r => { if (r && r.bonus && r.bonus.enabled) { const bb = SN.normBonus(r.bonus); [SN.parseTime(bb.start), SN.parseTime(bb.end)].forEach(t => { if (t && t > now) chg.push(t); }); } });
   const changeAt = chg.length ? Math.min(...chg) : null;
   // reviews / chat
-  const reviews = sortByOrder(arr(site.reviews.items).filter(r => r && r.visible !== false && str(r.text) && str(r.name))).map(r => ({ name: str(r.name), place: str(r.place), rating: Math.min(5, Math.max(1, num(r.rating) || 5)), productId: EBYID[r.productId] ? r.productId : null, date: str(r.date), text: str(r.text), verified: !!r.verified, sample: !!r.sample && !r.verified }));
-  const chat = sortByOrder(arr(site.chat.items).filter(m => m && m.visible !== false && str(m.text))).map(m => ({ from: m.from === "out" ? "out" : "in", name: str(m.name), time: str(m.time), text: str(m.text), sample: !!m.sample && !m.real }));
+  const reviews = sortByOrder(arr(site.reviews.items).filter(r => r && r.visible !== false && str(r.text) && str(r.name))).map(r => ({ name: str(r.name), place: str(r.place), rating: Math.min(5, Math.max(1, num(r.rating) || 5)), productId: EBYID[r.productId] ? r.productId : null, date: str(r.date), text: str(r.text), verified: !!r.verified, sample: !!r.sample }));
+  const chat = sortByOrder(arr(site.chat.items).filter(m => m && m.visible !== false && str(m.text))).map(m => ({ from: m.from === "out" ? "out" : "in", name: str(m.name), time: str(m.time), text: str(m.text), sample: !!m.sample }));
   const goals = sortByOrder(arr(site.goals.items).filter(g => g && g.visible !== false && str(g.title)));
   // variables usable inside texts
   const catNames = catList.filter(c => c.visible && ebooks.some(e => e.category === c.id)).map(c => c.name);
