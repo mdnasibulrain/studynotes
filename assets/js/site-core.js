@@ -184,7 +184,9 @@ const D = {
     badge: "{storeName} • {tagline}", headBefore: "सफलताको", headHighlight: "पहिलो कदम", headAfter: "आजै यहीँबाट सुरु गर्नुहोस्",
     description: "Skill, Exam र Career तिर स्पष्ट बाटो देखाउने Practical Ebooks — सरल नेपाली भाषामा, मोबाइलमै पढ्न मिल्ने। यो खर्च होइन, तपाईंको **पहिलो उपलब्धि** हो।",
     cta1: { text: "Ebooks हेर्नुहोस्", action: "section:explore" }, cta2: { text: "Bundle Offers", action: "section:bundles" },
-    cardNote: "🏆 यो तपाईंको सफलतातर्फको पहिलो उपलब्धि — आजै सुरु गर्नुहोस्।"
+    cardNote: "🏆 यो तपाईंको सफलतातर्फको पहिलो उपलब्धि — आजै सुरु गर्नुहोस्।",
+    headComma: true,
+    rotate: { enabled: false, seconds: 4, hooks: [] }
   },
   trust: { items: [
     { id: "t1", icon: "book", title: "Practical Learning", text: "उपयोगी र व्यवस्थित Content", visible: true },
@@ -477,6 +479,8 @@ SN.mergeSite = pub => {
     if (id === "bonus") { const bi = list.findIndex(x => x.id === "reviews"); list.splice(bi >= 0 ? bi + 1 : list.length, 0, { id, enabled: true }); } else list.push({ id, enabled: true });
   }
   s.sections = list.map(x => (x.id === "library" ? { id: "library", enabled: true } : x));
+  { const r = s.hero.rotate = isObj(s.hero.rotate) ? s.hero.rotate : {}; r.enabled = r.enabled === true; r.hooks = arr(r.hooks).map(x => str(x)).filter(Boolean).slice(0, 20);
+    const sec = Math.round(num(r.seconds) || 0); r.seconds = sec >= 2 && sec <= 15 ? sec : 4; }
   { const pp = s.productPage, ids = SN.PP_ORDER_IDS, o = [];
     for (const id of arr(pub && pub.productPage && pub.productPage.order)) if (ids.includes(id) && !o.includes(id)) o.push(id);
     for (const id of ids) if (!o.includes(id)) o.push(id);
