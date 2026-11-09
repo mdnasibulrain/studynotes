@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T20:26:39.833Z",
+  "updatedAt": "2026-11-09T04:17:58.981Z",
   "products": [
     {
       "id": "SN001CS",
@@ -11,6 +11,7 @@
       "description": "यो Ebook पहिलो पटक computer देख्नेदेखि Computer Operator र Office Assistant को काम गर्न चाहनेसम्मका लागि बनाइएको व्यावहारिक, चरणबद्ध गाइड हो। ७ भाग र ४० अध्यायमा Computer Fundamentals, Windows, Typing, File Management, Microsoft Word / Excel / PowerPoint, Internet, Email, Google Workspace, Cybersecurity, Office Administration, Accounting, Cashier/POS, Inventory, Advanced Excel, PDF, AI Tools, Troubleshooting र Career तयारी (CV, Interview, Skill Test, Freelancing, पहिलो ९० दिन, Portfolio) समेटिएको छ।\n\nहरेक अध्यायमा: यो chapter मा के सिक्ने (८ वटा उद्देश्य) → चरणबद्ध व्याख्या र उदाहरण → Important Terms → सामान्य गलत बुझाइ → Pro Tips → Job Connection → Mini Project → Knowledge Check (MCQ, True/False, Fill in the blanks, Short Answer) → Answer Key → Quick Revision → Key Takeaways।",
       "hook": "पढ्नुहोस्, अभ्यास गर्नुहोस्, Portfolio बनाउनुहोस् — शून्यदेखि Job-Ready सम्म — Job Ready देखि Business Owner सम्मको पूरै यात्रा एउटै Ebook मा।",
       "category": "Computer Skills",
+      "language": "नेपाली",
       "tags": [
         "Computer Skills",
         "MS Office",
@@ -18,7 +19,7 @@
         "Computer Operator",
         "Nepali"
       ],
-      "cover": "assets/covers/SN001CS-zzmrx.jpg",
+      "cover": "assets/covers/SN001CS-8q0et.jpg",
       "coverAlt": "COMPLETE COMPUTER OPERATOR & OFFICE ASSISTANT MASTERY — Ebook Cover",
       "badge": "CAREER SPECIAL",
       "status": "published",
@@ -29,7 +30,6 @@
       "pages": 392,
       "chapters": 40,
       "format": "Mobile/Desktop",
-      "previewPdf": "https://drive.google.com/file/d/11sB6juGGEJNX79dhGRbK6wUBSY2HigRp/view?usp=drivesdk",
       "forWho": [
         "पहिलो पटक computer सिक्दै हुनुहुन्छ र शून्यदेखि सुरु गर्न चाहनुहुन्छ",
         "Computer Operator, Data Entry Operator वा Office Assistant को काम गर्न तयारी गर्दै हुनुहुन्छ",
@@ -355,7 +355,7 @@
           "note": ""
         }
       },
-      "updatedAt": "2026-11-08T18:12:00.640Z",
+      "updatedAt": "2026-11-09T04:17:33.420Z",
       "isFeatured": true
     },
     {
@@ -366,7 +366,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-08T20:26:39.833Z",
+      "updatedAt": "2026-11-09T04:17:58.981Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -472,7 +472,21 @@
             "text": "Bundle Offers",
             "action": "section:bundles"
           },
-          "cardNote": "🏆 यो तपाईंको सफलतातर्फको पहिलो उपलब्धि — आजै सुरु गर्नुहोस्।"
+          "cardNote": "🏆 यो तपाईंको सफलतातर्फको पहिलो उपलब्धि — आजै सुरु गर्नुहोस्।",
+          "headComma": false,
+          "rotate": {
+            "enabled": true,
+            "seconds": 4,
+            "hooks": [
+              "जागिरका लागि आफूलाई योग्य बनाउनुहोस्।",
+              "आम्दानीका लागि उपयोगी सीप विकास गर्नुहोस्।",
+              "आफ्नै Business का लागि तयारी गर्नुहोस्।",
+              "आफ्नो ज्ञानलाई व्यवहारिक क्षमतामा बदल्नुहोस्।",
+              "पढाइ रोकिए पनि सिकाइ नरोक्नुहोस्।",
+              "आफूले चाहेको भविष्यका लागि आजै तयार हुनुहोस्।",
+              "अवसर पर्खनुभन्दा अवसरका लागि तयार हुनुहोस्।"
+            ]
+          }
         },
         "trust": {
           "items": [
