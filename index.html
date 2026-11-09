@@ -31,6 +31,7 @@ section[id]{scroll-margin-top:116px}
 .shine::after{content:"";position:absolute;inset:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:shine 3s infinite}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .floaty{animation:floaty 3.2s ease-in-out infinite}
+.sn-snap{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}.sn-snap::-webkit-scrollbar{display:none}.sn-snap>*{scroll-snap-align:center;scroll-snap-stop:always;flex:0 0 100%}
 .wa-bg{background-color:#ECE5DD;background-image:radial-gradient(rgba(0,0,0,.045) 1px,transparent 1px);background-size:14px 14px}
 .tabular{font-variant-numeric:tabular-nums}
 button{-webkit-tap-highlight-color:transparent}
@@ -296,7 +297,7 @@ let RAW = { catalog: { products: [] }, settings: {} };
 let RT = null, SITE = null, VARS = {}, BRAND = {};
 let COMBO_ON = true, COMBO_MIN = 3, COMBO_PERCENT = 15, CART_ON = true;
 const CAROUSEL_MS = 20000;
-let CATEGORIES = [], CAT = {}, PRODUCTS = [], PBYID = {}, BUNDLES = [], BYID = {}, CAROUSEL_ITEMS = [], TICKER = [], REVIEWS = [], CHAT = [], FAQS = [], GOALS = [];
+let CATEGORIES = [], CAT = {}, PRODUCTS = [], PBYID = {}, BUNDLES = [], BYID = {}, CAROUSEL_ITEMS = [], TICKER = [], REVIEWS = [], CHAT = [], CHAT_BOXES = [], FAQS = [], GOALS = [];
 let maxDiscount = 0, totalSold = 0, totalReviews = 0, avgRating = null;
 
 const fmt = n => SITE.store.currency + " " + Number(n).toLocaleString("en-IN");
@@ -321,7 +322,7 @@ function rebuild(now) {
   CATEGORIES = RT.categories.concat(RT.unknownCategories).filter(c => c.visible && PRODUCTS.some(p => p.category === c.id));
   const feat = BUNDLES.filter(b => b.isFeatured).concat(PRODUCTS.filter(p => p.isFeatured));
   CAROUSEL_ITEMS = ((SITE.hero.carouselMode === "featured" && feat.length) ? feat : BUNDLES.slice(0, 1).concat(PRODUCTS, BUNDLES.slice(1))).slice(0, 10);
-  TICKER = RT.ticker; REVIEWS = RT.reviews; CHAT = RT.chat; GOALS = RT.goals;
+  TICKER = RT.ticker; REVIEWS = RT.reviews; CHAT = RT.chat; CHAT_BOXES = RT.chatBoxes || []; GOALS = RT.goals;
   FAQS = SITE.faq.items.filter(f => f && f.visible !== false && f.q && f.a);
   maxDiscount = RT.stats.maxDiscount; totalSold = RT.stats.totalSold; totalReviews = RT.stats.totalReviews; avgRating = RT.stats.avgRating;
 }
@@ -1297,6 +1298,58 @@ function ReviewCard({ r }) {
     </div>
   );
 }
+/* Popup shell (Reviews / Testimonials) — Esc, बाहिर थिच्दा बन्द, पछाडिको Scroll रोकिन्छ */
+function ListModal({ icon, title, sub, onClose, children }) {
+  useEffect(() => {
+    const k = e => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", k);
+    const prev = document.body.style.overflow; document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", k); document.body.style.overflow = prev; };
+  }, []);
+  return (
+    <div className="fixed inset-0 z-[66] flex items-end sm:items-center justify-center sm:p-3 bg-slate-900/70 backdrop-blur-sm" onClick={onClose} role="dialog" aria-modal="true">
+      <div className="bg-white w-full sm:max-w-[560px] max-h-[92vh] flex flex-col rounded-t-3xl sm:rounded-3xl shadow-2xl" onClick={e => e.stopPropagation()}>
+        <div className="p-4 pb-3 border-b border-orange-100 flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h4 className="font-black text-base text-slate-900 flex items-center gap-2"><Icon name={icon} className="w-5 h-5 text-orange-500 shrink-0" /><span>{title}</span></h4>
+            {sub && <p className="text-[12px] font-semibold text-slate-600 mt-1.5 leading-snug">{sub}</p>}
+          </div>
+          <button onClick={onClose} aria-label="Close" className="w-9 h-9 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0"><Icon name="x" className="w-5 h-5" /></button>
+        </div>
+        <div className="overflow-y-auto p-4 flex-1" data-modal-body>{children}</div>
+        <div className="p-3 border-t border-orange-100" style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}>
+          <button onClick={onClose} className="w-full py-2 text-xs font-bold text-slate-500">{L("ppModalClose")}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+function ShowAllBtn({ onClick, text, n }) {
+  return (
+    <div className="mt-4 flex justify-center">
+      <button onClick={onClick} className="px-5 py-2.5 rounded-xl bg-white border-2 border-orange-400 text-orange-700 hover:bg-orange-50 font-extrabold text-xs inline-flex items-center gap-2 shadow-sm">{text}<span className="text-[10px] bg-orange-100 text-orange-700 rounded-full px-2 py-0.5">{n}</span></button>
+    </div>
+  );
+}
+function ReviewsModal({ list, onClose }) {
+  const r0 = SITE.reviews, X = { n: list.length };
+  return (
+    <ListModal icon="star" title={r0.modalTitle ? T(r0.modalTitle, X, "keep") : L("revModalTitle", X)} sub={r0.modalSub ? T(r0.modalSub, X, "keep") : L("revModalSub", X)} onClose={onClose}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" data-rev-all>{list.map((r, i) => <ReviewCard key={i} r={r} />)}</div>
+      {r0.sampleNote && list.some(r => r.sample) && <p className="mt-3 text-[10px] text-slate-500 text-center">{r0.sampleNote}</p>}
+    </ListModal>
+  );
+}
+function ReviewsMore({ list, shown }) {
+  const [open, setOpen] = useState(false);
+  const r0 = SITE.reviews;
+  if (r0.showAll === false || !list.length) return null;
+  const X = { n: list.length };
+  return (<>
+    <ShowAllBtn onClick={() => setOpen(true)} text={r0.btnText ? T(r0.btnText, X, "keep") : L("revShowAll", X)} n={list.length} />
+    {open && <ReviewsModal list={list} onClose={() => setOpen(false)} />}
+  </>);
+}
 function ReviewsSection() {
   const A = useContext(Ctx);
   const rated = PRODUCTS.filter(p => p.rating > 0);
@@ -1304,6 +1357,7 @@ function ReviewsSection() {
   if (!REVIEWS.length && !hasStats) return null;
   const r0 = SITE.reviews;
   const showLeft = hasStats || rated.length > 0;
+  const homeRevs = SITE.reviews.homeCount > 0 ? REVIEWS.slice(0, SITE.reviews.homeCount) : REVIEWS;
   return (
     <section id="reviews" className="py-10 bg-orange-50/50 border-b border-orange-100">
       <div className="max-w-7xl mx-auto px-3 md:px-4">
@@ -1334,8 +1388,9 @@ function ReviewsSection() {
           )}
           {REVIEWS.length > 0 && (
             <div className={showLeft ? "lg:col-span-8" : ""}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{REVIEWS.slice(0, 4).map((r, i) => <ReviewCard key={i} r={r} />)}</div>
-              {SITE.reviews.sampleNote && REVIEWS.slice(0, 4).some(r => r.sample) && <p className="mt-3 text-[10px] text-slate-500 text-center">{SITE.reviews.sampleNote}</p>}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{homeRevs.map((r, i) => <ReviewCard key={i} r={r} />)}</div>
+              <ReviewsMore list={REVIEWS} />
+              {SITE.reviews.sampleNote && homeRevs.some(r => r.sample) && <p className="mt-3 text-[10px] text-slate-500 text-center">{SITE.reviews.sampleNote}</p>}
             </div>
           )}
         </div>
@@ -1369,40 +1424,90 @@ function ProcessSection() {
     </section>
   );
 }
-function ChatSection() {
+function ChatBox({ box, c0, full }) {
   const A = useContext(Ctx);
+  return (
+    <div className="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white">
+      <div className="bg-[#075E54] text-white px-3 py-2.5 flex items-center gap-2.5">
+        <Icon name="chevL" className="w-5 h-5 opacity-80" />
+        <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center"><Logo size={22} /></div>
+        <div className="flex-1 leading-tight"><div className="text-sm font-bold">{T(box.name || c0.headerName, {}, "keep")}</div>{(box.status || c0.status) && <div className="text-[10px] opacity-80">{box.status || c0.status}</div>}</div>
+        <Icon name="phone" className="w-4 h-4 opacity-80" />
+      </div>
+      <div className={`wa-bg p-3 space-y-2 ${full ? "" : "max-h-[420px] overflow-y-auto"}`}>
+        <div className="flex justify-center"><span className="text-[10px] bg-[#FFF3C4] text-slate-700 px-2.5 py-1 rounded-lg shadow-sm">{L("chatToday")}</span></div>
+        {box.items.map((m, i) => (
+          <div key={i} className={`flex ${m.from === "out" ? "justify-end" : "justify-start"}`}>
+            <div className={`relative max-w-[82%] rounded-lg px-2.5 py-1.5 shadow-sm text-[12.5px] leading-snug ${m.from === "out" ? "bg-[#DCF8C6] rounded-tr-none" : "bg-white rounded-tl-none"}`}>
+              {m.from === "in" && m.name && <div className="text-[10px] font-bold text-[#128C7E] mb-0.5">{m.name}</div>}
+              <span className="text-slate-800">{m.text}</span>
+              <span className="float-right ml-2 mt-1 text-[9px] text-slate-500 flex items-center gap-0.5">{m.time}{m.from === "out" && <span className="text-sky-500 font-bold">✓✓</span>}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <button onClick={() => A.whatsapp(null)} className="w-full bg-[#F0F2F5] px-3 py-2.5 flex items-center gap-2 hover:bg-[#E6E8EB]">
+        <span className="flex-1 bg-white rounded-full px-3 py-2 text-xs text-slate-400 text-left">{c0.inputText}</span>
+        <span className="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center"><Icon name="wa" className="w-5 h-5" /></span>
+      </button>
+    </div>
+  );
+}
+/* एक वा धेरै Chat Box — Swipe / Arrow / Dots / Auto-slide (Admin → Reviews / Testimonials ले नियन्त्रण) */
+function ChatSlider({ boxes, c0 }) {
+  const ref = useRef(null);
+  const [idx, setIdx] = useState(0);
+  const idxRef = useRef(0);
+  const n = boxes.length;
+  const goTo = i => { const el = ref.current; if (!el) return; const k = Math.max(0, Math.min(n - 1, i)); el.scrollTo({ left: k * el.clientWidth, behavior: "smooth" }); };
+  const onScroll = () => { const el = ref.current; if (!el || !el.clientWidth) return; const k = Math.round(el.scrollLeft / el.clientWidth); if (k !== idxRef.current) { idxRef.current = k; setIdx(k); } };
+  const paused = useRef(false);
+  useEffect(() => {
+    if (!c0.autoplay || n < 2 || PREVIEW) return;
+    const t = setInterval(() => { if (paused.current || document.hidden) return; goTo(idxRef.current >= n - 1 ? 0 : idxRef.current + 1); }, Math.max(2, c0.autoplaySec || 5) * 1000);
+    return () => clearInterval(t);
+  }, [c0.autoplay, c0.autoplaySec, n]);
+  const many = n > 1;
+  return (
+    <div className="max-w-md mx-auto relative" data-chat-slider onMouseEnter={() => { paused.current = true; }} onMouseLeave={() => { paused.current = false; }} onTouchStart={() => { paused.current = true; }} onTouchEnd={() => { setTimeout(() => { paused.current = false; }, 4000); }}>
+      <div ref={ref} onScroll={onScroll} className="sn-snap gap-0 rounded-3xl">
+        {boxes.map((b, i) => <div key={b.id || i} className="min-w-0"><ChatBox box={b} c0={c0} /></div>)}
+      </div>
+      {many && c0.arrows !== false && (<>
+        <button onClick={() => goTo(idx - 1)} disabled={idx === 0} aria-label="Previous" className="absolute left-1.5 top-[44%] z-10 w-8 h-8 rounded-full bg-white/95 shadow border border-orange-100 flex items-center justify-center text-orange-600 disabled:opacity-30"><Icon name="chevL" className="w-4 h-4" /></button>
+        <button onClick={() => goTo(idx + 1)} disabled={idx >= n - 1} aria-label="Next" className="absolute right-1.5 top-[44%] z-10 w-8 h-8 rounded-full bg-white/95 shadow border border-orange-100 flex items-center justify-center text-orange-600 disabled:opacity-30"><Icon name="chevR" className="w-4 h-4" /></button>
+      </>)}
+      {many && c0.dots !== false && (
+        <div className="mt-3 flex items-center justify-center gap-1.5">{boxes.map((b, i) => <button key={i} onClick={() => goTo(i)} aria-label={"Chat " + (i + 1)} className={`h-2 rounded-full transition-all ${i === idx ? "w-5 bg-orange-500" : "w-2 bg-orange-200"}`}></button>)}</div>
+      )}
+    </div>
+  );
+}
+function TestimonialsModal({ boxes, total, onClose }) {
+  const c0 = SITE.chat, X = { n: boxes.length };
+  return (
+    <ListModal icon="wa" title={c0.modalTitle ? T(c0.modalTitle, X, "keep") : L("tstModalTitle", X)} sub={c0.modalSub ? T(c0.modalSub, X, "keep") : L("tstModalSub", X)} onClose={onClose}>
+      <div className="space-y-4" data-tst-all>{boxes.map((b, i) => <ChatBox key={b.id || i} box={b} c0={c0} full />)}</div>
+      {c0.sampleNote && boxes.some(b => b.items.some(m => m.sample)) && <p className="mt-3 text-[10px] text-slate-500 text-center">{c0.sampleNote}</p>}
+    </ListModal>
+  );
+}
+function ChatSection() {
+  const [open, setOpen] = useState(false);
   if (!CHAT.length) return null;
   const c0 = SITE.chat;
+  const boxes = CHAT_BOXES.length ? CHAT_BOXES : [{ id: "", name: "", status: "", items: CHAT }];
+  const shown = c0.homeBoxes > 0 ? boxes.slice(0, c0.homeBoxes) : boxes;
+  const X = { n: boxes.length };
   return (
     <section id="chat" className="py-10 bg-orange-50/50 border-b border-orange-100">
       <div className="max-w-7xl mx-auto px-3 md:px-4">
         <SectionHead eyebrow={T(c0.eyebrow)} title={T(c0.title)} sub={T(c0.sub)} />
-        <div className="max-w-md mx-auto rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white">
-          <div className="bg-[#075E54] text-white px-3 py-2.5 flex items-center gap-2.5">
-            <Icon name="chevL" className="w-5 h-5 opacity-80" />
-            <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center"><Logo size={22} /></div>
-            <div className="flex-1 leading-tight"><div className="text-sm font-bold">{T(c0.headerName, {}, "keep")}</div>{c0.status && <div className="text-[10px] opacity-80">{c0.status}</div>}</div>
-            <Icon name="phone" className="w-4 h-4 opacity-80" />
-          </div>
-          <div className="wa-bg p-3 space-y-2 max-h-[420px] overflow-y-auto">
-            <div className="flex justify-center"><span className="text-[10px] bg-[#FFF3C4] text-slate-700 px-2.5 py-1 rounded-lg shadow-sm">{L("chatToday")}</span></div>
-            {CHAT.map((m, i) => (
-              <div key={i} className={`flex ${m.from === "out" ? "justify-end" : "justify-start"}`}>
-                <div className={`relative max-w-[82%] rounded-lg px-2.5 py-1.5 shadow-sm text-[12.5px] leading-snug ${m.from === "out" ? "bg-[#DCF8C6] rounded-tr-none" : "bg-white rounded-tl-none"}`}>
-                  {m.from === "in" && m.name && <div className="text-[10px] font-bold text-[#128C7E] mb-0.5">{m.name}</div>}
-                  <span className="text-slate-800">{m.text}</span>
-                  <span className="float-right ml-2 mt-1 text-[9px] text-slate-500 flex items-center gap-0.5">{m.time}{m.from === "out" && <span className="text-sky-500 font-bold">✓✓</span>}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <button onClick={() => A.whatsapp(null)} className="w-full bg-[#F0F2F5] px-3 py-2.5 flex items-center gap-2 hover:bg-[#E6E8EB]">
-            <span className="flex-1 bg-white rounded-full px-3 py-2 text-xs text-slate-400 text-left">{c0.inputText}</span>
-            <span className="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center"><Icon name="wa" className="w-5 h-5" /></span>
-          </button>
-        </div>
+        <ChatSlider boxes={shown} c0={c0} />
+        {c0.showAllBtn !== false && <ShowAllBtn onClick={() => setOpen(true)} text={c0.btnText ? T(c0.btnText, X, "keep") : L("tstShowAll", X)} n={boxes.length} />}
         {c0.sampleNote && CHAT.some(m => m.sample) && <p className="mt-3 text-[10px] text-slate-500 text-center">{c0.sampleNote}</p>}
       </div>
+      {open && <TestimonialsModal boxes={boxes} onClose={() => setOpen(false)} />}
     </section>
   );
 }
@@ -1874,7 +1979,8 @@ function ProductPage({ p }) {
   const hasLeft = p.copiesLeft != null && p.copiesLeft > 0, hasSold = p.soldCopies != null && p.soldCopies > 0;
   const claimed = hasLeft && hasSold ? Math.round((p.soldCopies / (p.soldCopies + p.copiesLeft)) * 100) : null;
   const more = PRODUCTS.filter(x => x.id !== p.id).sort((a, b) => (a.category === p.category ? -1 : 0) - (b.category === p.category ? -1 : 0) || (b.soldCopies || 0) - (a.soldCopies || 0)).slice(0, PPS.suggested.count == null ? 4 : PPS.suggested.count);
-  const revs = [...REVIEWS.filter(r => r.productId === p.id), ...REVIEWS.filter(r => r.productId !== p.id)].slice(0, 3);
+  const allRevs = [...REVIEWS.filter(r => r.productId === p.id), ...REVIEWS.filter(r => r.productId !== p.id)];
+  const revs = SITE.reviews.productCount > 0 ? allRevs.slice(0, SITE.reviews.productCount) : allRevs;
   const list = [toCartItem(p)];
   const cat = CAT[p.category] || { name: p.categoryName };
   const bundleFor = BUNDLES.find(b => b.includes.includes(p.id));
@@ -2013,6 +2119,7 @@ function ProductPage({ p }) {
               <div className="flex-1 text-[11px] font-bold text-slate-600 space-y-1">{hasSold && <div>{L("ppReviewsSold", { n: p.soldCopies })}</div>}<div>{L("ppDeliveryLine")}</div></div>
             </div>
             {revs.length > 0 && <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3">{revs.map((r, i) => <ReviewCard key={i} r={r} />)}</div>}
+            <ReviewsMore list={allRevs} />
             {SITE.reviews.productSampleNote && revs.some(r => r.sample) && <p className="mt-2 text-[10px] text-slate-500 text-center">{SITE.reviews.productSampleNote}</p>}
           </div>
         </section>
