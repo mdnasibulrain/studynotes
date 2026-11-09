@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-09T23:39:22.538Z",
+  "updatedAt": "2026-11-09T23:52:47.149Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-09T23:39:22.538Z",
+      "updatedAt": "2026-11-09T23:52:47.149Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -797,7 +797,7 @@
           "eyebrow": "CUSTOMER TESTIMONIALS",
           "title": "ग्राहकसँगको कुराकानी",
           "sub": "हाम्रा पाठकहरूको Order देखि Learning, Career Preparation र Achievement सम्मका वास्तविक अनुभवहरू।",
-          "headerName": "{storeName}",
+          "headerName": "",
           "status": "online",
           "inputText": "WhatsApp मा Message गर्नुहोस्...",
           "boxes": [
@@ -852,7 +852,7 @@
           "arrows": true,
           "dots": true,
           "autoplay": true,
-          "autoplaySec": 5,
+          "autoplaySec": 10,
           "sampleNote": "ℹ️ नमुना (Sample) कुराकानी — वास्तविक ग्राहक सन्देश (अनुमति सहित) थपेर यो खण्ड अपडेट गर्नुहोस्।",
           "items": [
             {
