@@ -63,3 +63,11 @@ Product पेजमा Description/"कसका लागि" पछि, Homep
 - Ebooks → सम्पादन → **८. यो Ebook को Product Page** : यही Ebook मा मात्र खण्ड लुकाउने / Chapters संख्या।
 - "Publish नगरिएका परिवर्तन" पट्टी: Live site सँग Data एउटै भए आफैं हरियो हुन्छ; पट्टी थिचेर पनि जाँच्न सकिन्छ।
 - नयाँ Data: `site.productPage` (Site record भित्र), product मा `preview.pages`, `pageHide`, `insideCount`। Worker जस्ताको तस्तै।
+
+---
+## ⭐ Reviews "Show all" + 💬 Multiple Testimonial Chat Boxes (नयाँ)
+- Admin → **Reviews / Testimonials**: जति Review चाहिन्छ Upload गर्नुहोस्; "Homepage मा देखाउने Review संख्या" (default ४) जति मात्र देखिन्छ, बीचमा **Show all Reviews** बटन → Popup मा सबै।
+- Admin → Testimonial Chat Boxes: धेरै Chat Box (नाम/Status/देखाउने-लुकाउने/क्रम), हरेक सन्देशमा "कुन Chat Box मा?"। Slide: Swipe / तीर / थोप्ला / Auto-slide (सेकेन्ड सेट गर्न मिल्छ)। **Show all Testimonials** बटन → Popup मा सबै Box।
+- बटन: Auto (बाँकी भए मात्र) / सधैं / लुकाउने। बटन र Popup का शब्द Admin → Labels (revShowAll, chatShowAll …)।
+- Box नराखे अहिलेकै जस्तै एउटै Chat Box। पुरानो Data/Worker/Publish प्रक्रिया बदलिएको छैन।
+- बदलिएका फाइल: `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-pages2.js`, `README.md`।
