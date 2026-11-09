@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-09T10:57:06.360Z",
+  "updatedAt": "2026-11-09T13:25:08.592Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-09T10:57:06.360Z",
+      "updatedAt": "2026-11-09T13:25:08.592Z",
       "site": {
         "v": 1,
         "preloader": {
