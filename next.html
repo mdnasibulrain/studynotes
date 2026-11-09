@@ -296,7 +296,7 @@ let RAW = { catalog: { products: [] }, settings: {} };
 let RT = null, SITE = null, VARS = {}, BRAND = {};
 let COMBO_ON = true, COMBO_MIN = 3, COMBO_PERCENT = 15, CART_ON = true;
 const CAROUSEL_MS = 20000;
-let CATEGORIES = [], CAT = {}, PRODUCTS = [], PBYID = {}, BUNDLES = [], BYID = {}, CAROUSEL_ITEMS = [], TICKER = [], REVIEWS = [], CHAT = [], CHATBOXES = [], FAQS = [], GOALS = [];
+let CATEGORIES = [], CAT = {}, PRODUCTS = [], PBYID = {}, BUNDLES = [], BYID = {}, CAROUSEL_ITEMS = [], TICKER = [], REVIEWS = [], CHAT = [], FAQS = [], GOALS = [];
 let maxDiscount = 0, totalSold = 0, totalReviews = 0, avgRating = null;
 
 const fmt = n => SITE.store.currency + " " + Number(n).toLocaleString("en-IN");
@@ -321,7 +321,7 @@ function rebuild(now) {
   CATEGORIES = RT.categories.concat(RT.unknownCategories).filter(c => c.visible && PRODUCTS.some(p => p.category === c.id));
   const feat = BUNDLES.filter(b => b.isFeatured).concat(PRODUCTS.filter(p => p.isFeatured));
   CAROUSEL_ITEMS = ((SITE.hero.carouselMode === "featured" && feat.length) ? feat : BUNDLES.slice(0, 1).concat(PRODUCTS, BUNDLES.slice(1))).slice(0, 10);
-  TICKER = RT.ticker; REVIEWS = RT.reviews; CHAT = RT.chat; CHATBOXES = RT.chatBoxes || []; GOALS = RT.goals;
+  TICKER = RT.ticker; REVIEWS = RT.reviews; CHAT = RT.chat; GOALS = RT.goals;
   FAQS = SITE.faq.items.filter(f => f && f.visible !== false && f.q && f.a);
   maxDiscount = RT.stats.maxDiscount; totalSold = RT.stats.totalSold; totalReviews = RT.stats.totalReviews; avgRating = RT.stats.avgRating;
 }
@@ -1297,44 +1297,13 @@ function ReviewCard({ r }) {
     </div>
   );
 }
-/* सबै Reviews / Testimonials देखाउने Popup (साझा) */
-function ListModal({ title, onClose, closeText, wide, children }) {
-  useEffect(() => {
-    const onKey = e => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow; document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = prev; };
-  }, []);
-  return (
-    <div className="fixed inset-0 z-[66] flex items-end sm:items-center justify-center sm:p-3 bg-slate-900/70 backdrop-blur-sm" onClick={onClose} role="dialog" aria-modal="true">
-      <div className={`bg-white w-full ${wide ? "sm:max-w-4xl" : "sm:max-w-2xl"} max-h-[92vh] flex flex-col rounded-t-3xl sm:rounded-3xl shadow-2xl`} onClick={e => e.stopPropagation()}>
-        <div className="p-4 pb-3 border-b border-orange-100 flex items-center justify-between gap-3">
-          <h4 className="font-black text-base text-slate-900 min-w-0">{title}</h4>
-          <button onClick={onClose} aria-label="Close" className="w-9 h-9 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0"><Icon name="x" className="w-5 h-5" /></button>
-        </div>
-        <div className="overflow-y-auto p-4 flex-1 bg-orange-50/40">{children}</div>
-        <div className="p-3 border-t border-orange-100" style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}>
-          <button onClick={onClose} className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-extrabold text-slate-600">{closeText}</button>
-        </div>
-      </div>
-    </div>
-  );
-}
-function ShowAllBtn({ onClick, children }) {
-  return <div className="flex justify-center mt-5"><button onClick={onClick} className="px-6 py-2.5 rounded-full bg-white border-2 border-orange-400 text-orange-700 hover:bg-orange-500 hover:text-white font-black text-xs md:text-sm shadow-sm transition-colors">{children}</button></div>;
-}
 function ReviewsSection() {
   const A = useContext(Ctx);
-  const [allOpen, setAllOpen] = useState(false);
   const rated = PRODUCTS.filter(p => p.rating > 0);
   const hasStats = !!avgRating;
   if (!REVIEWS.length && !hasStats) return null;
   const r0 = SITE.reviews;
   const showLeft = hasStats || rated.length > 0;
-  const rn = Math.max(1, Math.min(50, Math.round(Number(r0.showCount)) || 4));
-  const shownRev = REVIEWS.slice(0, rn);
-  const rMode = r0.showAllMode || "auto";
-  const showAllRev = REVIEWS.length > 0 && (rMode === "always" || (rMode !== "hide" && REVIEWS.length > rn));
   return (
     <section id="reviews" className="py-10 bg-orange-50/50 border-b border-orange-100">
       <div className="max-w-7xl mx-auto px-3 md:px-4">
@@ -1365,19 +1334,12 @@ function ReviewsSection() {
           )}
           {REVIEWS.length > 0 && (
             <div className={showLeft ? "lg:col-span-8" : ""}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{shownRev.map((r, i) => <ReviewCard key={i} r={r} />)}</div>
-              {SITE.reviews.sampleNote && shownRev.some(r => r.sample) && <p className="mt-3 text-[10px] text-slate-500 text-center">{SITE.reviews.sampleNote}</p>}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{REVIEWS.slice(0, 4).map((r, i) => <ReviewCard key={i} r={r} />)}</div>
+              {SITE.reviews.sampleNote && REVIEWS.slice(0, 4).some(r => r.sample) && <p className="mt-3 text-[10px] text-slate-500 text-center">{SITE.reviews.sampleNote}</p>}
             </div>
           )}
         </div>
-        {showAllRev && <ShowAllBtn onClick={() => setAllOpen(true)}>{L("revShowAll", { n: REVIEWS.length })}</ShowAllBtn>}
       </div>
-      {allOpen && (
-        <ListModal title={L("revModalTitle", { n: REVIEWS.length })} closeText={L("revModalClose")} onClose={() => setAllOpen(false)}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{REVIEWS.map((r, i) => <ReviewCard key={i} r={r} />)}</div>
-          {r0.sampleNote && REVIEWS.some(r => r.sample) && <p className="mt-3 text-[10px] text-slate-500 text-center">{r0.sampleNote}</p>}
-        </ListModal>
-      )}
     </section>
   );
 }
@@ -1407,87 +1369,40 @@ function ProcessSection() {
     </section>
   );
 }
-function ChatBox({ box, c0, modal }) {
-  const A = useContext(Ctx);
-  const hdr = box.name || c0.headerName, st = box.status || c0.status;
-  return (
-    <div className="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white">
-      <div className="bg-[#075E54] text-white px-3 py-2.5 flex items-center gap-2.5">
-        <Icon name="chevL" className="w-5 h-5 opacity-80" />
-        <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center"><Logo size={22} /></div>
-        <div className="flex-1 leading-tight"><div className="text-sm font-bold">{T(hdr, {}, "keep")}</div>{st && <div className="text-[10px] opacity-80">{st}</div>}</div>
-        <Icon name="phone" className="w-4 h-4 opacity-80" />
-      </div>
-      <div className={`wa-bg p-3 space-y-2 ${modal ? "" : "max-h-[420px] overflow-y-auto"}`}>
-        <div className="flex justify-center"><span className="text-[10px] bg-[#FFF3C4] text-slate-700 px-2.5 py-1 rounded-lg shadow-sm">{L("chatToday")}</span></div>
-        {box.msgs.map((m, i) => (
-          <div key={i} className={`flex ${m.from === "out" ? "justify-end" : "justify-start"}`}>
-            <div className={`relative max-w-[82%] rounded-lg px-2.5 py-1.5 shadow-sm text-[12.5px] leading-snug ${m.from === "out" ? "bg-[#DCF8C6] rounded-tr-none" : "bg-white rounded-tl-none"}`}>
-              {m.from === "in" && m.name && <div className="text-[10px] font-bold text-[#128C7E] mb-0.5">{m.name}</div>}
-              <span className="text-slate-800">{m.text}</span>
-              <span className="float-right ml-2 mt-1 text-[9px] text-slate-500 flex items-center gap-0.5">{m.time}{m.from === "out" && <span className="text-sky-500 font-bold">✓✓</span>}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      {!modal && (
-        <button onClick={() => A.whatsapp(null)} className="w-full bg-[#F0F2F5] px-3 py-2.5 flex items-center gap-2 hover:bg-[#E6E8EB]">
-          <span className="flex-1 bg-white rounded-full px-3 py-2 text-xs text-slate-400 text-left">{c0.inputText}</span>
-          <span className="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center"><Icon name="wa" className="w-5 h-5" /></span>
-        </button>
-      )}
-    </div>
-  );
-}
-/* धेरै Chat Box: Swipe / तीर / थोप्ला / (Admin ले चाहे) Auto-slide */
-function ChatSlider({ boxes, c0 }) {
-  const ref = useRef(null), paused = useRef(false), idxRef = useRef(0);
-  const [idx, setIdx] = useState(0);
-  const n = boxes.length;
-  const goTo = i => { const el = ref.current; if (!el) return; const k = (i + n) % n; el.scrollTo({ left: k * el.clientWidth, behavior: "smooth" }); idxRef.current = k; setIdx(k); };
-  const onScroll = () => { const el = ref.current; if (!el || !el.clientWidth) return; const k = Math.round(el.scrollLeft / el.clientWidth); if (k !== idxRef.current) { idxRef.current = k; setIdx(k); } };
-  const secs = Math.max(2, Math.min(30, Number(c0.autoplaySeconds) || 5));
-  useEffect(() => {
-    if (!c0.autoplay || n < 2 || PREVIEW) return;
-    let reduce = false; try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
-    if (reduce) return;
-    const id = setInterval(() => { if (!paused.current && !document.hidden) goTo(idxRef.current + 1); }, secs * 1000);
-    return () => clearInterval(id);
-  }, [c0.autoplay, secs, n]);
-  if (n < 2) return <div className="max-w-md mx-auto"><ChatBox box={boxes[0]} c0={c0} /></div>;
-  return (
-    <div className="max-w-md mx-auto relative" onMouseEnter={() => { paused.current = true; }} onMouseLeave={() => { paused.current = false; }} onTouchStart={() => { paused.current = true; }} onTouchEnd={() => { setTimeout(() => { paused.current = false; }, 4000); }}>
-      <div ref={ref} onScroll={onScroll} className="flex overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden" style={{ scrollbarWidth: "none" }}>
-        {boxes.map((b, i) => <div key={b.id || i} className="shrink-0 w-full snap-center px-1 py-1"><ChatBox box={b} c0={c0} /></div>)}
-      </div>
-      {c0.showArrows !== false && (<>
-        <button onClick={() => goTo(idx - 1)} aria-label={L("chatPrev")} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/95 shadow border border-orange-100 flex items-center justify-center text-orange-600"><Icon name="chevL" className="w-4 h-4" /></button>
-        <button onClick={() => goTo(idx + 1)} aria-label={L("chatNext")} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/95 shadow border border-orange-100 flex items-center justify-center text-orange-600"><Icon name="chevR" className="w-4 h-4" /></button>
-      </>)}
-      {c0.showDots !== false && <div className="flex justify-center gap-1.5 mt-3">{boxes.map((b, i) => <button key={i} onClick={() => goTo(i)} aria-label={"Chat " + (i + 1)} className={`h-2 rounded-full transition-all ${i === idx ? "w-5 bg-orange-500" : "w-2 bg-orange-200"}`}></button>)}</div>}
-    </div>
-  );
-}
 function ChatSection() {
   const A = useContext(Ctx);
-  const [allOpen, setAllOpen] = useState(false);
-  if (!CHAT.length || !CHATBOXES.length) return null;
+  if (!CHAT.length) return null;
   const c0 = SITE.chat;
-  const cMode = c0.showAllMode || "auto";
-  const showAllChat = cMode === "always" || (cMode !== "hide" && CHATBOXES.length > 1);
   return (
     <section id="chat" className="py-10 bg-orange-50/50 border-b border-orange-100">
       <div className="max-w-7xl mx-auto px-3 md:px-4">
         <SectionHead eyebrow={T(c0.eyebrow)} title={T(c0.title)} sub={T(c0.sub)} />
-        <ChatSlider boxes={CHATBOXES} c0={c0} />
-        {showAllChat && <ShowAllBtn onClick={() => setAllOpen(true)}>{L("chatShowAll", { n: CHATBOXES.length })}</ShowAllBtn>}
+        <div className="max-w-md mx-auto rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white">
+          <div className="bg-[#075E54] text-white px-3 py-2.5 flex items-center gap-2.5">
+            <Icon name="chevL" className="w-5 h-5 opacity-80" />
+            <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center"><Logo size={22} /></div>
+            <div className="flex-1 leading-tight"><div className="text-sm font-bold">{T(c0.headerName, {}, "keep")}</div>{c0.status && <div className="text-[10px] opacity-80">{c0.status}</div>}</div>
+            <Icon name="phone" className="w-4 h-4 opacity-80" />
+          </div>
+          <div className="wa-bg p-3 space-y-2 max-h-[420px] overflow-y-auto">
+            <div className="flex justify-center"><span className="text-[10px] bg-[#FFF3C4] text-slate-700 px-2.5 py-1 rounded-lg shadow-sm">{L("chatToday")}</span></div>
+            {CHAT.map((m, i) => (
+              <div key={i} className={`flex ${m.from === "out" ? "justify-end" : "justify-start"}`}>
+                <div className={`relative max-w-[82%] rounded-lg px-2.5 py-1.5 shadow-sm text-[12.5px] leading-snug ${m.from === "out" ? "bg-[#DCF8C6] rounded-tr-none" : "bg-white rounded-tl-none"}`}>
+                  {m.from === "in" && m.name && <div className="text-[10px] font-bold text-[#128C7E] mb-0.5">{m.name}</div>}
+                  <span className="text-slate-800">{m.text}</span>
+                  <span className="float-right ml-2 mt-1 text-[9px] text-slate-500 flex items-center gap-0.5">{m.time}{m.from === "out" && <span className="text-sky-500 font-bold">✓✓</span>}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button onClick={() => A.whatsapp(null)} className="w-full bg-[#F0F2F5] px-3 py-2.5 flex items-center gap-2 hover:bg-[#E6E8EB]">
+            <span className="flex-1 bg-white rounded-full px-3 py-2 text-xs text-slate-400 text-left">{c0.inputText}</span>
+            <span className="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center"><Icon name="wa" className="w-5 h-5" /></span>
+          </button>
+        </div>
         {c0.sampleNote && CHAT.some(m => m.sample) && <p className="mt-3 text-[10px] text-slate-500 text-center">{c0.sampleNote}</p>}
       </div>
-      {allOpen && (
-        <ListModal wide={CHATBOXES.length > 1} title={L("chatModalTitle", { n: CHATBOXES.length })} closeText={L("chatModalClose")} onClose={() => setAllOpen(false)}>
-          <div className={`grid grid-cols-1 ${CHATBOXES.length > 1 ? "md:grid-cols-2" : "max-w-md mx-auto"} gap-4 items-start`}>{CHATBOXES.map((b, i) => <ChatBox key={b.id || i} box={b} c0={c0} modal />)}</div>
-        </ListModal>
-      )}
     </section>
   );
 }
