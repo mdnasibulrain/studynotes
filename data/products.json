@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-09T23:21:37.500Z",
+  "updatedAt": "2026-11-09T23:39:22.538Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-09T23:21:37.500Z",
+      "updatedAt": "2026-11-09T23:39:22.538Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -796,13 +796,13 @@
         "chat": {
           "eyebrow": "CUSTOMER TESTIMONIALS",
           "title": "ग्राहकसँगको कुराकानी",
-          "sub": "Order देखि Delivery सम्म — WhatsApp मा यसरी हुन्छ।",
+          "sub": "हाम्रा पाठकहरूको Order देखि Learning, Career Preparation र Achievement सम्मका वास्तविक अनुभवहरू।",
           "headerName": "{storeName}",
           "status": "online",
           "inputText": "WhatsApp मा Message गर्नुहोस्...",
           "boxes": [
             {
-              "name": "Ajay Pandit",
+              "name": "Shiv Shankar Mandal",
               "status": "Online",
               "visible": true,
               "id": "cha_mw9ulezue8o9"
@@ -836,6 +836,12 @@
               "status": "Online",
               "visible": true,
               "id": "cha_mw9vtgnbrmvk"
+            },
+            {
+              "name": "Ajay Pandit",
+              "status": "Online",
+              "visible": true,
+              "id": "cha_mw9wewnunq3k"
             }
           ],
           "homeBoxes": 6,
@@ -845,17 +851,18 @@
           "modalSub": "",
           "arrows": true,
           "dots": true,
-          "autoplay": false,
+          "autoplay": true,
           "autoplaySec": 5,
           "sampleNote": "ℹ️ नमुना (Sample) कुराकानी — वास्तविक ग्राहक सन्देश (अनुमति सहित) थपेर यो खण्ड अपडेट गर्नुहोस्।",
           "items": [
             {
               "from": "in",
-              "name": "Shiv Shankar Mandal",
+              "name": "",
               "time": "09:05",
               "text": "नमस्ते! मलाई Complete Computer Operator & Office Assistant Mastery Ebook चाहिएको छ। कसरी Order गर्ने?",
               "visible": true,
-              "id": "cha_mw89jw06ddqb"
+              "id": "cha_mw89jw06ddqb",
+              "box": "cha_mw9ulezue8o9"
             },
             {
               "from": "out",
@@ -863,14 +870,15 @@
               "time": "09:06",
               "text": "नमस्ते! StudyNotes मा स्वागत छ। 😊\nतपाईंले वेबसाइटबाट सजिलै Order गर्न सक्नुहुन्छ। Payment पूरा भएपछि Ebook र Bonus Resources प्राप्त गर्नुहुनेछ।",
               "visible": true,
-              "id": "cha_mw89ls9sjilj"
+              "id": "cha_mw89ls9sjilj",
+              "box": "cha_mw9ulezue8o9"
             },
             {
               "from": "in",
-              "name": "Shiv Shankar Mandal",
+              "name": "",
               "time": "09:08",
               "text": "धन्यवाद! मैले Order गरिसकेँ।",
-              "box": "",
+              "box": "cha_mw9ulezue8o9",
               "visible": true,
               "id": "cha_mw9ubny0jcif"
             },
@@ -879,25 +887,25 @@
               "name": "",
               "time": "09:09",
               "text": "तपाईंको Order सफलतापूर्वक Confirm भयो! 🎉\nतपाईंको Ebook, Workbook र Bonus Resources पठाइएको छ। शुभ अध्ययन!",
-              "box": "",
+              "box": "cha_mw9ulezue8o9",
               "visible": true,
               "id": "cha_mw9uf26ypulm"
             },
             {
               "from": "in",
-              "name": "Shiv Shankar Mandal",
+              "name": "",
               "time": "09:10",
               "text": "सबै Files प्राप्त भयो। धेरै राम्रोसँग व्यवस्थित रहेछन्। धन्यवाद StudyNotes!",
-              "box": "",
+              "box": "cha_mw9ulezue8o9",
               "visible": true,
               "id": "cha_mw9uialz1f66"
             },
             {
               "from": "in",
-              "name": "Ajay Pandit",
+              "name": "",
               "time": "01:30",
               "text": "Ebook पढ्न सुरु गरेँ। Word, Excel र Typing का विषयहरू बुझ्न सजिलो रहेछन्।",
-              "box": "cha_mw9ulezue8o9",
+              "box": "cha_mw9wewnunq3k",
               "visible": true,
               "id": "cha_mw9utwbfogd7"
             },
@@ -906,22 +914,22 @@
               "name": "",
               "time": "01:31",
               "text": "धेरै खुसी लाग्यो! नियमित पढ्नुहोस् र Practical Exercises पनि अभ्यास गर्नुहोस्। तपाईंको सिकाइ यात्राका लागि शुभकामना! ❤️",
-              "box": "cha_mw9ulezue8o9",
+              "box": "cha_mw9wewnunq3k",
               "visible": true,
               "id": "cha_mw9uway375xn"
             },
             {
               "from": "in",
-              "name": "Ajay Pandit",
+              "name": "",
               "time": "01:33",
               "text": "पक्कै! म सबै अभ्यास पूरा गर्नेछु। धन्यवाद!",
-              "box": "cha_mw9ulezue8o9",
+              "box": "cha_mw9wewnunq3k",
               "visible": true,
               "id": "cha_mw9ux46s1cho"
             },
             {
               "from": "in",
-              "name": "Rinku Sharma",
+              "name": "",
               "time": "04:25",
               "text": "पहिले Office Assistant को कामबारे धेरै कुरा थाहा थिएन। अहिले Documentation, Filing र Excel सिक्दै छु।",
               "box": "cha_mw9umk0u10jj",
@@ -939,7 +947,7 @@
             },
             {
               "from": "in",
-              "name": "Rinku Sharma",
+              "name": "",
               "time": "04:28",
               "text": "धन्यवाद! अब Job Apply गर्न पनि आत्मविश्वास बढेको छ।",
               "box": "cha_mw9umk0u10jj",
@@ -948,7 +956,7 @@
             },
             {
               "from": "in",
-              "name": "Sumit Paswan",
+              "name": "",
               "time": "02:40",
               "text": "खुसीको खबर! मैले Computer Operator को Job पाएँ! 🎉",
               "box": "cha_mw9v2oou0y6z",
@@ -966,7 +974,7 @@
             },
             {
               "from": "in",
-              "name": "Sumit Paswan",
+              "name": "",
               "time": "02:45",
               "text": "धन्यवाद StudyNotes! सिकेको कुरा अभ्यास गर्न पाएकोमा निकै खुसी छु।",
               "box": "cha_mw9v2oou0y6z",
@@ -975,7 +983,7 @@
             },
             {
               "from": "in",
-              "name": "Rohan Kamati",
+              "name": "",
               "time": "08:10",
               "text": "StudyNotes! मैले Interview सफलतापूर्वक पास गरेँ। अब Job Offer को प्रतीक्षामा छु। 😊",
               "box": "cha_mw9v3eihprex",
@@ -993,7 +1001,7 @@
             },
             {
               "from": "in",
-              "name": "Rohan Kamati",
+              "name": "",
               "time": "08:13",
               "text": "तपाईंहरूको सामग्रीले तयारी गर्न सहयोग गर्‍यो। धेरै धन्यवाद!",
               "box": "cha_mw9v3eihprex",
@@ -1002,7 +1010,7 @@
             },
             {
               "from": "in",
-              "name": "Manoj Sah",
+              "name": "",
               "time": "03:50",
               "text": "अहिले Office मा काम गर्दैछु। Excel, Record Keeping र Documentation मा धेरै सुधार भएको छ।",
               "box": "cha_mw9v4t6vpvcd",
@@ -1020,7 +1028,7 @@
             },
             {
               "from": "in",
-              "name": "Manoj Sah",
+              "name": "",
               "time": "03:55",
               "text": "अवश्य! अब थप Digital Skills पनि सिक्ने योजना छ। धन्यवाद!",
               "box": "cha_mw9v4t6vpvcd",
@@ -1030,7 +1038,7 @@
             {
               "from": "in",
               "name": "",
-              "time": "",
+              "time": "07:20",
               "text": "मैले Ebook किनेर सही निर्णय गरेँ। सिक्न, अभ्यास गर्न र Job Preparation गर्न धेरै उपयोगी भयो। अरूलाई पनि सुझाव दिन्छु।",
               "box": "cha_mw9vtgnbrmvk",
               "visible": true,
@@ -1039,7 +1047,7 @@
             {
               "from": "out",
               "name": "",
-              "time": "",
+              "time": "07:22",
               "text": "तपाईंको विश्वास र साथका लागि हृदयदेखि धन्यवाद! ❤️ तपाईंको प्रगति नै हाम्रो प्रेरणा हो। आगामी दिनमा पनि उपयोगी ज्ञान र Practical Learning सामग्री उपलब्ध गराउने प्रयास जारी रहनेछ।",
               "box": "cha_mw9vtgnbrmvk",
               "visible": true,
@@ -1048,7 +1056,7 @@
             {
               "from": "in",
               "name": "",
-              "time": "",
+              "time": "07:25",
               "text": "धन्यवाद StudyNotes! मेरो सिकाइ यात्रामा साथ दिनुभएकोमा आभारी छु। ❤️",
               "box": "cha_mw9vtgnbrmvk",
               "visible": true,
