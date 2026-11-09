@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-09T06:47:12.095Z",
+  "updatedAt": "2026-11-09T08:44:39.534Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-09T06:47:12.095Z",
+      "updatedAt": "2026-11-09T08:44:39.534Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -388,7 +388,7 @@
           "frequency": "session",
           "name": "{storeName}",
           "tagline": "{tagline}",
-          "note": "सफलताको पहिलो कदम",
+          "note": "तपाईंको सफलताको पहिलो कदम",
           "mark": "SN",
           "speed": "normal",
           "logoMode": "draw",
@@ -413,7 +413,7 @@
           "liveLabel": "आजको Offer",
           "stockText": "🔥 केवल {left} बाँकी · {short}",
           "discountText": "{discount}% सम्म OFF",
-          "tickerLabel": "OFFERS"
+          "tickerLabel": "⚡OFFERS"
         },
         "ticker": {
           "autoOffers": true,
@@ -474,10 +474,10 @@
         "hero": {
           "carouselMode": "all",
           "badge": "{storeName} • {tagline}",
-          "headBefore": "सफलताको",
-          "headHighlight": "पहिलो कदम",
-          "headAfter": "आजै यहीँबाट सुरु गर्नुहोस्",
-          "description": "Class 5 देखि Master सम्म — आफू जहाँ हुनुहुन्छ त्यहीँबाट सीप सिक्नुहोस्। Office, Store, Sales, Computer, Accounts र Business का Practical Ebooks — सरल नेपाली भाषामा, मोबाइलमै पढ्न मिल्ने। यो खर्च होइन, तपाईंको **पहिलो उपलब्धि** हो।",
+          "headBefore": "जागिर पाउने इच्छा छ,",
+          "headHighlight": "आफ्नो ज्ञान र काम",
+          "headAfter": "गर्ने क्षमता बढाउनुहोस्।",
+          "description": "आफ्नो लक्ष्यअनुसार Practical Knowledge र Career-Oriented Skills — सरल नेपाली भाषामा, मोबाइल बाटै सिक्न सुरु गर्नुहोस्। **Office Skills, Store Skills, Market Skills, Business Skills, Digital Skills, LokSewa, र Share Market** शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्मको यात्रा 🎯 **StudyNotes सँगै।**",
           "cta1": {
             "text": "Ebooks हेर्नुहोस्",
             "action": "section:explore"
@@ -486,7 +486,7 @@
             "text": "Bundle Offers",
             "action": "section:bundles"
           },
-          "cardNote": "🏆 यो तपाईंको सफलतातर्फको पहिलो उपलब्धि — आजै सुरु गर्नुहोस्।",
+          "cardNote": "🏆 आफ्नो समयलाई सीपमा, सीपलाई काममा र कामलाई आम्दानीमा बदल्नुहोस्। यो तपाईंको सफलतातर्फको पहिलो उपलब्धि — आजै सुरु गर्नुहोस्।",
           "headComma": false,
           "rotate": {
             "enabled": true,
@@ -537,7 +537,7 @@
         "goals": {
           "eyebrow": "YOUR GOAL",
           "title": "तपाईंको Goal के हो?",
-          "sub": "लक्ष्य छान्नुहोस् — सही Ebook आफैं फिल्टर हुन्छ।",
+          "sub": "जागिर खोज्ने मात्र होइन, जागिरका लागि योग्य बन्ने तयारी गर्नुहोस्। लक्ष्य छान्नुहोस् — सही Ebook आफैं फिल्टर हुन्छ।",
           "items": [
             {
               "id": "g1",
@@ -660,15 +660,70 @@
           "sampleBadge": "Sample",
           "items": [
             {
-              "name": "Suman Thapa",
-              "place": "Janakpur",
+              "name": "Shiv Shankar Mandal",
+              "place": "जनकपुर",
               "rating": 5,
               "productId": "SN001CS",
               "date": "",
-              "text": "This is good Ebook.",
+              "text": "Ebook मात्र होइन, Workbook, Templates र Practice Materials समेत पाउँदा निकै खुसी लाग्यो। सिक्न, अभ्यास गर्न र आफूलाई Job Ready बनाउन चाहनेले अवश्य हेर्नुहोस्।",
               "verified": true,
               "visible": true,
-              "id": "rev_mw89ggxl7am5"
+              "id": "rev_mw901hw56oh0"
+            },
+            {
+              "name": "Ajay Pandit",
+              "place": "धरान",
+              "rating": 5,
+              "productId": "SN001CS",
+              "date": "",
+              "text": "Excel र Office Record Management सम्बन्धी अभ्यासले मेरो काम गर्ने आत्मविश्वास बढाएको छ। पैसा खर्च गरेर Ebook किनेकोमा सन्तुष्ट छु।",
+              "verified": true,
+              "visible": true,
+              "id": "rev_mw9094t4u55z"
+            },
+            {
+              "name": "Rinku Sharma",
+              "place": "काठमाडौं",
+              "rating": 5,
+              "productId": "SN001CS",
+              "date": "",
+              "text": "Stock Record, Inventory र GRN जस्ता विषय व्यवहारिक तरिकाले बुझ्न पाएँ। Storekeeper बन्न चाहनेहरूका लागि निकै उपयोगी।",
+              "verified": true,
+              "visible": true,
+              "id": "rev_mw90atjvo51h"
+            },
+            {
+              "name": "Sumit Paswan",
+              "place": "जनकपुर",
+              "rating": 5,
+              "productId": "SN001CS",
+              "date": "",
+              "text": "POS, Cash Handling र Customer Service सम्बन्धी सिकाइले Cashier को काम बुझ्न सजिलो बनायो। नयाँ सीप सिक्न चाहनेलाई सुझाव दिन्छु।",
+              "verified": true,
+              "visible": true,
+              "id": "rev_mw90d3d5fsea"
+            },
+            {
+              "name": "Rohan Kamati",
+              "place": "जनकपुर",
+              "rating": 5,
+              "productId": "SN001CS",
+              "date": "",
+              "text": "Office मा काम गर्न आवश्यक पर्ने धेरै कुरा एउटै Ebook मा पाएँ। अब Computer Operator र Office Assistant को कामका लागि पहिलेभन्दा राम्रो तयारी गर्न सकेको छु।",
+              "verified": true,
+              "visible": true,
+              "id": "rev_mw90e89lczck"
+            },
+            {
+              "name": "Manoj Sah",
+              "place": "जनकपुर",
+              "rating": 5,
+              "productId": "SN001CS",
+              "date": "",
+              "text": "यो Ebook बाट सिकेका Computer र Office Skills अभ्यास गरेपछि मैले Office Clerk & Account Support मा जागिर पाएँ। आफ्नो करियर सुरु गर्न सहयोगी बन्यो। धन्यवाद StudyNotes!",
+              "verified": true,
+              "visible": true,
+              "id": "rev_mw90gfff2n7u"
             }
           ]
         },
@@ -732,7 +787,7 @@
           "items": [
             {
               "from": "in",
-              "name": "Shiv",
+              "name": "Shiv Shankar Mandal",
               "time": "",
               "text": "Maile Ebook paye. Thank you 😊",
               "visible": true,
@@ -849,16 +904,16 @@
         "about": {
           "eyebrow": "ABOUT {storeNameUpper}",
           "heading": "{storeName} — Class 5 देखि Master सम्म",
-          "text": "StudyNotes को उद्देश्य ebook बेच्नु मात्र होइन। पढाइको स्तर, आर्थिक अवस्था वा शैक्षिक यात्रामा आएको अवरोधका कारण आफूले केही गर्न सक्दिनँ भन्ने महसुस गर्ने व्यक्तिलाई व्यावहारिक सीप सिकाएर काम, करियर र व्यवसायका अवसरतर्फ अघि बढ्न सहयोग गर्नु हो।\n\nतपाईंले कति कक्षा पढ्नुभयो भन्ने मात्र महत्त्वपूर्ण होइन; तपाईंले के सीप सिक्नुभयो, कति अभ्यास गर्नुभयो र आफूलाई कामका लागि कति तयार बनाउनुभयो भन्ने पनि महत्त्वपूर्ण छ। सबै पदमा शैक्षिक योग्यता, उमेर, अनुभव वा कानुनी प्रमाणपत्र फरक–फरक चाहिन्छ — हामी सीप सिकाउँछौं र अर्को स्तरसम्म पुग्ने योजना दिन्छौं; जागिर वा आम्दानीको ग्यारेन्टी दिँदैनौं।"
+          "text": "तपाईंले कति कक्षा पढ्नुभयो भन्ने मात्र महत्त्वपूर्ण होइन; तपाईंले के सीप सिक्नुभयो, कति अभ्यास गर्नुभयो र आफूलाई कामका लागि कति तयार बनाउनुभयो भन्ने पनि महत्त्वपूर्ण छ। \nपढाइको स्तर, आर्थिक अवस्था वा शैक्षिक यात्रामा आएको अवरोधका कारण आफूले केही गर्न सक्दिनँ भन्ने महसुस गर्ने व्यक्तिलाई व्यावहारिक सीप सिकाएर काम, करियर र व्यवसायका अवसरतर्फ अघि बढ्न सहयोग गर्नु हो।\nStudyNotes — Your Knowledge. Your Skills. Your Future."
         },
         "finalcta": {
           "pill": "🏁 आजको निर्णय, भोलिको बाटो",
           "heading": "तपाईंको सफलताको पहिलो उपलब्धि\nआजै हासिल गर्नुहोस्",
-          "text": "आफ्नो अहिलेको अवस्थाबाट सुरु गर्नुहोस् — आज एउटा सीप सिक्नुहोस्, भोलि अभ्यास गर्नुहोस्। {maxDiscount}% सम्मको छुटमा सुरु गर्ने मौका यहीँबाट।",
+          "text": "अरूको प्रगति हेरेर मात्र नबस्नुहोस्, आफ्नो प्रगतिको तयारी सुरु गर्नुहोस् । {maxDiscount}% सम्मको छुटमा सुरु गर्ने मौका ।",
           "countdownLabel": "Offer सकिन्छ:",
           "buttons": [
             {
-              "text": "Best Bundle हेर्नुहोस्",
+              "text": "Best हेर्नुहोस्",
               "action": "section:bundles",
               "visible": true
             },
@@ -868,7 +923,7 @@
               "visible": true
             },
             {
-              "text": "WhatsApp मा Order",
+              "text": "Order हेर्नुहोस्",
               "action": "whatsapp",
               "visible": true
             }
