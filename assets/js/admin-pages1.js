@@ -242,8 +242,6 @@ P.homepage = {
       A.f(h, { k: "description", l: "वर्णन", t: "area", rows: 3, h: "**यसरी** लेखे मोटो अक्षर हुन्छ।" }) +
       A.row(A.f(h, { k: "cta1.text", l: "पहिलो Button को शब्द" }) + A.f(h, { k: "cta1.action", l: "पहिलो Button ले के गर्ने?", t: "action" })) +
       A.row(A.f(h, { k: "cta2.text", l: "दोस्रो Button को शब्द" }) + A.f(h, { k: "cta2.action", l: "दोस्रो Button ले के गर्ने?", t: "action" })) +
-      A.f(h, { k: "headComma", l: "शीर्षकको सुनौलो शब्दपछि comma (,) राख्ने", t: "bool", rerender: false }) +
-      `<h3 class="sub">🔁 Hero का परिवर्तन हुने Hook</h3>` + A.row(A.f(h, { k: "rotate.enabled", l: "Hook घुमाउने", t: "bool", rerender: false }) + A.f(h, { k: "rotate.seconds", l: "कति सेकेन्डमा बदल्ने (२–१५)", t: "num", min: 2, max: 15, step: 1 })) + A.f(h, { k: "rotate.hooks", l: "Hook हरू (एक लाइनमा एक)", t: "lines", rows: 7, h: "शीर्षकमुनि एक-एक गरी बदलिँदै देखिन्छ। जागिर/आम्दानी/Business को ग्यारेन्टी जस्तो नलेख्नुहोस्।" }) +
       A.f(h, { k: "cardNote", l: "Hero कार्ड मुनिको वाक्य" }) + A.f(h, { k: "carouselMode", l: "Hero मा घुम्ने Ebook/Bundle", t: "select", o: [["all", "सबै — पहिलो Bundle, सबै Ebook, अन्तिम Bundle (Default)"], ["featured", "केवल ⭐ Featured चिन्ह लगाएका"]] })) +
       A.note("Hero मा घुम्ने Ebook/Bundle माथिको छनोटले तय गर्छ (Default: सबै)। Rating/Sold/बाँकी संख्या Product मा राखेको वास्तविक मान मात्र देखिन्छ।") +
       A.card("Goals — “तपाईंको Goal के हो?”", A.row(A.f(s, { k: "goals.eyebrow", l: "सानो शीर्षक" }) + A.f(s, { k: "goals.title", l: "ठूलो शीर्षक" })) + A.f(s, { k: "goals.sub", l: "उपशीर्षक" }) +
