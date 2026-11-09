@@ -379,22 +379,6 @@ function parseHash() {
   const m = (window.location.hash || "").match(/^#\/p\/([A-Za-z0-9_-]+)/);
   return m && PBYID[m[1]] ? { page: "product", id: m[1] } : { page: "home" };
 }
-/* Hero मा परिवर्तन भइरहने Hook (Admin → Homepage → Hero) */
-function HeroRotator({ cfg }) {
-  const [i, setI] = useState(0);
-  const n = cfg.hooks.length;
-  useEffect(() => {
-    if (n < 2) return;
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setInterval(() => setI(x => (x + 1) % n), Math.max(2, cfg.seconds || 4) * 1000);
-    return () => clearInterval(t);
-  }, [n, cfg.seconds]);
-  return (
-    <div className="mt-3 min-h-[3.2em] flex items-center justify-center" aria-live="polite" data-hero-rotator>
-      <p key={i % n} className="fade-up text-orange-700 font-extrabold text-sm md:text-lg leading-snug bg-orange-50 border border-orange-200 rounded-2xl px-4 py-2 max-w-xl">{cfg.hooks[i % n]}</p>
-    </div>
-  );
-}
 function Rich({ text, boldClass = "text-slate-900" }) {
   const parts = String(text || "").split(/\*\*(.+?)\*\*/g);
   return <>{parts.map((s, i) => (i % 2 ? <b key={i} className={boldClass}>{s}</b> : s))}</>;
@@ -773,9 +757,8 @@ function HeroSection() {
             </span>
           )}
           <h1 className="mt-3 text-[26px] md:text-5xl font-black leading-[1.2] text-slate-900">
-            {h.headBefore} <span className="text-orange-500">{h.headHighlight}</span>{h.headAfter ? <>{h.headComma === false ? "" : ","}<br className="hidden sm:block" /> {h.headAfter}</> : null}
+            {h.headBefore} <span className="text-orange-500">{h.headHighlight}</span>{h.headAfter ? <>,<br className="hidden sm:block" /> {h.headAfter}</> : null}
           </h1>
-          {h.rotate && h.rotate.enabled && h.rotate.hooks.length > 0 && <HeroRotator cfg={h.rotate} />}
           {h.description && <p className="mt-3 text-slate-600 text-sm md:text-base leading-relaxed"><Rich text={T(h.description, {}, "keep")} /></p>}
           {stats.length > 0 && (
             <div className={`mt-4 grid ${statCols} gap-2 max-w-md mx-auto`}>
