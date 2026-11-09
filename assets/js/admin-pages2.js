@@ -79,6 +79,9 @@ P.reviews = {
   }
 };
 
+/* Testimonials (Chat) मेनु — Reviews पेजकै प्रतिलिपि (एउटै Data) */
+P.testimonials = Object.assign({}, P.reviews, { title: "Testimonials (Chat Boxes)" });
+
 /* ------------------------------------------------------------ FAQ */
 P.faq = {
   title: "FAQ", sub: "अक्सर सोधिने प्रश्न",
