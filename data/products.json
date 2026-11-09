@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-09T04:17:58.981Z",
+  "updatedAt": "2026-11-09T06:47:12.095Z",
   "products": [
     {
       "id": "SN001CS",
@@ -8,8 +8,8 @@
       "short": "Computer Operator & Office Assistant Mastery",
       "subtitle": "Computer Basics देखि MS Office, Office Administration, Accounting, AI Tools र Career Skills सम्म — ४० Chapter, ७ Part",
       "summary": "Computer Operator र Office Assistant काम सिक्न चाहनेहरूका लागि सरल नेपालीमा लेखिएको ४० Chapter को व्यवहारिक Ebook — अभ्यास, Quiz र Career Guidance सहित।",
-      "description": "यो Ebook पहिलो पटक computer देख्नेदेखि Computer Operator र Office Assistant को काम गर्न चाहनेसम्मका लागि बनाइएको व्यावहारिक, चरणबद्ध गाइड हो। ७ भाग र ४० अध्यायमा Computer Fundamentals, Windows, Typing, File Management, Microsoft Word / Excel / PowerPoint, Internet, Email, Google Workspace, Cybersecurity, Office Administration, Accounting, Cashier/POS, Inventory, Advanced Excel, PDF, AI Tools, Troubleshooting र Career तयारी (CV, Interview, Skill Test, Freelancing, पहिलो ९० दिन, Portfolio) समेटिएको छ।\n\nहरेक अध्यायमा: यो chapter मा के सिक्ने (८ वटा उद्देश्य) → चरणबद्ध व्याख्या र उदाहरण → Important Terms → सामान्य गलत बुझाइ → Pro Tips → Job Connection → Mini Project → Knowledge Check (MCQ, True/False, Fill in the blanks, Short Answer) → Answer Key → Quick Revision → Key Takeaways।",
-      "hook": "पढ्नुहोस्, अभ्यास गर्नुहोस्, Portfolio बनाउनुहोस् — शून्यदेखि Job-Ready सम्म — Job Ready देखि Business Owner सम्मको पूरै यात्रा एउटै Ebook मा।",
+      "description": "हरेक अध्यायमा: यो chapter मा के सिक्ने (८ वटा उद्देश्य) → चरणबद्ध व्याख्या र उदाहरण → Important Terms → सामान्य गलत बुझाइ → Pro Tips → Job Connection → Mini Project → Knowledge Check (MCQ, True/False, Fill in the blanks, Short Answer) → Answer Key → Quick Revision → Key Takeaways।",
+      "hook": "पढ्नुहोस्, अभ्यास गर्नुहोस्, Portfolio बनाउनुहोस् — शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्मको पूरै यात्रा एउटै Ebook मा।",
       "category": "Computer Skills",
       "language": "नेपाली",
       "tags": [
@@ -17,6 +17,9 @@
         "MS Office",
         "Office Assistant",
         "Computer Operator",
+        "Cashier",
+        "Storekeeper",
+        "Sales",
         "Nepali"
       ],
       "cover": "assets/covers/SN001CS-8q0et.jpg",
@@ -261,7 +264,7 @@
       "regularPrice": 962,
       "offerPrice": 289,
       "offerActive": true,
-      "offerEndsAt": "2026-11-15T23:59+05:45",
+      "offerEndsAt": "2026-11-20T23:59+05:45",
       "offerLabel": "BESTSELLER",
       "urgencyLabel": "Limited Copies",
       "countdownVisible": true,
@@ -313,10 +316,21 @@
             "value": 97
           }
         ],
-        "end": "2026-11-15T08:24+05:45"
+        "end": "2026-11-20T08:24+05:45"
       },
       "preview": {
-        "pages": [],
+        "pages": [
+          "assets/covers/SN001CS-pv1-nosxb.jpg",
+          "assets/covers/SN001CS-pv2-m3kud.jpg",
+          "assets/covers/SN001CS-pv3-qu5t5.jpg",
+          "assets/covers/SN001CS-pv4-d5seg.jpg",
+          "assets/covers/SN001CS-pv5-ydq3v.jpg",
+          "assets/covers/SN001CS-pv6-44900.jpg",
+          "assets/covers/SN001CS-pv7-cul4g.jpg",
+          "assets/covers/SN001CS-pv8-n6ugu.jpg",
+          "assets/covers/SN001CS-pv9-mkkwo.jpg",
+          "assets/covers/SN001CS-pv10-1btjp.jpg"
+        ],
         "pageHook": "",
         "pageCta": "",
         "keepLocked": true,
@@ -355,7 +369,7 @@
           "note": ""
         }
       },
-      "updatedAt": "2026-11-09T04:17:33.420Z",
+      "updatedAt": "2026-11-09T06:40:16.285Z",
       "isFeatured": true
     },
     {
@@ -366,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-09T04:17:58.981Z",
+      "updatedAt": "2026-11-09T06:47:12.095Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -387,8 +401,8 @@
         },
         "store": {
           "name": "StudyNotes",
-          "tagline": "Your First Step to Success",
-          "taglineNe": "Class 5 देखि Master सम्म — Job Ready देखि Business Owner सम्म",
+          "tagline": "Learn. Grow. Succeed.",
+          "taglineNe": "शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्म",
           "founder": "MD. NS (MD. NASA)",
           "logo": null,
           "currency": "रु.",
@@ -942,7 +956,7 @@
             "title": "यस Ebook सँग तपाईंले पाउनुहुन्छ",
             "sub": "एकै ठाउँमा सिकाइ, अभ्यास र काम लाग्ने उपयोगी सामग्री।",
             "badge": "INCLUDED",
-            "mainTitle": "Ebook PDF",
+            "mainTitle": "Complete Office Mastery Package 📦",
             "mainDesc": "Complete Guide & Practical Lessons",
             "mainBadge": "INCLUDED",
             "trust": "",
@@ -950,8 +964,8 @@
               "Included with Ebook"
             ],
             "footer": "Your Complete Learning & Success Package 📦",
-            "offersBadge": "OFFERS",
-            "freeLabel": "NOW FREE 🎁",
+            "offersBadge": "LIMITED OFFERS",
+            "freeLabel": "BONUS 🎁",
             "originalValueLabel": "Original Value: {value}",
             "offerLabel": "",
             "limitedLabel": "Limited-Time Bonus"
@@ -963,15 +977,15 @@
           },
           "valueLabel": "Value {value}",
           "totalLabel": "🎁 कुल Bonus Value: {value}",
-          "countdownText": "Bonus Offer सकिन बाँकी: {time}",
+          "countdownText": "{time} सकिन बाँकी",
           "limitedText": "",
           "untilText": "",
           "home": {
             "enabled": true,
             "eyebrow": "🎁 EXCLUSIVE BONUS RESOURCES",
             "title": "एउटा Ebook मात्र होइन, Complete Learning & Practice Package!",
-            "sub": "Read It. Practice It. Apply It. Get Skilled.",
-            "tagline": "One Book. Multiple Resources. Real Results.",
+            "sub": "",
+            "tagline": "",
             "mainTitle": "MAIN EBOOK",
             "mainDesc": "PDF: Complete Guide, Theory, Practical Steps",
             "hooks": [
