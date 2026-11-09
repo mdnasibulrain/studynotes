@@ -203,7 +203,7 @@ const D = {
   library: { eyebrow: "STUDYNOTES LIBRARY", title: "Explore Ebook Library" },
   combo: { eyebrow: "CUSTOM COMBO", title: "आफ्नो Custom Combo बनाउनुहोस्", sub: "कम्तीमा {comboMinN} Ebook छान्नुहोस् र आजको Price मा थप {comboPercent}% Combo Discount पाउनुहोस्।" },
   bundles: { eyebrow: "CURATED PACKAGES", title: "Best Bundle Offers", sub: "तयार गरिएका Ebook Bundles — सर्वाधिक बचत, एकै पटकमा पूरा Success Kit।" },
-  reviews: { eyebrow: "RATINGS & REVIEWS", title: "पाठकहरूको भरोसा", sub: "हरेक Ebook को Rating र Reviews एकै ठाउँमा।", sampleNote: "ℹ️ देखाइएका समीक्षा नमुना (Sample) हुन् — वास्तविक ग्राहक feedback थपेपछि “Verified” देखिन्छ।", productSampleNote: "ℹ️ नमुना (Sample) समीक्षा — वास्तविक ग्राहक feedback थपेपछि “Verified” देखिन्छ।", sampleBadge: "Sample", items: [] },
+  reviews: { eyebrow: "RATINGS & REVIEWS", title: "पाठकहरूको भरोसा", sub: "हरेक Ebook को Rating र Reviews एकै ठाउँमा।", sampleNote: "ℹ️ देखाइएका समीक्षा नमुना (Sample) हुन् — वास्तविक ग्राहक feedback थपेपछि “Verified” देखिन्छ।", productSampleNote: "ℹ️ नमुना (Sample) समीक्षा — वास्तविक ग्राहक feedback थपेपछि “Verified” देखिन्छ।", sampleBadge: "Sample", showCount: 4, showAllMode: "auto", items: [] },
   steps: { eyebrow: "EBOOK RECEIVING PROCESS", title: "Ebook कसरी प्राप्त गर्ने?", sub: "सरल {stepCount} चरण — Payment पुष्टि भएपछि {deliveryNe}मै Delivery।", items: [
     { id: "s1", icon: "book", title: "Ebook छान्नुहोस्", text: "Ebook, Custom Combo वा Bundle रोज्नुहोस्।", visible: true },
     { id: "s2", icon: "eye", title: "Preview हेर्नुहोस्", text: "नमुना अध्याय र Chapter Outline हेर्नुहोस्।", visible: true },
@@ -211,7 +211,7 @@ const D = {
     { id: "s4", icon: "card", title: "NSPAY / WhatsApp", text: "NSPAY बाट Payment वा WhatsApp मा Order गर्नुहोस्।", visible: true },
     { id: "s5", icon: "file", title: "Screenshot + ID पठाउनुहोस्", text: "Payment Screenshot र Product ID WhatsApp मा पठाउनुहोस्।", visible: true },
     { id: "s6", icon: "zap", title: "{delivery} मा Delivery", text: "पुष्टि भएपछि PDF WhatsApp/Email मा प्राप्त गर्नुहोस्।", visible: true }] },
-  chat: { eyebrow: "CUSTOMER TESTIMONIALS", title: "ग्राहकसँगको कुराकानी", sub: "Order देखि Delivery सम्म — WhatsApp मा यसरी हुन्छ।", headerName: "{storeName} Support", status: "online", inputText: "WhatsApp मा Message गर्नुहोस्...", sampleNote: "ℹ️ नमुना (Sample) कुराकानी — वास्तविक ग्राहक सन्देश (अनुमति सहित) थपेर यो खण्ड अपडेट गर्नुहोस्।", items: [] },
+  chat: { eyebrow: "CUSTOMER TESTIMONIALS", title: "ग्राहकसँगको कुराकानी", sub: "Order देखि Delivery सम्म — WhatsApp मा यसरी हुन्छ।", headerName: "{storeName} Support", status: "online", inputText: "WhatsApp मा Message गर्नुहोस्...", boxes: [], autoplay: false, autoplaySeconds: 5, showArrows: true, showDots: true, showAllMode: "auto", sampleNote: "ℹ️ नमुना (Sample) कुराकानी — वास्तविक ग्राहक सन्देश (अनुमति सहित) थपेर यो खण्ड अपडेट गर्नुहोस्।", items: [] },
   faq: { eyebrow: "FAQ", title: "अक्सर सोधिने प्रश्नहरू", productTitle: "सामान्य प्रश्नहरू", items: [
     { id: "f1", q: "Ebook भनेको के हो र यो कसरी प्राप्त हुन्छ?", a: "Ebook (Electronic Book) डिजिटल पुस्तक हो जसलाई तपाईं आफ्नो मोबाइल, ट्याब्लेट वा कम्प्युटरमा सजिलै पढ्न सक्नुहुन्छ। Payment पुष्टि भएपछि PDF फाइल तपाईंको WhatsApp वा Email मा {deliveryNe}भित्र पठाइन्छ।", visible: true, onProduct: false },
     { id: "f2", q: "कुन-कुन विषयका Ebook उपलब्ध छन्?", a: "हाल यी विधाका Ebook उपलब्ध छन्: {categories}।", visible: true, onProduct: false },
@@ -347,6 +347,14 @@ SN.LABEL_META = [
   ["revDelivery","Reviews","Delivery ({delivery})","{delivery} Delivery"],
   ["revSupport","Reviews","Support line","Direct WhatsApp Support"],
   ["chatToday","Chat","Chat मितिको चिन्ह","TODAY"],
+  ["revShowAll","Reviews","“सबै Reviews हेर्नुहोस्” button ({n})","Show all Reviews"],
+  ["revModalTitle","Reviews","सबै Reviews Popup शीर्षक ({n})","सबै Reviews ({n})"],
+  ["revModalClose","Reviews","सबै Reviews Popup: बन्द button","बन्द गर्नुहोस्"],
+  ["chatShowAll","Chat","“सबै Testimonials हेर्नुहोस्” button ({n})","Show all Testimonials"],
+  ["chatModalTitle","Chat","सबै Testimonials Popup शीर्षक ({n})","सबै Testimonials ({n})"],
+  ["chatModalClose","Chat","सबै Testimonials Popup: बन्द button","बन्द गर्नुहोस्"],
+  ["chatPrev","Chat","Slide: अघिल्लो button (aria)","Previous"],
+  ["chatNext","Chat","Slide: अर्को button (aria)","Next"],
   ["stepWord","Steps","STEP शब्द","STEP"],
   ["footHome","Footer","Quick link: Home","Home"],
   ["footEbooks","Footer","Quick link: Ebooks","Ebooks"],
@@ -685,7 +693,15 @@ SN.runtime = (catalog, settings, now, opts) => {
   const changeAt = chg.length ? Math.min(...chg) : null;
   // reviews / chat
   const reviews = sortByOrder(arr(site.reviews.items).filter(r => r && r.visible !== false && str(r.text) && str(r.name))).map(r => ({ name: str(r.name), place: str(r.place), rating: Math.min(5, Math.max(1, num(r.rating) || 5)), productId: EBYID[r.productId] ? r.productId : null, date: str(r.date), text: str(r.text), verified: !!r.verified, sample: !!r.sample }));
-  const chat = sortByOrder(arr(site.chat.items).filter(m => m && m.visible !== false && str(m.text))).map(m => ({ from: m.from === "out" ? "out" : "in", name: str(m.name), time: str(m.time), text: str(m.text), sample: !!m.sample }));
+  // Testimonial chat boxes: हरेक सन्देशको `box` (Chat Box ID) ले कुन Box मा जाने भन्छ। Box नराखे / नमिले पहिलो Box मा; Box नै नराखे पहिलेकै एउटै Box।
+  const chatBoxDefs = arr(site.chat.boxes).filter(b => b && b.id);
+  const chatHiddenBox = new Set(chatBoxDefs.filter(b => b.visible === false).map(b => b.id));
+  const chatKnownBox = new Set(chatBoxDefs.map(b => b.id));
+  const chat = sortByOrder(arr(site.chat.items).filter(m => m && m.visible !== false && str(m.text) && !chatHiddenBox.has(m.box))).map(m => ({ from: m.from === "out" ? "out" : "in", name: str(m.name), time: str(m.time), text: str(m.text), sample: !!m.sample, box: chatKnownBox.has(m.box) ? m.box : "" }));
+  const chatLive = chatBoxDefs.filter(b => b.visible !== false);
+  let chatBoxes;
+  if (!chatLive.length) chatBoxes = chat.length ? [{ id: "", name: "", status: "", msgs: chat }] : [];
+  else chatBoxes = chatLive.map((b, bi) => ({ id: b.id, name: str(b.name), status: str(b.status), msgs: chat.filter(m => m.box === b.id || (bi === 0 && !m.box)) })).filter(b => b.msgs.length);
   const goals = sortByOrder(arr(site.goals.items).filter(g => g && g.visible !== false && str(g.title)));
   // variables usable inside texts
   const catNames = catList.filter(c => c.visible && ebooks.some(e => e.category === c.id)).map(c => c.name);
@@ -702,7 +718,7 @@ SN.runtime = (catalog, settings, now, opts) => {
   if (site.ticker.autoCombo && site.cart.comboEnabled && ebooks.length >= site.cart.comboMin) lines.push({ order: 99999, text: SN.fill(site.ticker.comboText, vars), cta: "", action: "section:combos" });
   const ticker = sortByOrder(lines);
   const sectionOn = id => !!(site.sections.find(s => s.id === id) || { enabled: true }).enabled;
-  return { site, vars, categories: catList, ebooks, bundles, EBYID, stats, lowStock, nearestEnd, changeAt, reviews, chat, goals, ticker, unknownCategories: unknown, sectionOn, now };
+  return { site, vars, categories: catList, ebooks, bundles, EBYID, stats, lowStock, nearestEnd, changeAt, reviews, chat, chatBoxes, goals, ticker, unknownCategories: unknown, sectionOn, now };
 };
 
 /* ------------------------------------------------------------------ ORDER MESSAGE (cart -> WhatsApp) */
@@ -771,7 +787,9 @@ SN.cleanProduct = p => {
 function pruneSite(site, now) {
   const s = clone(site);
   const vis = list => arr(list).filter(x => x && x.visible !== false);
-  s.reviews.items = vis(s.reviews.items); s.chat.items = vis(s.chat.items); s.faq.items = vis(s.faq.items);
+  const hidBox = new Set(arr(s.chat.boxes).filter(b => b && b.visible === false).map(b => b.id));
+  s.chat.boxes = vis(s.chat.boxes); s.chat.items = vis(s.chat.items).filter(m => !hidBox.has(m.box));
+  s.reviews.items = vis(s.reviews.items); s.faq.items = vis(s.faq.items);
   s.trust.items = vis(s.trust.items); s.goals.items = vis(s.goals.items); s.steps.items = vis(s.steps.items);
   s.footer.policies = vis(s.footer.policies); s.footer.links = vis(s.footer.links); s.ticker.items = vis(s.ticker.items);
   s.categories = arr(s.categories).filter(c => c && c.name); // hidden categories stay published so their products keep a group
