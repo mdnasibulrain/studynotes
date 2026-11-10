@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-10T13:12:28.244Z",
+  "updatedAt": "2026-11-10T14:34:25.952Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-10T13:12:28.244Z",
+      "updatedAt": "2026-11-10T14:34:25.952Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -873,7 +873,7 @@
               "from": "in",
               "name": "",
               "time": "09:05",
-              "text": "नमस्ते! मलाई Complete Computer Operator & Office Assistant Mastery Ebook चाहिएको छ। कसरी Order गर्ने?",
+              "text": "नमस्ते! मलाई Complete Computer Operator & Office Assistant Mastery Ebook चाहिएको छ।\nमैले Order गरिसकेँ।",
               "visible": true,
               "id": "cha_mw89jw06ddqb",
               "box": "cha_mw9ulezue8o9"
@@ -882,7 +882,7 @@
               "from": "out",
               "name": "",
               "time": "09:06",
-              "text": "नमस्ते! StudyNotes मा स्वागत छ। 😊\nतपाईंले वेबसाइटबाट सजिलै Order गर्न सक्नुहुन्छ। Payment पूरा भएपछि Ebook र Bonus Resources प्राप्त गर्नुहुनेछ।",
+              "text": "धन्यवाद! तपाईंको Order सफलतापूर्वक Confirm भयो! 🎉\nतपाईंको Ebook, Workbook र Bonus Resources पठाइएको छ। शुभ अध्ययन!",
               "visible": true,
               "id": "cha_mw89ls9sjilj",
               "box": "cha_mw9ulezue8o9"
@@ -891,28 +891,10 @@
               "from": "in",
               "name": "",
               "time": "09:08",
-              "text": "धन्यवाद! मैले Order गरिसकेँ।",
-              "box": "cha_mw9ulezue8o9",
-              "visible": true,
-              "id": "cha_mw9ubny0jcif"
-            },
-            {
-              "from": "out",
-              "name": "",
-              "time": "09:09",
-              "text": "तपाईंको Order सफलतापूर्वक Confirm भयो! 🎉\nतपाईंको Ebook, Workbook र Bonus Resources पठाइएको छ। शुभ अध्ययन!",
-              "box": "cha_mw9ulezue8o9",
-              "visible": true,
-              "id": "cha_mw9uf26ypulm"
-            },
-            {
-              "from": "in",
-              "name": "",
-              "time": "09:10",
               "text": "सबै Files प्राप्त भयो। धेरै राम्रोसँग व्यवस्थित रहेछन्। धन्यवाद StudyNotes!",
               "box": "cha_mw9ulezue8o9",
               "visible": true,
-              "id": "cha_mw9uialz1f66"
+              "id": "cha_mw9ubny0jcif"
             },
             {
               "from": "in",
