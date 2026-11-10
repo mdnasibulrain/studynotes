@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-10T14:34:25.952Z",
+  "updatedAt": "2026-11-10T14:59:10.336Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-10T14:34:25.952Z",
+      "updatedAt": "2026-11-10T14:59:10.336Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -406,7 +406,7 @@
           "founder": "MD. NS (MD. NASA)",
           "logo": null,
           "currency": "रु.",
-          "copyright": "© {year} {storeName}. All rights reserved."
+          "copyright": "© {year} {storeName}. All rights reserved. MD. NASA™"
         },
         "topbar": {
           "liveBadge": "LIVE •",
@@ -1194,12 +1194,12 @@
         "contact": {
           "whatsapp": "9779702784684",
           "whatsappDisplay": "+977 9702784684",
-          "supportEmail": "mdnasibulrain4@gmail.com",
+          "supportEmail": "studynotes.nasa@gmail.com",
           "businessEmail": "",
           "supportText": "",
           "supportHours": "",
-          "whatsappCta": "WhatsApp",
-          "emailCta": "Email",
+          "whatsappCta": "WhatsApp गर्नुहोस्।",
+          "emailCta": "Email गर्नुहोस्।",
           "contactMessage": "Hello {storeName}! मलाई Ebook बारे जानकारी चाहिएको थियो 🙏"
         },
         "payment": {
@@ -1234,7 +1234,7 @@
           "time": "3–5 मिनेट",
           "short": "3–5 min",
           "method": "WhatsApp / Email",
-          "text": "Payment verify भएपछि {delivery} भित्र WhatsApp वा Email बाट ebook प्राप्त गर्नुहोस्।"
+          "text": "Payment verify भएपछि {delivery} भित्र WhatsApp वा Email बाट ebook प्राप्त हुनेछन्।"
         },
         "cart": {
           "enabled": true,
