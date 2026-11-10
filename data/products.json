@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-10T05:27:23.407Z",
+  "updatedAt": "2026-11-10T12:41:09.886Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-10T05:27:23.407Z",
+      "updatedAt": "2026-11-10T12:41:09.886Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -675,7 +675,7 @@
               "verified": true,
               "visible": true,
               "id": "rev_mw901hw56oh0",
-              "photo": "assets/covers/avatar-u56as.jpg"
+              "photo": "assets/covers/review-7ovdb.jpg"
             },
             {
               "name": "Ajay Pandit",
@@ -745,11 +745,6 @@
             }
           ]
         },
-        "avatars": {
-          "enabled": true,
-          "male": [],
-          "female": []
-        },
         "steps": {
           "eyebrow": "EBOOK RECEIVING PROCESS",
           "title": "Ebook कसरी प्राप्त गर्ने?",
@@ -812,7 +807,7 @@
               "status": "Online",
               "visible": true,
               "id": "cha_mw9ulezue8o9",
-              "photo": "assets/covers/avatar-aaqlu.jpg"
+              "photo": "assets/covers/chat-9526x.jpg"
             },
             {
               "name": "Rinku Sharma",
@@ -1810,6 +1805,11 @@
           "ppAllTitle": "सबै Chapters",
           "ppAllSub": "हरेक Chapter मा के सिक्न पाइन्छ — एकै ठाउँमा।",
           "ppInfoFooter": "📘 {chapters} Chapters · {parts} Parts · {pages} पृष्ठ — सुरुदेखि अन्त्यसम्म क्रमबद्ध सिकाइ"
+        },
+        "avatars": {
+          "enabled": true,
+          "male": [],
+          "female": []
         }
       }
     }
