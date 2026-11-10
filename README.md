@@ -72,7 +72,9 @@ Product पेजमा Description/"कसका लागि" पछि, Homep
 - बदलिएका फाइल: `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-pages2.js`, `README.md`।
 
 ---
-## 🧑 Customer Photo Icon (नयाँ)
-- Reviews र Testimonials Chat Box को गोलो icon मा अब नामको पहिलो अक्षर / StudyNotes logo होइन, **नामबाट लिङ्ग पहिचान गरेर Nepali/Indian शैलीको Photo-avatar** देखिन्छ (नाम अनुसार स्थिर — रिफ्रेस गर्दा फेरिँदैन)।
-- नाम गलत पहिचान भए Admin → Reviews / Testimonials मा हरेक Review र Chat Box मा **Photo Icon (लिङ्ग): Auto / पुरुष / महिला** छान्न मिल्छ।
-- बदलिएका फाइल: `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-pages2.js`, `README.md`। Data र Worker परिवर्तन छैन।
+## 👤 Review / Chat Box Avatar फोटो (नयाँ)
+- Review को गोलो आइकनमा नामको पहिलो अक्षर र Chat Box माथिको StudyNotes Logo को सट्टा **फोटो** देखिन्छ।
+- प्राथमिकता: (१) Review / Chat Box मा राखेको Customer को **वास्तविक फोटो** (Admin → Reviews / Testimonials → ग्राहकको फोटो Upload) → (२) **Default फोटो सूची** (पुरुष/महिला) बाट नामअनुसार अनुमान गरेको Gender को फोटो (हरेक नामलाई सधैं उही फोटो) → (३) फोटो नभए पहिलेकै Letter / Logo।
+- Gender अनुमान गलत भए Review/Chat Box मै Gender (पुरुष/महिला) छान्न मिल्छ। Default फोटो सूची On/Off गर्न मिल्छ।
+- फोटो आफैं सानो (240×240 square) बनाइन्छ, `assets/covers/` मार्फत Publish हुन्छ। Worker परिवर्तन छैन।
+- बदलिएका फाइल: `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-core.js`, `assets/js/admin-pages2.js`।
