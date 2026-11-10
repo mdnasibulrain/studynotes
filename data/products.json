@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-10T05:25:02.700Z",
+  "updatedAt": "2026-11-10T05:27:23.407Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-10T05:25:02.700Z",
+      "updatedAt": "2026-11-10T05:27:23.407Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -674,7 +674,8 @@
               "text": "Ebook मात्र होइन, Workbook, Templates र Practice Materials समेत पाउँदा निकै खुसी लाग्यो। सिक्न, अभ्यास गर्न र आफूलाई Job Ready बनाउन चाहनेले अवश्य हेर्नुहोस्।",
               "verified": true,
               "visible": true,
-              "id": "rev_mw901hw56oh0"
+              "id": "rev_mw901hw56oh0",
+              "photo": "assets/covers/avatar-u56as.jpg"
             },
             {
               "name": "Ajay Pandit",
