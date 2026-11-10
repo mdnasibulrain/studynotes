@@ -18,6 +18,7 @@ SN.num = v => { if (v === null || v === undefined || v === "") return null; cons
 const num = SN.num;
 SN.str = v => (v === null || v === undefined ? "" : String(v).trim());
 const str = SN.str;
+SN.gender1 = v => (v === "m" || v === "f" ? v : "");
 SN.uid = (p = "x") => p + "_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 SN.pct = (r, s) => (r > 0 && s < r ? Math.round(((r - s) / r) * 100) : 0);
 SN.NE_DIGITS = "०१२३४५६७८९";
@@ -693,10 +694,10 @@ SN.runtime = (catalog, settings, now, opts) => {
   rawList.forEach(r => { if (r && r.bonus && r.bonus.enabled) { const bb = SN.normBonus(r.bonus); [SN.parseTime(bb.start), SN.parseTime(bb.end)].forEach(t => { if (t && t > now) chg.push(t); }); } });
   const changeAt = chg.length ? Math.min(...chg) : null;
   // reviews / chat
-  const reviews = sortByOrder(arr(site.reviews.items).filter(r => r && r.visible !== false && str(r.text) && str(r.name))).map(r => ({ name: str(r.name), place: str(r.place), rating: Math.min(5, Math.max(1, num(r.rating) || 5)), productId: EBYID[r.productId] ? r.productId : null, date: str(r.date), text: str(r.text), verified: !!r.verified, sample: !!r.sample }));
+  const reviews = sortByOrder(arr(site.reviews.items).filter(r => r && r.visible !== false && str(r.text) && str(r.name))).map(r => ({ name: str(r.name), place: str(r.place), rating: Math.min(5, Math.max(1, num(r.rating) || 5)), productId: EBYID[r.productId] ? r.productId : null, date: str(r.date), text: str(r.text), verified: !!r.verified, gender: SN.gender1(r.gender), sample: !!r.sample }));
   const chat = sortByOrder(arr(site.chat.items).filter(m => m && m.visible !== false && str(m.text))).map(m => ({ from: m.from === "out" ? "out" : "in", name: str(m.name), time: str(m.time), text: str(m.text), box: str(m.box), sample: !!m.sample }));
-  const boxList = sortByOrder(arr(site.chat.boxes).filter(b => b && b.visible !== false && b.id)).map(b => ({ id: str(b.id), name: str(b.name), status: str(b.status) }));
-  const chatBoxes = (boxList.length ? boxList : [{ id: "", name: "", status: "" }]).map(b => ({ ...b, items: [] }));
+  const boxList = sortByOrder(arr(site.chat.boxes).filter(b => b && b.visible !== false && b.id)).map(b => ({ id: str(b.id), name: str(b.name), status: str(b.status), gender: SN.gender1(b.gender) }));
+  const chatBoxes = (boxList.length ? boxList : [{ id: "", name: "", status: "", gender: "" }]).map(b => ({ ...b, items: [] }));
   chat.forEach(m => { const b = chatBoxes.find(x => x.id && x.id === m.box) || chatBoxes[0]; b.items.push(m); });
   const chatBoxesShown = chatBoxes.filter(b => b.items.length);
   const goals = sortByOrder(arr(site.goals.items).filter(g => g && g.visible !== false && str(g.title)));

@@ -58,6 +58,7 @@ P.steps = {
 };
 
 /* ------------------------------------------------------------ REVIEWS */
+const GOPT = [["", "Auto (नामबाट पहिचान)"], ["m", "👨 पुरुष"], ["f", "👩 महिला"]];
 P.reviews = {
   title: "Reviews / Testimonials", sub: "वास्तविक ग्राहकको Review र WhatsApp कुराकानी",
   render() {
@@ -70,7 +71,7 @@ P.reviews = {
         A.f(s, { k: "reviews.btnText", l: "बटनको Text", ph: "⭐ Show all Reviews", h: "{n} = कुल Review संख्या" }) +
         A.row(A.f(s, { k: "reviews.modalTitle", l: "Popup शीर्षक", ph: "सबै Reviews ({n})" }) + A.f(s, { k: "reviews.modalSub", l: "Popup उपशीर्षक", ph: "हाम्रा पाठकहरूले दिएका सबै समीक्षा…" }))) +
       A.card("Reviews", A.coll({ id: "reviews", list: s.reviews.items, label: r => (r.name || "(नाम छैन)") + (r.text ? " — " + r.text.slice(0, 40) : ""), vis: "visible", addText: "Review थप्नुहोस्", empty: "अहिले Review छैन।", make: () => ({ name: "", place: "", rating: 5, productId: "", date: "", text: "", verified: false, visible: true }),
-        item: r => A.row(A.f(r, { k: "name", l: "ग्राहकको नाम" }) + A.f(r, { k: "place", l: "ठाउँ" })) + A.f(r, { k: "text", l: "Review", t: "area", rows: 3 }) + A.row(A.f(r, { k: "rating", l: "Rating (१–५)", t: "num", min: 1, max: 5, step: 1 }) + A.f(r, { k: "productId", l: "कुन Ebook को?", t: "select", o: pOpts }) + A.f(r, { k: "date", l: "मिति/समय (वैकल्पिक)" })) + A.f(r, { k: "verified", l: "✅ “Verified” चिन्ह (वास्तविक खरिदकर्ता पुष्टि भए मात्र)", t: "bool" }) })) +
+        item: r => A.row(A.f(r, { k: "name", l: "ग्राहकको नाम" }) + A.f(r, { k: "place", l: "ठाउँ" })) + A.f(r, { k: "text", l: "Review", t: "area", rows: 3 }) + A.row(A.f(r, { k: "rating", l: "Rating (१–५)", t: "num", min: 1, max: 5, step: 1 }) + A.f(r, { k: "gender", l: "Photo Icon (लिङ्ग)", t: "select", o: GOPT, h: "Auto = नामबाट आफैं पहिचान" }) + A.f(r, { k: "productId", l: "कुन Ebook को?", t: "select", o: pOpts }) + A.f(r, { k: "date", l: "मिति/समय (वैकल्पिक)" })) + A.f(r, { k: "verified", l: "✅ “Verified” चिन्ह (वास्तविक खरिदकर्ता पुष्टि भए मात्र)", t: "bool" }) })) +
       A.card("WhatsApp Testimonial कुराकानी", A.row(A.f(s, { k: "chat.eyebrow", l: "सानो शीर्षक" }) + A.f(s, { k: "chat.title", l: "शीर्षक" })) + A.f(s, { k: "chat.sub", l: "उपशीर्षक" }) + A.row(A.f(s, { k: "chat.headerName", l: "Chat माथिको नाम" }) + A.f(s, { k: "chat.status", l: "Status" }) + A.f(s, { k: "chat.inputText", l: "तलको Input शब्द" })) +
         `<h3 style="margin:10px 0 4px">Slider / Show all सेटिङ</h3>` +
         A.note("धेरै <b>Chat Box</b> बनाउन सकिन्छ (तल १. Chat Boxes)। Public site मा सबै Box Swipe / Arrow / Dots बाट Slide हुन्छन्। <b>Show all Testimonials</b> बटन थिच्दा सबै Box Popup मा खुल्छन्। <b>० = सबै Box Slider मा देखाउने</b>।") +
@@ -81,8 +82,8 @@ P.reviews = {
         A.f(s, { k: "chat.btnText", l: "बटनको Text", ph: "💬 Show all Testimonials", h: "{n} = कुल Chat Box संख्या" }) +
         A.row(A.f(s, { k: "chat.modalTitle", l: "Popup शीर्षक", ph: "सबै Testimonials ({n})" }) + A.f(s, { k: "chat.modalSub", l: "Popup उपशीर्षक", ph: "ग्राहकहरूसँगका सबै कुराकानी…" })) +
         `<h3 style="margin:10px 0 4px">१. Chat Boxes</h3>` +
-        A.coll({ id: "chatboxes", list: s.chat.boxes, label: b => b.name || "(Chat Box — माथिको साझा नाम)", vis: "visible", addText: "Chat Box थप्नुहोस्", empty: "Chat Box नबनाउँदा सबै सन्देश एउटै Box मा देखिन्छन्।", make: () => ({ name: "", status: "", visible: true }),
-          item: b => A.row(A.f(b, { k: "name", l: "यो Box को माथिको नाम (खाली = साझा नाम)" }) + A.f(b, { k: "status", l: "Status (खाली = साझा)" })) }) +
+        A.coll({ id: "chatboxes", list: s.chat.boxes, label: b => b.name || "(Chat Box — माथिको साझा नाम)", vis: "visible", addText: "Chat Box थप्नुहोस्", empty: "Chat Box नबनाउँदा सबै सन्देश एउटै Box मा देखिन्छन्।", make: () => ({ name: "", status: "", gender: "", visible: true }),
+          item: b => A.row(A.f(b, { k: "gender", l: "Photo Icon (लिङ्ग)", t: "select", o: GOPT, h: "Auto = नामबाट आफैं पहिचान" })) + A.row(A.f(b, { k: "name", l: "यो Box को माथिको नाम (खाली = साझा नाम)" }) + A.f(b, { k: "status", l: "Status (खाली = साझा)" })) }) +
         `<h3 style="margin:10px 0 4px">२. सन्देशहरू</h3>` +
         A.coll({ id: "chat", list: s.chat.items, label: m => (m.from === "out" ? "→ " : "← ") + (m.text || "").slice(0, 40), vis: "visible", addText: "सन्देश थप्नुहोस्", empty: "कुराकानी छैन — खण्ड लुकेको छ।", make: () => ({ from: "in", name: "", time: "", text: "", box: "", visible: true }), item: m => A.f(m, { k: "box", l: "कुन Chat Box मा?", t: "select", o: [["", "Box १ (पहिलो / Default)"]].concat(s.chat.boxes.map((b, i) => [b.id, "Box " + (i + 1) + " — " + (b.name || "साझा नाम")])) }) + A.row(A.f(m, { k: "from", l: "कसले?", t: "select", o: [["in", "ग्राहक (सेतो)"], ["out", "हामी (हरियो)"]] }) + A.f(m, { k: "name", l: "ग्राहकको नाम" }) + A.f(m, { k: "time", l: "समय (10:21)" })) + A.f(m, { k: "text", l: "सन्देश", t: "area", rows: 2 }) }), { sub: "वास्तविक कुराकानीको Screenshot बाट, ग्राहकको अनुमति सहित मात्र।" });
   }
