@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-10T12:41:09.886Z",
+  "updatedAt": "2026-11-10T13:12:28.244Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-10T12:41:09.886Z",
+      "updatedAt": "2026-11-10T13:12:28.244Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -675,7 +675,7 @@
               "verified": true,
               "visible": true,
               "id": "rev_mw901hw56oh0",
-              "photo": "assets/covers/review-7ovdb.jpg"
+              "photo": "assets/covers/review-23f55.jpg"
             },
             {
               "name": "Ajay Pandit",
@@ -686,7 +686,8 @@
               "text": "Excel र Office Record Management सम्बन्धी अभ्यासले मेरो काम गर्ने आत्मविश्वास बढाएको छ। पैसा खर्च गरेर Ebook किनेकोमा सन्तुष्ट छु।",
               "verified": true,
               "visible": true,
-              "id": "rev_mw9094t4u55z"
+              "id": "rev_mw9094t4u55z",
+              "photo": "assets/covers/review-luugx.jpg"
             },
             {
               "name": "Rinku Sharma",
@@ -697,7 +698,8 @@
               "text": "Stock Record, Inventory र GRN जस्ता विषय व्यवहारिक तरिकाले बुझ्न पाएँ। Storekeeper बन्न चाहनेहरूका लागि निकै उपयोगी।",
               "verified": true,
               "visible": true,
-              "id": "rev_mw90atjvo51h"
+              "id": "rev_mw90atjvo51h",
+              "photo": "assets/covers/review-7uy34.jpg"
             },
             {
               "name": "Sumit Paswan",
@@ -708,7 +710,8 @@
               "text": "POS, Cash Handling र Customer Service सम्बन्धी सिकाइले Cashier को काम बुझ्न सजिलो बनायो। नयाँ सीप सिक्न चाहनेलाई सुझाव दिन्छु।",
               "verified": true,
               "visible": true,
-              "id": "rev_mw90d3d5fsea"
+              "id": "rev_mw90d3d5fsea",
+              "photo": "assets/covers/review-as1zg.jpg"
             },
             {
               "name": "Rohan Kamati",
@@ -719,7 +722,8 @@
               "text": "Office मा काम गर्न आवश्यक पर्ने धेरै कुरा एउटै Ebook मा पाएँ। अब Computer Operator र Office Assistant को कामका लागि पहिलेभन्दा राम्रो तयारी गर्न सकेको छु।",
               "verified": true,
               "visible": true,
-              "id": "rev_mw90e89lczck"
+              "id": "rev_mw90e89lczck",
+              "photo": "assets/covers/review-qobh8.jpg"
             },
             {
               "name": "Manoj Sah",
@@ -730,7 +734,8 @@
               "text": "यो Ebook बाट सिकेका Computer र Office Skills अभ्यास गरेपछि मैले Office Clerk & Account Support मा जागिर पाएँ। आफ्नो करियर सुरु गर्न सहयोगी बन्यो। धन्यवाद StudyNotes!",
               "verified": true,
               "visible": true,
-              "id": "rev_mw90gfff2n7u"
+              "id": "rev_mw90gfff2n7u",
+              "photo": "assets/covers/review-sah6u.jpg"
             },
             {
               "name": "Kishan Pandey",
@@ -741,7 +746,8 @@
               "text": "Filing, Documentation, Phone Handling र Reports सम्बन्धी ज्ञान निकै उपयोगी लाग्यो। Office मा काम गर्ने र गर्न चाहने दुवैका लागि राम्रो सामग्री।",
               "verified": true,
               "visible": true,
-              "id": "rev_mw9vnfxbkwrf"
+              "id": "rev_mw9vnfxbkwrf",
+              "photo": "assets/covers/review-kceui.jpg"
             }
           ]
         },
@@ -807,43 +813,49 @@
               "status": "Online",
               "visible": true,
               "id": "cha_mw9ulezue8o9",
-              "photo": "assets/covers/chat-9526x.jpg"
+              "photo": "assets/covers/chat-b36ps.jpg"
             },
             {
               "name": "Rinku Sharma",
               "status": "Online",
               "visible": true,
-              "id": "cha_mw9umk0u10jj"
+              "id": "cha_mw9umk0u10jj",
+              "photo": "assets/covers/chat-kvbj7.jpg"
             },
             {
               "name": "Sumit Paswan",
               "status": "Online",
               "visible": true,
-              "id": "cha_mw9v2oou0y6z"
+              "id": "cha_mw9v2oou0y6z",
+              "photo": "assets/covers/chat-bkmzb.jpg"
             },
             {
               "name": "Rohan Kamati",
               "status": "Online",
               "visible": true,
-              "id": "cha_mw9v3eihprex"
+              "id": "cha_mw9v3eihprex",
+              "photo": "assets/covers/chat-v8oo4.jpg"
             },
             {
               "name": "Manoj Sah",
               "status": "Online",
               "visible": true,
-              "id": "cha_mw9v4t6vpvcd"
+              "id": "cha_mw9v4t6vpvcd",
+              "photo": "assets/covers/chat-yhse6.jpg"
             },
             {
               "name": "Kishan Pandey",
               "status": "Online",
               "visible": true,
-              "id": "cha_mw9vtgnbrmvk"
+              "id": "cha_mw9vtgnbrmvk",
+              "photo": "assets/covers/chat-h4lig.jpg"
             },
             {
               "name": "Ajay Pandit",
               "status": "Online",
               "visible": true,
-              "id": "cha_mw9wewnunq3k"
+              "id": "cha_mw9wewnunq3k",
+              "photo": "assets/covers/chat-ub17v.jpg"
             }
           ],
           "homeBoxes": 6,
@@ -851,7 +863,7 @@
           "btnText": "",
           "modalTitle": "",
           "modalSub": "",
-          "arrows": true,
+          "arrows": false,
           "dots": true,
           "autoplay": true,
           "autoplaySec": 10,
