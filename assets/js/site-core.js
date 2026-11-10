@@ -204,7 +204,6 @@ const D = {
   combo: { eyebrow: "CUSTOM COMBO", title: "आफ्नो Custom Combo बनाउनुहोस्", sub: "कम्तीमा {comboMinN} Ebook छान्नुहोस् र आजको Price मा थप {comboPercent}% Combo Discount पाउनुहोस्।" },
   bundles: { eyebrow: "CURATED PACKAGES", title: "Best Bundle Offers", sub: "तयार गरिएका Ebook Bundles — सर्वाधिक बचत, एकै पटकमा पूरा Success Kit।" },
   reviews: { eyebrow: "RATINGS & REVIEWS", title: "पाठकहरूको भरोसा", sub: "हरेक Ebook को Rating र Reviews एकै ठाउँमा।", sampleNote: "ℹ️ देखाइएका समीक्षा नमुना (Sample) हुन् — वास्तविक ग्राहक feedback थपेपछि “Verified” देखिन्छ।", productSampleNote: "ℹ️ नमुना (Sample) समीक्षा — वास्तविक ग्राहक feedback थपेपछि “Verified” देखिन्छ।", sampleBadge: "Sample", homeCount: 4, productCount: 3, showAll: true, btnText: "", modalTitle: "", modalSub: "", items: [] },
-  avatars: { enabled: true, male: [], female: [] },
   steps: { eyebrow: "EBOOK RECEIVING PROCESS", title: "Ebook कसरी प्राप्त गर्ने?", sub: "सरल {stepCount} चरण — Payment पुष्टि भएपछि {deliveryNe}मै Delivery।", items: [
     { id: "s1", icon: "book", title: "Ebook छान्नुहोस्", text: "Ebook, Custom Combo वा Bundle रोज्नुहोस्।", visible: true },
     { id: "s2", icon: "eye", title: "Preview हेर्नुहोस्", text: "नमुना अध्याय र Chapter Outline हेर्नुहोस्।", visible: true },
@@ -475,29 +474,6 @@ SN.defaults = () => clone(D);
 function arr(v) { return Array.isArray(v) ? v : []; }
 function sortByOrder(list) { return list.map((x, i) => [x, i]).sort((a, b) => ((num(a[0].order) ?? 1e6) - (num(b[0].order) ?? 1e6)) || a[1] - b[1]).map(x => x[0]); }
 SN.sortByOrder = sortByOrder;
-/* Review / Chat Box को नाम हेरेर Gender अनुमान (नेपाली/भारतीय नाम) — Admin मा Male/Female छानेर बदल्न मिल्छ */
-const F_NAMES = new Set("sita gita rita sunita anita sarita kabita kavita sabita binita sangita sangeeta geeta pooja puja priya sabina sushma laxmi lakshmi radha rekha mamata mamta babita bimala kamala sarala shanti shristi srijana sapana sapna sunila nirmala parbati parvati durga saraswati sharada ranjana rojina rina reena rani rasmita rachana pratima pramila manisha menuka mina meena maya kalpana kunti kritika jyoti jamuna isha ishika ishwori indira hema hima gauri gyanu goma dipa deepa diya devi dibya archana anjali anju asmita amrita alisha aarti arti bina binu bandana bhawana bhagwati bindu chandra champa renu sunaina sneha shova shobha shanta puspa pushpa purnima prerna pooja nisha nikita neha namita muna kiran kopila karuna kabina jharna jenisha jyotsna swastika swikriti sharmila sharmin sulochana sabitri samjhana samikshya simran sonam sonu sushila tara tulsa urmila usha uma ujjwala yasoda yamuna ayesha ankita anushka aishwarya deepika kajal kareena pinky pallavi rashmi ritu sakshi shweta swati tanvi vandana varsha neelam noor fatima sana sapna".split(" "));
-const M_NAMES = new Set("krishna rama ram shiva hari ravi rishi mani ajay sanjaya arjun rajesh bikash prakash suresh ramesh dinesh mahesh ganesh narayan shankar santosh sandip sandeep amit sumit rohan manoj kishan rinku shiv sahil nikhil akhil anil sunil kapil bishal dipak deepak bibek aashish ashish suraj binod pawan pavan roshan rajan raju sagar sujan sushil bipin".split(" "));
-SN.guessGender = name => {
-  const toks = String(name || "").toLowerCase().replace(/[^a-z\s]/g, " ").split(/\s+/).filter(Boolean);
-  if (!toks.length) return "male";
-  const f = toks[0];
-  if (M_NAMES.has(f)) return "male";
-  if (F_NAMES.has(f)) return "female";
-  if (toks.some(t => ["devi", "kumari", "kaur", "bai", "begum", "khatun"].includes(t))) return "female";
-  if (/(ita|ika|ina|ini|ishma|ushma|ani|mati|laxmi|lata|kala|shree|shri|priya|jyoti|maya|ya)$/.test(f) && !/(krishna|surya)$/.test(f)) return "female";
-  return "male";
-};
-/* फोटो: (१) Customer आफैंको फोटो → (२) Admin ले राखेको Male/Female फोटो-सूचीबाट नामअनुसार → (३) खाली (पुरानै Letter / Logo) */
-SN.pickAvatar = (name, gender, photo, site, img) => {
-  const own = img(photo); if (own) return own;
-  const av = site && site.avatars; if (!av || av.enabled === false || !str(name)) return "";
-  const g = gender === "male" || gender === "female" ? gender : SN.guessGender(name);
-  const pool = arr(av[g]).filter(x => x && x.visible !== false).map(x => img(x.photo)).filter(Boolean);
-  if (!pool.length) return "";
-  let h = 0; const key = String(name).trim().toLowerCase(); for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
-  return pool[h % pool.length];
-};
 SN.mergeSite = pub => {
   const s = deepMerge(D, isObj(pub) ? pub : {});
   // sections: keep admin order, add any missing, drop unknown
@@ -717,10 +693,10 @@ SN.runtime = (catalog, settings, now, opts) => {
   rawList.forEach(r => { if (r && r.bonus && r.bonus.enabled) { const bb = SN.normBonus(r.bonus); [SN.parseTime(bb.start), SN.parseTime(bb.end)].forEach(t => { if (t && t > now) chg.push(t); }); } });
   const changeAt = chg.length ? Math.min(...chg) : null;
   // reviews / chat
-  const reviews = sortByOrder(arr(site.reviews.items).filter(r => r && r.visible !== false && str(r.text) && str(r.name))).map(r => ({ name: str(r.name), place: str(r.place), rating: Math.min(5, Math.max(1, num(r.rating) || 5)), productId: EBYID[r.productId] ? r.productId : null, date: str(r.date), text: str(r.text), verified: !!r.verified, sample: !!r.sample, avatar: SN.pickAvatar(r.name, r.gender, r.photo, site, img) }));
+  const reviews = sortByOrder(arr(site.reviews.items).filter(r => r && r.visible !== false && str(r.text) && str(r.name))).map(r => ({ name: str(r.name), place: str(r.place), rating: Math.min(5, Math.max(1, num(r.rating) || 5)), productId: EBYID[r.productId] ? r.productId : null, date: str(r.date), text: str(r.text), verified: !!r.verified, photo: img(r.photo) || "", sample: !!r.sample }));
   const chat = sortByOrder(arr(site.chat.items).filter(m => m && m.visible !== false && str(m.text))).map(m => ({ from: m.from === "out" ? "out" : "in", name: str(m.name), time: str(m.time), text: str(m.text), box: str(m.box), sample: !!m.sample }));
-  const boxList = sortByOrder(arr(site.chat.boxes).filter(b => b && b.visible !== false && b.id)).map(b => ({ id: str(b.id), name: str(b.name), status: str(b.status), avatar: str(b.name) ? SN.pickAvatar(b.name, b.gender, b.photo, site, img) : img(b.photo) }));
-  const chatBoxes = (boxList.length ? boxList : [{ id: "", name: "", status: "", avatar: "" }]).map(b => ({ ...b, items: [] }));
+  const boxList = sortByOrder(arr(site.chat.boxes).filter(b => b && b.visible !== false && b.id)).map(b => ({ id: str(b.id), name: str(b.name), status: str(b.status), photo: img(b.photo) || "" }));
+  const chatBoxes = (boxList.length ? boxList : [{ id: "", name: "", status: "", photo: "" }]).map(b => ({ ...b, items: [] }));
   chat.forEach(m => { const b = chatBoxes.find(x => x.id && x.id === m.box) || chatBoxes[0]; b.items.push(m); });
   const chatBoxesShown = chatBoxes.filter(b => b.items.length);
   const goals = sortByOrder(arr(site.goals.items).filter(g => g && g.visible !== false && str(g.title)));
@@ -788,9 +764,7 @@ SN.IMAGE_FIELDS = (site) => {
   const add = (obj, key, where) => { if (obj && obj[key]) out.push({ obj, key, where }); };
   add(site.store, "logo", "logo"); add(site.seo, "ogImage", "og"); add(site.seo, "favicon", "favicon");
   arr(site.offers).forEach(o => add(o, "image", "offer"));
-  arr(site.reviews && site.reviews.items).forEach(r => add(r, "photo", "avatar"));
-  arr(site.chat && site.chat.boxes).forEach(b => add(b, "photo", "avatar"));
-  ["male", "female"].forEach(g => arr(site.avatars && site.avatars[g]).forEach(x => add(x, "photo", "avatar")));
+  arr(site.reviews && site.reviews.items).forEach(r => add(r, "photo", "review")); arr(site.chat && site.chat.boxes).forEach(b => add(b, "photo", "chatbox"));
   return out;
 };
 SN.cleanProduct = p => {
@@ -811,8 +785,7 @@ SN.cleanProduct = p => {
 function pruneSite(site, now) {
   const s = clone(site);
   const vis = list => arr(list).filter(x => x && x.visible !== false);
-  s.reviews.items = vis(s.reviews.items); s.chat.items = vis(s.chat.items); s.chat.boxes = vis(s.chat.boxes);
-  if (s.avatars) { s.avatars.male = vis(s.avatars.male); s.avatars.female = vis(s.avatars.female); } s.faq.items = vis(s.faq.items);
+  s.reviews.items = vis(s.reviews.items); s.chat.items = vis(s.chat.items); s.chat.boxes = vis(s.chat.boxes); s.faq.items = vis(s.faq.items);
   s.trust.items = vis(s.trust.items); s.goals.items = vis(s.goals.items); s.steps.items = vis(s.steps.items);
   s.footer.policies = vis(s.footer.policies); s.footer.links = vis(s.footer.links); s.ticker.items = vis(s.ticker.items);
   s.categories = arr(s.categories).filter(c => c && c.name); // hidden categories stay published so their products keep a group

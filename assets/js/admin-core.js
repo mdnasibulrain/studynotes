@@ -113,8 +113,8 @@ A.resize = (file, o) => new Promise((resolve, reject) => {
 A.IMG_KINDS = {
   cover: { maxW: 900, maxH: 1200, type: "image/jpeg", ext: "jpg", quality: 0.86 },
   logo: { maxW: 256, maxH: 256, type: "image/png", ext: "png" },
-  favicon: { maxW: 128, maxH: 128, type: "image/png", ext: "png" },
   avatar: { maxW: 240, maxH: 240, type: "image/jpeg", ext: "jpg", ratio: 1, quality: 0.86 },
+  favicon: { maxW: 128, maxH: 128, type: "image/png", ext: "png" },
   og: { maxW: 1200, maxH: 630, type: "image/jpeg", ext: "jpg", ratio: 1200 / 630, quality: 0.85 }
 };
 A.addImage = async (file, kind, prefix) => {
