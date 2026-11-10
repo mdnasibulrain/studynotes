@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-10T14:59:10.336Z",
+  "updatedAt": "2026-11-10T15:15:46.147Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-10T14:59:10.336Z",
+      "updatedAt": "2026-11-10T15:15:46.147Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -402,11 +402,11 @@
         "store": {
           "name": "StudyNotes",
           "tagline": "Learn. Grow. Succeed.",
-          "taglineNe": "शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्म",
+          "taglineNe": "आफ्नो लक्ष्यअनुसार Practical Knowledge र Career-Oriented Skills — सरल नेपाली भाषामा, मोबाइल बाटै सिक्न सुरु गर्नुहोस्। **Office Skills, Store Skills, Market Skills, Business Skills, Digital Skills, LokSewa, र Share Market** शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्मको यात्रा 🎯 **StudyNotes सँगै।**",
           "founder": "MD. NS (MD. NASA)",
           "logo": null,
           "currency": "रु.",
-          "copyright": "© {year} {storeName}. All rights reserved. MD. NASA™"
+          "copyright": "© 2001 {storeName}. All rights reserved. MD. NASA ®"
         },
         "topbar": {
           "liveBadge": "LIVE •",
@@ -435,34 +435,6 @@
               "ctaAction": "product:SN001DS"
             },
             {
-              "id": "t2",
-              "text": "🎁 Ultimate Success Bundle — ६ Ebooks मा 75% सम्म बचत!",
-              "visible": true,
-              "order": 2,
-              "ctaAction": "section:bundles"
-            },
-            {
-              "id": "t3",
-              "text": "📚 LokSewa Exam Special — Smart GK & Exam Strategy Ebook!",
-              "visible": true,
-              "order": 3,
-              "ctaAction": "product:SN001LS"
-            },
-            {
-              "id": "t4",
-              "text": "🧩 ३ वा सोभन्दा बढी Ebook छान्दा थप 15% Combo Discount!",
-              "visible": true,
-              "order": 4,
-              "ctaAction": "section:combos"
-            },
-            {
-              "id": "t5",
-              "text": "📈 NEPSE Beginner Guide केवल रु. ३९९ मा!",
-              "visible": true,
-              "order": 5,
-              "ctaAction": "product:SN001SM"
-            },
-            {
               "id": "t6",
               "text": "🗣️ Confidence & Interview Success Guide — आजै सुरु गर्नुहोस्!",
               "visible": true,
@@ -475,8 +447,8 @@
           "carouselMode": "all",
           "badge": "{storeName} • {tagline}",
           "headBefore": "जागिर पाउने इच्छा छ,",
-          "headHighlight": "आफ्नो ज्ञान र काम",
-          "headAfter": "गर्ने क्षमता बढाउनुहोस्।",
+          "headHighlight": "आफ्नो ज्ञान र काम गर्ने",
+          "headAfter": "क्षमता बढाउनुहोस्।",
           "description": "आफ्नो लक्ष्यअनुसार Practical Knowledge र Career-Oriented Skills — सरल नेपाली भाषामा, मोबाइल बाटै सिक्न सुरु गर्नुहोस्। **Office Skills, Store Skills, Market Skills, Business Skills, Digital Skills, LokSewa, र Share Market** शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्मको यात्रा 🎯 **StudyNotes सँगै।**",
           "cta1": {
             "text": "Ebooks हेर्नुहोस्",
@@ -1139,7 +1111,7 @@
         },
         "about": {
           "eyebrow": "ABOUT {storeNameUpper}",
-          "heading": "{storeName} — Class 5 देखि Master सम्म",
+          "heading": "शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्म",
           "text": "तपाईंले कति कक्षा पढ्नुभयो भन्ने मात्र महत्त्वपूर्ण होइन; तपाईंले के सीप सिक्नुभयो, कति अभ्यास गर्नुभयो र आफूलाई कामका लागि कति तयार बनाउनुभयो भन्ने पनि महत्त्वपूर्ण छ। \nपढाइको स्तर, आर्थिक अवस्था वा शैक्षिक यात्रामा आएको अवरोधका कारण आफूले केही गर्न सक्दिनँ भन्ने महसुस गर्ने व्यक्तिलाई व्यावहारिक सीप सिकाएर काम, करियर र व्यवसायका अवसरतर्फ अघि बढ्न सहयोग गर्नु हो।\nStudyNotes — Your Knowledge. Your Skills. Your Future."
         },
         "finalcta": {
@@ -1322,8 +1294,8 @@
         ],
         "seo": {
           "title": "StudyNotes — Learn. Grow. Succeed. | Class 5 देखि Master सम्म Practical Ebooks",
-          "description": "StudyNotes — Class 5 देखि Master सम्म: Office, Store, Sales, Computer, Accounts र Business Practical Ebooks। Practical Knowledge for a Better Future.",
-          "keywords": "",
+          "description": "StudyNotes — Job Ready देखि Business Owner सम्म: Office, Store, Sales, Computer, POS Operator, Cashier, Storekeeper, Accounts र Business Practical Ebooks। Practical Knowledge for a Better Future.",
+          "keywords": "StudyNotes, studynotes, Studynotes",
           "ogTitle": "",
           "ogDescription": "",
           "ogImage": null,
@@ -1551,24 +1523,7 @@
             "visible": true
           }
         ],
-        "offers": [
-          {
-            "title": "",
-            "subtitle": "",
-            "badge": "",
-            "description": "",
-            "active": true,
-            "showInTicker": true,
-            "start": null,
-            "end": null,
-            "discountPercent": null,
-            "productIds": [],
-            "bundleIds": [],
-            "ctaText": "",
-            "ctaAction": "section:bundles",
-            "id": "off_mvvjg6cr9wd3"
-          }
-        ],
+        "offers": [],
         "sections": [
           {
             "id": "announcement",
