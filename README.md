@@ -72,9 +72,7 @@ Product पेजमा Description/"कसका लागि" पछि, Homep
 - बदलिएका फाइल: `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-pages2.js`, `README.md`।
 
 ---
-## 👤 Review / Chat Box Avatar फोटो (नयाँ)
-- Review को गोलो आइकनमा नामको पहिलो अक्षर र Chat Box माथिको StudyNotes Logo को सट्टा **फोटो** देखिन्छ।
-- प्राथमिकता: (१) Review / Chat Box मा राखेको Customer को **वास्तविक फोटो** (Admin → Reviews / Testimonials → ग्राहकको फोटो Upload) → (२) **Default फोटो सूची** (पुरुष/महिला) बाट नामअनुसार अनुमान गरेको Gender को फोटो (हरेक नामलाई सधैं उही फोटो) → (३) फोटो नभए पहिलेकै Letter / Logo।
-- Gender अनुमान गलत भए Review/Chat Box मै Gender (पुरुष/महिला) छान्न मिल्छ। Default फोटो सूची On/Off गर्न मिल्छ।
-- फोटो आफैं सानो (240×240 square) बनाइन्छ, `assets/covers/` मार्फत Publish हुन्छ। Worker परिवर्तन छैन।
-- बदलिएका फाइल: `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-core.js`, `assets/js/admin-pages2.js`।
+## 📷 Customer Photo (Reviews + Testimonials Chat Box) (नयाँ)
+- Admin → Reviews / Testimonials: हरेक **Review** र हरेक **Chat Box** मा "ग्राहकको वास्तविक फोटो" Upload (वैकल्पिक; आफैं ठ्याक्कै वर्गाकार Crop हुन्छ)।
+- Review: फोटो नराखे नामको पहिलो अक्षर (पहिले जस्तै)। Chat Box: फोटो → नाम भए पहिलो अक्षरको Icon → नाम खाली भए StudyNotes Logo।
+- फोटो `assets/covers/` मार्फत Publish हुन्छ (Worker परिवर्तन छैन)। बदलिएका फाइल: `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-core.js`, `assets/js/admin-pages2.js`।
