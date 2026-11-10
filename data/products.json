@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-10T15:26:18.542Z",
+  "updatedAt": "2026-11-10T16:06:34.023Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-10T15:26:18.542Z",
+      "updatedAt": "2026-11-10T16:06:34.023Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -402,7 +402,7 @@
         "store": {
           "name": "StudyNotes",
           "tagline": "Learn. Grow. Succeed.",
-          "taglineNe": "आफ्नो लक्ष्यअनुसार Practical Knowledge र Career-Oriented Skills — सरल नेपाली भाषामा, मोबाइल बाटै सिक्न सुरु गर्नुहोस्। Office Skills, Store Skills, Market Skills, Business Skills, Digital Skills, LokSewa, र Share Market शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्मको यात्रा 🎯 StudyNotes सँगै ।",
+          "taglineNe": "आफ्नो लक्ष्यअनुसार Practical Knowledge र Career-Oriented Skills — सरल नेपाली भाषामा, मोबाइल बाटै सिक्न सुरु गर्नुहोस्। Office Skills, Store Skills, Market Skills, Business Skills, Digital Skills, LokSewa, र Share Market शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्मको यात्रा 🎯 StudyNotes सँगै।",
           "founder": "MD. NS (MD. NASA)",
           "logo": null,
           "currency": "रु.",
