@@ -1283,12 +1283,59 @@ function CartBonus({ it }) {
 /* =====================================================================
    RATINGS & REVIEWS  (केवल Admin ले राखेका वास्तविक Review / Rating देखिन्छन्)
    ===================================================================== */
+/* ग्राहकको नामबाट लिङ्ग पहिचान गरी Nepali/Indian शैलीको Photo-Avatar (नाम अनुसार स्थिर "random"; Admin बाट लिङ्ग Override गर्न मिल्छ) */
+const AV_F = new Set("sita gita rita sunita anita sabita sarita kabita babita binita sangita sushila kamala laxmi lakshmi parvati parbati durga saraswati radha rekha rina riya priya pooja puja sapana sapna sharmila sarmila nisha asha usha manisha mamata mamta anjali anju anjana kriti kritika rojina roshani rosni samjhana shristi srijana sristi swastika tara tulsi uma yamuna sushma sushmita shova shobha sabina sadhana sakuntala sarala deepa dipa deepika deepti divya neha nikita nita preeti priti punam purnima rachana ranjana reshma ritu rubina sakshi shanti shweta simran sneha sonam sonia sunaina sumitra trishna kavita kabita pratima pramila puspa pushpa maya mina meena manju mala madhu rani rajani renuka rama_f sarmila sabitri savitri sapana aarati arati aasha bimala bina binu gauri geeta indira jamuna jyoti kalpana kopila kushum laxmi mahima menuka muna nirmala nirmaya pabitra padma pooja prabha pragya rabina rajkumari sabnam samikshya sandhya sarika shanta sheela shila smriti sudha sujata sunanda susmita swati urmila yashoda".split(" "));
+const AV_M = new Set("krishna rama surya ajaya arjuna bhima shiva hari ravi rishi sandesh ashok ajay ram shyam om subhash prabin rabindra sunil anil dipak deepak rajesh ramesh suresh mahesh ganesh dinesh umesh naresh bikash bikas rohan sumit manoj kishan shiv rinku bablu pintu sagar bishal sujan sujit amit rahul rohit ankit nabin binod bipin dilip nilesh santosh pramod prakash pawan puran raju rajan roshan sanjay sanjeev saroj shankar yogesh".split(" "));
+function avGender(name, forced) {
+  if (forced === "m" || forced === "f") return forced;
+  const toks = String(name || "").toLowerCase().replace(/[^a-zऀ-ॿ\s]/g, " ").split(/\s+/).filter(Boolean);
+  if (toks.some(t => ["kumari", "devi", "mrs", "ms", "miss", "smt", "bahini", "didi", "कुमारी", "देवी", "दिदी", "बहिनी"].includes(t))) return "f";
+  if (toks.some(t => ["kumar", "prasad", "mr", "bhai", "dai", "sir", "कुमार", "प्रसाद", "भाइ", "दाइ"].includes(t))) return "m";
+  const f = toks.find(t => !["mr", "mrs", "ms", "miss", "shri", "sri", "smt", "श्री", "श्रीमती"].includes(t)) || "";
+  if (!f) return "m";
+  if (AV_M.has(f)) return "m";
+  if (AV_F.has(f)) return "f";
+  if (/[ऀ-ॿ]/.test(f)) return /[ाीि]$/.test(f) ? "f" : "m";
+  return /(a|i|ee|ya|ie)$/.test(f) ? "f" : "m";
+}
+function avHash(s) { let h = 2166136261; for (const c of String(s || "x").toLowerCase()) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
+function Avatar({ name, gender }) {
+  const g = avGender(name, gender), h = avHash(name), pick = (arr, k) => arr[(h >>> k) % arr.length];
+  const skin = pick(["#C68642", "#B07A4E", "#9C6644", "#D19A6B", "#8D5524", "#BF8A5B"], 0);
+  const hair = pick(["#17120F", "#241812", "#2E1E14"], 3);
+  const bg = pick(["#FFE4CC", "#FFF1C9", "#D9F0E3", "#DCE9FB", "#F6DDEB", "#E7E1F7"], 5);
+  const shirt = g === "f" ? pick(["#E4572E", "#C2185B", "#2E8B8B", "#7B4FBF", "#E0A100"], 8) : pick(["#2F5D9E", "#5B6B7A", "#2E8B57", "#B5543A", "#7A5C2E", "#E8E2D5"], 8);
+  const topi = g === "m" && (h >>> 11) % 4 === 0, stache = g === "m" && (h >>> 13) % 3 === 0, bindi = g === "f" && (h >>> 14) % 2 === 0, part = (h >>> 16) % 2;
+  const dark = "#00000022";
+  return (
+    <svg viewBox="0 0 64 64" className="w-full h-full block" role="img" aria-label={name || "customer"}>
+      <rect width="64" height="64" fill={bg} />
+      {g === "f" && <path d="M16.5 30C14 11 50 11 47.5 30L49 54H15Z" fill={hair} />}
+      <path d="M6 66C6 51 19 46 32 46S58 51 58 66Z" fill={shirt} />
+      {g === "f" && <path d="M25 46C27 52 37 52 39 46L36 46C34 49 30 49 28 46Z" fill={skin} />}
+      <rect x="27" y="37" width="10" height="11" rx="4" fill={skin} />
+      <rect x="27" y="37" width="10" height="5" rx="2" fill={dark} />
+      <circle cx="21" cy="30" r="2.6" fill={skin} /><circle cx="43" cy="30" r="2.6" fill={skin} />
+      {g === "f" && <><circle cx="21" cy="34.3" r="1.3" fill="#E0A100" /><circle cx="43" cy="34.3" r="1.3" fill="#E0A100" /></>}
+      <ellipse cx="32" cy="29.5" rx="11" ry="13" fill={skin} />
+      {g === "m" && !topi && <path d={part ? "M20.5 28C19 11 45 11 43.5 28C42 22 38 19.5 31 19.5C26 19.5 22.5 22 20.5 28Z" : "M20.5 28C20 12 44 12 43.5 28C41.5 22 38 19 32 19C26 19 22.5 22 20.5 28Z"} fill={hair} />}
+      {g === "m" && topi && <><path d="M20.5 26C20.5 22 24 19 32 19S43.5 22 43.5 26C40 23.5 24 23.5 20.5 26Z" fill={hair} /><path d="M20.5 24.5L21.5 13.5C27 10.5 37 10.5 42.5 13.5L43.5 24.5C38 21.5 26 21.5 20.5 24.5Z" fill="#6D5BA8" /><path d="M21 19C27 16.5 37 16.5 43 19L43.2 21.2C37 18.8 27 18.8 20.8 21.2Z" fill="#E8B04A" /></>}
+      {g === "f" && <path d={part ? "M20.5 29C19 11 45 11 43.5 29C41.5 21 37 17.5 30 17.5C25 17.5 22 22 20.5 29Z" : "M20.5 29C19 11 45 11 43.5 29C42 22 38 18 33 17.5C28 18 23 22 20.5 29Z"} fill={hair} />}
+      <ellipse cx="27.3" cy="30" rx="1.3" ry="1.6" fill="#1b1b1b" /><ellipse cx="36.7" cy="30" rx="1.3" ry="1.6" fill="#1b1b1b" />
+      <path d="M24.8 26.2Q27.3 24.8 29.8 26.2M34.2 26.2Q36.7 24.8 39.2 26.2" stroke={hair} strokeWidth="1.2" fill="none" strokeLinecap="round" />
+      <path d="M32 31.5L31 35.2H33.2" stroke="#00000033" strokeWidth="1" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      {stache && <path d="M27.5 36.2Q32 33.4 36.5 36.2Q32 35.4 27.5 36.2Z" fill={hair} />}
+      <path d="M28.3 38.6Q32 41.2 35.7 38.6" stroke="#7A2E2E" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+      {bindi && <circle cx="32" cy="23.6" r="1.2" fill="#D7261E" />}
+    </svg>
+  );
+}
 function ReviewCard({ r }) {
   const p = r.productId ? PBYID[r.productId] : null;
   return (
     <div className="bg-white rounded-2xl border border-orange-100 shadow-sm p-3.5 flex flex-col">
       <div className="flex items-center gap-2.5">
-        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white font-black flex items-center justify-center text-sm">{r.name.trim().charAt(0)}</div>
+        <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 ring-1 ring-orange-100"><Avatar name={r.name} gender={r.gender} /></div>
         <div className="flex-1 min-w-0"><div className="text-xs font-extrabold text-slate-900 truncate">{r.name}</div>{(r.place || r.date) && <div className="text-[10px] text-slate-500">{[r.place, r.date].filter(Boolean).join(" · ")}</div>}</div>
         {r.sample ? <span className="text-[9px] font-bold bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded">{SITE.reviews.sampleBadge || "Sample"}</span> : r.verified && <span className="text-[9px] font-extrabold bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded flex items-center gap-0.5"><Icon name="checkc" className="w-3 h-3" />{L("revVerified")}</span>}
       </div>
@@ -1430,7 +1477,7 @@ function ChatBox({ box, c0, full }) {
     <div className="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white">
       <div className="bg-[#075E54] text-white px-3 py-2.5 flex items-center gap-2.5">
         <Icon name="chevL" className="w-5 h-5 opacity-80" />
-        <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center"><Logo size={22} /></div>
+        <div className="w-9 h-9 rounded-full bg-white overflow-hidden shrink-0"><Avatar name={T(box.name || c0.headerName, {}, "keep")} gender={box.gender} /></div>
         <div className="flex-1 leading-tight"><div className="text-sm font-bold">{T(box.name || c0.headerName, {}, "keep")}</div>{(box.status || c0.status) && <div className="text-[10px] opacity-80">{box.status || c0.status}</div>}</div>
         <Icon name="phone" className="w-4 h-4 opacity-80" />
       </div>

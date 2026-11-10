@@ -70,3 +70,9 @@ Product पेजमा Description/"कसका लागि" पछि, Homep
 - **Testimonials**: धेरै **Chat Box** बनाउन मिल्छ (१. Chat Boxes), हरेक सन्देशमा "कुन Chat Box मा?" छान्ने। Public site मा Swipe / Arrow / Dots / Auto-slide (सबै Admin बाट On/Off)। **Show all Testimonials** बटनले सबै Chat Box Popup मा खोल्छ।
 - पुरानो Data जस्ताको तस्तै चल्छ: Chat Box नबनाए सबै सन्देश एउटै Box मा। नयाँ Data `site.reviews.*`, `site.chat.boxes`, message मा `box` — Worker परिवर्तन छैन।
 - बदलिएका फाइल: `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-pages2.js`, `README.md`।
+
+---
+## 🧑 Customer Photo Icon (नयाँ)
+- Reviews र Testimonials Chat Box को गोलो icon मा अब नामको पहिलो अक्षर / StudyNotes logo होइन, **नामबाट लिङ्ग पहिचान गरेर Nepali/Indian शैलीको Photo-avatar** देखिन्छ (नाम अनुसार स्थिर — रिफ्रेस गर्दा फेरिँदैन)।
+- नाम गलत पहिचान भए Admin → Reviews / Testimonials मा हरेक Review र Chat Box मा **Photo Icon (लिङ्ग): Auto / पुरुष / महिला** छान्न मिल्छ।
+- बदलिएका फाइल: `index.html`, `next.html`, `assets/js/site-core.js`, `assets/js/admin-pages2.js`, `README.md`। Data र Worker परिवर्तन छैन।
