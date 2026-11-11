@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-10T17:00:45.963Z",
+  "updatedAt": "2026-11-11T01:52:38.205Z",
   "products": [
     {
       "id": "SN001CS",
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-10T17:00:45.963Z",
+      "updatedAt": "2026-11-11T01:52:38.205Z",
       "site": {
         "v": 1,
         "preloader": {
@@ -1323,14 +1323,14 @@
           }
         ],
         "seo": {
-          "title": "StudyNotes — Learn. Grow. Succeed. | Class 5 देखि Master सम्म Practical Ebooks",
-          "description": "StudyNotes — Job Ready देखि Business Owner सम्म: Office, Store, Sales, Computer, POS Operator, Cashier, Storekeeper, Accounts र Business Practical Ebooks। Practical Knowledge for a Better Future.",
-          "keywords": "StudyNotes, studynotes, Studynotes",
-          "ogTitle": "",
-          "ogDescription": "",
-          "ogImage": null,
+          "title": "StudyNotes — जागिरका लागि योग्य बन्ने Practical Ebooks",
+          "description": "तपाईंको Goal के हो? Computer, Office, Store/Inventory, Cashier, CV र Interview सीप सरल नेपालीमा। ४० अध्याय + ५ Bonus PDF सहित Ebook। Preview निःशुल्क।",
+          "keywords": "StudyNotes, srain, practical ebooks nepali, computer operator ebook nepali, office assistant guide, job ready nepal, CV interview tayari, storekeeper inventory GRN nepali, cashier POS nepali, typing word excel nepali",
+          "ogTitle": "तपाईंको Goal के हो? जागिरका लागि योग्य बन्नुहोस्",
+          "ogDescription": "Computer, Office, Store, Cashier, CV र Interview — सरल नेपालीमा। ४० अध्याय + ५ Bonus PDF। Preview निःशुल्क हेर्नुहोस्।",
+          "ogImage": "assets/covers/site-og-z4z1r.jpg",
           "favicon": null,
-          "siteUrl": ""
+          "siteUrl": "https://srain.com.np"
         },
         "product": {
           "disclaimer": "Ebook ले व्यवहारिक ज्ञान, सीप र तयारीको बाटो देखाउँछ। वास्तविक सफलता तपाईंको निरन्तर अभ्यास, मिहिनेतमा निर्भर हुन्छ।"
