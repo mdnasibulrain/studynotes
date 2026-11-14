@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-14T14:21:23.702Z",
+  "updatedAt": "2026-11-14T14:24:03.099Z",
   "products": [
     {
       "id": "SN001CS",
@@ -270,8 +270,8 @@
       "countdownVisible": true,
       "rating": 4.9,
       "reviewCount": 1672,
-      "soldCopies": 1692,
-      "copiesLeft": 8,
+      "soldCopies": 1694,
+      "copiesLeft": 6,
       "bonus": {
         "enabled": true,
         "items": [
@@ -369,7 +369,7 @@
           "note": ""
         }
       },
-      "updatedAt": "2026-11-14T14:21:06.087Z",
+      "updatedAt": "2026-11-14T14:23:45.053Z",
       "isFeatured": true
     },
     {
@@ -380,7 +380,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-14T14:21:23.702Z",
+      "updatedAt": "2026-11-14T14:24:03.099Z",
       "site": {
         "v": 1,
         "preloader": {
