@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-15T02:14:46.526Z",
+  "updatedAt": "2026-11-15T02:15:40.607Z",
   "products": [
     {
       "id": "SN001CS",
@@ -315,8 +315,7 @@
             "badge": "FREE GIFT",
             "value": 97
           }
-        ],
-        "end": "2026-11-20T08:24+05:45"
+        ]
       },
       "preview": {
         "pages": [
@@ -369,7 +368,7 @@
           "note": ""
         }
       },
-      "updatedAt": "2026-11-15T02:14:25.939Z",
+      "updatedAt": "2026-11-15T02:15:24.896Z",
       "isFeatured": true
     },
     {
@@ -380,7 +379,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-15T02:14:46.526Z",
+      "updatedAt": "2026-11-15T02:15:40.607Z",
       "site": {
         "v": 1,
         "preloader": {
