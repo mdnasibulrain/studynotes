@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-16T12:27:45.834Z",
+  "updatedAt": "2026-11-16T15:55:37.782Z",
   "products": [
     {
       "id": "SN001CS",
@@ -9,7 +9,7 @@
       "subtitle": "Computer Basics देखि MS Office, Office Administration, Accounting, AI Tools र Career Skills सम्म — ४० Chapter, ७ Part",
       "summary": "Computer Operator र Office Assistant काम सिक्न चाहनेहरूका लागि सरल नेपालीमा लेखिएको ४० Chapter को व्यवहारिक Ebook — अभ्यास, Quiz र Career Guidance सहित।",
       "description": "हरेक अध्यायमा: यो chapter मा के सिक्ने (८ वटा उद्देश्य) → चरणबद्ध व्याख्या र उदाहरण → Important Terms → सामान्य गलत बुझाइ → Pro Tips → Job Connection → Mini Project → Knowledge Check (MCQ, True/False, Fill in the blanks, Short Answer) → Answer Key → Quick Revision → Key Takeaways।",
-      "hook": "पढ्नुहोस्, अभ्यास गर्नुहोस्, Portfolio बनाउनुहोस् — शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्मको पूरै यात्रा एउटै Ebook मा।",
+      "hook": "पढ्नुहोस्, अभ्यास गर्नुहोस्, Portfolio बनाउनुहोस् — शून्यदेखि Job-Ready सम्म — Job Holder देखि Business Owner सम्मको यात्रा पूरै एउटै Ebook मा।",
       "category": "Computer Skills",
       "language": "नेपाली",
       "tags": [
@@ -374,7 +374,7 @@
           "note": ""
         }
       },
-      "updatedAt": "2026-11-16T10:59:42.088Z",
+      "updatedAt": "2026-11-16T15:55:19.157Z",
       "isFeatured": true
     },
     {
@@ -384,7 +384,7 @@
       "subtitle": "Office Helper देखि Dispatch Assistant सम्म १० पद — ३२ अध्याय, ६ Part, शून्यदेखि Work-Ready सम्म",
       "summary": "कुनै काम नजानेकाले पनि सुरु गर्न सक्ने गरी सरल नेपाली र English कार्य-शब्दमा लेखिएको ३२ अध्यायको व्यावहारिक Ebook — १० आधारभूत कामका पदका लागि, अभ्यास, Mini Project र Knowledge Check सहित।",
       "description": "यो Ebook ले कामको जगदेखि सुरु गर्छ: कार्यस्थल, समय, अनुशासन, पढाइ-लेखाइ, गणित, Communication र Safety। त्यसपछि Office Helper, Messenger, Document Delivery, Photocopy & Printing, File & Record, Stationery, Office Supply, Packing, Product Labelling र Dispatch — हरेक पदको दैनिक काम, Register/Form, गल्ती र समाधान। अन्त्यमा Daily Report, इमान्दारी, मजदुरको अधिकार (सामान्य), CV, Interview, विदेशमा सुरक्षित काम, Budget, Portfolio र ९० दिनको Action Plan। यो सिक्ने र अभ्यास गर्ने बाटो हो ।",
-      "hook": "तपाईंले कति पढ्नुभयो भन्ने मात्र होइन, के गर्न चाहनुहुन्छ भन्ने महत्वपूर्ण छ — काम सुरु गर्ने पहिलो ठोस कदम यहीँबाट।",
+      "hook": "प्रमाणपत्र मात्र होइन, काम गर्न सक्ने क्षमता पनि विकास गर्नुहोस् — शून्यदेखि Job-Ready सम्म।",
       "category": "Job Ready & Career",
       "language": "नेपाली",
       "tags": [
@@ -720,7 +720,7 @@
         }
       },
       "createdAt": "2026-11-15T23:33:56.000Z",
-      "updatedAt": "2026-11-16T11:00:51.577Z",
+      "updatedAt": "2026-11-16T15:54:51.107Z",
       "isFeatured": true
     },
     {
@@ -772,7 +772,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-16T12:27:45.834Z",
+      "updatedAt": "2026-11-16T15:55:37.782Z",
       "site": {
         "v": 1,
         "preloader": {
