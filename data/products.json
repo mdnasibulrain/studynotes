@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-16T11:01:01.719Z",
+  "updatedAt": "2026-11-16T12:27:45.834Z",
   "products": [
     {
       "id": "SN001CS",
@@ -724,6 +724,47 @@
       "isFeatured": true
     },
     {
+      "id": "SNB001",
+      "kind": "bundle",
+      "title": "CAREER SUCCESSFUL PACKAGE 📦",
+      "short": "Job Starter to Career Succeed Combo",
+      "subtitle": "Job Starter to Career Succeed Combo — दुई Ebook र सबै Bonus एउटै Package मा",
+      "summary": "Complete Career Successful सीप र आधारभूत कार्यस्थल सीप — दुवै Ebook, सबै Bonus सहित, छुट मूल्यमा।",
+      "description": "दुई Ebook, एउटै Learning Path 🚀\nकम्प्युटर सीप + कार्यस्थल सीप, दुवै एकैपटक सिक्नुहोस्।\n📘 Computer Operator र Office Assistant सीप\n📗 १० आधारभूत कामका पद, शून्यदेखि Work-Ready सम्म\n🎁 नेपाली + English शब्दावली, Practice, Mini Project र सबै Bonus सँगै\n✅ दुवै अलग-अलग किन्नुभन्दा Bundle मा किन्दा बढी बचत\nआजै Bundle लिएर आफ्नो तयारी सुरु गर्नुहोस्।",
+      "hook": "Computer / Store / Office सीप + कार्यस्थल सीप — काम सुरु गर्ने पूरा तयारी। Job Starter to Career Succeed Combo.",
+      "category": "Bundles",
+      "language": "नेपाली",
+      "tags": [
+        "Combo",
+        "Computer",
+        "Basic Work"
+      ],
+      "badge": "POPULAR",
+      "status": "published",
+      "availability": "available",
+      "featured": true,
+      "isNew": true,
+      "order": 3,
+      "pages": null,
+      "regularPrice": 2311,
+      "offerPrice": 1618,
+      "offerActive": true,
+      "offerEndsAt": "2026-11-20T00:00+05:45",
+      "offerLabel": "COMBO OFFER",
+      "countdownVisible": true,
+      "rating": 4.9,
+      "reviewCount": 920,
+      "soldCopies": 958,
+      "copiesLeft": 42,
+      "includes": [
+        "SN001CS",
+        "SN001JR"
+      ],
+      "createdAt": "2026-11-15T23:33:56.000Z",
+      "updatedAt": "2026-11-16T12:27:32.752Z",
+      "isFeatured": true
+    },
+    {
       "id": "__site__",
       "kind": "site",
       "title": "StudyNotes site settings",
@@ -731,7 +772,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-16T11:01:01.719Z",
+      "updatedAt": "2026-11-16T12:27:45.834Z",
       "site": {
         "v": 1,
         "preloader": {
