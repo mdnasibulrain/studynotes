@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-15T02:15:40.607Z",
+  "updatedAt": "2026-11-16T10:54:26.856Z",
   "products": [
     {
       "id": "SN001CS",
@@ -264,14 +264,14 @@
       "regularPrice": 1362,
       "offerPrice": 589,
       "offerActive": true,
-      "offerEndsAt": "2026-11-16T00:00+05:45",
+      "offerEndsAt": "2026-11-20T00:00+05:45",
       "offerLabel": "BESTSELLER",
       "urgencyLabel": "Limited Copies",
       "countdownVisible": true,
       "rating": 4.9,
-      "reviewCount": 1742,
-      "soldCopies": 1747,
-      "copiesLeft": 3,
+      "reviewCount": 3742,
+      "soldCopies": 3781,
+      "copiesLeft": 19,
       "bonus": {
         "enabled": true,
         "items": [
@@ -315,20 +315,26 @@
             "badge": "FREE GIFT",
             "value": 97
           }
+        ],
+        "end": "2026-11-20T00:00+05:45",
+        "showOnHome": false,
+        "eligibility": "यी Bonus यस Ebook सँगै पाइन्छ। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
+        "trustBadges": [
+          "Ebook सँगै पाइने"
         ]
       },
       "preview": {
         "pages": [
-          "assets/covers/SN001CS-pv1-nosxb.jpg",
-          "assets/covers/SN001CS-pv2-m3kud.jpg",
-          "assets/covers/SN001CS-pv3-qu5t5.jpg",
-          "assets/covers/SN001CS-pv4-d5seg.jpg",
-          "assets/covers/SN001CS-pv5-ydq3v.jpg",
-          "assets/covers/SN001CS-pv6-44900.jpg",
-          "assets/covers/SN001CS-pv7-cul4g.jpg",
-          "assets/covers/SN001CS-pv8-n6ugu.jpg",
-          "assets/covers/SN001CS-pv9-mkkwo.jpg",
-          "assets/covers/SN001CS-pv10-1btjp.jpg"
+          "assets/covers/SN001CS-pv1-1rzgh.jpg",
+          "assets/covers/SN001CS-pv2-aoxc8.jpg",
+          "assets/covers/SN001CS-pv3-ziozp.jpg",
+          "assets/covers/SN001CS-pv4-rviq2.jpg",
+          "assets/covers/SN001CS-pv5-scr8w.jpg",
+          "assets/covers/SN001CS-pv6-0kj8s.jpg",
+          "assets/covers/SN001CS-pv7-ys3ao.jpg",
+          "assets/covers/SN001CS-pv8-0hfw4.jpg",
+          "assets/covers/SN001CS-pv9-uu1lu.jpg",
+          "assets/covers/SN001CS-pv10-x3oao.jpg"
         ],
         "pageHook": "",
         "pageCta": "",
@@ -368,7 +374,353 @@
           "note": ""
         }
       },
-      "updatedAt": "2026-11-15T02:15:24.896Z",
+      "updatedAt": "2026-11-16T08:48:30.210Z",
+      "isFeatured": true
+    },
+    {
+      "id": "SN001JR",
+      "title": "COMPLETE BASIC WORK & WORKPLACE STARTER",
+      "short": "Basic Work & Workplace Starter",
+      "subtitle": "Office Helper देखि Dispatch Assistant सम्म १० पद — ३२ अध्याय, ६ Part, शून्यदेखि Work-Ready सम्म",
+      "summary": "कुनै काम नजानेकाले पनि सुरु गर्न सक्ने गरी सरल नेपाली र English कार्य-शब्दमा लेखिएको ३२ अध्यायको व्यावहारिक Ebook — १० आधारभूत कामका पदका लागि, अभ्यास, Mini Project र Knowledge Check सहित।",
+      "description": "यो Ebook ले कामको जगदेखि सुरु गर्छ: कार्यस्थल, समय, अनुशासन, पढाइ-लेखाइ, गणित, Communication र Safety। त्यसपछि Office Helper, Messenger, Document Delivery, Photocopy & Printing, File & Record, Stationery, Office Supply, Packing, Product Labelling र Dispatch — हरेक पदको दैनिक काम, Register/Form, गल्ती र समाधान। अन्त्यमा Daily Report, इमान्दारी, मजदुरको अधिकार (सामान्य), CV, Interview, विदेशमा सुरक्षित काम, Budget, Portfolio र ९० दिनको Action Plan। यो सिक्ने र अभ्यास गर्ने बाटो हो ।",
+      "hook": "तपाईंले कति पढ्नुभयो भन्ने मात्र होइन, के गर्न चाहनुहुन्छ भन्ने महत्वपूर्ण छ — काम सुरु गर्ने पहिलो ठोस कदम यहीँबाट।",
+      "category": "Job Ready & Career",
+      "language": "नेपाली",
+      "tags": [
+        "Basic Work",
+        "Office Helper",
+        "Messenger",
+        "Document Delivery",
+        "Photocopy & Printing",
+        "File & Record",
+        "Stationery",
+        "Office Supply",
+        "Packing",
+        "Product Labelling",
+        "Dispatch",
+        "Nepali"
+      ],
+      "cover": "assets/covers/SN001JR-fuyg7.jpg",
+      "coverAlt": "COMPLETE BASIC WORK & WORKPLACE STARTER — Ebook Cover",
+      "badge": "LIMITED OFFER",
+      "status": "published",
+      "availability": "available",
+      "featured": true,
+      "isNew": true,
+      "order": 2,
+      "pages": 553,
+      "chapters": 32,
+      "format": "Mobile/Desktop",
+      "forWho": [
+        "पहिलो पटक काम सुरु गर्न चाहनुहुन्छ र कहाँबाट सुरु गर्ने भन्ने थाहा छैन",
+        "Office Helper, Messenger, Photocopy/Printing, File/Record, Stationery, Packing, Labelling वा Dispatch जस्ता कामका लागि तयारी गर्दै हुनुहुन्छ",
+        "कक्षा ५–७ देखि माथि पढेको, पढाइ-लेखाइ र गणित कमजोर लाग्ने तर सिक्न मन भएको व्यक्ति — सरल नेपाली र English कार्य-शब्दसहित",
+        "नेपालमा काम सुरु गर्दै हुनुहुन्छ वा विदेशमा काम गर्ने सोचमा हुनुहुन्छ र आधारभूत कार्यस्थल सीप चाहनुहुन्छ",
+        "अहिलेकै काममा Helper हुनुहुन्छ र Coordinator/Supervisor तर्फ अगाडि बढ्न चाहनुहुन्छ",
+        "CV, Interview, पहिलो दिन र ९० दिनको योजना एकै ठाउँमा चाहनुहुन्छ"
+      ],
+      "learningOutcomes": [
+        "कार्यस्थल, पद र आफ्नो जिम्मेवारी बुझेर समय, अनुशासन र इमान्दारिताको बानी बसाल्ने",
+        "कामको लागि पढाइ-लेखाइ, आधारभूत गणित र नम्र Communication/Phone/WhatsApp प्रयोग गर्ने",
+        "Safety, Health र Hygiene को आधारभूत नियम बुझी सुरक्षित तरिकाले काम गर्ने",
+        "Office Helper, Pantry, Meeting Room, Visitor र Phone सहयोगको दैनिक काम गर्ने",
+        "Messenger/Document Delivery मा Register, Route र Proof of Delivery राख्ने",
+        "Photocopy, Printing र Scanning चलाई File Classification, Numbering र Register राख्ने",
+        "Digital File (Scan, PDF, नाम राख्ने) बनाई Backup लिने र Excel मा Stock Register बनाउने",
+        "Stationery/Office Supply को Stock Register, Order र वितरणको हिसाब राख्ने",
+        "Packing, Product Labelling र Dispatch गरी Tracking र Proof of Delivery राख्ने",
+        "Daily Report, गल्ती सुधार, Team सम्बन्ध, CV, Interview, Budget र ९० दिनको Action Plan बनाउने"
+      ],
+      "careerRelevance": [
+        "Office Helper, Messenger, Photocopy/Printing, File/Record, Stationery/Supply, Packing, Labelling र Dispatch जस्ता आधारभूत कामका लागि सीप तयारी (अध्याय ८–१९)",
+        "Daily Report, गोपनीयता, मजदुरको अधिकारबारे सामान्य जानकारी र Team सम्बन्ध — कार्यस्थलमा विश्वास कमाउन (अध्याय २०–२५)",
+        "Starter CV, Interview, पहिलो दिन र Portfolio — काम खोज्दा देखाउने तयारी (अध्याय २६, २७, ३१)",
+        "विदेशमा काम गर्ने सोच भए ठगीबाट जोगिने, Contract पढ्ने र कागजात सुरक्षित राख्ने सामान्य तयारी (अध्याय २८)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "कामको जग — कार्यस्थल र तपाईंको भूमिका",
+          "description": "काम, कार्यस्थल, पद र आफ्नो भूमिका बुझ्ने — Helper देखि Dispatch सम्मका १० पदको चिनारी"
+        },
+        {
+          "number": 2,
+          "title": "राम्रो कामदार बन्ने बानी — समय, अनुशासन, इमान्दारिता",
+          "description": "समयमा पुग्ने, भरपर्दो हुने र विश्वास कमाउने दैनिक बानी"
+        },
+        {
+          "number": 3,
+          "title": "कामको लागि पढाइ-लेखाइ — Form, Label, Naam, Miti, Number",
+          "description": "Form भर्ने, नाम/मिति/नम्बर सही लेख्ने र Label पढ्ने सीप"
+        },
+        {
+          "number": 4,
+          "title": "कामको लागि गणित (Basic Maths at Work)",
+          "description": "गन्ती, जोड-घटाउ, गुणा-भाग र प्रतिशतको कामको हिसाब — हरेक उत्तर जाँचेर"
+        },
+        {
+          "number": 5,
+          "title": "कसरी कुरा गर्ने — Communication ra Etiquette",
+          "description": "सुन्ने, बोल्ने, Phone/WhatsApp मा नम्र व्यवहार र सही शब्द"
+        },
+        {
+          "number": 6,
+          "title": "कार्यस्थलमा सुरक्षा, स्वास्थ्य र सफाइ (Safety, Health & Hygiene)",
+          "description": "चोटपटकबाट जोगिने, सामान उठाउने सही तरिका, सफाइ र प्राथमिक सावधानी"
+        },
+        {
+          "number": 7,
+          "title": "कामको लागि Mobile — Call, WhatsApp, Camera ra सुरक्षित प्रयोग",
+          "description": "Personal फोनलाई Work फोनजस्तै प्रयोग गर्ने — फोटो, Scan, Message र सुरक्षा"
+        },
+        {
+          "number": 8,
+          "title": "Office Helper को दैनिक जिम्मेवारी",
+          "description": "बिहानको तयारीदेखि बन्द गर्ने बेलासम्मको पूरा दैनिक कार्यतालिका"
+        },
+        {
+          "number": 9,
+          "title": "Messenger ra Document Delivery — कागजात सही ठाउँमा पुर्‍याउने कला",
+          "description": "Delivery Register, Route, Proof of Delivery र कागजात सुरक्षित पुर्‍याउने तरिका"
+        },
+        {
+          "number": 10,
+          "title": "Pantry, Meeting Room ra Karyalaya ko सफाइ-व्यवस्था",
+          "description": "सफा, तयार र सुरक्षित कार्यालय — Pantry, Meeting Room र दैनिक Checklist"
+        },
+        {
+          "number": 11,
+          "title": "Visitor र Phone को सहयोग — नम्र व्यवहार",
+          "description": "स्वागत, Visitor Register, Phone Message लिने र सही व्यक्तिसम्म पुर्‍याउने"
+        },
+        {
+          "number": 12,
+          "title": "Photocopy, Printing ra Scanning — Machine चलाउने र गडबडी चिन्ने",
+          "description": "कागज, Machine र हिसाब — Copy/Print/Scan चलाउने, सामान्य गडबडी चिन्ने"
+        },
+        {
+          "number": 13,
+          "title": "File Classification, Numbering ra राख्ने तरिका",
+          "description": "कागजात मिलाउने, नम्बर दिने र सजिलै भेट्टाउने File प्रणाली"
+        },
+        {
+          "number": 14,
+          "title": "Register haru — Inward, Outward ra Delivery Records",
+          "description": "आएको, गएको र बुझाएको हिसाब — Register भर्ने सही तरिका"
+        },
+        {
+          "number": 15,
+          "title": "Digital File — Scan, PDF, नाम राख्ने र Backup",
+          "description": "फोन/कम्प्युटरमा कागजलाई सुरक्षित फाइल बनाउने, नाम राख्ने र Backup लिने"
+        },
+        {
+          "number": 16,
+          "title": "Stationery ra Office Supply — Stock Register, Order र वितरण",
+          "description": "सामानको हिसाब राख्ने, अर्डर गर्ने र बाँड्ने — Stock Register सहित"
+        },
+        {
+          "number": 17,
+          "title": "Packing Assistant — सामान सुरक्षित Packing गर्ने कला",
+          "description": "सामान नफुटी, नभिजी, नघटी ग्राहकसम्म पुर्‍याउने Packing तरिका र Packing List"
+        },
+        {
+          "number": 18,
+          "title": "Product Labelling — Label, Barcode ra गुणस्तर",
+          "description": "सही Label, सही सामान, सही ग्राहक — Label जाँच र Quality Check"
+        },
+        {
+          "number": 19,
+          "title": "Dispatch Assistant — सामान पठाउने र Track गर्ने",
+          "description": "Order बाट ग्राहकको हातसम्म — Dispatch Register, Tracking र Proof of Delivery"
+        },
+        {
+          "number": 20,
+          "title": "Daily Work Report ra Kaam ko Record — दैनिक कामको हिसाब",
+          "description": "आजको काम, भोलिको योजना र Handover Note — सुपरभाइजरको विश्वास कमाउने रिपोर्ट"
+        },
+        {
+          "number": 21,
+          "title": "गल्ती र समस्या सम्हाल्ने तरिका",
+          "description": "गल्तीबाट सिक्ने, समस्या शान्त भएर समाधान गर्ने र फेरि नदोहोर्‍याउने"
+        },
+        {
+          "number": 22,
+          "title": "Team, Supervisor र कार्यस्थल सम्बन्ध",
+          "description": "साथी र सुपरभाइजरसँग सम्मानपूर्वक काम गर्ने, Feedback लिने र विश्वास कमाउने"
+        },
+        {
+          "number": 23,
+          "title": "इमानदारी, गोपनीयता र Cash/सामानको जिम्मेवारी",
+          "description": "विश्वास कमाउने सबैभन्दा बलियो सीप — गोप्य कुरा, Cash र सामानको सही जिम्मेवारी"
+        },
+        {
+          "number": 24,
+          "title": "Computer ra Excel सुरु — कम्प्युटरमा पहिलो कदम",
+          "description": "Mouse देखि Stock Register सम्म — Excel का आधारभूत सूत्र जाँचेर"
+        },
+        {
+          "number": 25,
+          "title": "मजदुरको अधिकार, तलब र कामको सर्त",
+          "description": "Contract बुझ्ने, तलब/हाजिरको रेकर्ड राख्ने र सुरक्षित रहने (सामान्य जानकारी)"
+        },
+        {
+          "number": 26,
+          "title": "Starter CV ra Profile — आफ्नो परिचय कागजमा",
+          "description": "अनुभव नभए पनि सफा, सत्य र एक पृष्ठको CV र Application Message"
+        },
+        {
+          "number": 27,
+          "title": "Interview ra पहिलो दिन — काम खोज्ने र सुरु गर्ने",
+          "description": "काम खोजीदेखि Interview र पहिलो हप्तासम्म — नमुना प्रश्न-उत्तरसहित"
+        },
+        {
+          "number": 28,
+          "title": "विदेशमा काम — सुरक्षित तरिका र तयारी",
+          "description": "ठगीबाट जोगिने, Contract पढ्ने, कागजात सुरक्षित राख्ने (कुनै ग्यारेन्टी बिना)"
+        },
+        {
+          "number": 29,
+          "title": "आम्दानी, बचत र Budget — कमाइको सही प्रयोग",
+          "description": "पहिलो तलबदेखि बचत बानीसम्म — Budget बनाउने र हरेक रुपैयाँको हिसाब राख्ने"
+        },
+        {
+          "number": 30,
+          "title": "अगाडि बढ्ने — नयाँ सिकाइ र सानो सेवा व्यापार",
+          "description": "Helper बाट Coordinator सम्म, र आफ्नै सानो सेवा सुरु गर्ने सोच"
+        },
+        {
+          "number": 31,
+          "title": "Capstone Project — आफ्नो Portfolio बनाऔँ",
+          "description": "सिकेको सबै काम एउटै Portfolio मा, देखाउन सकिने प्रमाणसहित"
+        },
+        {
+          "number": 32,
+          "title": "९० दिनको Action Plan — सुरु देखि Confident सम्म",
+          "description": "१३ हप्ताको योजना, दैनिक १–२ घण्टा अभ्यास र प्रगति Tracker"
+        }
+      ],
+      "regularPrice": 949,
+      "offerPrice": 489,
+      "offerActive": true,
+      "offerEndsAt": "2026-11-20T00:00+05:45",
+      "offerLabel": "JOB SPECIAL",
+      "urgencyLabel": "Limited Offer",
+      "countdownVisible": true,
+      "rating": 5,
+      "reviewCount": 4815,
+      "soldCopies": 4973,
+      "copiesLeft": 27,
+      "bonus": {
+        "enabled": true,
+        "items": [
+          {
+            "id": "bon_workbook",
+            "type": "workbook",
+            "title": "Practice Workbook PDF",
+            "description": "४४ पृष्ठ — १२८ अभ्यास (खाली ठाउँ, MCQ, Scenario, गणित, English-at-Work), Self-Check र पूरा Answer Key",
+            "cover": "assets/covers/SN001JR-bonus1.jpg",
+            "badge": "FREE GIFT",
+            "value": 219
+          },
+          {
+            "id": "bon_forms",
+            "type": "templates",
+            "title": "Forms & Registers Template Pack",
+            "description": "३९ पृष्ठ — ४० वटा छाप्न मिल्ने Template: Visitor/Inward/Outward/Delivery Register, Stock, Packing List, Dispatch, Daily Report आदि",
+            "cover": "assets/covers/SN001JR-bonus2.jpg",
+            "badge": "FREE GIFT",
+            "value": 209
+          },
+          {
+            "id": "bon_quick",
+            "type": "custom",
+            "title": "Quick Guide & Cheat Sheet",
+            "description": "२२ पृष्ठ — १० पदको एक-एक पृष्ठे सार, १०० English कार्य-शब्द, ३० उपयोगी वाक्य, Shortcut र Safety Card",
+            "cover": "assets/covers/SN001JR-bonus3.jpg",
+            "badge": "FREE GIFT",
+            "value": 179
+          },
+          {
+            "id": "bon_cvkit",
+            "type": "custom",
+            "title": "Starter CV & Interview Kit",
+            "description": "२६ पृष्ठ — ३ वटा CV नमुना + खाली Template, Application Message, ४० Interview प्रश्न-उत्तर, पहिलो दिनको Checklist",
+            "cover": "assets/covers/SN001JR-bonus4.jpg",
+            "badge": "FREE GIFT",
+            "value": 189
+          },
+          {
+            "id": "bon_plan",
+            "type": "action",
+            "title": "90-Day Action Plan",
+            "description": "२० पृष्ठ — १३ हप्ताको योजना, ९० दिनको दैनिक Tracker, साप्ताहिक Review र पद अनुसारको Track",
+            "cover": "assets/covers/SN001JR-bonus5.jpg",
+            "badge": "FREE GIFT",
+            "value": 169
+          }
+        ],
+        "end": "2026-11-20T00:00+05:45",
+        "showOnHome": false,
+        "hook": "पढ्नुहोस्, अभ्यास गर्नुहोस्, Forms भर्नुहोस्, CV बनाउनुहोस् र ९० दिनको योजना — सबै एउटै Package मा।",
+        "eligibility": "यी Bonus यस Ebook सँगै पाइन्छ। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
+        "trustBadges": [
+          "Ebook सँगै पाइने"
+        ]
+      },
+      "preview": {
+        "pages": [
+          "assets/covers/SN001JR-pv1-mq33g.jpg",
+          "assets/covers/SN001JR-pv2-2i0em.jpg",
+          "assets/covers/SN001JR-pv3-kurj3.jpg",
+          "assets/covers/SN001JR-pv4-8znd1.jpg",
+          "assets/covers/SN001JR-pv5-anngf.jpg",
+          "assets/covers/SN001JR-pv6-tcua4.jpg",
+          "assets/covers/SN001JR-pv7-c41rw.jpg",
+          "assets/covers/SN001JR-pv8-20aly.jpg",
+          "assets/covers/SN001JR-pv9-6n26g.jpg",
+          "assets/covers/SN001JR-pv10-7dfsp.jpg"
+        ],
+        "pageHook": "",
+        "pageCta": "",
+        "keepLocked": true,
+        "enabled": true,
+        "title": "",
+        "tocCount": 10,
+        "slides": {
+          "cover": {
+            "visible": true,
+            "hook": "",
+            "cta": ""
+          },
+          "toc": {
+            "visible": true,
+            "hook": "",
+            "cta": ""
+          },
+          "sample": {
+            "visible": false,
+            "hook": "",
+            "cta": ""
+          },
+          "locked": {
+            "visible": true,
+            "hook": "",
+            "cta": ""
+          }
+        },
+        "sample": {
+          "title": "",
+          "text": "",
+          "points": []
+        },
+        "locked": {
+          "title": "",
+          "note": ""
+        }
+      },
+      "createdAt": "2026-11-15T23:33:56.000Z",
+      "updatedAt": "2026-11-16T08:44:35.287Z",
       "isFeatured": true
     },
     {
@@ -379,7 +731,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-15T02:15:40.607Z",
+      "updatedAt": "2026-11-16T10:54:26.856Z",
       "site": {
         "v": 1,
         "preloader": {
