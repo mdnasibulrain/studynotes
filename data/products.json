@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-16T19:42:20.731Z",
+  "updatedAt": "2026-11-16T19:51:18.550Z",
   "products": [
     {
       "id": "SN001CS",
@@ -751,6 +751,7 @@
       "offerActive": true,
       "offerEndsAt": "2026-11-20T00:00+05:45",
       "offerLabel": "COMBO OFFER",
+      "urgencyLabel": "Limited Copies",
       "countdownVisible": true,
       "rating": 4.9,
       "reviewCount": 920,
@@ -761,7 +762,7 @@
         "SN001JR"
       ],
       "createdAt": "2026-11-15T23:33:56.000Z",
-      "updatedAt": "2026-11-16T19:41:51.983Z",
+      "updatedAt": "2026-11-16T19:45:01.351Z",
       "isFeatured": true
     },
     {
@@ -772,7 +773,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-16T19:42:20.731Z",
+      "updatedAt": "2026-11-16T19:51:18.550Z",
       "site": {
         "v": 1,
         "preloader": {
