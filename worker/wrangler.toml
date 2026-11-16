@@ -7,7 +7,7 @@ preview_urls = false
 
 [vars]
 GITHUB_BRANCH = "main"
-GITHUB_OWNER = "mdnasibulrain4"
+GITHUB_OWNER = "mdnasibulrain"
 GITHUB_REPO = "studynotes"
 SITE_ORIGIN = "https://srain.com.np"
 
