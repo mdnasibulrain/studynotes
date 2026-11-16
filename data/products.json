@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-16T10:54:26.856Z",
+  "updatedAt": "2026-11-16T11:01:01.719Z",
   "products": [
     {
       "id": "SN001CS",
@@ -374,7 +374,7 @@
           "note": ""
         }
       },
-      "updatedAt": "2026-11-16T08:48:30.210Z",
+      "updatedAt": "2026-11-16T10:59:42.088Z",
       "isFeatured": true
     },
     {
@@ -607,7 +607,7 @@
       "offerLabel": "JOB SPECIAL",
       "urgencyLabel": "Limited Offer",
       "countdownVisible": true,
-      "rating": 5,
+      "rating": 4.9,
       "reviewCount": 4815,
       "soldCopies": 4973,
       "copiesLeft": 27,
@@ -720,7 +720,7 @@
         }
       },
       "createdAt": "2026-11-15T23:33:56.000Z",
-      "updatedAt": "2026-11-16T08:44:35.287Z",
+      "updatedAt": "2026-11-16T11:00:51.577Z",
       "isFeatured": true
     },
     {
@@ -731,7 +731,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-16T10:54:26.856Z",
+      "updatedAt": "2026-11-16T11:01:01.719Z",
       "site": {
         "v": 1,
         "preloader": {
