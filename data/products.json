@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-16T19:51:18.550Z",
+  "updatedAt": "2026-11-17T16:17:31.221Z",
   "products": [
     {
       "id": "SN001CS",
@@ -401,7 +401,7 @@
         "Dispatch",
         "Nepali"
       ],
-      "cover": "assets/covers/SN001JR-fuyg7.jpg",
+      "cover": "assets/covers/SN001JR-ni20v.jpg",
       "coverAlt": "COMPLETE BASIC WORK & WORKPLACE STARTER — Ebook Cover",
       "badge": "LIMITED OFFER",
       "status": "published",
@@ -739,6 +739,7 @@
         "Computer",
         "Basic Work"
       ],
+      "cover": "assets/covers/SNB001-shirk.jpg",
       "badge": "POPULAR",
       "status": "published",
       "availability": "available",
@@ -762,7 +763,7 @@
         "SN001JR"
       ],
       "createdAt": "2026-11-15T23:33:56.000Z",
-      "updatedAt": "2026-11-16T19:45:01.351Z",
+      "updatedAt": "2026-11-17T16:14:33.281Z",
       "isFeatured": true
     },
     {
@@ -773,7 +774,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-16T19:51:18.550Z",
+      "updatedAt": "2026-11-17T16:17:31.221Z",
       "site": {
         "v": 1,
         "preloader": {
