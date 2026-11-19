@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-17T16:17:31.221Z",
+  "updatedAt": "2026-11-19T15:55:55.866Z",
   "products": [
     {
       "id": "SN001CS",
@@ -280,6 +280,7 @@
             "type": "workbook",
             "title": "Practice Workbook PDF",
             "description": "१३२ पृष्ठ — ४० Chapter × ३ अभ्यास पृष्ठ, ४० प्रश्नको Final Review Test, Answer Key र Progress Tracker",
+            "cover": "assets/covers/SN001CS-bonus-bon_workbook-zu9mw.jpg",
             "badge": "FREE GIFT",
             "value": 178
           },
@@ -288,6 +289,7 @@
             "type": "templates",
             "title": "Office Templates PDF",
             "description": "५५ पृष्ठ — ५० वटा तयार Office Templates (नमुना, शैक्षिक प्रयोगका लागि)",
+            "cover": "assets/covers/SN001CS-bonus-bon_templates-4ett8.jpg",
             "badge": "FREE GIFT",
             "value": 156
           },
@@ -296,6 +298,7 @@
             "type": "action",
             "title": "Action Plan & Roadmap PDF",
             "description": "९० दिनको अध्ययन योजना: Self-Assessment, १३ हप्ताको योजना, Checkpoint, Career Roadmap र Progress Log (१२ पृष्ठ)",
+            "cover": "assets/covers/SN001CS-bonus-bon_action-hdyqb.jpg",
             "badge": "FREE GIFT",
             "value": 123
           },
@@ -304,6 +307,7 @@
             "type": "custom",
             "title": "Shortcut Keys Cheat Sheet",
             "description": "Windows, Word, Excel, PowerPoint, Chrome र Google Docs का Shortcut + ७ दिने Challenge (९ पृष्ठ)",
+            "cover": "assets/covers/SN001CS-bonus-bon_shortcuts-03300.jpg",
             "badge": "FREE GIFT",
             "value": 107
           },
@@ -312,6 +316,7 @@
             "type": "custom",
             "title": "Interview & CV Kit",
             "description": "CV Checklist, नमुना CV, Cover Letter/Email, १० सामान्य प्रश्न, STAR, Skill Test र Tracker (१४ पृष्ठ)",
+            "cover": "assets/covers/SN001CS-bonus-bon_cvkit-u83ta.jpg",
             "badge": "FREE GIFT",
             "value": 97
           }
@@ -774,7 +779,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-17T16:17:31.221Z",
+      "updatedAt": "2026-11-19T15:55:55.866Z",
       "site": {
         "v": 1,
         "preloader": {
