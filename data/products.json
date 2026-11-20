@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-20T19:29:42.559Z",
+  "updatedAt": "2026-11-20T19:50:50.654Z",
   "products": [
     {
       "id": "SN001CS",
@@ -624,7 +624,7 @@
             "type": "workbook",
             "title": "Practice Workbook PDF",
             "description": "४४ पृष्ठ — १२८ अभ्यास (खाली ठाउँ, MCQ, Scenario, गणित, English-at-Work), Self-Check र पूरा Answer Key",
-            "cover": "assets/covers/SN001JR-bonus1.jpg",
+            "cover": "assets/covers/SN001JR-bonus-bon_workbook-lw7aa.jpg",
             "badge": "FREE GIFT",
             "value": 219
           },
@@ -633,7 +633,7 @@
             "type": "templates",
             "title": "Forms & Registers Template Pack",
             "description": "३९ पृष्ठ — ४० वटा छाप्न मिल्ने Template: Visitor/Inward/Outward/Delivery Register, Stock, Packing List, Dispatch, Daily Report आदि",
-            "cover": "assets/covers/SN001JR-bonus2.jpg",
+            "cover": "assets/covers/SN001JR-bonus-bon_forms-kqzlf.jpg",
             "badge": "FREE GIFT",
             "value": 209
           },
@@ -642,7 +642,7 @@
             "type": "custom",
             "title": "Quick Guide & Cheat Sheet",
             "description": "२२ पृष्ठ — १० पदको एक-एक पृष्ठे सार, १०० English कार्य-शब्द, ३० उपयोगी वाक्य, Shortcut र Safety Card",
-            "cover": "assets/covers/SN001JR-bonus3.jpg",
+            "cover": "assets/covers/SN001JR-bonus-bon_quick-1j0wl.jpg",
             "badge": "FREE GIFT",
             "value": 179
           },
@@ -651,7 +651,7 @@
             "type": "custom",
             "title": "Starter CV & Interview Kit",
             "description": "२६ पृष्ठ — ३ वटा CV नमुना + खाली Template, Application Message, ४० Interview प्रश्न-उत्तर, पहिलो दिनको Checklist",
-            "cover": "assets/covers/SN001JR-bonus4.jpg",
+            "cover": "assets/covers/SN001JR-bonus-bon_cvkit-rgrcp.jpg",
             "badge": "FREE GIFT",
             "value": 189
           },
@@ -660,7 +660,7 @@
             "type": "action",
             "title": "90-Day Action Plan",
             "description": "२० पृष्ठ — १३ हप्ताको योजना, ९० दिनको दैनिक Tracker, साप्ताहिक Review र पद अनुसारको Track",
-            "cover": "assets/covers/SN001JR-bonus5.jpg",
+            "cover": "assets/covers/SN001JR-bonus-bon_plan-v0fnb.jpg",
             "badge": "FREE GIFT",
             "value": 169
           }
@@ -779,7 +779,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-20T19:29:42.559Z",
+      "updatedAt": "2026-11-20T19:50:50.654Z",
       "site": {
         "v": 1,
         "preloader": {
