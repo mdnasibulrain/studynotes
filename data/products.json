@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-22T15:12:43.010Z",
+  "updatedAt": "2026-11-25T09:00:48.579Z",
   "products": [
     {
       "id": "SN001CS",
@@ -772,6 +772,370 @@
       "isFeatured": true
     },
     {
+      "id": "SN002JR",
+      "title": "COMPLETE OFFICE SUPPORT & ADMINISTRATION MASTERY",
+      "short": "Office Job Ready — Support & Admin Mastery",
+      "subtitle": "Office Assistant देखि Office Coordinator सम्म — नयाँ सुरु गर्नेका लागि, शून्यदेखि Office Manager सम्म",
+      "summary": "Office Assistant, Reception, Front Desk, Telephone Operator वा Admin सहायक बन्न चाहनेहरूका लागि — कार्यालयको काम नजानेको नयाँ व्यक्ति, पढाइ/अनुभव कम भएको युवा, काम सुरु गरेर अगाडि बढ्न चाहने कर्मचारी र नेपाल वा विदेशमा Office/Admin काम खोज्नेका लागि। सरल नेपाली र English कार्य-शब्दमा ३६ अध्याय, १० पदको अभ्यास, Mini Project र Knowledge Check सहित।",
+      "description": "कार्यालयमा काम गर्ने सपना छ, तर कहाँबाट सुरु गर्ने थाहा छैन? यो Ebook तपाईंका लागि हो।\n\nOffice Assistant, Reception, Front Desk, Telephone Operator, Customer Enquiry, Appointment & Booking, Document Control, Attendance & Timesheet र Office Coordinator — १० पदको काम शून्यदेखि सिकाउँछ।\n\nयसमा के पाउनुहुन्छ:\n• कार्यालय कसरी चल्छ, र भरपर्दो Admin कसरी बन्ने\n• Letter, Email, Phone Script र Meeting Minutes लेख्ने तरिका\n• Visitor Register, Call Log, Attendance र Document Control को वास्तविक नमुना\n• हरेक अध्यायमा अभ्यास, Mini Project र Knowledge Check\n• CV, Interview, विदेशमा सुरक्षित तयारी र ९० दिनको Action Plan\n\nकसका लागि: नयाँ सुरु गर्ने, पढाइ/अनुभव कम भएका, काम गर्दै अगाडि बढ्न चाहने, र नेपाल वा विदेशमा Office/Admin काम खोज्ने।",
+      "hook": "Office काम सुरु गर्नुहोस् — शून्यदेखि भरपर्दो Admin सम्म।",
+      "category": "Job Ready & Career",
+      "language": "नेपाली",
+      "tags": [
+        "Office Support",
+        "Administration",
+        "Office Assistant",
+        "Reception",
+        "Front Desk",
+        "Telephone Operator",
+        "Customer Enquiry",
+        "Appointment & Booking",
+        "Document Control",
+        "Attendance & Timesheet",
+        "Office Coordinator",
+        "Nepali"
+      ],
+      "cover": "assets/covers/SN002JR-te9gy.jpg",
+      "coverAlt": "COMPLETE OFFICE SUPPORT & ADMINISTRATION MASTERY — Ebook Cover",
+      "badge": "LIMITED OFFER",
+      "status": "published",
+      "availability": "available",
+      "featured": true,
+      "isNew": true,
+      "order": 3,
+      "pages": 445,
+      "chapters": 36,
+      "format": "Mobile/Desktop",
+      "forWho": [
+        "पहिलो पटक कार्यालयमा काम सुरु गर्न चाहनुहुन्छ र कहाँबाट सुरु गर्ने भन्ने थाहा छैन",
+        "Office Assistant, Reception, Front Desk, Telephone Operator वा Admin सहायक जस्ता काममा तयारी गर्दै हुनुहुन्छ",
+        "कक्षा ८–१० देखि माथि पढेको, अंग्रेजी/टाइपिङ/कागजी काममा आत्मविश्वास बढाउन चाहने व्यक्ति — सरल नेपाली र English कार्य-शब्दसहित",
+        "नेपालमा कार्यालय-काम खोज्दै हुनुहुन्छ वा विदेशमा Office/Admin काम गर्ने सोचमा हुनुहुन्छ",
+        "अहिलेकै काममा Assistant हुनुहुन्छ र Coordinator/Admin तर्फ अगाडि बढ्न चाहनुहुन्छ",
+        "घरबाट Typing/Documentation/Virtual Assistant सेवा सुरु गर्ने सोच भएको व्यक्ति"
+      ],
+      "learningOutcomes": [
+        "कार्यालयको संरचना, पद र आफ्नो भूमिका बुझी भरपर्दो Admin को सोच बनाउने",
+        "Office English/Nepali मा सही Tone, Letter, Notice, Memo र Email लेख्ने",
+        "Office Assistant र Junior Admin को दैनिक Routine, Meeting Support र Excel/Word/Docs काम गर्ने",
+        "Reception र Front Desk मा Visitor Register, Mail/Courier, Key र कठिन अवस्था सम्हाल्ने",
+        "Telephone Operator को रूपमा Call Handling, Message Taking र Call Log राख्ने",
+        "Customer Enquiry सम्हाल्ने, Reply Template प्रयोग गर्ने र Follow-up Tracker राख्ने",
+        "Appointment, Booking, Reschedule र Reminder प्रणाली चलाउने",
+        "Document Control (Numbering, Version, Records, Digital Folder) राख्ने",
+        "Attendance, Leave, Timesheet र Monthly Report बनाउने",
+        "Office Coordination, Issue Log, Weekly Report, CV, Interview र ९० दिनको Action Plan बनाउने"
+      ],
+      "careerRelevance": [
+        "Office Assistant, Junior Admin, Reception, Front Desk, Telephone Operator जस्ता पदका लागि सीप तयारी (अध्याय ५–१७)",
+        "Customer Enquiry, Appointment & Booking, Document Control, Attendance & Timesheet र Office Coordinator काम बुझ्न (अध्याय १८–३०)",
+        "Ethics, Admin CV, Interview र Portfolio — काम खोज्दा देखाउने तयारी (अध्याय ३१–३३, ३६)",
+        "विदेशमा Office/Admin काम गर्ने सोच भए ठगीबाट जोगिने, Contract पढ्ने सामान्य तयारी (अध्याय ३४) आम्दानीको सोच (Typing, Documentation, Virtual Assistant) (अध्याय ३५)"
+      ],
+      "chapterOutline": [
+        {
+          "number": 1,
+          "title": "Office Administration को दुनियाँ",
+          "description": "Office कसरी चल्छ — Structure, Department र तपाईंको ठाउँ"
+        },
+        {
+          "number": 2,
+          "title": "Admin Professional को Mindset",
+          "description": "भरपर्दो, गोप्य राख्ने, आफैँ अघि सर्ने"
+        },
+        {
+          "number": 3,
+          "title": "Business Language — Office English र Nepali",
+          "description": "बोल्ने र लेख्ने Tone, Polite Phrases, Common Office Words"
+        },
+        {
+          "number": 4,
+          "title": "Task, Time र Priority Management",
+          "description": "To-Do, Daily Plan, Follow-up र Deadline सम्हाल्ने"
+        },
+        {
+          "number": 5,
+          "title": "Office Assistant — दैनिक Routine",
+          "description": "Opening/Closing Checklist, सहयोगका काम र जिम्मेवारी"
+        },
+        {
+          "number": 6,
+          "title": "Office Writing — Letter, Notice, Memo, Circular",
+          "description": "सही ढाँचा, Format र नमुना, Nepali + English"
+        },
+        {
+          "number": 7,
+          "title": "Meeting Support — Agenda, Minutes, Room, Follow-up",
+          "description": "बैठक तयार गर्ने, मिनेट लेख्ने, निर्णय पछ्याउने"
+        },
+        {
+          "number": 8,
+          "title": "Junior Admin Assistant — Role र सीमा",
+          "description": "के गर्ने, कसरी report गर्ने, Delegation बुझ्ने"
+        },
+        {
+          "number": 9,
+          "title": "Business Email र Digital Communication",
+          "description": "Professional Email, WhatsApp/Viber र Online सञ्चार"
+        },
+        {
+          "number": 10,
+          "title": "Word, Excel र Google Workspace — Admin काम",
+          "description": "Letter Template, Table, List, Mail Merge र सामान्य Formula"
+        },
+        {
+          "number": 11,
+          "title": "Reception — पहिलो प्रभाव",
+          "description": "Greeting, Grooming, Body Language र Reception Desk सेटअप"
+        },
+        {
+          "number": 12,
+          "title": "Visitor Management — Register, Pass, Security",
+          "description": "आगन्तुक दर्ता, Appointment जाँच, Pass र सुरक्षा"
+        },
+        {
+          "number": 13,
+          "title": "Front Desk Operations",
+          "description": "Mail, Courier, Key, Parcel र Multi-tasking"
+        },
+        {
+          "number": 14,
+          "title": "कठिन Visitor, Complaint र Emergency",
+          "description": "रिसाएका वा समस्या भएका व्यक्ति र आपतकालमा के गर्ने"
+        },
+        {
+          "number": 15,
+          "title": "Phone System — Call Handling",
+          "description": "Landline, PBX, Extension, Transfer, Hold र Conference"
+        },
+        {
+          "number": 16,
+          "title": "Phone Script र Message Taking",
+          "description": "Nepali/English Script, Message Slip र Call-back"
+        },
+        {
+          "number": 17,
+          "title": "कठिन Call, Call Log र Voicemail",
+          "description": "रिसाएको Caller, Call Log, Voicemail र Etiquette"
+        },
+        {
+          "number": 18,
+          "title": "Enquiry Handling",
+          "description": "सुन्ने, बुझ्ने, FAQ र Escalation"
+        },
+        {
+          "number": 19,
+          "title": "Multi-channel Enquiry — Walk-in, Phone, WhatsApp, Email",
+          "description": "हरेक माध्यममा Reply Template"
+        },
+        {
+          "number": 20,
+          "title": "Enquiry Register, Follow-up र Report",
+          "description": "Enquiry Track, Lead Follow-up र Weekly Report"
+        },
+        {
+          "number": 21,
+          "title": "Calendar र Appointment Scheduling",
+          "description": "Diary, Digital Calendar, Reminder र Conflict"
+        },
+        {
+          "number": 22,
+          "title": "Booking — Room, Vehicle, Ticket, Hotel र Travel",
+          "description": "Booking Request देखि Confirmation सम्म"
+        },
+        {
+          "number": 23,
+          "title": "Reschedule, Cancel, No-show र Reminder",
+          "description": "Change सम्हाल्ने र ग्राहक/साहुलाई जानकारी दिने"
+        },
+        {
+          "number": 24,
+          "title": "Document Control Basics",
+          "description": "Numbering, Version, Approval र Distribution"
+        },
+        {
+          "number": 25,
+          "title": "Records, Confidentiality, Retention र Archive",
+          "description": "अभिलेख राख्ने, गोप्य कागज र नष्ट गर्ने तरिका"
+        },
+        {
+          "number": 26,
+          "title": "Digital Document Control",
+          "description": "Folder Structure, File Naming, Backup र Access"
+        },
+        {
+          "number": 27,
+          "title": "Attendance र Leave Records",
+          "description": "Register, Biometric, Leave र Record"
+        },
+        {
+          "number": 28,
+          "title": "Timesheet, Overtime र Monthly Attendance Report",
+          "description": "समय गणना, Overtime र Report बनाउने"
+        },
+        {
+          "number": 29,
+          "title": "Office Coordination — Department, Vendor, Follow-up",
+          "description": "बिभिन्न विभाग र Supplier सँग समन्वय"
+        },
+        {
+          "number": 30,
+          "title": "Issue Log, Weekly Report र Office Dashboard",
+          "description": "समस्या रेकर्ड, साप्ताहिक रिपोर्ट र सरल Dashboard"
+        },
+        {
+          "number": 31,
+          "title": "Ethics, Privacy र गल्ती सुधार्ने तरिका",
+          "description": "इमानदारी, गोपनीयता र गल्ती सम्हाल्ने"
+        },
+        {
+          "number": 32,
+          "title": "Admin CV, Portfolio र Application",
+          "description": "आफ्नो सीप कागजमा देखाउने"
+        },
+        {
+          "number": 33,
+          "title": "Interview — Office/Reception Role का प्रश्न र Practical Test",
+          "description": "सोधिने प्रश्न, उत्तर र Typing/Phone/Writing Test"
+        },
+        {
+          "number": 34,
+          "title": "विदेशमा Office/Admin काम — सुरक्षित तयारी",
+          "description": "Legal बाटो, Contract, भाषा र अधिकार"
+        },
+        {
+          "number": 35,
+          "title": "आम्दानी — Virtual Assistant, Documentation Service, सानो Business Centre",
+          "description": "सीपलाई सानो सेवा व्यवसायमा बदल्ने"
+        },
+        {
+          "number": 36,
+          "title": "Capstone Project र ९० दिनको Action Plan",
+          "description": "आफ्नो Admin Portfolio र अगाडि बढ्ने योजना"
+        }
+      ],
+      "regularPrice": 1152,
+      "offerPrice": 530,
+      "offerActive": true,
+      "offerEndsAt": "2026-11-30T00:00+05:45",
+      "offerLabel": "OFFICE SPECIAL",
+      "urgencyLabel": "Limited Offer",
+      "countdownVisible": true,
+      "rating": 4.9,
+      "reviewCount": 1946,
+      "soldCopies": 1976,
+      "copiesLeft": 24,
+      "bonus": {
+        "enabled": true,
+        "items": [
+          {
+            "id": "bon_workbook",
+            "type": "workbook",
+            "title": "Practice Workbook PDF",
+            "description": "८७ पृष्ठ — १० पद-समूहका अभ्यास, ३० प्रश्नको Final Test, Self-Check र पूरा Answer Key",
+            "cover": "assets/covers/SN002JR-bonus-bon_workbook-819lp.jpg",
+            "badge": "FREE GIFT",
+            "value": 315
+          },
+          {
+            "id": "bon_forms",
+            "type": "templates",
+            "title": "Admin Forms & Registers Pack",
+            "description": "४५ पृष्ठ — २५ वटा फारम/रजिस्टर नमुना: Visitor, Call Log, Enquiry, Appointment, Document Control, Attendance, Timesheet, Issue Log, Weekly Report आदि",
+            "cover": "assets/covers/SN002JR-bonus-bon_forms-zblsk.jpg",
+            "badge": "FREE GIFT",
+            "value": 209
+          },
+          {
+            "id": "bon_scripts",
+            "type": "custom",
+            "title": "Phone, Reception & Email Script Book",
+            "description": "५१ पृष्ठ — English + नेपाली Script: फोन, Reception, Enquiry, Appointment, Vendor Follow-up, २५ नमुना Email र ३०-दिने बोल्ने अभ्यास",
+            "cover": "assets/covers/SN002JR-bonus-bon_scripts-e1xv7.jpg",
+            "badge": "FREE GIFT",
+            "value": 218
+          },
+          {
+            "id": "bon_cvkit",
+            "type": "custom",
+            "title": "Admin CV, Interview & Application Kit",
+            "description": "५८ पृष्ठ — ४ नमुना CV, ५ Application Template, ६० Interview प्रश्न-उत्तर, STAR, व्यावहारिक परीक्षा गाइड र सुरक्षा Checklist",
+            "cover": "assets/covers/SN002JR-bonus-bon_cvkit-i3p2c.jpg",
+            "badge": "FREE GIFT",
+            "value": 235
+          },
+          {
+            "id": "bon_action",
+            "type": "action",
+            "title": "90-Day Action Plan & Progress Tracker",
+            "description": "४८ पृष्ठ — ९० दिनको दैनिक योजना, साप्ताहिक Review, Skills Self-Rating, Portfolio र Application/Income Tracker",
+            "cover": "assets/covers/SN002JR-bonus-bon_action-tbwae.jpg",
+            "badge": "FREE GIFT",
+            "value": 196
+          }
+        ],
+        "end": "2026-11-30T00:00+05:45",
+        "showOnHome": false,
+        "eligibility": "यी Bonus यस Ebook सँगै पाइन्छ। Payment पुष्टि भएपछि Ebook सँगै WhatsApp / Email मा पठाइन्छ।",
+        "trustBadges": [
+          "Ebook सँगै पाइने"
+        ]
+      },
+      "preview": {
+        "pages": [
+          "assets/covers/SN002JR-pv-z8wvq.jpg",
+          "assets/covers/SN002JR-pv2-3lbi2.jpg",
+          "assets/covers/SN002JR-pv3-kzs8g.jpg",
+          "assets/covers/SN002JR-pv4-pz5hv.jpg",
+          "assets/covers/SN002JR-pv5-oez8p.jpg",
+          "assets/covers/SN002JR-pv6-0goi0.jpg",
+          "assets/covers/SN002JR-pv7-x6ili.jpg",
+          "assets/covers/SN002JR-pv8-wgna8.jpg",
+          "assets/covers/SN002JR-pv9-7cok6.jpg",
+          "assets/covers/SN002JR-pv10-o47gh.jpg"
+        ],
+        "pageHook": "",
+        "pageCta": "",
+        "keepLocked": true,
+        "enabled": true,
+        "title": "",
+        "tocCount": 10,
+        "slides": {
+          "cover": {
+            "visible": true,
+            "hook": "",
+            "cta": ""
+          },
+          "toc": {
+            "visible": true,
+            "hook": "",
+            "cta": ""
+          },
+          "sample": {
+            "visible": false,
+            "hook": "",
+            "cta": ""
+          },
+          "locked": {
+            "visible": true,
+            "hook": "",
+            "cta": ""
+          }
+        },
+        "sample": {
+          "title": "",
+          "text": "",
+          "points": []
+        },
+        "locked": {
+          "title": "",
+          "note": ""
+        }
+      },
+      "updatedAt": "2026-11-25T09:00:16.999Z",
+      "isFeatured": true
+    },
+    {
       "id": "__site__",
       "kind": "site",
       "title": "StudyNotes site settings",
@@ -779,7 +1143,7 @@
       "status": "config",
       "availability": "available",
       "regularPrice": 0,
-      "updatedAt": "2026-11-22T15:12:43.010Z",
+      "updatedAt": "2026-11-25T09:00:48.579Z",
       "site": {
         "v": 1,
         "preloader": {
